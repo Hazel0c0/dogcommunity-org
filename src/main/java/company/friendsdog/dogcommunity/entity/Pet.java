@@ -20,6 +20,6 @@ public class Pet {
     private String petPhoto;
     private int likes;
     private int hits;
-    private LocalDateTime boardDateTime;
+    private LocalDateTime profileDateTime;
 
 }
