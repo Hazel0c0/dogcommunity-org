@@ -11,4 +11,8 @@
         FROM tbl_pet
         ORDER BY profile_date_time DESC
     </select>
+    <delete id="deletePetProfile">
+        DELETE FROM tbl_pet
+        WHERE pet_no = #{petNo}
+    </delete>
 </mapper>
