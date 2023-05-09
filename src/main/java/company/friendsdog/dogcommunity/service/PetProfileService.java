@@ -13,4 +13,7 @@ public class PetProfileService {
   public List<BoardListResponseDTO> findPetProfile(){
 
   }
+  public boolean deletePetProfile(int petNo) {
+    return petProfileMapper.deletePetProfile(petNo);
+  }
 }
