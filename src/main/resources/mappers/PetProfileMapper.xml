@@ -4,10 +4,10 @@
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.spring.mvc.chap05.repository.BoardMapper">
 
-    <select id="findAll" resultType="pet">
+    <select id="findPetProfile" resultType="petprofile">
         SELECT
             pet_no, pet_name, pet_age, pet_kind
-             , pet_gender,pet_photo, likes, hits
+             , pet_gender,pet_photo,profile_date_time
         FROM tbl_pet
         ORDER BY profile_date_time DESC
     </select>
