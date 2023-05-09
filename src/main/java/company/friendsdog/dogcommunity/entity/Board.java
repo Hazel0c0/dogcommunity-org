@@ -2,6 +2,8 @@ package company.friendsdog.dogcommunity.entity;
 
 import lombok.*;
 
+import java.time.LocalDateTime;
+
 @Setter
 @Getter
 @ToString
@@ -10,12 +12,13 @@ import lombok.*;
 @AllArgsConstructor
 @Builder
 public class Board {
-
-    private int userNo;
-    private String userId;
-    private String userPassword;
     private String userNickname;
-    private String userAdd;
-
+    private int boardNo;
+    private String title;
+    private String content;
+    private LocalDateTime boardDateTime;
+    private String attachedImg;
+    private int likes;
+    private int hits;
 
 }
