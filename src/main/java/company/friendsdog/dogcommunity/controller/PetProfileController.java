@@ -32,5 +32,6 @@ public class PetProfileController {
         log.info("/petprofile/delete : POST");
         petProfileService.deletePetProfile(petNo);
         return "redirect:/petprofile/list";
+
     }
 }
