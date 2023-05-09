@@ -1,6 +1,7 @@
 package company.friendsdog.dogcommunity.dto.response;
 
 import company.friendsdog.dogcommunity.entity.Gender;
+import company.friendsdog.dogcommunity.entity.Pet;
 import lombok.EqualsAndHashCode;
 import lombok.Getter;
 import lombok.ToString;
@@ -20,11 +21,11 @@ public class PetProfileCardDTO {
   private String petPhoto;
   private LocalDateTime profileDateTime;
 
-  private int likes;
-  private int hits;
+  private int likes; // 좋아요 수
+  private int hits;  // 조회수
 
-
-  public PetProfileCardDTO(int petNo, String petName, int petAge, String petKind, Gender petGender, String petPhoto, LocalDateTime profileDateTime, int likes, int hits) {
+// 펫의 프로필 카드 객체
+  public PetProfileCardDTO(Pet pet) {
     this.petNo = petNo;
     this.petName = petName;
     this.petAge = petAge;
@@ -32,7 +33,7 @@ public class PetProfileCardDTO {
     this.petGender = petGender;
     this.petPhoto = petPhoto;
     this.profileDateTime = profileDateTime;
-    this.likes = likes;
-    this.hits = hits;
+    this.likes = 0;
+    this.hits = 0;
   }
 }

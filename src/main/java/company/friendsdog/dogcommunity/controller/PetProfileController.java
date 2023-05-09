@@ -4,28 +4,35 @@ import company.friendsdog.dogcommunity.dto.response.PetProfileCardDTO;
 import company.friendsdog.dogcommunity.service.PetProfileService;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
-import org.springframework.stereotype.Controller;
-import org.springframework.ui.Model;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RestController;
+import static org.springframework.http.ResponseEntity.ok;
 
 import java.util.List;
 
-@Controller
+@RestController
 @RequiredArgsConstructor
-@RequestMapping("/petprofile")
+@RequestMapping("/api/v1/petprofiles")
 @Slf4j
 public class PetProfileController {
 
     private final PetProfileService petProfileService;
     // 목록 조회 요청
-    @GetMapping("/list")
-    public String list(Model model) {
-        log.info("/petprofile/list : GET");
+    @GetMapping("/{profileNo}/list/{pageNo}")
+    public ResponseEntity<?> list(
+                  @PathVariable int profileNo,
+                  @PathVariable int pageNo)
+    {
+        log.info("api/v1/petprofiles/{profileNo}/list/{pageNo}: GET",
+                profileNo,pageNo);
 
-        // 테마별 펫 프로필 목록
-        List<PetProfileCardDTO> petProfileList = petProfileService.findPetProfile();
+        // 펫 프로필 목록 (테마별 검색)
+        List<PetProfileCardDTO> petProfileList
+                = petProfileService.findPetProfile();
 
-        return "";
+        return ok().body(petProfileList);
     }
 }

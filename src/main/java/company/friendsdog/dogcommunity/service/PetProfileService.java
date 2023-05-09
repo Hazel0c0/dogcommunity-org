@@ -7,6 +7,8 @@ import org.springframework.stereotype.Service;
 
 import java.util.List;
 
+import static java.util.stream.Collectors.toList;
+
 @Service
 @RequiredArgsConstructor
 public class PetProfileService {
@@ -14,7 +16,10 @@ public class PetProfileService {
 
   // 검색 목록 중간 처리
   public List<PetProfileCardDTO> findPetProfile(){
-//    petProfileMapper.findPetProfile()
-    return null;
+    // pet 객체 -> PetProfileCardDTO
+    return petProfileMapper.findPetProfile()
+    .stream()
+    .map(pet -> new PetProfileCardDTO(pet))
+    .collect(toList());
   }
 }
