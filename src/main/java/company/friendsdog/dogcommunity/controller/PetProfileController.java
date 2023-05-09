@@ -1,5 +1,6 @@
 package company.friendsdog.dogcommunity.controller;
 
+import company.friendsdog.dogcommunity.dto.response.PetProfileCardDTO;
 import company.friendsdog.dogcommunity.service.PetProfileService;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
@@ -21,7 +22,9 @@ public class PetProfileController {
     @GetMapping("/list")
     public String list(Model model) {
         log.info("/petprofile/list : GET");
-        petService.getList();
+
+        // 테마별 펫 프로필 목록
+        List<PetProfileCardDTO> petProfileList = petProfileService.findPetProfile();
 
         return "";
     }
