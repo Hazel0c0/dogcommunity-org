@@ -4,7 +4,7 @@
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.spring.mvc.chap05.repository.BoardMapper">
 
-    <select id="findAll" resultType="pet">
+    <select id="findPetProfile" resultType="petprofile">
         SELECT
             pet_no, pet_name, pet_age, pet_kind
              , pet_gender,pet_photo, likes, hits
