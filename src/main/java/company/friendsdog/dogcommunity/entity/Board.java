@@ -18,7 +18,5 @@ public class Board {
     private String content;
     private LocalDateTime boardDateTime;
     private String attachedImg;
-    private int likes;
-    private int hits;
 
 }

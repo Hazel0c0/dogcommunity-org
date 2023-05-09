@@ -18,8 +18,6 @@ public class Pet {
     private String petKind;
     private Gender petGender;
     private String petPhoto;
-    private int likes;
-    private int hits;
     private LocalDateTime profileDateTime;
 
 }

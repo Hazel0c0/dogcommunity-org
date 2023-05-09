@@ -15,6 +15,4 @@ public class Reply {
     private int replyNo;
     private String comment;
     private LocalDateTime replyDateTime;
-    private int likes;
-    private int hate;
 }
