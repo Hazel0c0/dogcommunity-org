@@ -1,6 +1,6 @@
 plugins {
 	id 'java'
-	id 'org.springframework.boot' version '2.7.11'
+	id 'org.springframework.boot' version '2.7.10'
 	id 'io.spring.dependency-management' version '1.0.15.RELEASE'
 }
 
@@ -27,8 +27,15 @@ dependencies {
 	annotationProcessor 'org.projectlombok:lombok'
 	testImplementation 'org.springframework.boot:spring-boot-starter-test'
 	testImplementation 'org.springframework.security:spring-security-test'
-	// 마이바티스 라이브러리
 	implementation 'org.mybatis.spring.boot:mybatis-spring-boot-starter:2.2.2'
+	implementation 'org.apache.tomcat.embed:tomcat-embed-jasper'
+	implementation 'javax.servlet:jstl:1.2'
+
+	// 데이터베이스 라이브러리
+	implementation 'org.springframework.boot:spring-boot-starter-jdbc'
+	// mariadb 커넥터
+	implementation 'org.mariadb.jdbc:mariadb-java-client:3.0.8'
+	implementation 'org.springframework.boot:spring-boot-starter-validation'
 
 }
 
