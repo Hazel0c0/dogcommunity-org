@@ -19,4 +19,8 @@
 <!--            WHERE adds LIKE CONCAT('%', #{keyword}, '%')-->
 <!--        </if>-->
     </select>
+    <delete id="deletePetProfile">
+        DELETE FROM tbl_pet
+        WHERE pet_no = #{petNo}
+    </delete>
 </mapper>
