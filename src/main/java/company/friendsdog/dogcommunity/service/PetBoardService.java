@@ -49,6 +49,11 @@ public class PetBoardService {
         return new PetBoardDetailResponseDTO(board);
     }
 
+    // 게시판 수정
+    public boolean modify(PetBoardRequestDTO dto) {
+        return petBoardMapper.modify(new Board(dto));
+    }
+
     // 게시물 수
     public int count(Search search) {
         return petBoardMapper.count(search);
