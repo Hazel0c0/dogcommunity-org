@@ -2,6 +2,8 @@ package company.friendsdog.dogcommunity.entity;
 
 import lombok.*;
 
+import java.time.LocalDateTime;
+
 @Setter
 @Getter
 @ToString
@@ -10,9 +12,15 @@ import lombok.*;
 @AllArgsConstructor
 @Builder
 public class User {
+
+    // 회원가입 시 필요 정보
     private int userNo;
-    private String userId;
-    private String userPassword;
-    private String userNickname;
-    private String userAdd;
+    private String id;
+    private String password;
+    private String userName;
+    private String email;
+    private String nickname;
+    private String adds;
+    private LocalDateTime userDate;
+
 }
