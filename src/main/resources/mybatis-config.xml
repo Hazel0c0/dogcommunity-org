@@ -9,7 +9,7 @@
     </settings>
     <typeAliases>
         <!--  entity 클래스 별칭 설정      -->
-        <typeAlias alias="petprofile" type="company.friendsdog.dogcommunity.entity.pet"/>
+        <typeAlias alias="petprofile" type="company.friendsdog.dogcommunity.entity.Pet"/>
     </typeAliases>
 
     <mappers>

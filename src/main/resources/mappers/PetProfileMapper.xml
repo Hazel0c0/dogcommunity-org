@@ -9,14 +9,14 @@
             pet_no, pet_name, pet_age, pet_kind
              , pet_gender,pet_photo,profile_date_time
         FROM tbl_pet
-        <if test="type == 'date'">
+<!--        <if test="type == 'date'">-->
             ORDER BY profile_date_time DESC
-        </if>
-        <if test="type == 'popularity'">
-            ORDER BY hits DESC
-        </if>
-        <if test="type == 'adds'">
-            WHERE adds LIKE CONCAT('%', #{keyword}, '%')
-        </if>
+<!--        </if>-->
+<!--        <if test="type == 'popularity'">-->
+<!--            ORDER BY hits DESC-->
+<!--        </if>-->
+<!--        <if test="type == 'adds'">-->
+<!--            WHERE adds LIKE CONCAT('%', #{keyword}, '%')-->
+<!--        </if>-->
     </select>
 </mapper>

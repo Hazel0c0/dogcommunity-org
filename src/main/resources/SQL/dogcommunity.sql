@@ -4,7 +4,7 @@
 create database dogcommunity;
 use dogcommunity;
 
-CREATE TABLE User
+CREATE TABLE tbl_user
 (
     user_no       INT AUTO_INCREMENT PRIMARY KEY,
     user_id       VARCHAR(100) UNIQUE NOT NULL,
@@ -14,8 +14,11 @@ CREATE TABLE User
 );
 
 -- not null
+drop table tbl_user;
 
-CREATE TABLE Pet
+
+
+CREATE TABLE tbl_pet
 (
     pet_no            INT AUTO_INCREMENT PRIMARY KEY, -- 반려동물 번호
     pet_name          VARCHAR(10)          NOT NULL,
@@ -24,10 +27,13 @@ CREATE TABLE Pet
     pet_gender        VARCHAR(10)          NOT NULL,
     pet_photo         VARCHAR(2000) unique NOT NULL,
     profile_date_time TIMESTAMP            not null default current_timestamp,
-    user_no           INT,
-    FOREIGN KEY (user_no)
-        REFERENCES User (user_no)
+    user_no           INT
+# ,
+#     FOREIGN KEY (user_no)
+#         REFERENCES User (user_no)
 );
+
+drop table pet;
 
 -- 자유게시판
 -- 조아요 조회 VARCHAR -> INT 로 수정
@@ -62,6 +68,6 @@ create table reply
 );
 
 -- pet 테이블 입력 넣기
-insert into Pet(pet_name, pet_age, pet_kind, pet_gender, pet_photo)
+insert into tbl_pet(pet_name, pet_age, pet_kind, pet_gender, pet_photo)
 values ('뭉치', 2, '불독', '남',
         'http://thumbnail.10x10.co.kr/webimage/image/basic600/290/B002903467.jpg?cmd=thumb&w=500&h=500&fit=true&ws=false');
