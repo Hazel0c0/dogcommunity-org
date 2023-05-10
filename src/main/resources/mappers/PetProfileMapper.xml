@@ -3,13 +3,29 @@
         PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="company.friendsdog.dogcommunity.repository.PetProfileMapper">
+<<<<<<< HEAD
 <!--인터페이스 우측 경로 참조 복사-->
     <select id="findAll" resultType="pet">
         SELECT
         pet_no, pet_name, pet_age, pet_kind
         , pet_gender,pet_photo, likes, hits
+=======
+
+    <select id="findPetProfile" resultType="petprofile">
+        SELECT
+            pet_no, pet_name, pet_age, pet_kind
+             , pet_gender,pet_photo,profile_date_time
+>>>>>>> develop
         FROM tbl_pet
-        ORDER BY profile_date_time DESC
+<!--        <if test="type == 'date'">-->
+            ORDER BY profile_date_time DESC
+<!--        </if>-->
+<!--        <if test="type == 'popularity'">-->
+<!--            ORDER BY hits DESC-->
+<!--        </if>-->
+<!--        <if test="type == 'adds'">-->
+<!--            WHERE adds LIKE CONCAT('%', #{keyword}, '%')-->
+<!--        </if>-->
     </select>
     <delete id="deletePetProfile">
         DELETE FROM tbl_pet

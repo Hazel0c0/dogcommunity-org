@@ -14,9 +14,9 @@ import java.time.LocalDateTime;
 public class Pet {
     private int petNo;
     private String petName;
-
-
-    private Gender petGender;
+    private int petAge;
+    private String petKind;
+    private String petGender;
     private String petPhoto;
     private LocalDateTime profileDateTime;
 
