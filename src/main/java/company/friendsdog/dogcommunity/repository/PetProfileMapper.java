@@ -8,6 +8,7 @@ import org.apache.ibatis.annotations.Mapper;
 @Mapper
 public interface PetProfileMapper {
   // 펫 프로필 카드 조회
+  //void말고 pet 로 해야함
   void findPetProfile();
 
   // 펫 프로필 카드 삭제
