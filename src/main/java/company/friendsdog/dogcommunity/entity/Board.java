@@ -1,5 +1,6 @@
 package company.friendsdog.dogcommunity.entity;
 
+import company.friendsdog.dogcommunity.dto.request.PetBoardRequestDTO;
 import lombok.*;
 
 import java.time.LocalDateTime;
@@ -21,4 +22,11 @@ public class Board {
     private int likes;
     private int hits;
 
+    public Board(PetBoardRequestDTO dto) {
+        this.userNickname = dto.getUserNickname();
+        this.title = dto.getTitle();
+        this.content = dto.getContent();
+        this.attachedImg = dto.getAttachedImg();
+        this.boardDateTime = LocalDateTime.now();
+    }
 }

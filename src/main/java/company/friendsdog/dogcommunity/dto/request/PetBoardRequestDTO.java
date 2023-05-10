@@ -12,4 +12,5 @@ public class PetBoardRequestDTO {
     private String title;
     private String content;
     private String attachedImg;
+    private String userNickname;
 }

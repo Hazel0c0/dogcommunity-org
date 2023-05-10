@@ -7,6 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 
 import static org.junit.jupiter.api.Assertions.*;
+import static org.junit.jupiter.api.Assertions.assertEquals;
 
 @SpringBootTest
 class PetBoardMapperTest {
@@ -48,13 +49,15 @@ class PetBoardMapperTest {
         mapper.modify(b);
 
     }
-//    @Test
-//    @DisplayName("하나의 게시물")
-//    void petFindOne() {
-//        int boardNo = 2;
-//        mapper.petFindOne(2);
-//
-//    }
+    @Test
+    @DisplayName("하나의 게시물")
+    void petFindOne() {
+        int boardNo = 2;
+        String content = "지워니";
+        Board board = mapper.petFindOne(boardNo);
+        assertEquals(content, board.getContent());
+
+    }
 
 
 

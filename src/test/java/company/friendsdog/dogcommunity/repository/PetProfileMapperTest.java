@@ -14,7 +14,7 @@ class PetProfileMapperTest {
     PetProfileMapper mapper;
 
     @Test
-    @DisplayName("게시물 삭제")
+    @DisplayName("프로필 삭제")
     void delete() {
         int petNo = 1;
         mapper.deletePetProfile(petNo);

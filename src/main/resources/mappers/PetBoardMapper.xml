@@ -10,6 +10,16 @@
         user_nickname, board_no, title, content,
         board_date_time, attached_img, likes, hits
         FROM tbl_board
+        <if test="type == 'title'">
+            WHERE title LIKE CONCAT('%', #{keyword}, '%')
+        </if>
+        <if test="type == 'content'">
+            WHERE content LIKE CONCAT('%', #{keyword}, '%')
+        </if>
+        <if test="type == 'tc'">
+            WHERE title LIKE CONCAT('%', #{keyword}, '%')
+            OR content LIKE CONCAT('%', #{keyword}, '%')
+        </if>
         ORDER BY board_no DESC
     </select>
 
@@ -20,18 +30,42 @@
         FROM tbl_board
         WHERE board_no = #{boardNo}
     </select>
+
     <insert id="save">
         INSERT INTO tbl_board
         (title, content, attached_img)
         VALUES (#{title}, #{content}, #{attachedImg})
     </insert>
+
     <delete id="delete">
         DELETE FROM tbl_board
         WHERE board_no = #{boardNo}
     </delete>
+
     <update id="modify">
         UPDATE tbl_board
         SET title = #{title}, content = #{content}, attached_img = #{attachedImg}
         WHERE board_no = #{boardNo}
+    </update>
+
+    <select id="count" resultType="int">
+        SELECT COUNT(*)
+        FROM tbl_board
+        <if test="type == 'title'">
+            WHERE title LIKE CONCAT('%', #{keyword}, '%')
+        </if>
+        <if test="type == 'content'">
+            WHERE content LIKE CONCAT('%', #{keyword}, '%')
+        </if>
+        <if test="type == 'tc'">
+            WHERE title LIKE CONCAT('%', #{keyword}, '%')
+            OR content LIKE CONCAT('%', #{keyword}, '%')
+        </if>
+    </select>
+
+    <update id="upHitsCount">
+        update tbl_board
+        set hits = hits + 1
+        where board_no = #{boardNo};
     </update>
 </mapper>
