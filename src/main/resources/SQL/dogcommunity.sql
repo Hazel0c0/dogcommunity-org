@@ -69,5 +69,10 @@ create table reply
 
 -- pet 테이블 입력 넣기
 insert into tbl_pet(pet_name, pet_age, pet_kind, pet_gender, pet_photo)
-values ('뭉치', 2, '불독', '남',
-        'http://thumbnail.10x10.co.kr/webimage/image/basic600/290/B002903467.jpg?cmd=thumb&w=500&h=500&fit=true&ws=false');
+values ('뭉치', 3, '불독', '남',
+        'http://thumbnail.10x10.co.kr/webimage/image/basic600/290/B002903467.jpg?cmd=thumb&w=500&h=500&fit=true&ws=false'
+        );
+insert into tbl_pet(pet_name, pet_age, pet_kind, pet_gender, pet_photo)
+values ('치와와', 4, '치와와', '여','치와와');
+insert into tbl_pet(pet_name, pet_age, pet_kind, pet_gender, pet_photo)
+values ('시츄', 3, '시츄', '남','시츄');

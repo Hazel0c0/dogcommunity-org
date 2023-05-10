@@ -20,12 +20,10 @@ class PetProfileMapperTest {
   @Test
   @DisplayName("모든 펫 조회")
   void findAllTest() {
-    petProfileMapper.findPetProfile()
-        .stream()
-        .forEach(pet ->
-          System.out.println(pet))
-            ;
+    List<Pet> selectTest = petProfileMapper.findPetProfile();
+//        .stream()
+//        .forEach(pet ->
+//          System.out.println(pet))
+    System.out.println(selectTest);
   }
-
-
 }
