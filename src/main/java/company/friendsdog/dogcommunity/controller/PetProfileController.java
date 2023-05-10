@@ -21,7 +21,7 @@ public class PetProfileController {
     @GetMapping("/list")
     public String list(Model model) {
         log.info("/petprofile/list : GET");
-        petService.getList();
+//        petService.getList();
 
         return "";
     }

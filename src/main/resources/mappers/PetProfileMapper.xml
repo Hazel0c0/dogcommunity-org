@@ -2,12 +2,12 @@
 <!DOCTYPE mapper
         PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="com.spring.mvc.chap05.repository.BoardMapper">
-
+<mapper namespace="company.friendsdog.dogcommunity.repository.PetProfileMapper">
+<!--인터페이스 우측 경로 참조 복사-->
     <select id="findAll" resultType="pet">
         SELECT
-            pet_no, pet_name, pet_age, pet_kind
-             , pet_gender,pet_photo, likes, hits
+        pet_no, pet_name, pet_age, pet_kind
+        , pet_gender,pet_photo, likes, hits
         FROM tbl_pet
         ORDER BY profile_date_time DESC
     </select>
@@ -15,4 +15,18 @@
         DELETE FROM tbl_pet
         WHERE pet_no = #{petNo}
     </delete>
+
+
+
+    <!--펫 사진 수정 update,modify -->
+<!--    set 수정할거  where이 조건-->
+
+    <update id="modify">
+        UPDATE pet
+        SET pet_photo=#{petPhoto}
+        WHERE pet_no=#{petNo}
+
+    </update>
+
+
 </mapper>
