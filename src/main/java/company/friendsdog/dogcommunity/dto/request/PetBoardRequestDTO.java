@@ -7,8 +7,12 @@ import lombok.*;
 @ToString
 @EqualsAndHashCode
 @NoArgsConstructor
+@AllArgsConstructor
+@Builder
+
 public class PetBoardRequestDTO {
 
+    private int boardNo;
     private String title;
     private String content;
     private String attachedImg;

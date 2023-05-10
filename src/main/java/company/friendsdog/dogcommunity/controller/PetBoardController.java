@@ -50,22 +50,22 @@ public class PetBoardController {
 
     }
 
-    // 게시판 수정 화면 조회 요청
+    // 게시판 글쓰기 화면 조회 요청
     @GetMapping("/write")
-    public String write() {
+    public String save() {
         log.info("/api/v1/board/write : GET");
         return "redirect:/api/v1/board/write";
     }
 
-    // 게시판 수정 요청 처리
+    // 게시판 글쓰기 요청 처리
     @PostMapping("/write")
-    public String write(PetBoardRequestDTO dto) {
+    public String save(PetBoardRequestDTO dto) {
 
         log.info("/api/v1/board/write : POST");
         boardService.save(dto);
         return "redirect:/api/v1/board/list";
     }
-    // 글 삭제 요청 처리
+    // 게시판 삭제 요청 처리
     @PostMapping("/delete")
     public String delete(int boardNo) {
         log.info("/api/v1/board/delete : POST");
@@ -73,4 +73,19 @@ public class PetBoardController {
         return "redirect:/api/v1/board/list";
     }
 
+    // 게시판 수정 화면 조회 요청
+    @GetMapping("/upload")
+    public String modify() {
+        log.info("/api/v1/board/upload : GET");
+        return "redirect:/api/v1/board/upload";
+    }
+
+
+    // 게시판 수정 요청 처리
+    @PostMapping("/upload")
+    public String modify(PetBoardRequestDTO dto) {
+        log.info("/api/v1/board/upload : POST");
+        boardService.modify(dto);
+        return "redirect:/api/v1/board/list";
+    }
 }
