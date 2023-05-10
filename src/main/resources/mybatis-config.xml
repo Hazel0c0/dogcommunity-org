@@ -9,11 +9,8 @@
     </settings>
     <typeAliases>
         <!--  entity 클래스 별칭 설정      -->
-<<<<<<< HEAD
-        <typeAlias alias="pet" type="company.friendsdog.dogcommunity.entity.Pet" />
-=======
         <typeAlias alias="petprofile" type="company.friendsdog.dogcommunity.entity.Pet"/>
->>>>>>> develop
+
     </typeAliases>
 
     <mappers>

@@ -1,12 +1,7 @@
 package company.friendsdog.dogcommunity.repository;
 
-<<<<<<< HEAD
 import company.friendsdog.dogcommunity.entity.Pet;
 import company.friendsdog.dogcommunity.entity.User;
-=======
-import company.friendsdog.dogcommunity.dto.response.PetProfileCardDTO;
-import company.friendsdog.dogcommunity.entity.Pet;
->>>>>>> develop
 import lombok.RequiredArgsConstructor;
 import org.apache.ibatis.annotations.Mapper;
 
@@ -15,7 +10,7 @@ import java.util.List;
 @Mapper
 public interface PetProfileMapper {
   // 펫 프로필 카드 조회
-<<<<<<< HEAD
+  //void말고 pet 로 해야함
   void findPetProfile();
 
   // 펫 프로필 카드 삭제
@@ -31,8 +26,4 @@ public interface PetProfileMapper {
 
   // pet dto 수정할거 필드 2~3개
 
-
-=======
-  List<Pet> findPetProfile();
->>>>>>> develop
 }
