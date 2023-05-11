@@ -31,7 +31,6 @@ class PetBoardControllerTest {
         }
 
 
-
     @Test
     @DisplayName("게시물 삭제")
     void delete() {
