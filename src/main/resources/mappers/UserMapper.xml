@@ -24,9 +24,27 @@
     <!--    유저 수정-->
     <update id="modify">
         UPDATE tbl_user
-        SET pwd=#{pwd}, email=#{email}, phone_num=#{phoneNum}, adds=#{adds}
-        WHERE user_no=#{userNo}
+        SET pwd=#{pwd},
+            email=#{email},
+            phone_num=#{phoneNum},
+            adds=#{adds}
+        WHERE user_no = #{userNo}
     </update>
+
+    <!--    회원가입 시 중복 검사 -->
+    <select id="isDuplicate">
+        SELECT COUNT(*)
+        FROM tbl_user
+        <if test="type=='email'">
+            WHERE email=#{email}
+        </if>
+        <if test="type=='phoneNum'">
+            WHERE phone_num=#{phoneNum}
+        </if>
+        <if test="type=='id'">
+            WHERE id=#{id}
+        </if>
+    </select>
 
 
 </mapper>
