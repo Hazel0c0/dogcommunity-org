@@ -68,6 +68,4 @@ class PetBoardControllerTest {
         System.out.println("boards = " + dto);
     }
 
-
-
 }
