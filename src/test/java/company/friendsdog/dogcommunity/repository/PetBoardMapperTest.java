@@ -1,10 +1,13 @@
 package company.friendsdog.dogcommunity.repository;
 
+import company.friendsdog.dogcommunity.dto.page.Search;
 import company.friendsdog.dogcommunity.entity.Board;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
+
+import java.util.List;
 
 import static org.junit.jupiter.api.Assertions.*;
 import static org.junit.jupiter.api.Assertions.assertEquals;
@@ -17,31 +20,31 @@ class PetBoardMapperTest {
     PetBoardMapper mapper;
     @Test
     @DisplayName("게시물 작성")
-    void InsertTest() {
+    void save() {
         // given
-        for (int i = 1; i <= 10; i++) {
+
             Board b = Board.builder()
-                    .title("테스트제목 " + i)
-                    .content("테스트내용 " + i)
+                    .title("테스트제목2 ")
+                    .content("테스트내용2 ")
                     .attachedImg("http://thumbnail.10x10.co.kr/webimage/image/basic600/290/B002903467.jpg?cmd=thumb&w=500&h=500&fit=true&ws=false")
+                    .petNo(2)
                     .build();
             mapper.save(b);
-        }
+
 
     }
 
     @Test
     @DisplayName("게시물 삭제")
     void delete() {
-        int boardNo = 1;
-        mapper.delete(boardNo);
-
+        int petNo = 1;
+        mapper.delete(petNo);
     }
     @Test
     @DisplayName("게시물 수정")
     void modify() {
         Board b = Board.builder()
-                .boardNo(2)
+                .petNo(2)
                 .title("영시기2")
                 .content("지워니2")
                 .attachedImg("https://img1.daumcdn.net/thumb/R800x0/?scode=mtistory2&fname=https%3A%2F%2Ft1.daumcdn.net%2Fcfile%2Ftistory%2F2208AF3556A1D58E14")
@@ -52,11 +55,17 @@ class PetBoardMapperTest {
     @Test
     @DisplayName("하나의 게시물")
     void petFindOne() {
-        Board board = mapper.petFindOne(2);
+        Board board = mapper.petFindOne(3);
         System.out.println("build = " + board);
-
     }
 
+    @Test
+    @DisplayName("게시물")
+    void petFindAll() {
+        Search search = new Search();
+    List<Board> boards = mapper.petFindAll(search);
+        System.out.println("boards = " + boards);
 
+}
 
 }
