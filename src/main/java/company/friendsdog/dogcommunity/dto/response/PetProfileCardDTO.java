@@ -13,11 +13,12 @@ import java.time.LocalDateTime;
 @EqualsAndHashCode
 // 클라이언트 프로필 카드 만들 때 정보
 public class PetProfileCardDTO {
+
   private int petNo;
   private String petName;
   private int petAge;
   private String petKind;
-  private Gender petGender;
+  private String petGender;
   private String petPhoto;
   private LocalDateTime profileDateTime;
 
