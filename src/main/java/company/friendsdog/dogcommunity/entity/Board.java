@@ -28,5 +28,7 @@ public class Board {
         this.content = dto.getContent();
         this.attachedImg = dto.getAttachedImg();
         this.boardDateTime = LocalDateTime.now();
+        this.boardNo = dto.getBoardNo();
+        this.likes = dto.getLikes();
     }
 }

@@ -9,6 +9,7 @@ import company.friendsdog.dogcommunity.repository.PetBoardMapper;
 import lombok.NoArgsConstructor;
 import lombok.RequiredArgsConstructor;
 import lombok.Setter;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -16,6 +17,7 @@ import java.util.stream.Collectors;
 
 @Service
 @RequiredArgsConstructor
+@Slf4j
 public class PetBoardService {
 
     private final PetBoardMapper petBoardMapper;
@@ -51,7 +53,10 @@ public class PetBoardService {
 
     // 게시판 수정
     public boolean modify(PetBoardRequestDTO dto) {
-        return petBoardMapper.modify(new Board(dto));
+        log.info("dto : {}", dto);
+        Board board = new Board(dto);
+        log.info("board : {}", board);
+        return petBoardMapper.modify(board);
     }
 
     // 게시물 수

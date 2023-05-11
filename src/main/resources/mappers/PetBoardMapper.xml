@@ -25,7 +25,7 @@
 
     <select id="petFindOne" resultType="petBoard">
         SELECT
-        user_nickname, board_no, title, content,
+        board_no, title, content,
         board_date_time, attached_img, likes, hits
         FROM tbl_board
         WHERE board_no = #{boardNo}

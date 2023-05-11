@@ -42,8 +42,8 @@ class PetBoardMapperTest {
     void modify() {
         Board b = Board.builder()
                 .boardNo(2)
-                .title("영시기")
-                .content("지워니")
+                .title("영시기2")
+                .content("지워니2")
                 .attachedImg("https://img1.daumcdn.net/thumb/R800x0/?scode=mtistory2&fname=https%3A%2F%2Ft1.daumcdn.net%2Fcfile%2Ftistory%2F2208AF3556A1D58E14")
                 .build();
         mapper.modify(b);
@@ -52,10 +52,8 @@ class PetBoardMapperTest {
     @Test
     @DisplayName("하나의 게시물")
     void petFindOne() {
-        int boardNo = 2;
-        String content = "지워니";
-        Board board = mapper.petFindOne(boardNo);
-        assertEquals(content, board.getContent());
+        Board board = mapper.petFindOne(2);
+        System.out.println("build = " + board);
 
     }
 

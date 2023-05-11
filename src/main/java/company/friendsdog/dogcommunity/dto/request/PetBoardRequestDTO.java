@@ -17,4 +17,5 @@ public class PetBoardRequestDTO {
     private String content;
     private String attachedImg;
     private String userNickname;
+    private int likes;
 }

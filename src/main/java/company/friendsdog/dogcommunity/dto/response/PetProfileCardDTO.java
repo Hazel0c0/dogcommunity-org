@@ -13,19 +13,18 @@ import java.time.LocalDateTime;
 @EqualsAndHashCode
 // 클라이언트 프로필 카드 만들 때 정보
 public class PetProfileCardDTO {
-
   private int petNo;
   private String petName;
   private int petAge;
   private String petKind;
-  private String petGender;
+  private Gender petGender;
   private String petPhoto;
   private LocalDateTime profileDateTime;
 
   private int likes; // 좋아요 수
   private int hits;  // 조회수
 
-// 펫의 프로필 카드 객체
+  // 펫의 프로필 카드 객체
   public PetProfileCardDTO(Pet pet) {
     this.petNo = petNo;
     this.petName = petName;
