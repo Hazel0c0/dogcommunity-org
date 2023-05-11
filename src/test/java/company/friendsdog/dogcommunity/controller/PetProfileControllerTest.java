@@ -13,7 +13,7 @@ class PetProfileControllerTest {
 
 
     @Autowired
-    PetProfileController mapper;
+    PetProfileService mapper;
 
     @Test
     @DisplayName("프로필 삭제")
