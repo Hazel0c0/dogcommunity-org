@@ -9,7 +9,9 @@ CREATE TABLE tbl_user
     user_no       INT AUTO_INCREMENT PRIMARY KEY,
     user_id       VARCHAR(100) UNIQUE NOT NULL,
     user_password VARCHAR(100)        NOT NULL,
-    user_nickname VARCHAR(10) UNIQUE  NOT NULL,
+    user_name VARCHAR(10) UNIQUE  NOT NULL,
+    email    VARCHAR(100) UNIQUE NOT NULL,
+    phone_num VARCHAR(100) UNIQUE NOT NULL,
     user_add      VARCHAR(100)        NOT NULL
 );
 
@@ -27,10 +29,10 @@ CREATE TABLE tbl_pet
     pet_gender        VARCHAR(10)          NOT NULL,
     pet_photo         VARCHAR(2000) unique NOT NULL,
     profile_date_time TIMESTAMP            not null default current_timestamp,
-    user_no           INT
-# ,
-#     FOREIGN KEY (user_no)
-#         REFERENCES User (user_no)
+    hashTag  VARCHAR(20)          NOT NULL,
+    user_no           INT,
+     FOREIGN KEY (user_no)
+       REFERENCES User (user_no)
 );
 
 drop table pet;
@@ -46,9 +48,9 @@ CREATE TABLE board
     attached_img    varchar(500),
     likes           varchar(500),
     hits            varchar(500),
-    user_no         INT,
-    FOREIGN KEY (user_no)
-        REFERENCES User (user_no)
+    pet_no         INT,
+    FOREIGN KEY (pet_no)
+        REFERENCES Pet(pet_no)
 );
 
 -- 댓글

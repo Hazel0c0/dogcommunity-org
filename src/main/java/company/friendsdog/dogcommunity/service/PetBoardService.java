@@ -47,7 +47,6 @@ public class PetBoardService {
     public PetBoardDetailResponseDTO petFindOne(int boardNo) {
         Board board = petBoardMapper.petFindOne(boardNo);
         petBoardMapper.upHitsCount(boardNo);
-
         return new PetBoardDetailResponseDTO(board);
     }
 
