@@ -1,7 +1,6 @@
 package company.friendsdog.dogcommunity.controller;
 
-import company.friendsdog.dogcommunity.dto.response.PetProfileCardDTO;
-import company.friendsdog.dogcommunity.service.PetProfileService;
+import company.friendsdog.dogcommunity.service.PetService;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Controller;
@@ -10,29 +9,25 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
-import java.util.List;
-
 @Controller
 @RequiredArgsConstructor
 @RequestMapping("/petprofile")
 @Slf4j
-public class PetProfileController {
+public class PetController {
 
-    private final PetProfileService petProfileService;
+    private final PetService petService;
     // 목록 조회 요청
     @GetMapping("/list")
-    public String list(Model model) {
+    public void list(Model model) {
         log.info("/petprofile/list : GET");
-        petService.getList();
-
-        return "";
+        petService.findAll();
     }
 
-    @PostMapping("/delete")
-    public String deletePetProfile(int petNo) {
-        log.info("/petprofile/delete : POST");
-        petProfileService.deletePetProfile(petNo);
-        return "redirect:/petprofile/list";
-
-    }
+//    @PostMapping("/delete")
+//    public String deletePetProfile(int petNo) {
+//        log.info("/petprofile/delete : POST");
+//        petService.deletePetProfile(petNo);
+//        return "redirect:/petprofile/list";
+//
+//    }
 }

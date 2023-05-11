@@ -1,8 +1,8 @@
 
 package company.friendsdog.dogcommunity.service;
 
-import company.friendsdog.dogcommunity.dto.response.PetProfileCardDTO;
-import company.friendsdog.dogcommunity.repository.PetProfileMapper;
+import company.friendsdog.dogcommunity.dto.response.PetCardResponseDTO;
+import company.friendsdog.dogcommunity.repository.PetMapper;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
@@ -12,15 +12,15 @@ import static java.util.stream.Collectors.toList;
 
 @Service
 @RequiredArgsConstructor
-public class PetProfileService {
-  private final PetProfileMapper petProfileMapper;
+public class PetService {
+  private final PetMapper petMapper;
 
   // 검색 목록 중간 처리
-  public List<PetProfileCardDTO> findPetProfile(){
+  public List<PetCardResponseDTO> findAll(){
     // pet 객체 -> PetProfileCardDTO
-    return petProfileMapper.findPetProfile()
+    return petMapper.findAll()
     .stream()
-    .map(pet -> new PetProfileCardDTO(pet))
+    .map(pet -> new PetCardResponseDTO(pet))
     .collect(toList());
   }
 }
