@@ -34,18 +34,18 @@ public class PetBoardController {
         model.addAttribute("bList", dto);
         model.addAttribute("p", page);
 
-        return "redirect:/api/v1/board/list";
+        return "list";
     }
 
     // 게시판 상세 조회 요청
     @GetMapping("/detail")
-    public String petFindOne(int boardNo, Search search, Model model) {
+    public String petFindOne(int petNo, Search search, Model model) {
         log.info("/api/v1/board/detail : GET");
-        PetBoardDetailResponseDTO dto = boardService.petFindOne(boardNo);
+        PetBoardDetailResponseDTO dto = boardService.petFindOne(petNo);
         model.addAttribute("b", dto);
         model.addAttribute("s", search);
 
-        return "redirect:/api/v1/board/detail";
+        return "detail";
 
 
     }
@@ -54,7 +54,7 @@ public class PetBoardController {
     @GetMapping("/write")
     public String save() {
         log.info("/api/v1/board/write : GET");
-        return "redirect:/api/v1/board/write";
+        return "write";
     }
 
     // 게시판 글쓰기 요청 처리
@@ -67,9 +67,9 @@ public class PetBoardController {
     }
     // 게시판 삭제 요청 처리
     @PostMapping("/delete")
-    public String delete(int boardNo) {
+    public String delete(int petNo) {
         log.info("/api/v1/board/delete : POST");
-        boardService.delete(boardNo);
+        boardService.delete(petNo);
         return "redirect:/api/v1/board/list";
     }
 
@@ -77,7 +77,7 @@ public class PetBoardController {
     @GetMapping("/upload")
     public String modify() {
         log.info("/api/v1/board/upload : GET");
-        return "redirect:/api/v1/board/upload";
+        return "upload";
     }
 
 

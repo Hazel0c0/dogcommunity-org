@@ -38,15 +38,15 @@ public class PetBoardService {
     }
 
     // 게시판 삭제 처리
-    public boolean delete(int boardNo) {
-        return petBoardMapper.delete(boardNo);
+    public boolean delete(int petNo) {
+        return petBoardMapper.delete(petNo);
     }
 
 
     // 게시판 확인
-    public PetBoardDetailResponseDTO petFindOne(int boardNo) {
-        Board board = petBoardMapper.petFindOne(boardNo);
-        petBoardMapper.upHitsCount(boardNo);
+    public PetBoardDetailResponseDTO petFindOne(int petNo) {
+        Board board = petBoardMapper.petFindOne(petNo);
+        petBoardMapper.upHitsCount(petNo);
         return new PetBoardDetailResponseDTO(board);
     }
 
