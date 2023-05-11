@@ -1,14 +1,15 @@
 package company.friendsdog.dogcommunity.repository;
 
 import company.friendsdog.dogcommunity.entity.Pet;
-import lombok.RequiredArgsConstructor;
 import org.apache.ibatis.annotations.Mapper;
 
+import java.util.List;
+
 @Mapper
-public interface PetProfileMapper {
+public interface PetMapper {
   // 펫 프로필 카드 조회
-  Pet findPetProfile(int petNo);
+  List<Pet> findAll();
 
   // 펫 프로필 카드 삭제
-  boolean deletePetProfile(int petNo);
+//  boolean deletePetProfile(int petNo);
 }

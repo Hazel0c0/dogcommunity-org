@@ -5,13 +5,11 @@ import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 
-import static org.junit.jupiter.api.Assertions.*;
-
 @SpringBootTest
 class PetProfileMapperTest {
 
     @Autowired
-    PetProfileMapper mapper;
+    PetMapper mapper;
 
     @Test
     @DisplayName("프로필 삭제")
