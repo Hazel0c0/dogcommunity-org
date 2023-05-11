@@ -18,7 +18,7 @@ public class PetProfileService {
   // 검색 목록 중간 처리
   public List<PetProfileCardDTO> findPetProfile(){
     // pet 객체 -> PetProfileCardDTO
-    return petProfileMapper.findPetProfile()
+    return petProfileMapper.findAll()
     .stream()
     .map(pet -> new PetProfileCardDTO(pet))
     .collect(toList());

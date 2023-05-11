@@ -2,16 +2,13 @@ package company.friendsdog.dogcommunity.repository;
 
 import company.friendsdog.dogcommunity.entity.Pet;
 import company.friendsdog.dogcommunity.entity.User;
-import lombok.RequiredArgsConstructor;
 import org.apache.ibatis.annotations.Mapper;
-
-import java.util.List;
 
 @Mapper
 public interface PetProfileMapper {
   // 펫 프로필 카드 조회
   //void말고 pet 로 해야함
-  void findPetProfile();
+  void findAll();
 
   // 펫 프로필 카드 삭제
   boolean deletePetProfile(int petNo);

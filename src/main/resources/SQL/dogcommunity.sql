@@ -28,9 +28,9 @@ CREATE TABLE tbl_pet
     pet_photo         VARCHAR(2000) unique NOT NULL,
     profile_date_time TIMESTAMP            not null default current_timestamp,
     user_no           INT
-# ,
-#     FOREIGN KEY (user_no)
-#         REFERENCES User (user_no)
+--  ,
+--      FOREIGN KEY (user_no)
+--     REFERENCES User (user_no)
 );
 
 drop table pet;
