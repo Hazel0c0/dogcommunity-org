@@ -16,7 +16,7 @@ public class Pet {
     private String petName;
     private int petAge;
     private String petKind;
-    private Gender petGender;
+    private String petGender;
     private String petPhoto;
     private LocalDateTime profileDateTime;
 
