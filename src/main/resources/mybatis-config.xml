@@ -10,12 +10,14 @@
     <typeAliases>
         <!--  entity 클래스 별칭 설정      -->
         <typeAlias alias="petCard" type="company.friendsdog.dogcommunity.entity.Pet"/>
+        <typeAlias alias="user" type="company.friendsdog.dogcommunity.entity.User"/>
         <typeAlias alias="petBoard" type="company.friendsdog.dogcommunity.entity.Board"/>
     </typeAliases>
 
     <mappers>
         <!-- Mapper XML files -->
         <mapper resource="mappers/PetMapper.xml"/>
+        <mapper resource="mappers/UserMapper.xml"/>
         <mapper resource="mappers/PetBoardMapper.xml"/>
     </mappers>
 
