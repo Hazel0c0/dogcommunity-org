@@ -11,16 +11,18 @@ import org.springframework.web.bind.annotation.RequestMapping;
 
 @Controller
 @RequiredArgsConstructor
-@RequestMapping("/petprofile")
+@RequestMapping("/pet")
 @Slf4j
 public class PetController {
 
     private final PetService petService;
     // 목록 조회 요청
     @GetMapping("/list")
-    public void list(Model model) {
+    public String list(Model model) {
         log.info("/petprofile/list : GET");
         petService.findAll();
+
+        return "/";
     }
 
 //    @PostMapping("/delete")
