@@ -10,6 +10,7 @@ import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
 
+import javax.servlet.http.HttpSession;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -31,8 +32,11 @@ public class BoardService {
     }
 
 //     게시판 업로드 중간처리
-    public boolean save(BoardRequestDTO dto) {
-      return petBoardMapper.save(new Board(dto));
+    public boolean save(BoardRequestDTO dto, HttpSession session) {
+
+        Board board = new Board(dto);
+        session.getAttribute("pet_no");
+        return petBoardMapper.save(board);
     }
 
     // 게시판 삭제 처리

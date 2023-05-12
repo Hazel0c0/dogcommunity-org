@@ -1,5 +1,6 @@
 package company.friendsdog.dogcommunity.dto.request;
 
+import company.friendsdog.dogcommunity.entity.Board;
 import lombok.*;
 
 @Setter
@@ -7,7 +8,6 @@ import lombok.*;
 @ToString
 @EqualsAndHashCode
 @NoArgsConstructor
-@AllArgsConstructor
 @Builder
 
 public class BoardRequestDTO {
@@ -18,4 +18,15 @@ public class BoardRequestDTO {
     private String attachedImg;
     private Long petNo;
     private Long likes;
+    private Long hits;
+
+    public BoardRequestDTO(Long boardNo, String title, String content, String attachedImg, Long petNo, Long likes, Long hits) {
+        this.boardNo = boardNo;
+        this.title = title;
+        this.content = content;
+        this.attachedImg = attachedImg;
+        this.petNo = petNo;
+        this.likes = likes;
+        this.hits = hits;
+    }
 }

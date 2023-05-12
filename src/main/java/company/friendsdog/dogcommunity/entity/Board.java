@@ -30,5 +30,6 @@ public class Board {
         this.boardDateTime = LocalDateTime.now();
         this.boardNo = dto.getBoardNo();
         this.likes = dto.getLikes();
+        this.hits = dto.getHits();
     }
 }

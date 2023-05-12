@@ -13,6 +13,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
+import javax.servlet.http.HttpSession;
 import java.util.List;
 
 @Controller
@@ -58,10 +59,11 @@ public class BoardController {
 
     // 게시판 글쓰기 요청 처리
     @PostMapping("/write")
-    public String save(BoardRequestDTO dto) {
+    public String save(BoardRequestDTO dto, HttpSession session) {
+//        Long session= i; // session 가져온 petNo
 
         log.info("/board/write : POST");
-        boardService.save(dto);
+        boardService.save(dto,session);
         return "redirect:/board/list";
     }
     // 게시판 삭제 요청 처리
