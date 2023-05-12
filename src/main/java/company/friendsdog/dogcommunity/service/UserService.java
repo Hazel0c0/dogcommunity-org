@@ -9,6 +9,8 @@ import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
 
+import javax.servlet.http.HttpSession;
+
 import static company.friendsdog.dogcommunity.service.LoginResult.*;
 
 @Service
@@ -54,5 +56,18 @@ public class UserService {
     }
     log.info("{}님 로그인 성공",foundUser.getUserNo());
     return SUCCESS;
+  }
+
+  //로그인 상태 유지 (session)
+
+  public void maintainLoginState(HttpSession session,String id){
+    // 현제 로그인한 사람의 정보
+    User user=getUser(id);
+    session.setAttribute(user);
+  }
+
+  private User getUser(String id) {
+
+    return userMapper.findUser(id);
   }
 }

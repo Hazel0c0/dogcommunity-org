@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
 
 import static company.friendsdog.dogcommunity.service.LoginResult.*;
 
@@ -42,7 +43,9 @@ public class UserController {
   public String userJoin(JoinRequestDTO dto){
     log.info("회원가입 POST : {}",dto);
     boolean flag = userService.userJoin(dto);
-    return "redirect:/board/list";
+
+    // 회원가입 끝나면 main 창으로
+    return "redirect:/main/main";
   }
 
   // 아이디,이메일,폰번호 중복 검사
@@ -52,7 +55,8 @@ public class UserController {
     userService.joinCheckValue(type, keyword);
   }
 
-  // 로그인 화면 요청
+
+  // ==============로그인 화면 요청======================================
   @GetMapping("/login")
   public String login(HttpServletRequest request) {
     log.info("/members/sign-in GET - forwarding to jsp");
@@ -67,10 +71,18 @@ public class UserController {
 
     if (loginResult== SUCCESS){
       log.info("로그인 성공 : {}",loginResult);
+      userService.maintainLoginState(dto.getId());
       return "redirect:/";
     }
 
     log.info("로그인 실패");
     return "redirect:/members/sign-in";
+  }
+
+  // 로그아웃 요청 처리
+  @GetMapping("/logout")
+  public String logout(HttpSession session){
+
+    return "redirect:/";
   }
 }
