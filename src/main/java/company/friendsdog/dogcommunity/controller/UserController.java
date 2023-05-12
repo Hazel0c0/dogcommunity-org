@@ -3,27 +3,36 @@ package company.friendsdog.dogcommunity.controller;
 import company.friendsdog.dogcommunity.service.UserService;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
-import org.springframework.security.core.parameters.P;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
 
 @Controller
 @Slf4j
 @RequiredArgsConstructor
+@RequestMapping("/user")
 public class UserController {
 
   private final UserService userService;
+//로그인
+@GetMapping("/login")
+public String login(){
+  log.info("GET");
+  return "/login/login";
+}
+
 
   // 회원가입
   // 회원가입창
-  @GetMapping
-  public void userJoin(){
+  @GetMapping("/join")
+  public String userJoin(){
     log.info("GET");
+    return "/login/sign-up";
   }
 
   // 회원가입 처리 요청
-  @PostMapping
+  @PostMapping("/sign-up")
   public void userJoin(String s){
     boolean flag = userService.userJoin();
   }
