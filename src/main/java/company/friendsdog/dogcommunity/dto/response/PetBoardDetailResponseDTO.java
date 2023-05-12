@@ -12,7 +12,7 @@ import java.time.LocalDateTime;
 public class PetBoardDetailResponseDTO {
 
     private final int boardNo;
-    private final String userNickname;
+    private final int petNo;
     private final String title;
     private final String content;
     private final String date;
@@ -22,7 +22,7 @@ public class PetBoardDetailResponseDTO {
 
     public PetBoardDetailResponseDTO(Board board) {
         this.boardNo = board.getBoardNo();
-        this.userNickname = board.getUserNickname();
+        this.petNo = board.getPetNo();
         this.title = board.getTitle();
         this.content = board.getContent();
         this.date = PetBoardListResponseDTO.makePrettierDateString(board.getBoardDateTime());
