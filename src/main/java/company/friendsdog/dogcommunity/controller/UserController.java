@@ -23,6 +23,11 @@ public String login(){
   return "/login/login";
 }
 
+  @GetMapping("/main")
+  public String Main(){
+    log.info("GET");
+    return "/main/main";
+  }
 
   // 회원가입
   // 회원가입창
