@@ -15,25 +15,26 @@ import org.springframework.web.bind.annotation.RequestMapping;
 public class UserController {
 
   private final UserService userService;
-//로그인
-@GetMapping("/login")
-public String login(){
-  log.info("GET");
-  return "/login/login";
-}
 
+  //로그인
+  @GetMapping("/login")
+  public String login() {
+    log.info("GET");
+    return "/login/login";
+  }
 
   // 회원가입
   // 회원가입창
   @GetMapping("/join")
-  public String userJoin(){
+  public String userJoin() {
     log.info("GET");
+
     return "/login/sign-up";
   }
 
   // 회원가입 처리 요청
   @PostMapping("/sign-up")
-  public void userJoin(String s){
+  public void userJoin(String s) {
     boolean flag = userService.userJoin();
   }
 
@@ -41,6 +42,7 @@ public String login(){
   // 비동기 요청처리
   @GetMapping
   public void joinCheckValue(String type, String keyword) {
-    userService.joinCheckValue(type,keyword);
+    userService.joinCheckValue(type, keyword);
+    return "/login/signUp";
   }
 }

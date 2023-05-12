@@ -20,6 +20,11 @@ import static org.springframework.http.ResponseEntity.*;
 @Slf4j
 public class PetController {
 
+    @GetMapping("/profile")
+    public String userJoin(){
+        log.info("GET");
+        return "/main/profile";
+    }
     private final PetService petService;
     // 목록 조회 요청
     @GetMapping("/list")
