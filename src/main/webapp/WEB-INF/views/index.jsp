@@ -13,7 +13,9 @@
 <body>
 
 <p>테스트 화면</p>
-<a href=""></a>
+<a href="/user/login">로그인</a>
+<a href="/user/sign-up">회원가입</a>
+<a href="/pet/profile">펫 프로필카드 만들기</a>
 
 </body>
 </html>
