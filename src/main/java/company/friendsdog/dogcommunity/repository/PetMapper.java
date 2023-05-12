@@ -12,6 +12,8 @@ public interface PetMapper {
   // 펫 프로필 카드 조회
   List<Pet> findAll();
 
+  Pet findOne(Long petNo);
+
   // 펫 프로필 카드 삭제
   boolean delete(Long petNo);
 
