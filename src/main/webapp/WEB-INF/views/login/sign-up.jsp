@@ -37,7 +37,7 @@
     </section>
     <section class="logIn">
         <button class="haveAccount" style="border-color: darkgrey;">
-            <a href="login.html" class="noneunderline">
+            <a href="/user/login" class="noneunderline">
                 <p>Have an account?
                     <strong style="color:rgb(89, 166, 221)"> Log in</strong>
                 </p>

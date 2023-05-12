@@ -38,7 +38,7 @@
     </section>
     <section class="joinUs">
         <button class="makeAccount" style="border-color: darkgrey;">
-            <a href="/login/signUp.jsp" class="noneunderline">
+            <a href="/user/join" class="noneunderline">
                 <p>Don't have an account?
                     <strong style="color:rgb(89, 166, 221)"> Sign up</strong>
                 </p>

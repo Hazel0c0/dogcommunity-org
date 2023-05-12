@@ -17,6 +17,7 @@
     <!-- 말풍선 -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.6.0/font/bootstrap-icons.css" />
+    <!-- css -->
     <link rel="stylesheet" href="/assets/css/main.css">
 </head>
 
@@ -48,7 +49,7 @@
             <li><a href="#"><span class="lnr lnr-heart"> 자랑하기</span></a></li>
             <li><a href="#"><span class="lnr lnr-bubble"> 메시지</span></a></li>
             <li><a href="#"><span class="lnr lnr-alarm"> 알림</span></a></li>
-            <li><a href="profile.html"><span class="lnr lnr-user"> 프로필</span></a></li>
+            <li><a href="/pet/profile"><span class="lnr lnr-user"> 프로필</span></a></li>
         </ul>
     </nav>
 </header>
