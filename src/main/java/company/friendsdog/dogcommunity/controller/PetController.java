@@ -1,5 +1,7 @@
 package company.friendsdog.dogcommunity.controller;
 
+import company.friendsdog.dogcommunity.dto.PetProfileModifyRequestDTO;
+import company.friendsdog.dogcommunity.entity.Pet;
 import company.friendsdog.dogcommunity.service.PetService;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
@@ -20,6 +22,11 @@ import static org.springframework.http.ResponseEntity.*;
 @Slf4j
 public class PetController {
 
+    @GetMapping("/profile")
+    public String userJoin(){
+        log.info("GET");
+        return "/main/profile";
+    }
     private final PetService petService;
     // 목록 조회 요청
     @GetMapping("/list")
@@ -31,10 +38,30 @@ public class PetController {
     }
 
     @PostMapping("/delete")
-    public String deletePetProfile(int petNo) {
+    public String delete(Long petNo) {
         log.info("/pet/delete : POST");
-        petService.deletePetProfile(petNo);
+        petService.delete(petNo);
         return "redirect:/pet/list";
 
+    }
+
+    //프로필 조회 요청
+
+    @GetMapping("/detail")
+    public Pet detail(Long petNo){
+
+        Pet pet = petService.getDetail(petNo);
+        //pet
+        return pet;
+    }
+
+
+    @PostMapping("/modify")
+    public String modifyData(PetProfileModifyRequestDTO dto) {
+
+        // true / false 여부
+        boolean flag = petService.modify(dto);
+
+        return "";
     }
 }

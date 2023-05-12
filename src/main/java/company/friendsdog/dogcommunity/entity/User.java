@@ -16,7 +16,7 @@ public class User {
     // 회원가입 시 필요 정보
     private Long userNo;
     private String id;
-    private String password;
+    private String pwd;
     private String userName;
     private String email;
     private String phoneNum;

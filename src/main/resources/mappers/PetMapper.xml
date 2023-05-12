@@ -12,8 +12,26 @@
         ORDER BY profile_date_time DESC
     </select>
 
-<!--    <delete id="deletePetProfile">-->
-<!--        DELETE FROM tbl_pet-->
-<!--        WHERE pet_no = #{petNo}-->
-<!--    </delete>-->
+    <delete id="delete">
+        DELETE FROM tbl_pet
+        WHERE pet_no = #{petNo}
+    </delete>
+
+    <!--펫 사진 수정 update,modify -->
+    <!--    set 수정할거  where이 조건-->
+
+    <update id="modify">
+        UPDATE tbl_pet
+        SET pet_photo=#{petPhoto}
+        WHERE pet_no=#{petNo}
+    </update>
+
+    <select id="findOne" resultType="petCard">
+
+        SELECT
+            pet_no,pet_name,pet_name,pet_age,pet_kind,
+            pet_gender,pet_photo
+        FROM tbl_pet
+        WHERE pet_no = #{petNo}
+    </select>
 </mapper>
