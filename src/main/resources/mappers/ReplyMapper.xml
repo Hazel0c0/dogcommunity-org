@@ -2,11 +2,12 @@
 <!DOCTYPE mapper
         PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="company.friendsdog.dogcommunity.repository.PetProfileMapper">
+<mapper namespace="company.friendsdog.dogcommunity.repository.ReplyMapper">
 
     <!--    댓글 등록-->
     <insert id="save">
 
+<!--        닉네임.내용.작성일시-->
 
     </insert>
 
@@ -38,3 +39,4 @@
         SET comment =#{comment}
         WHERE reply_no=#{replyNo}
     </update>
+</mapper>

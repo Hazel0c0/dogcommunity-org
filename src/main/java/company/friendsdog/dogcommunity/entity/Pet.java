@@ -20,7 +20,7 @@ public class Pet {
     private Gender petGender;
     private String petPhoto;
     private LocalDateTime profileDateTime;
-    private String hashTag;
+    private String hashtag;
 
 
 

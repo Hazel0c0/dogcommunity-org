@@ -20,7 +20,6 @@ repositories {
 
 dependencies {
 	implementation 'org.springframework.boot:spring-boot-starter-data-jdbc'
-//	implementation 'org.springframework.boot:spring-boot-starter-security'
 	implementation 'org.springframework.boot:spring-boot-starter-web'
 	compileOnly 'org.projectlombok:lombok'
 	runtimeOnly 'org.mariadb.jdbc:mariadb-java-client'
@@ -29,6 +28,11 @@ dependencies {
 	testImplementation 'org.springframework.security:spring-security-test'
 	// 마이바티스 라이브러리
 	implementation 'org.mybatis.spring.boot:mybatis-spring-boot-starter:2.2.2'
+
+	// jsp 설정
+	implementation 'org.apache.tomcat.embed:tomcat-embed-jasper'
+	implementation 'javax.servlet:jstl:1.2'
+
 
 }
 
