@@ -5,13 +5,15 @@
 <configuration>
     <settings>
         <!--   자동 카멜케이스 스네이크 케이스 변환 설정     -->
-        <setting name="mapUnderscoreToCamelCase" value="true"/>
+        <setting name="mapUnderscoreToCamelCase" value="true" />
     </settings>
     <typeAliases>
         <!--  entity 클래스 별칭 설정      -->
         <typeAlias alias="petCard" type="company.friendsdog.dogcommunity.entity.Pet"/>
         <typeAlias alias="user" type="company.friendsdog.dogcommunity.entity.User"/>
         <typeAlias alias="petBoard" type="company.friendsdog.dogcommunity.entity.Board"/>
+        <typeAlias alias="reply" type="company.friendsdog.dogcommunity.entity.Pet" />
+
     </typeAliases>
 
     <mappers>
@@ -19,6 +21,8 @@
         <mapper resource="mappers/PetMapper.xml"/>
         <mapper resource="mappers/UserMapper.xml"/>
         <mapper resource="mappers/PetBoardMapper.xml"/>
+        <mapper resource="mappers/ReplyMapper.xml" />
+
     </mappers>
 
 </configuration>
