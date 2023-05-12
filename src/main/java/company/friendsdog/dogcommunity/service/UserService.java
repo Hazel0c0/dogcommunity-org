@@ -63,7 +63,7 @@ public class UserService {
   public void maintainLoginState(HttpSession session,String id){
     // 현제 로그인한 사람의 정보
     User user=getUser(id);
-    session.setAttribute(user);
+    session.setAttribute("login",user);
   }
 
   private User getUser(String id) {

@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import static company.friendsdog.dogcommunity.service.LoginResult.*;
@@ -66,12 +67,15 @@ public class UserController {
 
   // 로그인 검증 요청
   @PostMapping("/login")
-  public String signIn(LoginRequestDTO dto){
+  public String signIn(LoginRequestDTO dto
+      , HttpServletResponse response
+      , HttpServletRequest request
+  ){
     LoginResult loginResult = userService.loginAuthenticate(dto);
 
     if (loginResult== SUCCESS){
       log.info("로그인 성공 : {}",loginResult);
-      userService.maintainLoginState(dto.getId());
+      userService.maintainLoginState(request.getSession(), dto.getId());
       return "redirect:/";
     }
 
