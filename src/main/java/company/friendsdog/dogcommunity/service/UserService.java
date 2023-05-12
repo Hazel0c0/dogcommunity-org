@@ -1,15 +1,20 @@
 package company.friendsdog.dogcommunity.service;
 
 import company.friendsdog.dogcommunity.dto.request.JoinRequestDTO;
+import company.friendsdog.dogcommunity.dto.request.LoginRequestDTO;
 import company.friendsdog.dogcommunity.entity.User;
 import company.friendsdog.dogcommunity.repository.UserMapper;
 import lombok.Builder;
 import lombok.RequiredArgsConstructor;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
+
+import static company.friendsdog.dogcommunity.service.LoginResult.*;
 
 @Service
 @RequiredArgsConstructor
 @Builder
+@Slf4j
 public class UserService {
   private final UserMapper userMapper;
 
@@ -33,5 +38,21 @@ public class UserService {
 
     userMapper.isDuplicate(type, keyword);
     return false;
+  }
+
+  // 로그인 정보 확인
+  public LoginResult loginAuthenticate(LoginRequestDTO dto) {
+    User foundUser = userMapper.findUser(dto.getId());
+
+    if (foundUser==null){
+      log.info("{} 회원 정보 없음",dto);
+      return NO_ACC;
+    }
+    if(dto.getPwd()!=foundUser.getPwd()){
+      log.info("비밀번호 불일치");
+      return NO_PW;
+    }
+    log.info("{}님 로그인 성공",foundUser.getUserNo());
+    return SUCCESS;
   }
 }
