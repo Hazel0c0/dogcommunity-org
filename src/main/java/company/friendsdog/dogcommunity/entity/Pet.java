@@ -12,7 +12,13 @@ import java.time.LocalDateTime;
 @AllArgsConstructor
 @Builder
 public class Pet {
-    private int petNo;
+
+
+    // int petNo;
+    // 기본값이 0 인데 이 0이 유효한 0인지 유효하지 않은 0인지 몰라요
+    // Long 은 기본값이 null 이라서 0을 넣으면 무조건 유효한 0임을 알 수 있어서 랩퍼 타입으로
+
+    private Long petNo;
     private String petName;
 
 

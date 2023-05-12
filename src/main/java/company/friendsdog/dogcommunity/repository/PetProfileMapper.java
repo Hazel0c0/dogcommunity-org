@@ -5,14 +5,24 @@ import company.friendsdog.dogcommunity.entity.User;
 import lombok.RequiredArgsConstructor;
 import org.apache.ibatis.annotations.Mapper;
 
+import java.util.List;
+
 @Mapper
 public interface PetProfileMapper {
   // 펫 프로필 카드 조회
   //void말고 pet 로 해야함
-  void findPetProfile();
+
+  //편안하게 수정
+  //void findAll();
+List<Pet>findAll();
+
+  //프로필 조회
+  Pet findOne(Long petNo);
+
+
 
   // 펫 프로필 카드 삭제
-  boolean deletePetProfile(int petNo);
+  boolean delete(Long petNo);
 
   //insert가 필요한 경우  새로운 정보 투입 ! !(회원가입)
   //int를 안쓰고 boolean을 쓴 이유

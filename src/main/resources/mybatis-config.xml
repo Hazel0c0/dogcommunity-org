@@ -7,6 +7,7 @@
         <!--   자동 카멜케이스 스네이크 케이스 변환 설정     -->
         <setting name="mapUnderscoreToCamelCase" value="true" />
     </settings>
+
     <typeAliases>
         <!--  entity 클래스 별칭 설정      -->
         <typeAlias alias="petprofile" type="company.friendsdog.dogcommunity.entity.Pet"/>
@@ -17,7 +18,6 @@
         <!-- Mapper XML files -->
         <mapper resource="mappers/PetProfileMapper.xml" />
         <mapper resource="mappers/ReplyMapper.xml" />
-
     </mappers>
 
 </configuration>

@@ -1,5 +1,5 @@
 package company.friendsdog.dogcommunity.entity;
 
 public enum Gender {
-    WOMAN, MAN
+    FEMALE, MALE, NO_GENDER, SECRET
 }
