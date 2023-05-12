@@ -16,9 +16,9 @@
 
     <!--    유저 찾기-->
     <select id="findUser" resultType="user">
-        SELECT user_no, adds
+        SELECT id, pwd
         FROM tbl_user
-        WHERE user_no = #{userNo}
+        WHERE id = #{id}
     </select>
 
     <!--    유저 수정-->
@@ -45,6 +45,7 @@
             WHERE id=#{id}
         </if>
     </select>
+
 
 
 </mapper>
