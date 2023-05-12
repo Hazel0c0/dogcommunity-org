@@ -12,10 +12,10 @@ import lombok.*;
 
 public class PetBoardRequestDTO {
 
-    private int boardNo;
+    private Long boardNo;
     private String title;
     private String content;
     private String attachedImg;
-    private int petNo;
-    private int likes;
+    private Long petNo;
+    private Long likes;
 }

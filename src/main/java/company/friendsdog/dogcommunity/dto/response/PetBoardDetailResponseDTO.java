@@ -11,14 +11,14 @@ import java.time.LocalDateTime;
 @EqualsAndHashCode
 public class PetBoardDetailResponseDTO {
 
-    private final int boardNo;
-    private final int petNo;
+    private final Long boardNo;
+    private final Long petNo;
     private final String title;
     private final String content;
     private final String date;
     private final String attachedImg;
-    private final int likes;
-    private final int hits;
+    private final Long likes;
+    private final Long hits;
 
     public PetBoardDetailResponseDTO(Board board) {
         this.boardNo = board.getBoardNo();

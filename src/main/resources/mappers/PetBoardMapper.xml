@@ -21,6 +21,9 @@
             WHERE title LIKE CONCAT('%', #{keyword}, '%')
             OR content LIKE CONCAT('%', #{keyword}, '%')
         </if>
+        <if test="type == 'petName'">
+            WHERE pet_name LIKE CONCAT('%', #{keyword}, '%')
+        </if>
         ORDER BY board_no DESC
     </select>
 
@@ -50,7 +53,7 @@
         WHERE pet_no = #{petNo}
     </update>
 
-    <select id="count" resultType="int">
+    <select id="count" resultType="Long">
         SELECT COUNT(*)
         FROM tbl_board
         <if test="type == 'title'">

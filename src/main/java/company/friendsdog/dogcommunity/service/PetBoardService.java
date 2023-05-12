@@ -38,13 +38,13 @@ public class PetBoardService {
     }
 
     // 게시판 삭제 처리
-    public boolean delete(int petNo) {
+    public boolean delete(Long petNo) {
         return petBoardMapper.delete(petNo);
     }
 
 
     // 게시판 확인
-    public PetBoardDetailResponseDTO petFindOne(int petNo) {
+    public PetBoardDetailResponseDTO petFindOne(Long petNo) {
         Board board = petBoardMapper.petFindOne(petNo);
         petBoardMapper.upHitsCount(petNo);
         return new PetBoardDetailResponseDTO(board);

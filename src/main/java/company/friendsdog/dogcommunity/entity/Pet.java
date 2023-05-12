@@ -12,10 +12,10 @@ import java.time.LocalDateTime;
 @AllArgsConstructor
 @Builder
 public class Pet {
-    private int userNo;
-    private int petNo;
+    private Long userNo;
+    private Long petNo;
     private String petName;
-    private int petAge;
+    private Long petAge;
     private String petKind;
     private Gender petGender;
     private String petPhoto;

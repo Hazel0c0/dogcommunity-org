@@ -36,7 +36,7 @@ class PetBoardServiceTest {
     @Test
     @DisplayName("게시물 삭제")
     void delete() {
-        int boardNo = 1;
+        Long boardNo = 1L;
         mapper.delete(boardNo);
     }
 
@@ -56,7 +56,7 @@ class PetBoardServiceTest {
     @Test
     @DisplayName("하나의 게시물")
     void petFindOne() {
-        Board board = mapper.petFindOne(2);
+        Board board = mapper.petFindOne(2L);
         System.out.println("build = " + board);
 
     }

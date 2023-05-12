@@ -12,14 +12,14 @@ import java.time.format.DateTimeFormatter;
 @ToString
 @EqualsAndHashCode
 public class PetBoardListResponseDTO {
-    private final int petNo;
-    private final int boardNo;
+    private final Long petNo;
+    private final Long boardNo;
     private final String shortTitle;
     private final String shortContent;
     private final String date;
     private final String attachedImg;
-    private final int likes;
-    private final int hits;
+    private final Long likes;
+    private final Long hits;
 
     public PetBoardListResponseDTO(Board board) {
         this.petNo = board.getPetNo();

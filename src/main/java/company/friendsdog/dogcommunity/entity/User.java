@@ -14,7 +14,7 @@ import java.time.LocalDateTime;
 public class User {
 
     // 회원가입 시 필요 정보
-    private int userNo;
+    private Long userNo;
     private String id;
     private String password;
     private String userName;

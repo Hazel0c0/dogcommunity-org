@@ -13,14 +13,14 @@ import java.time.LocalDateTime;
 @AllArgsConstructor
 @Builder
 public class Board {
-    private int petNo;
-    private int boardNo;
+    private Long petNo;
+    private Long boardNo;
     private String title;
     private String content;
     private LocalDateTime boardDateTime;
     private String attachedImg;
-    private int likes;
-    private int hits;
+    private Long likes;
+    private Long hits;
 
     public Board(PetBoardRequestDTO dto) {
         this.petNo = dto.getPetNo();

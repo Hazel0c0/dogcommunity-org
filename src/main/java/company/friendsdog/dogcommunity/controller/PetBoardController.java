@@ -39,7 +39,7 @@ public class PetBoardController {
 
     // 게시판 상세 조회 요청
     @GetMapping("/detail")
-    public String petFindOne(int petNo, Search search, Model model) {
+    public String petFindOne(Long petNo, Search search, Model model) {
         log.info("/board/detail : GET");
         PetBoardDetailResponseDTO dto = boardService.petFindOne(petNo);
         model.addAttribute("b", dto);
@@ -67,7 +67,7 @@ public class PetBoardController {
     }
     // 게시판 삭제 요청 처리
     @PostMapping("/delete")
-    public String delete(int petNo) {
+    public String delete(Long petNo) {
         log.info("/board/delete : POST");
         boardService.delete(petNo);
         return "redirect:/board/list";
