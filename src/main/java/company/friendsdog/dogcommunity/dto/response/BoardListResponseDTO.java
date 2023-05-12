@@ -11,7 +11,7 @@ import java.time.format.DateTimeFormatter;
 @Getter
 @ToString
 @EqualsAndHashCode
-public class PetBoardListResponseDTO {
+public class BoardListResponseDTO {
     private final Long petNo;
     private final Long boardNo;
     private final String shortTitle;
@@ -21,7 +21,7 @@ public class PetBoardListResponseDTO {
     private final Long likes;
     private final Long hits;
 
-    public PetBoardListResponseDTO(Board board) {
+    public BoardListResponseDTO(Board board) {
         this.petNo = board.getPetNo();
         this.boardNo = board.getBoardNo();
         this.shortTitle = makeShortTitle(board.getTitle());

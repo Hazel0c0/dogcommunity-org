@@ -7,7 +7,7 @@ import org.apache.ibatis.annotations.Mapper;
 import java.util.List;
 
 @Mapper
-public interface PetBoardMapper {
+public interface BoardMapper {
 
     // 게시물 전체 조회
     List<Board> petFindAll(Search page);

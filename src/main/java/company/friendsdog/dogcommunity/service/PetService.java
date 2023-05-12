@@ -47,7 +47,7 @@ public class PetService {
   //수정 요청 하면  컨트롤러가 다시 수정을 요청한다. 수정창
   public boolean modify(PetProfileModifyRequestDTO dto) {
     Pet pet = new Pet();
-    pet.setPetNo((int) dto.getPetNo());
+    pet.setPetNo(dto.getPetNo());
     pet.setPetPhoto(dto.getPetPhoto());
     return petMapper.modify(pet);
   }

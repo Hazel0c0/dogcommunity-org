@@ -1,12 +1,10 @@
 package company.friendsdog.dogcommunity.controller;
 
 import company.friendsdog.dogcommunity.dto.page.Search;
-import company.friendsdog.dogcommunity.dto.request.PetBoardRequestDTO;
-import company.friendsdog.dogcommunity.dto.response.PetBoardDetailResponseDTO;
-import company.friendsdog.dogcommunity.dto.response.PetBoardListResponseDTO;
-import company.friendsdog.dogcommunity.entity.Board;
-import company.friendsdog.dogcommunity.repository.PetBoardMapper;
-import company.friendsdog.dogcommunity.service.PetBoardService;
+import company.friendsdog.dogcommunity.dto.request.BoardRequestDTO;
+import company.friendsdog.dogcommunity.dto.response.BoardDetailResponseDTO;
+import company.friendsdog.dogcommunity.dto.response.BoardListResponseDTO;
+import company.friendsdog.dogcommunity.service.BoardService;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -14,17 +12,15 @@ import org.springframework.boot.test.context.SpringBootTest;
 
 import java.util.List;
 
-import static org.junit.jupiter.api.Assertions.*;
-
 @SpringBootTest
 class PetBoardControllerTest {
     @Autowired
-    PetBoardService mapper;
+    BoardService mapper;
     @Test
     @DisplayName("게시물 작성")
     void InsertTest() {
         // given
-        PetBoardRequestDTO b = PetBoardRequestDTO.builder()
+        BoardRequestDTO b = BoardRequestDTO.builder()
                 .title("하d하")
                 .content("하d하하하")
                 .attachedImg("http://thumbnail.10x10.co.kr/webimage/image/basic600/290/B002903467.jpg?cmd=thumb&w=500&h=500&fit=true&ws=false")
@@ -45,7 +41,7 @@ class PetBoardControllerTest {
     @Test
     @DisplayName("게시물 수정")
     void modify() {
-        PetBoardRequestDTO b = PetBoardRequestDTO.builder()
+        BoardRequestDTO b = BoardRequestDTO.builder()
                 .petNo(2L)
                 .title("안녕")
                 .content("안녕하세요")
@@ -56,7 +52,7 @@ class PetBoardControllerTest {
     @Test
     @DisplayName("하나의 게시물")
     void petFindOne() {
-        PetBoardDetailResponseDTO board = mapper.petFindOne(2L);
+        BoardDetailResponseDTO board = mapper.petFindOne(2L);
         System.out.println("build = " + board);
     }
 
@@ -64,7 +60,7 @@ class PetBoardControllerTest {
     @DisplayName("게시물")
     void petFindAll() {
         Search search = new Search();
-        List<PetBoardListResponseDTO> dto = mapper.petFindAll(search);
+        List<BoardListResponseDTO> dto = mapper.petFindAll(search);
         System.out.println("boards = " + dto);
     }
 

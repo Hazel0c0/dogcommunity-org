@@ -1,11 +1,10 @@
 package company.friendsdog.dogcommunity.controller;
 
 import company.friendsdog.dogcommunity.dto.page.Search;
-import company.friendsdog.dogcommunity.dto.request.PetBoardRequestDTO;
-import company.friendsdog.dogcommunity.dto.response.PetBoardDetailResponseDTO;
-import company.friendsdog.dogcommunity.dto.response.PetBoardListResponseDTO;
-import company.friendsdog.dogcommunity.service.PetBoardService;
-import lombok.Getter;
+import company.friendsdog.dogcommunity.dto.request.BoardRequestDTO;
+import company.friendsdog.dogcommunity.dto.response.BoardDetailResponseDTO;
+import company.friendsdog.dogcommunity.dto.response.BoardListResponseDTO;
+import company.friendsdog.dogcommunity.service.BoardService;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Controller;
@@ -20,32 +19,32 @@ import java.util.List;
 @RequiredArgsConstructor
 @RequestMapping("/board")
 @Slf4j
-public class PetBoardController {
+public class BoardController {
 
-    private final PetBoardService boardService;
+    private final BoardService boardService;
 
     // 게시판 목록 조회 요청
-    @GetMapping("list")
+    @GetMapping("/list")
     public String petFindAll(Search page, Model model) {
         log.info("/board/list : GET");
         log.info("page : {}", page);
-        List<PetBoardListResponseDTO> dto = boardService.petFindAll(page);
+        List<BoardListResponseDTO> dto = boardService.petFindAll(page);
 
         model.addAttribute("bList", dto);
         model.addAttribute("p", page);
 
-        return "list";
+        return "board/list";
     }
 
     // 게시판 상세 조회 요청
     @GetMapping("/detail")
     public String petFindOne(Long petNo, Search search, Model model) {
         log.info("/board/detail : GET");
-        PetBoardDetailResponseDTO dto = boardService.petFindOne(petNo);
+        BoardDetailResponseDTO dto = boardService.petFindOne(petNo);
         model.addAttribute("b", dto);
         model.addAttribute("s", search);
 
-        return "detail";
+        return "board/detail";
 
 
     }
@@ -54,12 +53,12 @@ public class PetBoardController {
     @GetMapping("/write")
     public String save() {
         log.info("/board/write : GET");
-        return "write";
+        return "board/write";
     }
 
     // 게시판 글쓰기 요청 처리
     @PostMapping("/write")
-    public String save(PetBoardRequestDTO dto) {
+    public String save(BoardRequestDTO dto) {
 
         log.info("/board/write : POST");
         boardService.save(dto);
@@ -77,13 +76,13 @@ public class PetBoardController {
     @GetMapping("/upload")
     public String modify() {
         log.info("/api/v1/board/upload : GET");
-        return "upload";
+        return "board/upload";
     }
 
 
     // 게시판 수정 요청 처리
     @PostMapping("/upload")
-    public String modify(PetBoardRequestDTO dto) {
+    public String modify(BoardRequestDTO dto) {
         log.info("/api/v1/board/upload : POST");
         boardService.modify(dto);
         return "redirect:/board/list";

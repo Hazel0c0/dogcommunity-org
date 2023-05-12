@@ -13,5 +13,5 @@ import lombok.ToString;
 public class PetProfileModifyRequestDTO {
 
     private String petPhoto;
-    private int petNo;
+    private Long petNo;
 }

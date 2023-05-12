@@ -20,7 +20,7 @@
         <!-- Mapper XML files -->
         <mapper resource="mappers/PetMapper.xml"/>
         <mapper resource="mappers/UserMapper.xml"/>
-        <mapper resource="mappers/PetBoardMapper.xml"/>
+        <mapper resource="mappers/BoardMapper.xml"/>
         <mapper resource="mappers/ReplyMapper.xml" />
 
     </mappers>

@@ -10,7 +10,7 @@ import lombok.*;
 @AllArgsConstructor
 @Builder
 
-public class PetBoardRequestDTO {
+public class BoardRequestDTO {
 
     private Long boardNo;
     private String title;

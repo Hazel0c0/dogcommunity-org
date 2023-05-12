@@ -3,7 +3,7 @@
         PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <!-- namespace에는 인터페이스 풀 네임(패키지+인터페이스이름) -->
-<mapper namespace="company.friendsdog.dogcommunity.repository.PetBoardMapper">
+<mapper namespace="company.friendsdog.dogcommunity.repository.BoardMapper">
 
     <select id="petFindAll" resultType="petBoard">
         SELECT  a.title, a.content,

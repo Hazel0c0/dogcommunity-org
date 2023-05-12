@@ -9,7 +9,6 @@ import org.springframework.boot.test.context.SpringBootTest;
 
 import java.util.List;
 
-import static org.junit.jupiter.api.Assertions.*;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
 @SpringBootTest
@@ -17,7 +16,7 @@ class PetBoardMapperTest {
 
 
     @Autowired
-    PetBoardMapper mapper;
+    BoardMapper mapper;
     @Test
     @DisplayName("게시물 작성")
     void save() {
