@@ -9,7 +9,7 @@ public interface UserMapper {
   boolean save(User user);
   User findUser(String id);
   void modify();
-  void isDuplicate(String type, String keyword);
+  int isDuplicate(String type, String keyword);
 
 
 }
