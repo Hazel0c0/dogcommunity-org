@@ -12,7 +12,7 @@ import java.time.format.DateTimeFormatter;
 @ToString
 @EqualsAndHashCode
 public class PetBoardListResponseDTO {
-    private final String userNickname;
+    private final int petNo;
     private final int boardNo;
     private final String shortTitle;
     private final String shortContent;
@@ -22,7 +22,7 @@ public class PetBoardListResponseDTO {
     private final int hits;
 
     public PetBoardListResponseDTO(Board board) {
-        this.userNickname = board.getUserNickname();
+        this.petNo = board.getPetNo();
         this.boardNo = board.getBoardNo();
         this.shortTitle = makeShortTitle(board.getTitle());
         this.shortContent = makeShortContent(board.getContent());

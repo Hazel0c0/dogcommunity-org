@@ -13,7 +13,7 @@ import java.time.LocalDateTime;
 @AllArgsConstructor
 @Builder
 public class Board {
-    private String userNickname;
+    private int petNo;
     private int boardNo;
     private String title;
     private String content;
@@ -23,10 +23,12 @@ public class Board {
     private int hits;
 
     public Board(PetBoardRequestDTO dto) {
-        this.userNickname = dto.getUserNickname();
+        this.petNo = dto.getPetNo();
         this.title = dto.getTitle();
         this.content = dto.getContent();
         this.attachedImg = dto.getAttachedImg();
         this.boardDateTime = LocalDateTime.now();
+        this.boardNo = dto.getBoardNo();
+        this.likes = dto.getLikes();
     }
 }

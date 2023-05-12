@@ -1,22 +1,23 @@
+
 -- database 이름 통일
 
 create database dogcommunity;
 use dogcommunity;
 
-CREATE TABLE tb1_user
+CREATE TABLE tbl_user
 (
     user_no        INT AUTO_INCREMENT PRIMARY KEY,
-    user_id        VARCHAR(100) UNIQUE NOT NULL,
+    id        VARCHAR(100) UNIQUE NOT NULL,
+    pwd VARCHAR(100)        NOT NULL,
     user_name      VARCHAR(20),
-    user_email     VARCHAR(30) UNIQUE,
-    user_phone_num VARCHAR(20) UNIQUE,
-    user_adds      VARCHAR(100)        NOT NULL,
+    email     VARCHAR(30) UNIQUE,
+    phone_num VARCHAR(20) UNIQUE,
+    adds      VARCHAR(100)        NOT NULL,
     user_join_date TIMESTAMP DEFAULT CURRENT_TIMESTAMP
 );
 
+drop table tbl_user;
 
-
-drop table tbl_pet;
 
 CREATE TABLE tbl_pet
 (
@@ -26,14 +27,13 @@ CREATE TABLE tbl_pet
     pet_kind          VARCHAR(20)          NOT NULL,
     pet_gender        VARCHAR(100)         NOT NULL,
     pet_photo         VARCHAR(2000) UNIQUE NOT NULL,
-    profile_date_time TIMESTAMP            NOT NULL DEFAULT CURRENT_TIMESTAMP,
+    pet_date_time TIMESTAMP            NOT NULL DEFAULT CURRENT_TIMESTAMP,
     hashTag           VARCHAR(1000)
 --   user_no INT,
 --   FOREIGN KEY (user_no)
 --   REFERENCES tbl_user(user_no)
 );
-
-
+drop table tbl_pet;
 
 -- 자유게시판
 -- 조아요 조회 VARCHAR -> INT 로 수정
@@ -51,8 +51,7 @@ CREATE TABLE tbl_board
 --   REFERENCES tbl_pet(pet_no)
 );
 
-
--- 댓글 
+-- 댓글
 -- 댓글번호 , 내용 , 작성자
 --  auto increment 자동으로 번호가 매겨져서 생략...
 -- reply_comment

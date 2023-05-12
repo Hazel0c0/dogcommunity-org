@@ -19,8 +19,8 @@ public class User {
     private String password;
     private String userName;
     private String email;
-    private String nickname;
+    private String phoneNum;
     private String adds;
-    private LocalDateTime userDate;
+    private LocalDateTime joinDate;
 
 }

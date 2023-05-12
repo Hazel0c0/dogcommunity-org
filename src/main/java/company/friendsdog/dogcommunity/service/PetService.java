@@ -23,5 +23,10 @@ public class PetService {
     .map(pet -> new PetCardResponseDTO(pet))
     .collect(toList());
   }
+
+  public boolean deletePetProfile(int petNo) {
+    return petMapper.deletePetProfile(petNo);
+  }
+
 }
 

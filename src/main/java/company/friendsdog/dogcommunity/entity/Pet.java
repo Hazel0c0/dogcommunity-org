@@ -12,13 +12,16 @@ import java.time.LocalDateTime;
 @AllArgsConstructor
 @Builder
 public class Pet {
+    private int userNo;
     private int petNo;
     private String petName;
     private int petAge;
     private String petKind;
-    private String petGender;
+    private Gender petGender;
     private String petPhoto;
     private LocalDateTime profileDateTime;
     private String hashtag;
+
+
 
 }
