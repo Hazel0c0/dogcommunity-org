@@ -11,7 +11,7 @@
         (user_no, id, pwd, user_name,
          email, phone_num, adds, join_date)
         VALUES (#{userNo}, #{id}, #{pwd}, #{userName}
-            #{email}, #{nickname}, #{adds}, #{joinDate})
+            #{email}, #{phoneNum}, #{adds}, #{joinDate})
     </insert>
 
     <!--    유저 찾기-->
