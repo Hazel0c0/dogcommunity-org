@@ -23,6 +23,12 @@ public class UserController {
   @GetMapping("/join")
   public String userJoin(){
     log.info("GET");
-    return "/login/signUp";
+    return "/login/sign-up";
+  }
+
+  @GetMapping("/main")
+  public String Main(){
+    log.info("GET");
+    return "/main/main";
   }
 }

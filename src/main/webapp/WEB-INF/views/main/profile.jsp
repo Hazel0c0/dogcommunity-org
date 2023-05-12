@@ -30,7 +30,7 @@
     </script>
 
     <!-- side menu event js defer : 지연 메뉴 걸기 -->
-    <script src="side-menu.js" defer></script>
+    <script src="/assets/js/side-menu.js" defer></script>
 
     <!-- 말풍선 -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet">
@@ -203,7 +203,7 @@
 
     aside.sidebar .profile-box .profile-img {
         border: 2px solid yellow;
-        background: url('/img/dog.png') no-repeat center;
+        background: url('/assets/img/dog.png') no-repeat center;
         background-size: contain;
         border-radius: 50%;
         height: 300px;
@@ -268,7 +268,7 @@
     <div class="inner-header">
         <h1 class="logo">
             <a href="main.html">
-                <img src="/img/logo-instagram.png" alt="로고이미지">
+                <img src="/assets/img/logo-instagram.png" alt="로고이미지">
             </a>
         </h1>
         <h2 class="intro-text"><a href="main.html">Petstagram</a></h2>
