@@ -13,7 +13,7 @@ import java.time.LocalDateTime;
 @Builder
 public class Pet {
     private int userNo;
-    private int petNo;
+    private Long petNo;
     private String petName;
     private int petAge;
     private String petKind;

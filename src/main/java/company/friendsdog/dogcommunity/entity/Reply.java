@@ -17,7 +17,4 @@ public class Reply {
     private int replyNo;
     private String comment;
     private LocalDateTime replyDateTime;
-
-
-
 }
