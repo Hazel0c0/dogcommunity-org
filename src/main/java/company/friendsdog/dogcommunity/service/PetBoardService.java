@@ -9,6 +9,7 @@ import company.friendsdog.dogcommunity.repository.PetBoardMapper;
 import lombok.NoArgsConstructor;
 import lombok.RequiredArgsConstructor;
 import lombok.Setter;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -16,6 +17,7 @@ import java.util.stream.Collectors;
 
 @Service
 @RequiredArgsConstructor
+@Slf4j
 public class PetBoardService {
 
     private final PetBoardMapper petBoardMapper;
@@ -36,22 +38,24 @@ public class PetBoardService {
     }
 
     // 게시판 삭제 처리
-    public boolean delete(int boardNo) {
-        return petBoardMapper.delete(boardNo);
+    public boolean delete(int petNo) {
+        return petBoardMapper.delete(petNo);
     }
 
 
     // 게시판 확인
-    public PetBoardDetailResponseDTO petFindOne(int boardNo) {
-        Board board = petBoardMapper.petFindOne(boardNo);
-        petBoardMapper.upHitsCount(boardNo);
-
+    public PetBoardDetailResponseDTO petFindOne(int petNo) {
+        Board board = petBoardMapper.petFindOne(petNo);
+        petBoardMapper.upHitsCount(petNo);
         return new PetBoardDetailResponseDTO(board);
     }
 
     // 게시판 수정
     public boolean modify(PetBoardRequestDTO dto) {
-        return petBoardMapper.modify(new Board(dto));
+        log.info("dto : {}", dto);
+        Board board = new Board(dto);
+        log.info("board : {}", board);
+        return petBoardMapper.modify(board);
     }
 
     // 게시물 수

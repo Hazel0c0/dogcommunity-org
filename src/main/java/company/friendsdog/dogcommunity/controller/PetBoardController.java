@@ -18,7 +18,7 @@ import java.util.List;
 
 @Controller
 @RequiredArgsConstructor
-@RequestMapping("/api/v1/board")
+@RequestMapping("/board")
 @Slf4j
 public class PetBoardController {
 
@@ -27,25 +27,25 @@ public class PetBoardController {
     // 게시판 목록 조회 요청
     @GetMapping("list")
     public String petFindAll(Search page, Model model) {
-        log.info("/api/v1/board/list : GET");
+        log.info("/board/list : GET");
         log.info("page : {}", page);
         List<PetBoardListResponseDTO> dto = boardService.petFindAll(page);
 
         model.addAttribute("bList", dto);
         model.addAttribute("p", page);
 
-        return "redirect:/api/v1/board/list";
+        return "list";
     }
 
     // 게시판 상세 조회 요청
     @GetMapping("/detail")
-    public String petFindOne(int boardNo, Search search, Model model) {
-        log.info("/api/v1/board/detail : GET");
-        PetBoardDetailResponseDTO dto = boardService.petFindOne(boardNo);
+    public String petFindOne(int petNo, Search search, Model model) {
+        log.info("/board/detail : GET");
+        PetBoardDetailResponseDTO dto = boardService.petFindOne(petNo);
         model.addAttribute("b", dto);
         model.addAttribute("s", search);
 
-        return "redirect:/api/v1/board/detail";
+        return "detail";
 
 
     }
@@ -53,31 +53,31 @@ public class PetBoardController {
     // 게시판 글쓰기 화면 조회 요청
     @GetMapping("/write")
     public String save() {
-        log.info("/api/v1/board/write : GET");
-        return "redirect:/api/v1/board/write";
+        log.info("/board/write : GET");
+        return "write";
     }
 
     // 게시판 글쓰기 요청 처리
     @PostMapping("/write")
     public String save(PetBoardRequestDTO dto) {
 
-        log.info("/api/v1/board/write : POST");
+        log.info("/board/write : POST");
         boardService.save(dto);
-        return "redirect:/api/v1/board/list";
+        return "redirect:/board/list";
     }
     // 게시판 삭제 요청 처리
     @PostMapping("/delete")
-    public String delete(int boardNo) {
-        log.info("/api/v1/board/delete : POST");
-        boardService.delete(boardNo);
-        return "redirect:/api/v1/board/list";
+    public String delete(int petNo) {
+        log.info("/board/delete : POST");
+        boardService.delete(petNo);
+        return "redirect:/board/list";
     }
 
     // 게시판 수정 화면 조회 요청
     @GetMapping("/upload")
     public String modify() {
         log.info("/api/v1/board/upload : GET");
-        return "redirect:/api/v1/board/upload";
+        return "upload";
     }
 
 
@@ -86,6 +86,6 @@ public class PetBoardController {
     public String modify(PetBoardRequestDTO dto) {
         log.info("/api/v1/board/upload : POST");
         boardService.modify(dto);
-        return "redirect:/api/v1/board/list";
+        return "redirect:/board/list";
     }
 }
