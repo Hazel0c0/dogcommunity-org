@@ -13,7 +13,7 @@ CREATE TABLE tbl_user
     email     VARCHAR(30) UNIQUE,
     phone_num VARCHAR(20) UNIQUE,
     adds      VARCHAR(100)        NOT NULL,
-    user_join_date TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+    join_date TIMESTAMP DEFAULT CURRENT_TIMESTAMP
 );
 
 drop table tbl_user;

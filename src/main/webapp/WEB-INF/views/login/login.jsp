@@ -157,7 +157,7 @@
     </section>
     <section class="joinUs">
         <button class="makeAccount" style="border-color: darkgrey;">
-            <a href="/webapp/WEB-INF/views/login/signUp.jsp" class="noneunderline">
+            <a href="/webapp/WEB-INF/views/login/sign-up.jsp" class="noneunderline">
                 <p>Don't have an account?
                     <strong style="color:rgb(89, 166, 221)"> Sign up</strong>
                 </p>
