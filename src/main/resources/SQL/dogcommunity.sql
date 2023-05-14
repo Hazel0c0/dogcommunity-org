@@ -8,13 +8,15 @@ CREATE TABLE tbl_user
 (
     user_no        INT AUTO_INCREMENT PRIMARY KEY,
     id        VARCHAR(100) UNIQUE NOT NULL,
-    pwd VARCHAR(100)        NOT NULL,
+    pwd      VARCHAR(100)        NOT NULL,
     user_name      VARCHAR(20),
     email     VARCHAR(30) UNIQUE,
     phone_num VARCHAR(20) UNIQUE,
     adds      VARCHAR(100)        NOT NULL,
     join_date TIMESTAMP DEFAULT CURRENT_TIMESTAMP
 );
+insert into tbl_user(id,pwd,user_name,email,phone_num,adds)
+    VALUES ('aaa','asdf','popo','popo@on.com','123-1234-1234','dobong');
 
 drop table tbl_user;
 

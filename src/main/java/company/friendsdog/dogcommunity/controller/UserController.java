@@ -60,22 +60,23 @@ public class UserController {
   // ==============로그인 화면 요청======================================
   @GetMapping("/login")
   public String login(HttpServletRequest request) {
-    log.info("/members/sign-in GET - forwarding to jsp");
+    log.info("로그인 GET");
 
     return "/login/login";
   }
 
   // 로그인 검증 요청
   @PostMapping("/login")
-  public String signIn(LoginRequestDTO dto
-      , HttpServletResponse response
+  public String login(LoginRequestDTO dto
       , HttpServletRequest request
   ){
     LoginResult loginResult = userService.loginAuthenticate(dto);
 
     if (loginResult== SUCCESS){
       log.info("로그인 성공 : {}",loginResult);
-      userService.maintainLoginState(request.getSession(), dto.getId());
+      // 세션에 로그인 정보 저장하기
+      userService.maintainLoginState(
+              request.getSession(), dto.getUserNo());
       return "redirect:/";
     }
 

@@ -35,13 +35,13 @@ class PetProfileMapperTest {
     //mappertest에서 mapper가  필요함 아무거나 변수
     //번호를 입력 했을때
     @Autowired
-    PetProfileMapper mapper;
+    PetMapper mapper;
     @Test
     void modifyTest(){
     //given
         Pet p = Pet.builder()
                 .petPhoto("사진수정")
-                .petNo(1L)
+                .petNo(1)
                 .build();
 
 
