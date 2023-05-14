@@ -93,7 +93,9 @@
         <input type="text" id="likes" name="likes" required>
         <label for="title">제목</label>
         <input type="text" id="title" name="title" required>
-        <label for="content">내용</label>
+        <label for="attached_img">첨부</label>
+        <input type="text" id="attached_img" name="attached_img" required>
+        <label for="content">첨부</label>
         <textarea id="content" name="content" maxlength="200" required></textarea>
         <div class="buttons">
             <button class="list-btn" type="button" onclick="window.location.href='/board/list'">목록</button>
