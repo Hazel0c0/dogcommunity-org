@@ -20,6 +20,7 @@ import java.util.List;
 @RequiredArgsConstructor
 @RequestMapping("/board")
 @Slf4j
+
 public class PetBoardController {
 
     private final PetBoardService boardService;

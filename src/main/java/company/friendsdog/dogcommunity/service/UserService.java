@@ -45,9 +45,10 @@ public class UserService {
     // 회원가입 중복 검사
     public boolean joinCheckValue(String type, String keyword) {
 
-        userMapper.isDuplicate(type, keyword);
-        return false;
-    }
+
+    int duplicateNum = userMapper.isDuplicate(type, keyword);
+    return duplicateNum==1; //1== 중복이다
+  }
 
     // 로그인 인증
     public LoginResult loginAuthenticate(LoginRequestDTO dto) {
