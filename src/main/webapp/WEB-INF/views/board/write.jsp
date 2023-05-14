@@ -87,6 +87,10 @@
 <div id="wrap" class="form-container">
     <h1>꾸러기 게시판 글쓰기</h1>
     <form action="/board/write" method="post">
+        <label for="pet_no">애완동물 숫자</label>
+        <input type="text" id="pet_no" name="pet_no" required>
+        <label for="likes">좋아요 수</label>
+        <input type="text" id="likes" name="likes" required>
         <label for="title">제목</label>
         <input type="text" id="title" name="title" required>
         <label for="content">내용</label>

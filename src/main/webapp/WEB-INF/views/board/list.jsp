@@ -55,6 +55,7 @@
             <div class="card-wrapper">
                 <section class="card" data-bno="${b.petNo}">
                     <div class="card-title-wrapper">
+                        <h2 class="card-title">${b.likes}</h2>
                         <h2 class="card-title">${b.shortTitle}</h2>
                         <div class="time-view-wrapper">
                             <div class="time">

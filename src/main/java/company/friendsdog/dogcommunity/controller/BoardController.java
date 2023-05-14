@@ -28,7 +28,7 @@ public class BoardController {
 
     // 게시판 목록 조회 요청
     @GetMapping("/list")
-    public String petFindAll(Search page, Model model, HttpServletRequest request) throws IOException {
+    public String petFindAll(Search page, Model model) {
         log.info("/board/list : GET");
         log.info("page : {}", page);
         List<BoardListResponseDTO> dto = boardService.petFindAll(page);
@@ -62,7 +62,6 @@ public class BoardController {
     // 게시판 글쓰기 요청 처리
     @PostMapping("/write")
     public String save(BoardRequestDTO dto, HttpSession session) {
-//        Long session= i; // session 가져온 petNo
 
         log.info("/board/write : POST");
         boardService.save(dto,session);

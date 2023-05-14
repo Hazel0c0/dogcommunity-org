@@ -37,8 +37,8 @@ public class BoardService {
     public boolean save(BoardRequestDTO dto, HttpSession session) {
 
         Board board = new Board(dto);
-        board.setPetNo((Long) session.getAttribute("pet_no"));
-        board.setLikes((Long) session.getAttribute("likes"));
+        BoardRequestDTO petNoInfo = (BoardRequestDTO) session.getAttribute("LOGIN_PET");
+        board.setPetNo(petNoInfo);
         return petBoardMapper.save(board);
     }
 
