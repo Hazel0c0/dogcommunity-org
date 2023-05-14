@@ -7,7 +7,7 @@ import org.apache.ibatis.annotations.Mapper;
 public interface UserMapper {
 
   boolean save(User user);
-  User findUser(String id);
+  User findUser(Long uNo);
   void modify();
   int isDuplicate(String type, String keyword);
 

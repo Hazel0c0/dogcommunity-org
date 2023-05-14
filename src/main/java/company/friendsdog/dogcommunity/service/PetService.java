@@ -4,10 +4,13 @@ package company.friendsdog.dogcommunity.service;
 import company.friendsdog.dogcommunity.dto.PetProfileModifyRequestDTO;
 import company.friendsdog.dogcommunity.dto.response.PetCardResponseDTO;
 import company.friendsdog.dogcommunity.entity.Pet;
+import company.friendsdog.dogcommunity.entity.User;
 import company.friendsdog.dogcommunity.repository.PetMapper;
+import company.friendsdog.dogcommunity.util.LoginUtil;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
+import javax.servlet.http.HttpSession;
 import java.util.List;
 
 import static java.util.stream.Collectors.toList;
@@ -16,14 +19,21 @@ import static java.util.stream.Collectors.toList;
 @RequiredArgsConstructor
 public class PetService {
   private final PetMapper petMapper;
+  private final LoginUtil loginUtil;
 
   // 검색 목록 중간 처리
-  public List<PetCardResponseDTO> findAll(){
+  public List<PetCardResponseDTO> findingNeighbor(
+          HttpSession session){
+    // 세션(유저정보) -> 유저 adds
+    String adds = LoginUtil.getCurrentLoginUser(session).getAdds();
+
     // pet 객체 -> PetProfileCardDTO
-    return petMapper.findAll()
+    petMapper.findByAddress(adds)
     .stream()
     .map(pet -> new PetCardResponseDTO(pet))
     .collect(toList());
+
+    return null;
   }
 
   public boolean delete(Long petNo) {

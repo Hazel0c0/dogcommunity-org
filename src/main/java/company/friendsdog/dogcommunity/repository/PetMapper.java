@@ -10,7 +10,7 @@ import java.util.List;
 @Mapper
 public interface PetMapper {
   // 펫 프로필 카드 조회
-  List<Pet> findAll();
+  List<Pet> findByAddress(String adds);
 
   Pet findOne(Long petNo);
 

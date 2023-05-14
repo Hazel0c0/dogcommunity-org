@@ -18,7 +18,7 @@
     <select id="findUser" resultType="user">
         SELECT id, pwd
         FROM tbl_user
-        WHERE id = #{id}
+        WHERE user_no = #{userNo}
     </select>
 
     <!--    유저 수정-->
