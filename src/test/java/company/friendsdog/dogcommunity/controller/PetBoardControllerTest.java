@@ -10,6 +10,7 @@ import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 
+import javax.servlet.http.HttpSession;
 import java.util.List;
 
 @SpringBootTest
@@ -26,6 +27,7 @@ class PetBoardControllerTest {
                 .attachedImg("http://thumbnail.10x10.co.kr/webimage/image/basic600/290/B002903467.jpg?cmd=thumb&w=500&h=500&fit=true&ws=false")
                 .petNo(1L)
                 .build();
+
         mapper.save(b);
         }
 

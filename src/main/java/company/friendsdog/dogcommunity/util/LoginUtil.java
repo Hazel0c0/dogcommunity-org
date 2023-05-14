@@ -12,7 +12,6 @@ public class LoginUtil {
     public static Long getCurrentLoginPetNo(
             HttpSession session) {
         Pet loginPet = (Pet) session.getAttribute(LOGIN_KEY);
-
         return loginPet.getPetNo();
     }
 }
