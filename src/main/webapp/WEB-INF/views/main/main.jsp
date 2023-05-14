@@ -13,7 +13,6 @@
 
     <!-- side menu event js defer : 지연 메뉴 걸기 -->
     <script src="side-menu.js" defer></script>
-
     <!-- 말풍선 -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.6.0/font/bootstrap-icons.css" />

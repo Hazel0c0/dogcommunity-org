@@ -16,9 +16,9 @@
 
     <!--    유저 찾기-->
     <select id="findUser" resultType="user">
-        SELECT user_no, adds
+        SELECT id, pwd
         FROM tbl_user
-        WHERE user_no = #{userNo}
+        WHERE id = #{id}
     </select>
 
     <!--    유저 수정-->
@@ -31,8 +31,8 @@
         WHERE user_no = #{userNo}
     </update>
 
-    <!--    회원가입 시 중복 검사 -->
-    <select id="isDuplicate">
+    <!--    회원가입 시 중복 검사 : resultType int 기입함 -->
+    <select id="isDuplicate" resultType="int">
         SELECT COUNT(*)
         FROM tbl_user
         <if test="type=='email'">
@@ -45,6 +45,7 @@
             WHERE id=#{id}
         </if>
     </select>
+
 
 
 </mapper>

@@ -46,6 +46,17 @@
         </button>
     </section>
 </div>
+<script>
+
+    const serverMessage = '${msg}';
+    console.log('msg:' + serverMessage);
+
+    if(serverMessage == 'NO_ACC') {
+        alert('회원가입부터 하십시오.');
+    } else if(serverMessage == 'NO_PW') {
+        alert('비밀번호가 틀렸습니다.');
+    }
+</script>
 </body>
 </html>
 
