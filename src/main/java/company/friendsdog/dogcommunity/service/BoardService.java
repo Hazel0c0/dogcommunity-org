@@ -6,6 +6,7 @@ import company.friendsdog.dogcommunity.dto.response.BoardDetailResponseDTO;
 import company.friendsdog.dogcommunity.dto.response.BoardListResponseDTO;
 import company.friendsdog.dogcommunity.entity.Board;
 import company.friendsdog.dogcommunity.repository.BoardMapper;
+import company.friendsdog.dogcommunity.util.LoginUtil;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
@@ -37,7 +38,7 @@ public class BoardService {
     public boolean save(BoardRequestDTO dto, HttpSession session) {
 
         Board board = new Board(dto);
-        BoardRequestDTO petNoInfo = (BoardRequestDTO) session.getAttribute("LOGIN_PET");
+        Long petNoInfo = LoginUtil.getCurrentLoginPetNo(session);
         board.setPetNo(petNoInfo);
         return petBoardMapper.save(board);
     }
