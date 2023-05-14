@@ -14,6 +14,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import static company.friendsdog.dogcommunity.service.LoginResult.*;
 
@@ -44,7 +46,9 @@ public class UserController {
   public String userJoin(JoinRequestDTO dto){
     log.info("회원가입 POST : {}",dto);
     boolean flag = userService.userJoin(dto);
-    return "redirect:/board/list";
+
+    // 회원가입 끝나면 main 창으로
+    return "redirect:/main/main";
   }
 
   // 아이디,이메일,폰번호 중복 검사
@@ -56,25 +60,38 @@ public class UserController {
     return ResponseEntity.ok().body(flag); // -> 중복
   }
 
-  // 로그인 화면 요청
+
+  // ==============로그인 화면 요청======================================
   @GetMapping("/login")
   public String login(HttpServletRequest request) {
-    log.info("/members/sign-in GET - forwarding to jsp");
+    log.info("로그인 GET");
 
     return "/login/login";
   }
 
   // 로그인 검증 요청
   @PostMapping("/login")
-  public String signIn(LoginRequestDTO dto){
+  public String login(LoginRequestDTO dto
+      , HttpServletRequest request
+  ){
     LoginResult loginResult = userService.loginAuthenticate(dto);
 
     if (loginResult== SUCCESS){
       log.info("로그인 성공 : {}",loginResult);
+      // 세션에 로그인 정보 저장하기
+      userService.maintainLoginState(
+              request.getSession(), dto.getUserNo());
       return "redirect:/";
     }
 
     log.info("로그인 실패");
     return "redirect:/members/sign-in";
+  }
+
+  // 로그아웃 요청 처리
+  @GetMapping("/logout")
+  public String logout(HttpSession session){
+
+    return "redirect:/";
   }
 }

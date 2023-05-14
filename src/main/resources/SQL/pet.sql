@@ -1,5 +1,5 @@
 
-insert into tbl_pet(pet_name,pet_age,pet_kind,pet_gender,pet_photo,profile_date_time,hashTag)
+insert into tbl_pet(pet_name,pet_age,pet_kind,pet_gender,pet_photo,pet_date_time,hashTag)
 values('뭉치',2,'불독','male','http://thumbnail.10x10.co.kr/webimage/image/basic600/290/B002903467.jpg?cmd=thumb&w=500&h=500&fit=true&ws=false','2023-05-11','#귀요미,#댕스타그램'),
       ('떙구',8,'시츄','female','https://dimg.donga.com/wps/NEWS/IMAGE/2013/12/30/59864097.2.jpg','2023-05-12','#맞팔#산책할사람#댕댕스타그램'),
       ('용식',3,'진돗개','female','https://images.mypetlife.co.kr/content/uploads/2022/08/17141309/korean-jindo-gca19cfb7f_1280-768x512.jpg','2023-05-15','#선팔#좋아요일상그램'),

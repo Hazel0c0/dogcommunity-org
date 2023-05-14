@@ -34,4 +34,13 @@
         FROM tbl_pet
         WHERE pet_no = #{petNo}
     </select>
+
+    <select id="userFindPet" resultType="petCard">
+        SELECT
+            user_no, pet_no,pet_name,pet_name,pet_age
+               ,pet_kind,pet_gender,pet_photo
+        FROM tbl_pet
+        WHERE user_No = #{userNo}
+    </select>
+
 </mapper>
