@@ -13,7 +13,9 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
+import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
+import java.io.IOException;
 import java.util.List;
 
 @Controller
@@ -26,7 +28,7 @@ public class BoardController {
 
     // 게시판 목록 조회 요청
     @GetMapping("/list")
-    public String petFindAll(Search page, Model model) {
+    public String petFindAll(Search page, Model model, HttpServletRequest request) throws IOException {
         log.info("/board/list : GET");
         log.info("page : {}", page);
         List<BoardListResponseDTO> dto = boardService.petFindAll(page);
@@ -52,7 +54,7 @@ public class BoardController {
 
     // 게시판 글쓰기 화면 조회 요청
     @GetMapping("/write")
-    public String save() {
+    public String save(HttpSession session) {
         log.info("/board/write : GET");
         return "board/write";
     }

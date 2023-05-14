@@ -14,6 +14,8 @@ import javax.servlet.http.HttpSession;
 import java.util.List;
 import java.util.stream.Collectors;
 
+import static java.util.stream.Collectors.*;
+
 @Service
 @RequiredArgsConstructor
 @Slf4j
@@ -27,7 +29,7 @@ public class BoardService {
         return petBoardMapper.petFindAll(page)
                 .stream()
                 .map(board -> new BoardListResponseDTO(board))
-                .collect(Collectors.toList());
+                .collect(toList());
 
     }
 
@@ -35,7 +37,8 @@ public class BoardService {
     public boolean save(BoardRequestDTO dto, HttpSession session) {
 
         Board board = new Board(dto);
-        session.getAttribute("pet_no");
+        board.setPetNo((Long) session.getAttribute("pet_no"));
+        board.setLikes((Long) session.getAttribute("likes"));
         return petBoardMapper.save(board);
     }
 
