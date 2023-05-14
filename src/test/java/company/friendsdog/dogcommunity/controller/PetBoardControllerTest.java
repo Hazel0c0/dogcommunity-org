@@ -4,6 +4,7 @@ import company.friendsdog.dogcommunity.dto.page.Search;
 import company.friendsdog.dogcommunity.dto.request.BoardRequestDTO;
 import company.friendsdog.dogcommunity.dto.response.BoardDetailResponseDTO;
 import company.friendsdog.dogcommunity.dto.response.BoardListResponseDTO;
+import company.friendsdog.dogcommunity.entity.User;
 import company.friendsdog.dogcommunity.service.BoardService;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
@@ -11,6 +12,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 
 import javax.servlet.http.HttpSession;
+import java.time.LocalDateTime;
 import java.util.List;
 
 @SpringBootTest
@@ -21,6 +23,24 @@ class PetBoardControllerTest {
     @DisplayName("게시물 작성")
     void InsertTest() {
         // given
+        User session = new User();
+        session.setUserNo(1L);
+        session.setId("admin");
+        session.setPwd("@123");
+        session.setPhoneNum("010-1234-1234");
+        session.setUserName("ys");
+        session.setEmail("ys@naver.com");
+        session.setAdds("동작구");
+
+//                .builder()
+//                .userNo(1L)
+//                .id("admin")
+//                .pwd("@123")
+//                .userName("ys")
+//                .email("ys@naver.com")
+//                .phoneNum("010-1234-1234")
+//                .adds("동작구")
+//                .build();
         BoardRequestDTO b = BoardRequestDTO.builder()
                 .title("지워니")
                 .content("영시기")
@@ -28,7 +48,7 @@ class PetBoardControllerTest {
                 .petNo(1L)
                 .build();
 
-        mapper.save(b);
+        mapper.save(b, (HttpSession) session);
         }
 
 

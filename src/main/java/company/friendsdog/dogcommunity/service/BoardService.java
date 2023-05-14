@@ -5,7 +5,9 @@ import company.friendsdog.dogcommunity.dto.request.BoardRequestDTO;
 import company.friendsdog.dogcommunity.dto.response.BoardDetailResponseDTO;
 import company.friendsdog.dogcommunity.dto.response.BoardListResponseDTO;
 import company.friendsdog.dogcommunity.entity.Board;
+import company.friendsdog.dogcommunity.entity.User;
 import company.friendsdog.dogcommunity.repository.BoardMapper;
+import company.friendsdog.dogcommunity.repository.PetMapper;
 import company.friendsdog.dogcommunity.util.LoginUtil;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
@@ -23,6 +25,7 @@ import static java.util.stream.Collectors.*;
 public class BoardService {
 
     private final BoardMapper petBoardMapper;
+    private final PetMapper petMapper;
 
     // 게시판 목록 중간처리
     public List<BoardListResponseDTO> petFindAll(Search page) {
@@ -38,7 +41,8 @@ public class BoardService {
     public boolean save(BoardRequestDTO dto, HttpSession session) {
 
         Board board = new Board(dto);
-        Long petNoInfo = LoginUtil.getCurrentLoginPetNo(session);
+        Long userNoInfo = LoginUtil.getCurrentLoginUserNo(session).getUserNo();
+        Long petNoInfo = petMapper.userFindPet(userNoInfo).getPetNo();
         board.setPetNo(petNoInfo);
         return petBoardMapper.save(board);
     }
