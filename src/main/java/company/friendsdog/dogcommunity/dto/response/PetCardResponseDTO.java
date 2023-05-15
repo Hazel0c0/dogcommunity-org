@@ -13,14 +13,13 @@ import java.time.LocalDateTime;
 @EqualsAndHashCode
 // 클라이언트 프로필 카드 만들 때 정보
 public class PetCardResponseDTO {
-
   private int petNo;
   private String petName;
   private int petAge;
   private String petKind;
   private Gender petGender;
   private String petPhoto;
-  private LocalDateTime profileDateTime;
+  private LocalDateTime petDateTime;
   private String hashtag;
 
   private String addr;
@@ -32,18 +31,16 @@ public class PetCardResponseDTO {
 // 펫의 프로필 카드 객체
 
 
-  public PetCardResponseDTO(int petNo, String petName, int petAge, String petKind, Gender petGender, String petPhoto, LocalDateTime profileDateTime, String hashtag, String addr, String addDetail, int likes, int hits) {
+  public PetCardResponseDTO(int petNo, String petName, int petAge, String petKind, Gender petGender, String petPhoto, LocalDateTime petDateTime, String hashtag, String addr, String addDetail) {
     this.petNo = petNo;
     this.petName = petName;
     this.petAge = petAge;
     this.petKind = petKind;
     this.petGender = petGender;
     this.petPhoto = petPhoto;
-    this.profileDateTime = profileDateTime;
+    this.petDateTime = petDateTime;
     this.hashtag = hashtag;
     this.addr = addr;
     this.addDetail = addDetail;
-    this.likes = likes;
-    this.hits = hits;
   }
 }
