@@ -9,8 +9,10 @@ CREATE TABLE tbl_pet
       pet_gender    VARCHAR(100)         NOT NULL,
       pet_photo     VARCHAR(2000) UNIQUE NOT NULL,
       pet_date_time TIMESTAMP            NOT NULL DEFAULT CURRENT_TIMESTAMP,
-      hashTag       VARCHAR(1000),
-      user_no       INT
+      hashtag       VARCHAR(1000),
+      user_no       INT,
+      likes INT default 0,
+      hits INT default 0
 --   FOREIGN KEY (user_no)
 --   REFERENCES tbl_user(user_no)
 );
@@ -22,3 +24,21 @@ values(1,'뭉치',2,'불독','MALE','http://thumbnail.10x10.co.kr/webimage/image
       (3,'용식',3,'진돗개','FEMALE','https://images.mypetlife.co.kr/content/uploads/2022/08/17141309/korean-jindo-gca19cfb7f_1280-768x512.jpg','2023-05-15','#선팔#좋아요일상그램'),
       (4,'구름',1,'포메라니안','NO_GENDER','http://adog.kr/web/upload/NNEditor/20200515/515_22.jpg','2023-05-18','#좋반'),
       (5,'치치',4,'웰시코기','SECRET','https://img1.daumcdn.net/thumb/R1280x0/?scode=mtistory2&fname=https%3A%2F%2Ft1.daumcdn.net%2Fcfile%2Ftistory%2F9922A33A5BC4214A0F','2023-05-20','#산책스타그램#소통해요');
+
+
+SELECT P.pet_no
+     , P.pet_name
+     , P.pet_age
+     , P.pet_kind
+     , P.pet_gender
+     , P.pet_photo
+     , P.pet_date_time
+     , P.hashTag
+     , U.addr
+     , U.add_detail
+FROM tbl_pet P
+           LEFT JOIN tbl_user U
+                     ON P.user_no = U.user_no
+WHERE U.addr = '강남구'
+ORDER BY pet_date_time DESC
+;
