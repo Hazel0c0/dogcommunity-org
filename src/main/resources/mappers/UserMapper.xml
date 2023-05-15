@@ -12,8 +12,8 @@
          email, addr, add_detail
             , join_date)
         VALUES ( #{userNo}, #{id}, #{pwd}, #{userName}
-               , #{addDetail}, #{email},
-                #{addr}, #{joinDate})
+                   , #{email}, #{addr}, #{addDetail},
+                 #{joinDate})
     </insert>
 
     <!--    유저 찾기-->

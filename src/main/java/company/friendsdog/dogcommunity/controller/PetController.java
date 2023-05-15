@@ -41,10 +41,12 @@ public class PetController {
     ) {
 //        session=null;
         log.info("/petprofile/list : GET");
-//        List<PetCardResponseDTO> neighborList
-//                = petService.findingNeighbor(session);
-//
-//        model.addAttribute("petList",neighborList);
+
+
+        List<PetCardResponseDTO> neighborList = petService.findingNeighbor(null);
+
+
+        model.addAttribute("petList",neighborList);
 
         return "/pet/neighbor";
     }

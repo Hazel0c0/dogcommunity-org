@@ -5,6 +5,21 @@
 <head>
   <meta charset="UTF-8">
   <title>Insert title here</title>
+  <style>
+      img {
+          width: 300px;
+          height: 300px;
+      }
+
+      .card-wrapper {
+          border: 2px solid palevioletred;
+          width: fit-content;
+      }
+
+      .pet-card-list {
+          display: flex;
+      }
+  </style>
 </head>
 <body>
 
@@ -16,7 +31,12 @@
   <c:forEach var="plist" items="${petList}">
     <div class="card-wrapper">
       <h2 class="pet-name">${plist.petName}</h2>
-      <div class="pet-photo">${plist.petPhoto}</div>
+      <div class="pet-photo">
+        <img src="${plist.petPhoto}" alt="${plist.petName}">
+      </div>
+      <div>♥ : ${plist.likes}      hits: ${plist.hits}</div>
+      <div class="hashtag">${plist.hashtag}</div>
+
     </div>
   </c:forEach>
 </div>

@@ -12,6 +12,8 @@ import org.springframework.stereotype.Service;
 
 import javax.servlet.http.HttpSession;
 import java.util.List;
+import java.util.stream.Collectors;
+import java.util.stream.Stream;
 
 import static java.util.stream.Collectors.toList;
 
@@ -26,8 +28,25 @@ public class PetService {
     // 세션(유저정보) -> 유저 addr
 //    String addr = LoginUtil.getCurrentLoginUser(session).getAddr();
     String addr="강남구";
+    String addrDetail="역삼동";
 
-    return petMapper.findByAddress(addr);
+    // 'ㅇㅇ구' 강아지
+    List<PetCardResponseDTO> addrList = petMapper.findByAddress(addr);
+
+    return addrList;
+  }
+  public void bestPet(HttpSession session){
+    Stream<PetCardResponseDTO> onePet = findingNeighbor(session)
+        .stream().limit(1);
+  }
+  public List<PetCardResponseDTO> findingNeighborDetail(){
+    // 'ㅇㅇ동' 강아지
+    List<PetCardResponseDTO> addrDetailList = addList.stream()
+        .filter(pet -> pet.getAddDetail().equals(addrDetail))
+        .collect(toList());
+
+    return addrDetailList;
+    return null;
   }
 
   public boolean delete(Long petNo) {
