@@ -39,18 +39,19 @@ drop table tbl_pet;
 
 -- 자유게시판
 -- 조아요 조회 VARCHAR -> INT 로 수정
-CREATE TABLE tbl_board
-(
-    board_no        INT AUTO_INCREMENT PRIMARY KEY,
-    title           VARCHAR(30)  NOT NULL,
-    content         VARCHAR(500) NOT NULL,
-    board_date_time TIMESTAMP    NOT NULL DEFAULT CURRENT_TIMESTAMP,
-    attached_img    VARCHAR(500),
-    likes           INT                   DEFAULT 0,
-    hits            INT                   DEFAULT 0
-    --   pet_no INT,
---   FOREIGN KEY (pet_no)
---   REFERENCES tbl_pet(pet_no)
+CREATE TABLE tbl_board (
+                           board_no INT AUTO_INCREMENT PRIMARY KEY,
+                           title VARCHAR(30),
+                           content VARCHAR(500) NOT NULL,
+                           board_date_time TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP,
+                           attached_img VARCHAR(1000),
+                           likes INT DEFAULT 0,
+                           hits INT DEFAULT 0,
+                           pet_no INT,
+                           pet_name varchar(10),
+                           pet_photo varchar(2000),
+                           FOREIGN KEY (pet_no)
+                               REFERENCES tbl_pet(pet_no)
 );
 
 -- 댓글
