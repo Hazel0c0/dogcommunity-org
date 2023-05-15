@@ -16,7 +16,7 @@
 
 <body>
 <div class="loginWrap">
-    <form action="/user/sign-up" name="signup" id="signUpForm" method="post">
+    <form action="/user/join" name="signup" id="signUpForm" method="post">
     <section class="logInwithFB">
         <h1><img src="/assets/img/logo-instagram.png" alt="로고이미지" id="petstaLogo">Petstagram</h1>
         <p>Sign up to see photos and videos from your friends</p>
@@ -233,7 +233,6 @@
             document.getElementById('showMessage').innerHTML
                 = '<b style="color: blue;">[사용가능한 비밀번호입니다.]</b>';
             checkResultList[4] = true;
-
         }
     };
 

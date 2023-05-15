@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -73,6 +74,7 @@ public class UserController {
   @PostMapping("/login")
   public String login(LoginRequestDTO dto
       , HttpServletRequest request
+      , RedirectAttributes ra
   ){
     LoginResult loginResult = userService.loginAuthenticate(dto);
 
@@ -85,6 +87,8 @@ public class UserController {
     }
 
     log.info("로그인 실패");
+    // 일회용 데이터
+    ra.addFlashAttribute("msg", loginResult);
     return "redirect:/members/sign-in";
   }
 
