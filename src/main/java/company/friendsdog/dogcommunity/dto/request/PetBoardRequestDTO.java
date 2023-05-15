@@ -9,7 +9,6 @@ import lombok.*;
 @NoArgsConstructor
 @AllArgsConstructor
 @Builder
-
 public class PetBoardRequestDTO {
 
     private int boardNo;

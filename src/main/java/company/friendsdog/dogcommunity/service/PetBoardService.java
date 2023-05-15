@@ -6,9 +6,7 @@ import company.friendsdog.dogcommunity.dto.response.PetBoardDetailResponseDTO;
 import company.friendsdog.dogcommunity.dto.response.PetBoardListResponseDTO;
 import company.friendsdog.dogcommunity.entity.Board;
 import company.friendsdog.dogcommunity.repository.PetBoardMapper;
-import lombok.NoArgsConstructor;
 import lombok.RequiredArgsConstructor;
-import lombok.Setter;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
 

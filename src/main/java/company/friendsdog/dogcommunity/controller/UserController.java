@@ -3,6 +3,7 @@ package company.friendsdog.dogcommunity.controller;
 import company.friendsdog.dogcommunity.dto.request.JoinRequestDTO;
 import company.friendsdog.dogcommunity.dto.request.LoginRequestDTO;
 import company.friendsdog.dogcommunity.service.LoginResult;
+import company.friendsdog.dogcommunity.service.PetBoardService;
 import company.friendsdog.dogcommunity.service.UserService;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
@@ -26,6 +27,7 @@ import static company.friendsdog.dogcommunity.service.LoginResult.*;
 public class UserController {
 
   private final UserService userService;
+  private final PetBoardService boardService;
 
   @GetMapping("/main")
   public String Main(){

@@ -14,6 +14,7 @@ import org.springframework.boot.test.context.SpringBootTest;
 
 import java.util.List;
 
+import static company.friendsdog.dogcommunity.entity.Board.*;
 import static org.junit.jupiter.api.Assertions.*;
 
 @SpringBootTest
@@ -32,7 +33,6 @@ class PetBoardControllerTest {
                 .build();
         mapper.save(b);
         }
-
 
 
     @Test

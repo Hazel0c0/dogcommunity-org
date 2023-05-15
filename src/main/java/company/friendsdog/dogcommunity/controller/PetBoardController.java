@@ -26,16 +26,16 @@ public class PetBoardController {
     private final PetBoardService boardService;
 
     // 게시판 목록 조회 요청
-    @GetMapping("list")
+    @GetMapping("/list")
     public String petFindAll(Search page, Model model) {
         log.info("/board/list : GET");
         log.info("page : {}", page);
         List<PetBoardListResponseDTO> dto = boardService.petFindAll(page);
-
+        log.info("dto {}" , dto);
         model.addAttribute("bList", dto);
         model.addAttribute("p", page);
 
-        return "list";
+        return "main/list";
     }
 
     // 게시판 상세 조회 요청
@@ -46,7 +46,7 @@ public class PetBoardController {
         model.addAttribute("b", dto);
         model.addAttribute("s", search);
 
-        return "detail";
+        return "/detail";
 
 
     }

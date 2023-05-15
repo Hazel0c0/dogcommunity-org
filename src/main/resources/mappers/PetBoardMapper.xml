@@ -7,7 +7,7 @@
 
     <select id="petFindAll" resultType="petBoard">
         SELECT  a.title, a.content,
-        a.board_date_time, a.attached_img, a.likes, a.hits, b.pet_name
+        a.board_date_time, a.attached_img, a.likes, a.hits , b.pet_name
         FROM tbl_board a
         INNER JOIN tbl_pet b
         ON a.pet_no = b.pet_no

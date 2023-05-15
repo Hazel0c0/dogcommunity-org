@@ -20,7 +20,7 @@ public class PetBoardListResponseDTO {
     private final String attachedImg;
     private final int likes;
     private final int hits;
-
+//    private final String petName;
     public PetBoardListResponseDTO(Board board) {
         this.petNo = board.getPetNo();
         this.boardNo = board.getBoardNo();
@@ -30,6 +30,7 @@ public class PetBoardListResponseDTO {
         this.attachedImg = board.getAttachedImg();
         this.likes = board.getLikes();
         this.hits = board.getHits();
+//        this.petName = bo
     }
     static String makePrettierDateString(LocalDateTime regDateTime) {
         DateTimeFormatter pattern = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm");
