@@ -22,7 +22,7 @@
         <h1><img src="/assets/img/logo-instagram.png" alt="로고이미지" id="petstaLogo">Petstagram</h1>
         <input type="text" placeholder="전화번호, 이메일 또는 아이디 " class="logInPart" name="id">
         <input type="password" placeholder="비밀번호" class="logInPart" name="pwd">
-        <button class="logInPart ordinaryLogin unactivatedLoginColor">Log In</button>
+        <input type="button" id="logInBtn" value="Log In" style="  background: rgb(61, 61, 227); color: white; letter-spacing: 2px; margin-top: 10px;">
     </section>
     <section class="loginOtherWay">
         <div>

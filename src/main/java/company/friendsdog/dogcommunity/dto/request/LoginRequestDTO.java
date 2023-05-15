@@ -14,4 +14,3 @@ import lombok.*;
     private boolean autoLogin; //자동로그인 체크 여부
 }
 
-

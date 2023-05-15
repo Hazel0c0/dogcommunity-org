@@ -52,17 +52,18 @@ public class UserService {
 
     // 로그인 인증
     public LoginResult loginAuthenticate(LoginRequestDTO dto) {
+
         User foundUser = userMapper.findUser(dto.getUserNo());
 
         if (foundUser == null) {
-            log.info("{} 회원 정보 없음", dto);
+            log.info("{} 회원 정보 없음", dto.getId());
             return NO_ACC;
         }
         if (!encoder.matches(dto.getPwd(), foundUser.getPwd())) {
             log.info("비밀번호 불일치");
             return NO_PW;
         }
-        log.info("{}님 로그인 성공", foundUser.getUserNo());
+        log.info("{}님 로그인 성공", foundUser.getUserName());
         return SUCCESS;
     }
 
