@@ -11,18 +11,11 @@
         FROM tbl_board a
         INNER JOIN tbl_pet b
         ON a.pet_no = b.pet_no
-        <if test="type == 'title'">
-            WHERE title LIKE CONCAT('%', #{keyword}, '%')
-        </if>
         <if test="type == 'content'">
             WHERE content LIKE CONCAT('%', #{keyword}, '%')
         </if>
-        <if test="type == 'tc'">
-            WHERE title LIKE CONCAT('%', #{keyword}, '%')
-            OR content LIKE CONCAT('%', #{keyword}, '%')
-        </if>
         <if test="type == 'petName'">
-            WHERE pet_name LIKE CONCAT('%', #{keyword}, '%')
+            WHERE b.pet_name LIKE CONCAT('%', #{keyword}, '%')
         </if>
         ORDER BY board_date_time DESC
     </select>
@@ -56,16 +49,10 @@
     <select id="count" resultType="Long">
         SELECT COUNT(*)
         FROM tbl_board
-        <if test="type == 'title'">
-            WHERE title LIKE CONCAT('%', #{keyword}, '%')
-        </if>
         <if test="type == 'content'">
             WHERE content LIKE CONCAT('%', #{keyword}, '%')
         </if>
-        <if test="type == 'tc'">
-            WHERE title LIKE CONCAT('%', #{keyword}, '%')
-            OR content LIKE CONCAT('%', #{keyword}, '%')
-        </if>
+
     </select>
 
     <update id="upHitsCount">

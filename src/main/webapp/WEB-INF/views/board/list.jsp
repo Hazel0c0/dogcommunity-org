@@ -33,10 +33,8 @@
             <form action="/board/list" method="get">
 
                 <select class="form-select" name="type" id="search-type">
-                    <option value="title">제목</option>
                     <option value="content">내용</option>
                     <option value="petName">작성자</option>
-                    <option value="tc">제목+내용</option>
                 </select>
 
                 <input type="text" class="form-control" name="keyword" value="${p.keyword}">
@@ -52,6 +50,9 @@
     <div class="card-container">
 
         <c:forEach var="b" items="${bList}">
+            <div>${b.petName}</div>
+            <div><img src="${b.petPhoto}"> </div>
+            <div><img src="${b.attachedImg}" alt=""> </div>
             <div class="card-wrapper">
                 <section class="card" data-petNo="${b.petNo}">
                     <div class="card-title-wrapper">
