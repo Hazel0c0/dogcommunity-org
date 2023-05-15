@@ -28,18 +28,21 @@ public class PetService {
     // 세션(유저정보) -> 유저 addr
 //    String addr = LoginUtil.getCurrentLoginUser(session).getAddr();
     String addr="강남구";
-    String addrDetail="역삼동";
 
     // 'ㅇㅇ구' 강아지
     List<PetCardResponseDTO> addrList = petMapper.findByAddress(addr);
 
     return addrList;
   }
-  public void bestPet(HttpSession session){
-    Stream<PetCardResponseDTO> onePet = findingNeighbor(session)
-        .stream().limit(1);
+  public PetCardResponseDTO bestPet(HttpSession session){
+
+    return findingNeighbor(session)
+        .stream()
+        .findFirst().get();
   }
   public List<PetCardResponseDTO> findingNeighborDetail(){
+    String addrDetail="역삼동";
+
     // 'ㅇㅇ동' 강아지
     List<PetCardResponseDTO> addrDetailList = addList.stream()
         .filter(pet -> pet.getAddDetail().equals(addrDetail))

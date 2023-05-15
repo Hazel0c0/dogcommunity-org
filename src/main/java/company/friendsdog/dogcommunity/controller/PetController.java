@@ -43,10 +43,10 @@ public class PetController {
         log.info("/petprofile/list : GET");
 
 
-        List<PetCardResponseDTO> neighborList = petService.findingNeighbor(null);
+        PetCardResponseDTO bestPet = petService.bestPet(null);
 
 
-        model.addAttribute("petList",neighborList);
+        model.addAttribute("petList",bestPet);
 
         return "/pet/neighbor";
     }
