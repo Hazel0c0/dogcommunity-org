@@ -195,7 +195,7 @@
                         = '<b style="color:red;">[아이디가 중복되었습니다.]</b>';
                     checkResultList[3] = false;
                 } else { // 중복이아님
-                    $idInput.style.borderColor='green';
+                    $idInput.style.borderColor='blue';
                     document.getElementById('showMessage').innerHTML
                         = '<b style="color:blue;">[사용가능한 아이디입니다.]</b>';
                     checkResultList[3] = true;
@@ -242,13 +242,14 @@
 
         // 5개의 입력칸이 모두 통과되었을 경우 폼을 서브밋 한다.
         const $form = document.getElementById('signUpForm');
-        if(!checkResultList.includes(false)) { // 한 칸이라도 틀린게 없다면
+        // if(!checkResultList.includes(false)) { // 한 칸이라도 틀린게 없다면
             $form.submit();
+            console.log($form);
             // $rt.value = '';
             // $rw.value = '';
-        } else {
-            alert('입력란을 다시 확인하세요!');
-        }
+        // } else {
+        //     alert('입력란을 다시 확인하세요!');
+        // }
     };
 
 </script>
