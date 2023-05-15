@@ -43,7 +43,7 @@
             <option value="노원구">노원구</option>
             <option value="도봉구">도봉구</option>
         </select>
-        <input type="text" placeholder="동" name="dong" id="dong">
+        <input type="text" placeholder="동" name="add_detail" id="add_detail">
         <input type="text" placeholder="사용자 이름" name="userName" id="userName">
         <input type="text" placeholder="아이디" name="id" id="id">
         <input type="text" placeholder="비밀번호" name="pwd" id="pwd">
