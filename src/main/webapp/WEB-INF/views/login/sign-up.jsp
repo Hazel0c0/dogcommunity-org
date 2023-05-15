@@ -30,7 +30,20 @@
     <section class="signUpPage">
         <p id="showMessage"></p>
         <input type="text" placeholder="전화번호 또는 이메일" name="email" id="email" class="phone">
-        <input type="text" placeholder="주소" name="adds" id="adds">
+        <select type="text" placeholder="주소" name="adds" id="adds">
+            <option value="">구 선택</option>
+            <option value="강남구">강남구</option>
+            <option value="강동구">강동구</option>
+            <option value="강북구">강북구</option>
+            <option value="강서구">강서구</option>
+            <option value="관악구">관악구</option>
+            <option value="광진구">광진구</option>
+            <option value="구로구">구로구</option>
+            <option value="금천구">금천구</option>
+            <option value="노원구">노원구</option>
+            <option value="도봉구">도봉구</option>
+        </select>
+        <input type="text" placeholder="동" name="dong" id="dong">
         <input type="text" placeholder="사용자 이름" name="userName" id="userName">
         <input type="text" placeholder="아이디" name="id" id="id">
         <input type="text" placeholder="비밀번호" name="pwd" id="pwd">
@@ -52,7 +65,7 @@
 <script>
     // 회원 가입 아이디 검증 : 전화번호(이메일), (주소), 사용자이름, 아이디, 비밀번호
     //phoneNum adds userName id pwd
-    const checkResultList = [false, false, false, false];
+    const checkResultList = [false, false, false, false, false];
 
     // 이메일 검사 정규표현식
     const emailPattern = /^[A-Za-z0-9_\.\-]+@[A-Za-z0-9\-]+\.[A-Za-z0-9\-]+/;
@@ -86,16 +99,42 @@
                             = '<b style="color: red;">[이메일이 중복되었습니다.]</b>';
                         checkResultList[0] = false;
                     } else {
-                        $emailInput.style.borderColor = 'skyblue';
+                        $emailInput.style.borderColor = 'blue';
                         document.getElementById('showMessage').innerHTML
-                            = '<b style="color: skyblue;">[사용가능한 이메일입니다.]</b>';
+                            = '<b style="color: blue;">[사용가능한 이메일입니다.]</b>';
                         checkResultList[0] = true;
                     }
                 });
         }
     };
 
-    // 사용자 이름 검사 정규표현식
+    // 주소 값 동 정규 표현식
+    const addressPattern = /^[^0-9]+동$/;
+
+    const $dongInput = document.getElementById('dong');
+
+    $dongInput.onkeyup = e => {
+        const dongValue = $dongInput.value;
+
+        if (dongValue.trim() === '') {
+            $dongInput.style.borderColor = 'red';
+            document.getElementById('showMessage').innerHTML = '<b style="color: red;">[동 입력은 필수값입니다!]</b>';
+            checkResultList[1] = false;
+        } else if (!addressPattern.test(dongValue)) {
+            $dongInput.style.borderColor = 'red';
+            document.getElementById('showMessage').innerHTML = '<b style="color: red;">[제대로 입력 해주세요.]</b>';
+            checkResultList[1] = false;
+        } else {
+            $dongInput.style.borderColor = 'blue';
+            document.getElementById('showMessage').innerHTML = '<b style="color: blue;">[동까지 잘 입력하셨습니다.]</b>';
+            checkResultList[1] = true;
+        }
+    };
+
+
+
+
+        // 사용자 이름 검사 정규표현식
     const namePattern = /^[가-힣]+$/;
 
     // 사용자 이름 입력값 검증
@@ -110,17 +149,17 @@
             $nameInput.style.borderColor = 'red';
             document.getElementById('showMessage').innerHTML
                 = '<b style="color: red;">[이름은 필수정보입니다.]</b>';
-            checkResultList[1] = false;
+            checkResultList[2] = false;
         } else if (!namePattern.test(nameValue)) {
             $nameInput.style.borderColor = 'red';
             document.getElementById('showMessage').innerHTML
                 = '<b style="color: red;">[이름은 한글로 기입하세요.]</b>';
-            checkResultList[1] = false;
+            checkResultList[2] = false;
         } else {
-            $nameInput.style.borderColor = 'skyblue';
+            $nameInput.style.borderColor = 'blue';
             document.getElementById('showMessage').innerHTML
-                = '<b style="color: skyblue;">[사용가능한 이름입니다.]</b>';
-            checkResultList[1] = true;
+                = '<b style="color: blue;">[사용가능한 이름입니다.]</b>';
+            checkResultList[2] = true;
         }
     };
 
@@ -139,12 +178,12 @@
         $idInput.style.borderColor='red';
         document.getElementById('showMessage').innerHTML
             = '<b style="color:red;">[아이디는 필수값입니다]</b>';
-        checkResultList[2] = false;
+        checkResultList[3] = false;
     } else if(!accountPattern.test(idValue)) { // 테스트 할때 아이디 값을 정규표현식으로 테스트 한다.
         $idInput.style.borderColor='red';
         document.getElementById('showMessage').innerHTML
             = '<b style="color:red;">[아이디는 4- 14글자의 영문, 숫자로 입력하세요.]</b>';
-        checkResultList[2] = false;
+        checkResultList[3] = false;
     } else {
         // 아이디 중복검사
         fetch('/user/check?type=id&keyword=' + idValue)
@@ -154,12 +193,12 @@
                     $idInput.style.borderColor='red';
                     document.getElementById('showMessage').innerHTML
                         = '<b style="color:red;">[아이디가 중복되었습니다.]</b>';
-                    checkResultList[2] = false;
+                    checkResultList[3] = false;
                 } else { // 중복이아님
                     $idInput.style.borderColor='green';
                     document.getElementById('showMessage').innerHTML
-                        = '<b style="color:green;">[사용가능한 아이디입니다.]</b>';
-                    checkResultList[2] = true;
+                        = '<b style="color:blue;">[사용가능한 아이디입니다.]</b>';
+                    checkResultList[3] = true;
                 }
             });
 
@@ -183,17 +222,17 @@
             $pwInput.style.borderColor = 'red';
             document.getElementById('showMessage').innerHTML
                 = '<b style="color: red;">[비밀번호는 필수값입니다!]</b>';
-            checkResultList[3] = false;
+            checkResultList[4] = false;
         } else if (!passwordPattern.test(pwValue)) {
             $pwInput.style.borderColor = 'red';
             document.getElementById('showMessage').innerHTML
                 = '<b style="color: red;">[대/소문자, 특수문자, 숫자 포함 8-16자 내외]</b>';
-            checkResultList[3] = false;
+            checkResultList[4] = false;
         } else {
-            $pwInput.style.borderColor = 'skyblue';
+            $pwInput.style.borderColor = 'blue';
             document.getElementById('showMessage').innerHTML
-                = '<b style="color: skyblue;">[사용가능한 비밀번호입니다.]</b>';
-            checkResultList[3] = true;
+                = '<b style="color: blue;">[사용가능한 비밀번호입니다.]</b>';
+            checkResultList[4] = true;
 
         }
     };
@@ -205,6 +244,8 @@
         const $form = document.getElementById('signUpForm');
         if(!checkResultList.includes(false)) { // 한 칸이라도 틀린게 없다면
             $form.submit();
+            // $rt.value = '';
+            // $rw.value = '';
         } else {
             alert('입력란을 다시 확인하세요!');
         }
