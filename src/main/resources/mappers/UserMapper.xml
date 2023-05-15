@@ -31,18 +31,18 @@
         WHERE user_no = #{userNo}
     </update>
 
-    <!--    회원가입 시 중복 검사 : resultType int 기입함 -->
+    <!--    회원가입 시 중복 검사  -->
     <select id="isDuplicate" resultType="int">
         SELECT COUNT(*)
         FROM tbl_user
         <if test="type=='email'">
-            WHERE email=#{email}
+            WHERE email=#{keyword}
         </if>
         <if test="type=='phoneNum'">
-            WHERE phone_num=#{phoneNum}
+            WHERE phone_num=#{keyword}
         </if>
         <if test="type=='id'">
-            WHERE id=#{id}
+            WHERE id=#{keyword}
         </if>
     </select>
 

@@ -44,7 +44,7 @@ public class PetController {
 
         model.addAttribute("petList",petList);
 
-        return "/pet/list";
+        return "/pet/neighbor";
     }
 
     @PostMapping("/delete")

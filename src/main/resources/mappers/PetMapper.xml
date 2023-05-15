@@ -11,7 +11,7 @@
         ,adds
         FROM tbl_pet P LEFT JOIN tbl_user U
         ON P.user_no = U.user_no
-        WHERE adds=#{adds}
+--         WHERE adds=#{adds}
         ORDER BY pet_date_time DESC
     </select>
 
