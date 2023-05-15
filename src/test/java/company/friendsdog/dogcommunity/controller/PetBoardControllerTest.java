@@ -19,37 +19,24 @@ import java.util.List;
 class PetBoardControllerTest {
     @Autowired
     BoardService mapper;
+    @Autowired
+    BoardController boardController;
     @Test
     @DisplayName("게시물 작성")
     void InsertTest() {
         // given
-        User session = new User();
-        session.setUserNo(1L);
-        session.setId("admin");
-        session.setPwd("@123");
-        session.setPhoneNum("010-1234-1234");
-        session.setUserName("ys");
-        session.setEmail("ys@naver.com");
-        session.setAdds("동작구");
 
-//                .builder()
-//                .userNo(1L)
-//                .id("admin")
-//                .pwd("@123")
-//                .userName("ys")
-//                .email("ys@naver.com")
-//                .phoneNum("010-1234-1234")
-//                .adds("동작구")
-//                .build();
         BoardRequestDTO b = BoardRequestDTO.builder()
-                .title("지워니")
-                .content("영시기")
+                .title("아아")
+                .content("호호")
                 .attachedImg("http://thumbnail.10x10.co.kr/webimage/image/basic600/290/B002903467.jpg?cmd=thumb&w=500&h=500&fit=true&ws=false")
                 .petNo(1L)
                 .build();
 
-        mapper.save(b, (HttpSession) session);
-        }
+
+        boolean save = mapper.save(b, null);
+        System.out.println("saveBoard = " + save);
+    }
 
 
 

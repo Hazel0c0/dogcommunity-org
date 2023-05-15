@@ -4,6 +4,8 @@ import company.friendsdog.dogcommunity.dto.page.Search;
 import company.friendsdog.dogcommunity.dto.request.BoardRequestDTO;
 import company.friendsdog.dogcommunity.dto.response.BoardDetailResponseDTO;
 import company.friendsdog.dogcommunity.dto.response.BoardListResponseDTO;
+import company.friendsdog.dogcommunity.entity.User;
+import company.friendsdog.dogcommunity.repository.UserMapper;
 import company.friendsdog.dogcommunity.service.BoardService;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
@@ -17,6 +19,8 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 import java.io.IOException;
 import java.util.List;
+
+import static company.friendsdog.dogcommunity.util.LoginUtil.LOGIN_KEY;
 
 @Controller
 @RequiredArgsConstructor
@@ -62,6 +66,7 @@ public class BoardController {
     // 게시판 글쓰기 요청 처리
     @PostMapping("/write")
     public String save(BoardRequestDTO dto, HttpSession session) {
+
 
         log.info("/board/write : POST");
         boardService.save(dto,session);
