@@ -5,7 +5,7 @@
 <mapper namespace="company.friendsdog.dogcommunity.repository.PetMapper">
 
 <!--    이웃 찾기-->
-    <select id="findByAddress" resultType="petCard">
+    <select id="findByAddress" resultType="neighbor">
         SELECT P.pet_no
              , P.pet_name
              , P.pet_age
@@ -14,12 +14,12 @@
              , P.pet_photo
              , P.pet_date_time
              , P.hashTag
-             , U.adds
+             , U.addr
              , U.add_detail
         FROM tbl_pet P
                  LEFT JOIN tbl_user U
                            ON P.user_no = U.user_no
-        WHERE adds = #{adds}
+        WHERE U.addr = #{addr}
         ORDER BY pet_date_time DESC
     </select>
 

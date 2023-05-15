@@ -9,11 +9,11 @@
     <insert id="save">
         INSERT INTO tbl_user
         (user_no, id, pwd, user_name,
-         email, phone_num, adds, add-detail
+         email, addr, add_detail
             , join_date)
         VALUES ( #{userNo}, #{id}, #{pwd}, #{userName}
-               , #{addDetail}, #{email}, #{phoneNum},
-                #{adds}, #{joinDate})
+               , #{addDetail}, #{email},
+                #{addr}, #{joinDate})
     </insert>
 
     <!--    유저 찾기-->
@@ -29,7 +29,7 @@
         SET pwd=#{pwd},
             email=#{email},
             phone_num=#{phoneNum},
-            adds=#{adds}
+            addr=#{addr}
         WHERE user_no = #{userNo}
     </update>
 

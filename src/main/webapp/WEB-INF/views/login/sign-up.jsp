@@ -30,7 +30,7 @@
     <section class="signUpPage">
         <p id="showMessage"></p>
         <input type="text" placeholder="전화번호 또는 이메일" name="email" id="email" class="phone">
-        <select type="text" placeholder="주소" name="adds" id="adds">
+        <select type="text" placeholder="주소" name="addr" id="addr">
             <option value="">구 선택</option>
             <option value="강남구">강남구</option>
             <option value="강동구">강동구</option>
@@ -64,7 +64,7 @@
 </body>
 <script>
     // 회원 가입 아이디 검증 : 전화번호(이메일), (주소), 사용자이름, 아이디, 비밀번호
-    //phoneNum adds userName id pwd
+    //phoneNum addr userName id pwd
     const checkResultList = [false, false, false, false, false];
 
     // 이메일 검사 정규표현식

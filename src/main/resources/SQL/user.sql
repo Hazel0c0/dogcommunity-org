@@ -1,6 +1,7 @@
 use dogcommunity;
 
 drop table tbl_user;
+select * from tbl_user;
 CREATE TABLE tbl_user
 (
       user_no   INT AUTO_INCREMENT PRIMARY KEY,
@@ -9,13 +10,13 @@ CREATE TABLE tbl_user
       user_name VARCHAR(20),
       email     VARCHAR(30) UNIQUE,
       phone_num VARCHAR(20) UNIQUE,
-      adds      VARCHAR(100)        NOT NULL,
-      add_detaile      VARCHAR(100)        NOT NULL,
+      addr      VARCHAR(100)        NOT NULL,
+      add_detail      VARCHAR(100)        NOT NULL,
       join_date TIMESTAMP DEFAULT CURRENT_TIMESTAMP
 );
 
 insert into tbl_user(id,user_name,pwd
-,email,phone_num,add_detaile ,adds,join_date)
+,email,phone_num,add_detail ,addr,join_date)
 values('SU','진수',1234,'dlwstn0722@naver.com',01041358412,'논현동','강남구','2023-05-11'),
       ('BITNA','빛나',5678,'bitna0722@naver.com',01051248412,'논현동','강남구','2023-05-12'),
       ('JIWON','지원',3235,'jiwon0722@google.com',01076129991,'논현동','강남구','2023-05-15'),

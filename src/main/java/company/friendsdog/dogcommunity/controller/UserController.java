@@ -49,7 +49,7 @@ public class UserController {
     boolean flag = userService.userJoin(dto);
 
     // 회원가입 끝나면 main 창으로
-    return "redirect:/main/main";
+    return "redirect:/user/main";
   }
 
   // 아이디,이메일,폰번호 중복 검사
