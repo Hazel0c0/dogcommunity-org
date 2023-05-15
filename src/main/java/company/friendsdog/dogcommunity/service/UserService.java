@@ -52,7 +52,7 @@ public class UserService {
 
     // 로그인 인증
     public LoginResult loginAuthenticate(LoginRequestDTO dto) {
-        User foundUser = userMapper.findUser(dto.getId());
+        User foundUser = userMapper.findUser(dto.getUserNo());
 
         if (foundUser == null) {
             log.info("{} 회원 정보 없음", dto);
@@ -70,18 +70,13 @@ public class UserService {
     public void maintainLoginState(
             HttpSession session, Long uNo) {
         // 현재 로그인한 사람의 정보
-        Pet findPet = findPet(uNo);
-        LoginPetResponseDTO loginDto = LoginPetResponseDTO.builder()
-                .petNo(findPet.getPetNo())
-                .petName(findPet.getPetName())
-                .petPhoto(findPet.getPetPhoto())
-                .build();
-        session.setAttribute("loginUserPet", loginDto);
+        User foundUser = findUser(uNo);
+        session.setAttribute("loginUser", foundUser);
         session.setMaxInactiveInterval(60 * 60); // 세션 - 1시간
     }
 
     // id로 유저 찾기
-    private Pet findPet(Long uNo) {
-        return petMapper.userFindPet(uNo);
+    private User findUser(Long uNo) {
+        return userMapper.findUser(uNo);
     }
 }

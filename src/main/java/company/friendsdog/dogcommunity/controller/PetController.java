@@ -1,6 +1,7 @@
 package company.friendsdog.dogcommunity.controller;
 
 import company.friendsdog.dogcommunity.dto.PetProfileModifyRequestDTO;
+import company.friendsdog.dogcommunity.dto.response.PetCardResponseDTO;
 import company.friendsdog.dogcommunity.entity.Pet;
 import company.friendsdog.dogcommunity.service.PetService;
 import lombok.RequiredArgsConstructor;
@@ -11,7 +12,9 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.ResponseBody;
 
+import javax.servlet.http.HttpSession;
 import java.util.List;
 
 import static org.springframework.http.ResponseEntity.*;
@@ -22,19 +25,28 @@ import static org.springframework.http.ResponseEntity.*;
 @Slf4j
 public class PetController {
 
+    // 펫 프로필 기입
     @GetMapping("/profile")
-    public String userJoin(){
+    public String petCard(){
         log.info("GET");
         return "/main/profile";
     }
-    private final PetService petService;
-    // 목록 조회 요청
-    @GetMapping("/list")
-    public String list(Model model) {
-        log.info("/petprofile/list : GET");
-        petService.findAll();
 
-        return "/pet/list";
+    private final PetService petService;
+
+    // 이웃 펫 찾기
+    @GetMapping("/neighbor")
+    public String findingNeighbor(Model model
+//            , HttpSession session
+    ) {
+//        session=null;
+        log.info("/petprofile/list : GET");
+//        List<PetCardResponseDTO> neighborList
+//                = petService.findingNeighbor(session);
+//
+//        model.addAttribute("petList",neighborList);
+
+        return "/pet/neighbor";
     }
 
     @PostMapping("/delete")
