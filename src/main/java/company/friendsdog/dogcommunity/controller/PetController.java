@@ -35,14 +35,16 @@ public class PetController {
     private final PetService petService;
 
     // 이웃 펫 찾기
-    @GetMapping("/list")
+    @GetMapping("/neighbor")
     public String findingNeighbor(Model model
-            , HttpSession session) {
+//            , HttpSession session
+    ) {
+//        session=null;
         log.info("/petprofile/list : GET");
-        List<PetCardResponseDTO> petList
-                = petService.findingNeighbor(session);
-
-        model.addAttribute("petList",petList);
+//        List<PetCardResponseDTO> neighborList
+//                = petService.findingNeighbor(session);
+//
+//        model.addAttribute("petList",neighborList);
 
         return "/pet/neighbor";
     }

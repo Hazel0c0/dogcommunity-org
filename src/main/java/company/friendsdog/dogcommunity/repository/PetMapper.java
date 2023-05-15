@@ -1,5 +1,6 @@
 package company.friendsdog.dogcommunity.repository;
 
+import company.friendsdog.dogcommunity.dto.response.PetCardResponseDTO;
 import company.friendsdog.dogcommunity.entity.Pet;
 import company.friendsdog.dogcommunity.entity.User;
 import lombok.RequiredArgsConstructor;
@@ -9,8 +10,8 @@ import java.util.List;
 
 @Mapper
 public interface PetMapper {
-  // 펫 프로필 카드 조회
-  List<Pet> findByAddress(String adds);
+  // 이웃 펫 조회하기
+  List<PetCardResponseDTO> findByAddress(String adds);
 
   Pet findOne(Long petNo);
 

@@ -19,22 +19,15 @@ import static java.util.stream.Collectors.toList;
 @RequiredArgsConstructor
 public class PetService {
   private final PetMapper petMapper;
-  private final LoginUtil loginUtil;
 
-  // 검색 목록 중간 처리
+  // 이웃 찾기
   public List<PetCardResponseDTO> findingNeighbor(
           HttpSession session) {
     // 세션(유저정보) -> 유저 adds
-    String adds = LoginUtil.getCurrentLoginUser(session).getAdds();
+//    String adds = LoginUtil.getCurrentLoginUser(session).getAdds();
+    String adds="강남구";
 
-    // pet 객체 -> PetProfileCardDTO
-    List<PetCardResponseDTO> petList
-            = petMapper.findByAddress(adds)
-            .stream()
-            .map(pet -> new PetCardResponseDTO(pet))
-            .collect(toList());
-
-    return petList;
+    return petMapper.findByAddress(adds);
   }
 
   public boolean delete(Long petNo) {
