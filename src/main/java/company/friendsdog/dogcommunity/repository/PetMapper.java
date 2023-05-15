@@ -3,15 +3,17 @@ package company.friendsdog.dogcommunity.repository;
 import company.friendsdog.dogcommunity.dto.response.PetCardResponseDTO;
 import company.friendsdog.dogcommunity.entity.Pet;
 import company.friendsdog.dogcommunity.entity.User;
-import lombok.RequiredArgsConstructor;
 import org.apache.ibatis.annotations.Mapper;
+import org.apache.ibatis.annotations.Param;
 
 import java.util.List;
 
 @Mapper
 public interface PetMapper {
   // 이웃 펫 조회하기
-  List<PetCardResponseDTO> findByAddress(String adds);
+  List<PetCardResponseDTO> findByAddress(
+      @Param("addr") String adds,
+      @Param("addDetail") String addDetail);
 
   Pet findOne(Long petNo);
 
@@ -27,6 +29,10 @@ public interface PetMapper {
   boolean modify(Pet pet);
 
   Pet userFindPet(Long uNo);
+
+  List<String> findDong(String addr);
+
+  PetCardResponseDTO randomPet(String addDetail);
 
   // pet dto 수정할거 필드 2~3개
 }

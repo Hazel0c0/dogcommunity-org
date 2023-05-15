@@ -22,35 +22,36 @@ import static java.util.stream.Collectors.toList;
 public class PetService {
   private final PetMapper petMapper;
 
-  // 이웃 찾기
-  public List<PetCardResponseDTO> findingNeighbor(
-          HttpSession session) {
+  // 이웃 찾기 (동별)
+  public List<PetCardResponseDTO> findOneNeighbor(
+      HttpSession session, String keyword) {
+
+    String addr = "강남구";
+    // '구'로 '동'찾기
+    List<String> dongList = petMapper.findDong(addr);
+
+
+    // 동에서 랜덤 한마리 강아지 대려오기
+    List<PetCardResponseDTO> pet;
+    for(int i=0; i<dongList.size(); i++){
+      PetCardResponseDTO a = petMapper.randomPet(dongList.get(0));
+    }
+
+    dongList.forEach(dong ->petMapper.randomPet(dong));
+    return null;
+  }
+
+  public void as() {
     // 세션(유저정보) -> 유저 addr
 //    String addr = LoginUtil.getCurrentLoginUser(session).getAddr();
-    String addr="강남구";
+    String addr = "강남구"; // 세션
+    keyword = "역삼동"; // ㅇㅇ동
 
-    // 'ㅇㅇ구' 강아지
-    List<PetCardResponseDTO> addrList = petMapper.findByAddress(addr);
+    List<PetCardResponseDTO> addrList = petMapper.findByAddress(addr, keyword);
 
     return addrList;
   }
-  public PetCardResponseDTO bestPet(HttpSession session){
 
-    return findingNeighbor(session)
-        .stream()
-        .findFirst().get();
-  }
-  public List<PetCardResponseDTO> findingNeighborDetail(){
-    String addrDetail="역삼동";
-
-    // 'ㅇㅇ동' 강아지
-    List<PetCardResponseDTO> addrDetailList = addList.stream()
-        .filter(pet -> pet.getAddDetail().equals(addrDetail))
-        .collect(toList());
-
-    return addrDetailList;
-    return null;
-  }
 
   public boolean delete(Long petNo) {
     return petMapper.delete(petNo);
