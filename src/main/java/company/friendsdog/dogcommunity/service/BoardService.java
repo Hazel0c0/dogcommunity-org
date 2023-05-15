@@ -43,7 +43,11 @@ public class BoardService {
         Board board = new Board(dto);
 //        Long userNoInfo = LoginUtil.getCurrentLoginUserNo(session).getUserNo();
 //        Long petNoInfo = petMapper.userFindPet(userNoInfo).getPetNo();
+//        String petNameInfo = petMapper.userFindPet(userNoInfo).getPetName();
+//        String petPhotoInfo = petMapper.userFindPet(userNoInfo).getPetPhoto();
 //        board.setPetNo(petNoInfo);
+//        board.setPetName(petNameInfo);
+//        board.setPetPhoto(petPhotoInfo);
         return petBoardMapper.save(board);
     }
 

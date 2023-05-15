@@ -38,8 +38,8 @@
 
     <insert id="save">
         INSERT INTO tbl_board
-        (content, attached_img, pet_no, likes)
-        VALUES (#{content}, #{attachedImg}, #{petNo}, #{likes})
+        (content, attached_img, pet_no, likes, pet_name, pet_photo)
+        VALUES (#{content}, #{attachedImg}, #{petNo}, #{likes}, #{petName}, #{petPhoto})
     </insert>
 
     <delete id="delete">
