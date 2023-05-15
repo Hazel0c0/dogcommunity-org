@@ -9,16 +9,18 @@
     <insert id="save">
         INSERT INTO tbl_user
         (user_no, id, pwd, user_name,
-         email, phone_num, adds, join_date)
-        VALUES (#{userNo}, #{id}, #{pwd}, #{userName}
-            #{email}, #{phoneNum}, #{adds}, #{joinDate})
+         email, phone_num, adds, add-detail
+            , join_date)
+        VALUES ( #{userNo}, #{id}, #{pwd}, #{userName}
+               , #{addDetail}, #{email}, #{phoneNum},
+                #{adds}, #{joinDate})
     </insert>
 
     <!--    유저 찾기-->
     <select id="findUser" resultType="user">
         SELECT id, pwd
         FROM tbl_user
-        WHERE id = #{id}
+        WHERE user_no = #{userNo}
     </select>
 
     <!--    유저 수정-->
@@ -31,7 +33,7 @@
         WHERE user_no = #{userNo}
     </update>
 
-    <!--    회원가입 시 중복 검사 : resultType int 기입함 -->
+    <!--    회원가입 시 중복 검사  -->
     <select id="isDuplicate" resultType="int">
         SELECT COUNT(*)
         FROM tbl_user
