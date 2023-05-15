@@ -1,8 +1,6 @@
 -- database 이름 통일
 
 create database dogcommunity;
-default character
-set utf8  collate utf8_general_ci;
 
 use dogcommunity;
 

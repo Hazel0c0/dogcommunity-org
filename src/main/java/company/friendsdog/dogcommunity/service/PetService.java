@@ -23,11 +23,11 @@ public class PetService {
   // 이웃 찾기
   public List<PetCardResponseDTO> findingNeighbor(
           HttpSession session) {
-    // 세션(유저정보) -> 유저 adds
-//    String adds = LoginUtil.getCurrentLoginUser(session).getAdds();
-    String adds="강남구";
+    // 세션(유저정보) -> 유저 addr
+//    String addr = LoginUtil.getCurrentLoginUser(session).getAddr();
+    String addr="강남구";
 
-    return petMapper.findByAddress(adds);
+    return petMapper.findByAddress(addr);
   }
 
   public boolean delete(Long petNo) {

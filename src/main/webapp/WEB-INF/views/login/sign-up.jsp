@@ -16,7 +16,7 @@
 
 <body>
 <div class="loginWrap">
-    <form action="/user/sign-up" name="signup" id="signUpForm" method="post">
+    <form action="/user/join" name="signup" id="signUpForm" method="post">
     <section class="logInwithFB">
         <h1><img src="/assets/img/logo-instagram.png" alt="로고이미지" id="petstaLogo">Petstagram</h1>
         <p>Sign up to see photos and videos from your friends</p>
@@ -30,7 +30,7 @@
     <section class="signUpPage">
         <p id="showMessage"></p>
         <input type="text" placeholder="전화번호 또는 이메일" name="email" id="email" class="phone">
-        <select type="text" placeholder="주소" name="adds" id="adds">
+        <select type="text" placeholder="주소" name="addr" id="addr">
             <option value="">구 선택</option>
             <option value="강남구">강남구</option>
             <option value="강동구">강동구</option>
@@ -43,7 +43,7 @@
             <option value="노원구">노원구</option>
             <option value="도봉구">도봉구</option>
         </select>
-        <input type="text" placeholder="동" name="dong" id="dong">
+        <input type="text" placeholder="동" name="add_detail" id="add_detail">
         <input type="text" placeholder="사용자 이름" name="userName" id="userName">
         <input type="text" placeholder="아이디" name="id" id="id">
         <input type="text" placeholder="비밀번호" name="pwd" id="pwd">
@@ -64,7 +64,7 @@
 </body>
 <script>
     // 회원 가입 아이디 검증 : 전화번호(이메일), (주소), 사용자이름, 아이디, 비밀번호
-    //phoneNum adds userName id pwd
+    //phoneNum addr userName id pwd
     const checkResultList = [false, false, false, false, false];
 
     // 이메일 검사 정규표현식
@@ -233,7 +233,6 @@
             document.getElementById('showMessage').innerHTML
                 = '<b style="color: blue;">[사용가능한 비밀번호입니다.]</b>';
             checkResultList[4] = true;
-
         }
     };
 

@@ -23,7 +23,7 @@ public class PetCardResponseDTO {
   private LocalDateTime profileDateTime;
   private String hashtag;
 
-  private String adds;
+  private String addr;
   private String addDetail;
 
   private int likes; // 좋아요 수
@@ -31,7 +31,8 @@ public class PetCardResponseDTO {
 
 // 펫의 프로필 카드 객체
 
-  public PetCardResponseDTO(int petNo, String petName, int petAge, String petKind, Gender petGender, String petPhoto, LocalDateTime profileDateTime, String hashtag, String adds, String addDetail, int likes, int hits) {
+
+  public PetCardResponseDTO(int petNo, String petName, int petAge, String petKind, Gender petGender, String petPhoto, LocalDateTime profileDateTime, String hashtag, String addr, String addDetail, int likes, int hits) {
     this.petNo = petNo;
     this.petName = petName;
     this.petAge = petAge;
@@ -40,10 +41,8 @@ public class PetCardResponseDTO {
     this.petPhoto = petPhoto;
     this.profileDateTime = profileDateTime;
     this.hashtag = hashtag;
-
-    this.adds = adds;
+    this.addr = addr;
     this.addDetail = addDetail;
-
     this.likes = likes;
     this.hits = hits;
   }

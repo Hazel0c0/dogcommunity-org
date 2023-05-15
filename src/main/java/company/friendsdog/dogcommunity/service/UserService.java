@@ -36,7 +36,7 @@ public class UserService {
                 .userName(dto.getUserName())
                 .email(dto.getEmail())
                 .phoneNum(dto.getPhoneNum())
-                .adds(dto.getAdds())
+                .addr(dto.getAddr())
                 .build();
 
         return userMapper.save(newUser);
