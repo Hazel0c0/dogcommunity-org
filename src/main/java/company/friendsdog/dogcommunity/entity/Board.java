@@ -21,6 +21,8 @@ public class Board {
     private String attachedImg;
     private Long likes;
     private Long hits;
+    private String petName;
+    private String petPhoto;
 
     public Board(BoardRequestDTO dto) {
         this.petNo = dto.getPetNo();
@@ -31,5 +33,7 @@ public class Board {
         this.boardNo = dto.getBoardNo();
         this.likes = dto.getLikes();
         this.hits = dto.getHits();
+        this.petName = dto.getPetName();
+        this.petPhoto = dto.getPetPhoto();
     }
 }

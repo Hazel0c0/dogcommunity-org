@@ -41,9 +41,9 @@ public class BoardService {
     public boolean save(BoardRequestDTO dto, HttpSession session) {
 
         Board board = new Board(dto);
-        Long userNoInfo = LoginUtil.getCurrentLoginUserNo(session).getUserNo();
-        Long petNoInfo = petMapper.userFindPet(userNoInfo).getPetNo();
-        board.setPetNo(petNoInfo);
+//        Long userNoInfo = LoginUtil.getCurrentLoginUserNo(session).getUserNo();
+//        Long petNoInfo = petMapper.userFindPet(userNoInfo).getPetNo();
+//        board.setPetNo(petNoInfo);
         return petBoardMapper.save(board);
     }
 

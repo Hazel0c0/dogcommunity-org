@@ -9,14 +9,16 @@ import lombok.*;
 @EqualsAndHashCode
 public class BoardDetailResponseDTO {
 
-    private final Long boardNo;
-    private final Long petNo;
-    private final String title;
-    private final String content;
-    private final String date;
-    private final String attachedImg;
-    private final Long likes;
-    private final Long hits;
+    private Long boardNo;
+    private Long petNo;
+    private String petName;
+    private String petPhoto;
+    private String title;
+    private String content;
+    private String date;
+    private String attachedImg;
+    private Long likes;
+    private Long hits;
 
     public BoardDetailResponseDTO(Board board) {
         this.boardNo = board.getBoardNo();
@@ -27,6 +29,8 @@ public class BoardDetailResponseDTO {
         this.attachedImg = board.getAttachedImg();
         this.likes = board.getLikes();
         this.hits = board.getHits();
+        this.petName = board.getPetName();
+        this.petPhoto = board.getPetPhoto();
     }
 }
 

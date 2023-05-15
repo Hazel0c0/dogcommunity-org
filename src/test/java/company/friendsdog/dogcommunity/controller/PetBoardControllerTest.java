@@ -27,10 +27,11 @@ class PetBoardControllerTest {
         // given
 
         BoardRequestDTO b = BoardRequestDTO.builder()
-                .title("아아")
                 .content("호호")
                 .attachedImg("http://thumbnail.10x10.co.kr/webimage/image/basic600/290/B002903467.jpg?cmd=thumb&w=500&h=500&fit=true&ws=false")
                 .petNo(1L)
+                .petPhoto("ddd")
+                .petName("아아아")
                 .build();
 
 
@@ -51,8 +52,7 @@ class PetBoardControllerTest {
     @DisplayName("게시물 수정")
     void modify() {
         BoardRequestDTO b = BoardRequestDTO.builder()
-                .petNo(2L)
-                .title("안녕하세요")
+                .petNo(1L)
                 .content("영식")
                 .attachedImg("https://img1.daumcdn.net/thumb/R800x0/?scode=mtistory2&fname=https%3A%2F%2Ft1.daumcdn.net%2Fcfile%2Ftistory%2F2208AF3556A1D58E14")
                 .build();
@@ -61,7 +61,7 @@ class PetBoardControllerTest {
     @Test
     @DisplayName("하나의 게시물")
     void petFindOne() {
-        BoardDetailResponseDTO board = mapper.petFindOne(2L);
+        BoardDetailResponseDTO board = mapper.petFindOne(1L);
         System.out.println("build = " + board);
     }
 

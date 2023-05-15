@@ -49,7 +49,7 @@ public class BoardController {
         log.info("/board/detail : GET");
         BoardDetailResponseDTO dto = boardService.petFindOne(petNo);
         model.addAttribute("b", dto);
-        model.addAttribute("s", search);
+        model.addAttribute("p", search);
 
         return "board/detail";
 
@@ -59,7 +59,7 @@ public class BoardController {
     // 게시판 글쓰기 화면 조회 요청
     @GetMapping("/write")
     public String save(HttpSession session) {
-        log.info("/board/write : GET");
+        log.info("/board/write : GET@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@");
         return "board/write";
     }
 
@@ -68,7 +68,7 @@ public class BoardController {
     public String save(BoardRequestDTO dto, HttpSession session) {
 
 
-        log.info("/board/write : POST");
+        log.info("/board/write : POST@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@");
         boardService.save(dto,session);
         return "redirect:/board/list";
     }
