@@ -68,9 +68,7 @@
                         </div>
                     </div>
                     <div class="card-content">
-
                             ${b.shortContent}
-
                     </div>
                 </section>
 

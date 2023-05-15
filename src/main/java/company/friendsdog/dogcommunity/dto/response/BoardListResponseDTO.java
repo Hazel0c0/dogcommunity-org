@@ -30,7 +30,7 @@ public class BoardListResponseDTO {
     public BoardListResponseDTO(Board board) {
         this.petNo = board.getPetNo();
         this.boardNo = board.getBoardNo();
-        this.shortTitle = makeShortTitle(board.getTitle());
+        this.shortTitle = board.getTitle();
         this.shortContent = makeShortContent(board.getContent());
         this.date = makePrettierDateString(board.getBoardDateTime());
         this.attachedImg = board.getAttachedImg();
@@ -49,9 +49,9 @@ public class BoardListResponseDTO {
     }
 
 
-    private String makeShortTitle(String originTitle) {
-        return sliceString(originTitle, 10);
-    }
+//    private String makeShortTitle(String originTitle) {
+//        return sliceString(originTitle, 10);
+//    }
     private static String sliceString(String targetString, int wishLength) {
         return (targetString.length() > wishLength)
                 ? targetString.substring(0, wishLength) + "..."
