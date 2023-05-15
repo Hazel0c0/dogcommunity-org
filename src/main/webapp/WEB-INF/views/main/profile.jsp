@@ -91,7 +91,7 @@
         <textarea id="hashTag" name="hashTag" rows="4" required></textarea>
 
         <label for="profileSuggest">프로필에 계정 추천 표시</label>
-        <p id="suggestProfile">강아지의 프로필이 다른 프로필에서 추천될 수 있는지를 선택하세요.&nbsp;&nbsp;&nbsp;<input type="checkbox"></p>
+        <p id="suggestProfile">강아지의 프로필이 다른 프로필에서 추천될 수 있는지를 선택하세요.&nbsp;&nbsp;&nbsp;<input type="checkbox" name="profileSuggest"></p>
 
         <input type="submit" value="제출">
     </form>

@@ -42,7 +42,7 @@ public class UserController {
   }
 
   // 회원가입 처리 요청
-  @PostMapping("/sign-up")
+  @PostMapping("/join")
   public String userJoin(JoinRequestDTO dto){
     log.info("회원가입 POST : {}",dto);
     boolean flag = userService.userJoin(dto);
