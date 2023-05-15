@@ -29,7 +29,7 @@
     </section>
     <section class="signUpPage">
         <p id="showMessage"></p>
-        <input type="text" placeholder="전화번호 또는 이메일" name="email" id="email" class="phone">
+        <input type="email" placeholder="전화번호 또는 이메일" name="email" id="email" class="phone">
         <select type="text" placeholder="주소" name="addr" id="addr">
             <option value="">구 선택</option>
             <option value="강남구">강남구</option>
