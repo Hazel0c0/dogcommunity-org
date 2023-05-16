@@ -1,6 +1,7 @@
 package company.friendsdog.dogcommunity.controller;
 
 import company.friendsdog.dogcommunity.dto.PetProfileModifyRequestDTO;
+import company.friendsdog.dogcommunity.dto.request.PetProfileRequestDTO;
 import company.friendsdog.dogcommunity.dto.response.PetCardResponseDTO;
 import company.friendsdog.dogcommunity.entity.Pet;
 import company.friendsdog.dogcommunity.service.PetService;
@@ -35,9 +36,11 @@ public class PetController {
 
   // 펫 프로필 정보 요청
   @PostMapping("/profile")
-  public String petCardMake(Pet pet,HttpSession session) {
-    log.info("펫 카드 만들기 정보 : {}",pet);
-    petService.petCardMake(pet,session);
+  public String petCardMake(PetProfileRequestDTO dto, HttpSession session) {
+    log.info("펫 입력 정보 : {}",dto);
+    log.info("세션 : {}",session);
+
+    petService.petCardMake(dto,session);
     return "/user/main";
   }
 
