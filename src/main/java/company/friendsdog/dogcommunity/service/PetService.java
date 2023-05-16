@@ -52,6 +52,7 @@ public class PetService {
     return null;
   }
 
+
   public boolean delete(Long petNo) {
     return petMapper.delete(petNo);
   }
