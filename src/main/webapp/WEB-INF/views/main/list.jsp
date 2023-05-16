@@ -11,7 +11,7 @@
 <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet">
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.6.0/font/bootstrap-icons.css" />
 <!-- css -->
-<link rel="stylesheet" href="/assets/css/main.css">
+<link rel="stylesheet" href="/src/main/resources/static/assets/css/main.css">
 
 </head>
 <body>
@@ -34,7 +34,7 @@
                 <!-- 실제 내용을 담는 박스-->
                 <div class="card-title">
                     <!-- 사용자 이름 박스 시작-->
-                    <div class="miniprofile"><img src="../img/dog.jpg" alt="#"></div>
+                    <div class="miniprofile"><img src="${b.petPhoto}" alt="#"></div>
                     <div class="profile">
                         <h1 class="nickname">${b.petName}</h1>
                     </div>
@@ -44,6 +44,7 @@
                 
                 <div class="card-content">
                     <!-- 게시글 내용 시작 -->
+                   
                     <section class="eventbuttons">
                         <!-- 버튼 담는 박스 -->
                         <div class="th">
@@ -59,7 +60,7 @@
                             <!-- 저장 버튼 (보류) viewcount 로 대체예정-->
                         </div>
                     </section>
-                    <div class="card-text">${b.petName} , ${b.content}</div> <!-- 작성내용   -->
+                    <div class="card-text">${b.petName} , ${b.shortContent}</div> <!-- 작성내용   -->
                     <div class="regdate"> ${b.boardDateTime} 작성일자시간</div>
                 </div> <!-- 게시글 내용 끝-->
             </section>
@@ -71,7 +72,20 @@
 <!--// body-->
 
 
+<script>
+    document.getElementById('card_container')
 
+    const requsetInfo = {
+        method : 'POST',
+        Headers: {
+            'content-type' : 'application/json'
+        },
+    }
+
+
+    fetch('http://localhost8585/board/list', requsetInfo)
+
+</script>
 
 
 </body>
