@@ -2,6 +2,7 @@
 package company.friendsdog.dogcommunity.service;
 
 import company.friendsdog.dogcommunity.dto.PetProfileModifyRequestDTO;
+import company.friendsdog.dogcommunity.dto.request.PetProfileRequestDTO;
 import company.friendsdog.dogcommunity.dto.response.PetCardResponseDTO;
 import company.friendsdog.dogcommunity.entity.Pet;
 import company.friendsdog.dogcommunity.entity.User;
@@ -22,22 +23,56 @@ import static java.util.stream.Collectors.toList;
 public class PetService {
   private final PetMapper petMapper;
 
-  // 이웃 찾기
-  public List<PetCardResponseDTO> findingNeighbor(
-          HttpSession session) {
+  // 펫 카드 저장하기
+  public boolean petCardMake(PetProfileRequestDTO dto, HttpSession session) {
+    User sUser = LoginUtil.getCurrentLoginUser(session);
+    Pet newPet=Pet.builder()
+        .userNo(sUser.getUserNo())
+        .petName(dto.getPetName())
+        .petAge(dto.getPetAge())
+        .petKind(dto.getPetKind())
+        .petGender(dto.getPetGender())
+        .petPhoto(dto.getPetPhoto())
+        .hashtag(dto.getHashtag())
+        .addr(sUser.getAddr())
+        .addDetail(sUser.getAddDetail())
+        .build();
+
+    return petMapper.save(newPet);
+
+  }
+
+  // 이웃 찾기 (동별)
+  public List<PetCardResponseDTO> findOneNeighbor(
+      HttpSession session, String keyword) {
+
+    String addr = "강남구";
+    // '구'로 '동'찾기
+    List<String> dongList = petMapper.findDong(addr);
+
+
+    // 동에서 랜덤 한마리 강아지 대려오기
+    for(int i=0; i<dongList.size(); i++){
+      petMapper.randomPet(dongList.get(0));
+    }
+
+    dongList.forEach(dong ->petMapper.randomPet(dong));
+    return null;
+  }
+
+  public void as() {
     // 세션(유저정보) -> 유저 addr
 //    String addr = LoginUtil.getCurrentLoginUser(session).getAddr();
-    String addr="강남구";
-    String addrDetail="역삼동";
+    String addr = "강남구"; // 세션
+//    keyword = "역삼동"; // ㅇㅇ동
 
-    // 'ㅇㅇ구' 강아지
-    List<PetCardResponseDTO> addrList = petMapper.findByAddress(addr);
+//    List<PetCardResponseDTO> addrList = petMapper.findByAddress(addr, keyword);
 
-    return addrList;
+//    return addrList;
   }
   public void bestPet(HttpSession session){
-    Stream<PetCardResponseDTO> onePet = findingNeighbor(session)
-        .stream().limit(1);
+//    Stream<PetCardResponseDTO> onePet = findingNeighbor(session)
+//        .stream().limit(1);
   }
   public List<PetCardResponseDTO> findingNeighborDetail(){
     /*
