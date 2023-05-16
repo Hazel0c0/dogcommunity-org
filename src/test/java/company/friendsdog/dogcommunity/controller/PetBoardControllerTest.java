@@ -4,15 +4,12 @@ import company.friendsdog.dogcommunity.dto.page.Search;
 import company.friendsdog.dogcommunity.dto.request.BoardRequestDTO;
 import company.friendsdog.dogcommunity.dto.response.BoardDetailResponseDTO;
 import company.friendsdog.dogcommunity.dto.response.BoardListResponseDTO;
-import company.friendsdog.dogcommunity.entity.User;
 import company.friendsdog.dogcommunity.service.BoardService;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 
-import javax.servlet.http.HttpSession;
-import java.time.LocalDateTime;
 import java.util.List;
 
 @SpringBootTest
@@ -35,7 +32,7 @@ class PetBoardControllerTest {
                 .build();
 
 
-        boolean save = mapper.save(b, null);
+        boolean save = mapper.save(b, null, imgPath);
         System.out.println("saveBoard = " + save);
     }
 

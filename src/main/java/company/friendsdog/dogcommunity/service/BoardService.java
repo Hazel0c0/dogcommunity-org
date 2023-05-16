@@ -5,7 +5,6 @@ import company.friendsdog.dogcommunity.dto.request.BoardRequestDTO;
 import company.friendsdog.dogcommunity.dto.response.BoardDetailResponseDTO;
 import company.friendsdog.dogcommunity.dto.response.BoardListResponseDTO;
 import company.friendsdog.dogcommunity.entity.Board;
-import company.friendsdog.dogcommunity.entity.User;
 import company.friendsdog.dogcommunity.repository.BoardMapper;
 import company.friendsdog.dogcommunity.repository.PetMapper;
 import company.friendsdog.dogcommunity.util.LoginUtil;
@@ -15,7 +14,6 @@ import org.springframework.stereotype.Service;
 
 import javax.servlet.http.HttpSession;
 import java.util.List;
-import java.util.stream.Collectors;
 
 import static java.util.stream.Collectors.*;
 
@@ -38,16 +36,19 @@ public class BoardService {
     }
 
 //     게시판 업로드 중간처리
-    public boolean save(BoardRequestDTO dto, HttpSession session) {
+    public boolean save(BoardRequestDTO dto, HttpSession session, String imgPath) {
 
         Board board = new Board(dto);
-//        Long userNoInfo = LoginUtil.getCurrentLoginUserNo(session).getUserNo();
+        log.info(imgPath);
+        board.setAttachedImg(imgPath);
+//        Long userNoInfo = LoginUtil.getCurrentLoginUser(session).getUserNo();
 //        Long petNoInfo = petMapper.userFindPet(userNoInfo).getPetNo();
 //        String petNameInfo = petMapper.userFindPet(userNoInfo).getPetName();
 //        String petPhotoInfo = petMapper.userFindPet(userNoInfo).getPetPhoto();
 //        board.setPetNo(petNoInfo);
 //        board.setPetName(petNameInfo);
 //        board.setPetPhoto(petPhotoInfo);
+//        log.info("board의 값 : - {}", board);
         return petBoardMapper.save(board);
     }
 
