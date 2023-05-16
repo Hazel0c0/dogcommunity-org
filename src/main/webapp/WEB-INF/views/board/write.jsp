@@ -121,10 +121,6 @@ uri="http://java.sun.com/jsp/jstl/core" %>
     <div id="wrap" class="form-container">
         <h1>꾸러기 게시판 글쓰기</h1>
         <form action="/board/write" method="post" enctype="multipart/form-data">
-            <label for="user_no">회원 넘버</label>
-            <input type="hidden" id="user_no" required />
-            <label for="pet_no">애완동물 숫자</label>
-            <input type="text" id="pet_no" name="petNo" required />
             <label for="likes">좋아요 수</label>
             <input type="text" id="likes" name="likes" required />
             <div class="attachedImg">

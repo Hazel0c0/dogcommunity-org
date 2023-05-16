@@ -11,9 +11,9 @@
             , pet_gender,pet_photo, hashtag, addr
              , add_detail)
         VALUES
-            (#{user_no}, #{pet_name}, #{pet_age}, #{pet_kind}
-                , #{pet_gender}, #{pet_photo}, #{hashtag}, #{addr}
-                , #{add_detail})
+            (#{userNo}, #{petName}, #{petAge}, #{petKind}
+                , #{petGender}, #{petPhoto}, #{hashtag}, #{addr}
+                , #{addDetail})
     </insert>
 
 
@@ -61,7 +61,7 @@
 
     <select id="userFindPet" resultType="pet">
         SELECT
-            user_no, pet_no,pet_name,pet_name,pet_age
+            user_no, pet_no, pet_name,pet_age
                ,pet_kind,pet_gender,pet_photo
         FROM tbl_pet
         WHERE user_No = #{userNo}
