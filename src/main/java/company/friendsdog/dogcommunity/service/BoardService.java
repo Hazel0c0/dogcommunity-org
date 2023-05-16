@@ -41,14 +41,14 @@ public class BoardService {
         Board board = new Board(dto);
         log.info(imgPath);
         board.setAttachedImg(imgPath);
-//        Long userNoInfo = LoginUtil.getCurrentLoginUser(session).getUserNo();
-//        Long petNoInfo = petMapper.userFindPet(userNoInfo).getPetNo();
-//        String petNameInfo = petMapper.userFindPet(userNoInfo).getPetName();
-//        String petPhotoInfo = petMapper.userFindPet(userNoInfo).getPetPhoto();
-//        board.setPetNo(petNoInfo);
-//        board.setPetName(petNameInfo);
-//        board.setPetPhoto(petPhotoInfo);
-//        log.info("board의 값 : - {}", board);
+        Long userNoInfo = LoginUtil.getCurrentLoginUser(session).getUserNo();
+        Long petNoInfo = petMapper.userFindPet(userNoInfo).getPetNo();
+        String petNameInfo = petMapper.userFindPet(userNoInfo).getPetName();
+        String petPhotoInfo = petMapper.userFindPet(userNoInfo).getPetPhoto();
+        board.setPetNo(petNoInfo);
+        board.setPetName(petNameInfo);
+        board.setPetPhoto(petPhotoInfo);
+        log.info("board의 값 : - {}", board);
         return petBoardMapper.save(board);
     }
 

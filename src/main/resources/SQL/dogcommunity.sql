@@ -17,10 +17,8 @@ CREATE TABLE tbl_board (
                            likes INT DEFAULT 0,
                            hits INT DEFAULT 0,
                            pet_no INT,
-                           pet_name varchar(10),
-                           pet_photo varchar(2000),
                            FOREIGN KEY (pet_no)
-                               REFERENCES tbl_pet(pet_no)
+                           REFERENCES tbl_pet(pet_no)
 );
 
 -- 댓글
