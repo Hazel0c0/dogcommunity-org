@@ -83,13 +83,13 @@ public class UserController {
       // 세션에 로그인 정보 저장하기
       userService.maintainLoginState(
               request.getSession(), dto.getUserNo());
-      return "redirect:/";
+      return "redirect:/user/main";
     }
 
     log.info("로그인 실패");
     // 일회용 데이터
     ra.addFlashAttribute("msg", loginResult);
-    return "redirect:/members/sign-in";
+    return "redirect:/user/login";
   }
 
   // 로그아웃 요청 처리
