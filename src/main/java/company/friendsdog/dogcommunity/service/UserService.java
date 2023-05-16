@@ -37,6 +37,7 @@ public class UserService {
                 .email(dto.getEmail())
                 .phoneNum(dto.getPhoneNum())
                 .addr(dto.getAddr())
+            .addDetail(dto.getAdd_detail())
                 .build();
 
         return userMapper.save(newUser);
@@ -53,7 +54,7 @@ public class UserService {
     // 로그인 인증
     public LoginResult loginAuthenticate(LoginRequestDTO dto) {
 
-        User foundUser = userMapper.findUser(dto.getUserNo());
+        User foundUser = userMapper.findUser(dto.getId());
 
         if (foundUser == null) {
             log.info("{} 회원 정보 없음", dto.getId());
@@ -69,15 +70,15 @@ public class UserService {
 
     //로그인 상태 유지 (session 저장하기)
     public void maintainLoginState(
-            HttpSession session, Long uNo) {
+            HttpSession session, String id) {
         // 현재 로그인한 사람의 정보
-        User foundUser = findUser(uNo);
+        User foundUser = findUser(id);
         session.setAttribute("loginUser", foundUser);
         session.setMaxInactiveInterval(60 * 60); // 세션 - 1시간
     }
 
     // id로 유저 찾기
-    private User findUser(Long uNo) {
-        return userMapper.findUser(uNo);
+    private User findUser(String id) {
+        return userMapper.findUser(id);
     }
 }

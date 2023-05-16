@@ -40,12 +40,15 @@ public class PetService {
         .stream().limit(1);
   }
   public List<PetCardResponseDTO> findingNeighborDetail(){
+    /*
     // 'ㅇㅇ동' 강아지
     List<PetCardResponseDTO> addrDetailList = addList.stream()
         .filter(pet -> pet.getAddDetail().equals(addrDetail))
         .collect(toList());
 
     return addrDetailList;
+
+     */
     return null;
   }
 
