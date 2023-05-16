@@ -55,6 +55,22 @@ public class PetService {
 
     return addrList;
   }
+  public void bestPet(HttpSession session){
+    Stream<PetCardResponseDTO> onePet = findingNeighbor(session)
+        .stream().limit(1);
+  }
+  public List<PetCardResponseDTO> findingNeighborDetail(){
+    /*
+    // 'ㅇㅇ동' 강아지
+    List<PetCardResponseDTO> addrDetailList = addList.stream()
+        .filter(pet -> pet.getAddDetail().equals(addrDetail))
+        .collect(toList());
+
+    return addrDetailList;
+
+     */
+    return null;
+  }
 
 
   public boolean delete(Long petNo) {
@@ -82,7 +98,6 @@ public class PetService {
     pet.setPetPhoto(dto.getPetPhoto());
     return petMapper.modify(pet);
   }
-
 
 
 }

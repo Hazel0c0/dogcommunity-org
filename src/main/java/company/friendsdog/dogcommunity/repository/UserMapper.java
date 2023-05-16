@@ -8,7 +8,7 @@ import org.apache.ibatis.annotations.Param;
 public interface UserMapper {
 
   boolean save(User user);
-  User findUser(Long uNo);
+  User findUser(String id);
   void modify();
   int isDuplicate(
       @Param("type") String type,

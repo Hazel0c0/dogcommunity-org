@@ -14,5 +14,5 @@ public class JoinRequestDTO {
   private String email;
   private String phoneNum;
   private String addr;
-  private String add_detail;
+  private String addDetail;
 }

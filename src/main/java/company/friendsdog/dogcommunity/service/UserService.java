@@ -7,6 +7,7 @@ import company.friendsdog.dogcommunity.entity.Pet;
 import company.friendsdog.dogcommunity.entity.User;
 import company.friendsdog.dogcommunity.repository.PetMapper;
 import company.friendsdog.dogcommunity.repository.UserMapper;
+import company.friendsdog.dogcommunity.util.LoginUtil;
 import lombok.Builder;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
@@ -37,6 +38,7 @@ public class UserService {
                 .email(dto.getEmail())
                 .phoneNum(dto.getPhoneNum())
                 .addr(dto.getAddr())
+                .addDetail(dto.getAddDetail())
                 .build();
 
         return userMapper.save(newUser);
@@ -53,7 +55,7 @@ public class UserService {
     // 로그인 인증
     public LoginResult loginAuthenticate(LoginRequestDTO dto) {
 
-        User foundUser = userMapper.findUser(dto.getUserNo());
+        User foundUser = userMapper.findUser(dto.getId());
 
         if (foundUser == null) {
             log.info("{} 회원 정보 없음", dto.getId());
@@ -69,15 +71,18 @@ public class UserService {
 
     //로그인 상태 유지 (session 저장하기)
     public void maintainLoginState(
-            HttpSession session, Long uNo) {
+            HttpSession session, String id) {
         // 현재 로그인한 사람의 정보
-        User foundUser = findUser(uNo);
-        session.setAttribute("loginUser", foundUser);
+        User foundUser = findUser(id);
+        session.setAttribute(LoginUtil.LOGIN_KEY, foundUser);
         session.setMaxInactiveInterval(60 * 60); // 세션 - 1시간
+
+      Object sessionInfo = session.getAttribute(LoginUtil.LOGIN_KEY);
+      log.info("세션 {}",sessionInfo);
     }
 
     // id로 유저 찾기
-    private User findUser(Long uNo) {
-        return userMapper.findUser(uNo);
+    private User findUser(String id) {
+        return userMapper.findUser(id);
     }
 }
