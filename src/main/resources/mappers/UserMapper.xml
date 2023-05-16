@@ -17,7 +17,7 @@
 
     <!--    유저 찾기-->
     <select id="findUser" resultType="user">
-        SELECT id, pwd ,user_name, addr, add_detail
+        SELECT user_no,id, pwd ,user_name,email, addr, add_detail,join_data
         FROM tbl_user
         WHERE id = #{id}
     </select>

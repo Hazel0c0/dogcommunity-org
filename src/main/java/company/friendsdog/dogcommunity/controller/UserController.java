@@ -86,7 +86,8 @@ public class UserController {
       // 세션에 로그인 정보 저장하기
       userService.maintainLoginState(
           request.getSession(), dto.getId());
-      return "redirect:/main/main";
+
+      return "redirect:/user/main";
     }
 
     log.info("로그인 실패");

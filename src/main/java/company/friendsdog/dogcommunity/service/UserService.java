@@ -7,6 +7,7 @@ import company.friendsdog.dogcommunity.entity.Pet;
 import company.friendsdog.dogcommunity.entity.User;
 import company.friendsdog.dogcommunity.repository.PetMapper;
 import company.friendsdog.dogcommunity.repository.UserMapper;
+import company.friendsdog.dogcommunity.util.LoginUtil;
 import lombok.Builder;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
@@ -73,8 +74,11 @@ public class UserService {
             HttpSession session, String id) {
         // 현재 로그인한 사람의 정보
         User foundUser = findUser(id);
-        session.setAttribute("loginUser", foundUser);
+        session.setAttribute(LoginUtil.LOGIN_KEY, foundUser);
         session.setMaxInactiveInterval(60 * 60); // 세션 - 1시간
+
+      Object sessionInfo = session.getAttribute(LoginUtil.LOGIN_KEY);
+      log.info("세션 {}",sessionInfo);
     }
 
     // id로 유저 찾기
