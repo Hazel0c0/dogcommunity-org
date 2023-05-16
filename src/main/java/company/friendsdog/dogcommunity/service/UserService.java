@@ -75,7 +75,7 @@ public class UserService {
         // 현재 로그인한 사람의 정보
         User foundUser = findUser(id);
         session.setAttribute(LoginUtil.LOGIN_KEY, foundUser);
-        session.setMaxInactiveInterval(60 * 60); // 세션 - 1시간
+        session.setMaxInactiveInterval(60 * 60 * 24); // 세션 - 1시간
 
       Object sessionInfo = session.getAttribute(LoginUtil.LOGIN_KEY);
       log.info("세션 {}",sessionInfo);

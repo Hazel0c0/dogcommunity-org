@@ -9,17 +9,15 @@ import company.friendsdog.dogcommunity.entity.User;
 import company.friendsdog.dogcommunity.repository.PetMapper;
 import company.friendsdog.dogcommunity.util.LoginUtil;
 import lombok.RequiredArgsConstructor;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
 
 import javax.servlet.http.HttpSession;
 import java.util.List;
-import java.util.stream.Collectors;
-import java.util.stream.Stream;
-
-import static java.util.stream.Collectors.toList;
 
 @Service
 @RequiredArgsConstructor
+@Slf4j
 public class PetService {
   private final PetMapper petMapper;
 
@@ -42,49 +40,21 @@ public class PetService {
 
   }
 
-  // 이웃 찾기 (동별)
-  public List<PetCardResponseDTO> findOneNeighbor(
-      HttpSession session, String keyword) {
-
-    String addr = "강남구";
+  // 유저 있는 동 찾기
+  public List<String> findAddrDetail(HttpSession session) {
+    log.info("session : {}",session);
+    String addr = LoginUtil.getCurrentLoginUser(session).getAddr();
     // '구'로 '동'찾기
     List<String> dongList = petMapper.findDong(addr);
 
-
-    // 동에서 랜덤 한마리 강아지 대려오기
-    for(int i=0; i<dongList.size(); i++){
-      petMapper.randomPet(dongList.get(0));
-    }
-
-    dongList.forEach(dong ->petMapper.randomPet(dong));
-    return null;
+    return dongList;
   }
 
-  public void as() {
-    // 세션(유저정보) -> 유저 addr
-//    String addr = LoginUtil.getCurrentLoginUser(session).getAddr();
-    String addr = "강남구"; // 세션
-//    keyword = "역삼동"; // ㅇㅇ동
-
-//    List<PetCardResponseDTO> addrList = petMapper.findByAddress(addr, keyword);
-
-//    return addrList;
-  }
-  public void bestPet(HttpSession session){
-//    Stream<PetCardResponseDTO> onePet = findingNeighbor(session)
-//        .stream().limit(1);
-  }
-  public List<PetCardResponseDTO> findingNeighborDetail(){
-    /*
-    // 'ㅇㅇ동' 강아지
-    List<PetCardResponseDTO> addrDetailList = addList.stream()
-        .filter(pet -> pet.getAddDetail().equals(addrDetail))
-        .collect(toList());
-
-    return addrDetailList;
-
-     */
-    return null;
+  // ㅇㅇ동에 있는 모든 강아지 찾기
+  public List<Pet> findNeighbor(String addDetail){
+    log.info("선택한 동네 : {}",addDetail);
+    List<Pet> petByAddr = petMapper.findPetByAddr(addDetail);
+    return petByAddr;
   }
 
 
@@ -113,6 +83,7 @@ public class PetService {
     pet.setPetPhoto(dto.getPetPhoto());
     return petMapper.modify(pet);
   }
+
 
 
 }
