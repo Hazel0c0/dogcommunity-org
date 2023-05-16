@@ -27,11 +27,11 @@
 <header>
     <div class="inner-header">
         <h1 class="logo">
-            <a href="main.html">
+            <a href="/user/main">
                 <img src="/assets/img/logo-instagram.png" alt="로고이미지">
             </a>
         </h1>
-        <h2 class="intro-text"><a href="main.html">Petstagram</a></h2>
+        <h2 class="intro-text"><a href="/user/main">Petstagram</a></h2>
         <a href="#" class="menu-open">
             <span class="menu-txt">MENU</span>
             <span class="lnr lnr-menu"></span>

@@ -29,7 +29,7 @@
     </section>
     <section class="signUpPage">
         <p id="showMessage"></p>
-        <input type="text" placeholder="전화번호 또는 이메일" name="email" id="email" class="phone">
+        <input type="email" placeholder="전화번호 또는 이메일" name="email" id="email" class="phone">
         <select type="text" placeholder="주소" name="addr" id="addr">
             <option value="">구 선택</option>
             <option value="강남구">강남구</option>
@@ -46,13 +46,13 @@
         <input type="text" placeholder="동" name="add_detail" id="add_detail">
         <input type="text" placeholder="사용자 이름" name="userName" id="userName">
         <input type="text" placeholder="아이디" name="id" id="id">
-        <input type="text" placeholder="비밀번호" name="pwd" id="pwd">
-        <button id="signup-btn">Sign Up</button>
+        <input type="password" placeholder="비밀번호" name="pwd" id="pwd">
+        <input type="button" id="signup-btn" value="Sign Up" style="  background: rgb(61, 61, 227); color: white; letter-spacing: 2px; margin-top: 10px;">
         <p>By signing up, you agree to our Terms, Data Policy and Cookies Policy.</p>
     </section>
     <section class="logIn">
         <button class="haveAccount" style="border-color: darkgrey;">
-            <a href="/user/login" class="noneunderline">
+            <a href="/user/login" class="logInBtn">
                 <p>Have an account?
                     <strong style="color:rgb(89, 166, 221)"> Log in</strong>
                 </p>
@@ -68,7 +68,7 @@
     const checkResultList = [false, false, false, false, false];
 
     // 이메일 검사 정규표현식
-    const emailPattern = /^[A-Za-z0-9_\.\-]+@[A-Za-z0-9\-]+\.[A-Za-z0-9\-]+/;
+    const emailPattern = /^[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\.[A-Za-z]{2,}$/;
 
     // 이메일 입력값 검증
     const $emailInput = document.getElementById('email');
@@ -107,14 +107,23 @@
                 });
         }
     };
+    // 주소 구 선택
+    const $addrClick = document.getElementById('addr');
+
+    $addrClick.addEventListener('change', function() {
+        const addrValue = $addrClick.value;
+        console.log(addrValue);
+
+    });
 
     // 주소 값 동 정규 표현식
     const addressPattern = /^[^0-9]+동$/;
 
-    const $dongInput = document.getElementById('dong');
+    const $dongInput = document.getElementById('add_detail');
 
     $dongInput.onkeyup = e => {
         const dongValue = $dongInput.value;
+        console.log(dongValue);
 
         if (dongValue.trim() === '') {
             $dongInput.style.borderColor = 'red';
@@ -122,7 +131,7 @@
             checkResultList[1] = false;
         } else if (!addressPattern.test(dongValue)) {
             $dongInput.style.borderColor = 'red';
-            document.getElementById('showMessage').innerHTML = '<b style="color: red;">[제대로 입력 해주세요.]</b>';
+            document.getElementById('showMessage').innerHTML = '<b style="color: red;">[동까지만 입력해주세요.]</b>';
             checkResultList[1] = false;
         } else {
             $dongInput.style.borderColor = 'blue';
@@ -130,8 +139,6 @@
             checkResultList[1] = true;
         }
     };
-
-
 
 
         // 사용자 이름 검사 정규표현식
@@ -164,7 +171,7 @@
     };
 
     // 아이디 검사 정규표현식
-    const accountPattern = /^[a-zA-Z0-9]{4,14}$/;
+    const accountPattern = /^[A-Za-z0-9]{4,12}$/;
 
     // 아이디 입력값 검증
     const $idInput = document.getElementById('id');
@@ -182,7 +189,7 @@
     } else if(!accountPattern.test(idValue)) { // 테스트 할때 아이디 값을 정규표현식으로 테스트 한다.
         $idInput.style.borderColor='red';
         document.getElementById('showMessage').innerHTML
-            = '<b style="color:red;">[아이디는 4- 14글자의 영문, 숫자로 입력하세요.]</b>';
+            = '<b style="color:red;">[아이디는 4- 12글자의 영문, 숫자로 입력하세요.]</b>';
         checkResultList[3] = false;
     } else {
         // 아이디 중복검사
@@ -216,7 +223,7 @@
     $pwInput.onkeyup = e => {
 
         const pwValue = $pwInput.value;
-        // console.log(pwValue);
+         console.log(pwValue);
 
         if (pwValue.trim() === '') {
             $pwInput.style.borderColor = 'red';
@@ -238,17 +245,17 @@
 
     // 회원 가입 버튼 클릭 이벤트
     document.getElementById('signup-btn').onclick = e => {
-
+        console.log("사인업 버튼 클릭함");
         // 5개의 입력칸이 모두 통과되었을 경우 폼을 서브밋 한다.
         const $form = document.getElementById('signUpForm');
-        // if(!checkResultList.includes(false)) { // 한 칸이라도 틀린게 없다면
+        if(!checkResultList.includes(false)) { // 한 칸이라도 틀린게 없다면
             $form.submit();
             console.log($form);
             // $rt.value = '';
             // $rw.value = '';
-        // } else {
-        //     alert('입력란을 다시 확인하세요!');
-        // }
+        } else {
+            alert('입력란을 다시 확인하세요!');
+        }
     };
 
 </script>

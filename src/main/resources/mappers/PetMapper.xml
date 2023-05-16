@@ -4,7 +4,7 @@
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="company.friendsdog.dogcommunity.repository.PetMapper">
 
-<!--    이웃 찾기-->
+<!--  ㅇㅇ구 강아지 찾기-->
     <select id="findByAddress" resultType="neighbor">
         SELECT P.pet_no
              , P.pet_name
@@ -13,14 +13,15 @@
              , P.pet_gender
              , P.pet_photo
              , P.pet_date_time
-             , P.hashTag
+             , P.hashtag
              , U.addr
              , U.add_detail
+            ,P.likes , P.hits
         FROM tbl_pet P
                  LEFT JOIN tbl_user U
                            ON P.user_no = U.user_no
         WHERE U.addr = #{addr}
-        ORDER BY pet_date_time DESC
+        ORDER BY likes DESC;
     </select>
 
     <delete id="delete">
@@ -38,7 +39,6 @@
     </update>
 
     <select id="findOne" resultType="petCard">
-
         SELECT
             pet_no,pet_name,pet_name,pet_age,pet_kind,
             pet_gender,pet_photo
