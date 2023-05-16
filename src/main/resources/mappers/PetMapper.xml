@@ -4,6 +4,19 @@
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="company.friendsdog.dogcommunity.repository.PetMapper">
 
+<!--    펫 저장하기 -->
+    <insert id="save">
+        INSERT INTO tbl_pet
+            (user_no, pet_name, pet_age, pet_kind
+            , pet_gender,pet_photo, hashtag, addr
+             , add_detail)
+        VALUES
+            (#{user_no}, #{pet_name}, #{pet_age}, #{pet_kind}
+                , #{pet_gender}, #{pet_photo}, #{hashtag}, #{addr}
+                , #{add_detail})
+    </insert>
+
+
 <!--  ㅇㅇ동 강아지 찾기-->
     <select id="findByAddress" resultType="neighbor">
         SELECT P.pet_no
@@ -38,7 +51,7 @@
         WHERE pet_no=#{petNo}
     </update>
 
-    <select id="findOne" resultType="petCard">
+    <select id="findOne" resultType="pet">
         SELECT
             pet_no,pet_name,pet_name,pet_age,pet_kind,
             pet_gender,pet_photo
@@ -46,7 +59,7 @@
         WHERE pet_no = #{petNo}
     </select>
 
-    <select id="userFindPet" resultType="petCard">
+    <select id="userFindPet" resultType="pet">
         SELECT
             user_no, pet_no,pet_name,pet_name,pet_age
                ,pet_kind,pet_gender,pet_photo

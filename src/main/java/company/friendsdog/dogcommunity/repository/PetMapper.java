@@ -10,6 +10,9 @@ import java.util.List;
 
 @Mapper
 public interface PetMapper {
+  // 모든 펫 찾기
+  List<Pet> findAll();
+
   // 이웃 펫 조회하기
   List<PetCardResponseDTO> findByAddress(
       @Param("addr") String adds,

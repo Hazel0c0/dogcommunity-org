@@ -22,6 +22,11 @@ import static java.util.stream.Collectors.toList;
 public class PetService {
   private final PetMapper petMapper;
 
+  // 펫 카드 저장하기
+  public boolean petCardMake(Pet pet, HttpSession session) {
+    petMapper.save()
+  }
+
   // 이웃 찾기 (동별)
   public List<PetCardResponseDTO> findOneNeighbor(
       HttpSession session, String keyword) {
@@ -32,9 +37,8 @@ public class PetService {
 
 
     // 동에서 랜덤 한마리 강아지 대려오기
-    List<PetCardResponseDTO> pet;
     for(int i=0; i<dongList.size(); i++){
-      PetCardResponseDTO a = petMapper.randomPet(dongList.get(0));
+      petMapper.randomPet(dongList.get(0));
     }
 
     dongList.forEach(dong ->petMapper.randomPet(dong));
@@ -78,6 +82,7 @@ public class PetService {
     pet.setPetPhoto(dto.getPetPhoto());
     return petMapper.modify(pet);
   }
+
 
 
 }

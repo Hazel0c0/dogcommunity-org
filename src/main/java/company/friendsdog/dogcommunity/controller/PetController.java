@@ -24,15 +24,23 @@ import static org.springframework.http.ResponseEntity.*;
 @RequestMapping("/pet")
 @Slf4j
 public class PetController {
+  private final PetService petService;
 
-  // 펫 프로필 기입
+  // 펫 프로필 카드 만들기 페이지 요청
   @GetMapping("/profile")
-  public String petCard() {
-    log.info("GET");
+  public String petCardMake() {
+    log.info("펫 카드 만들기 GET");
     return "/main/profile";
   }
 
-  private final PetService petService;
+  // 펫 프로필 정보 요청
+  @PostMapping("/profile")
+  public String petCardMake(Pet pet,HttpSession session) {
+    log.info("펫 카드 만들기 정보 : {}",pet);
+    petService.petCardMake(pet,session);
+    return "/user/main";
+  }
+
 
   // 강남구 강아지 요청
   @GetMapping("/neighbor1")
@@ -54,7 +62,7 @@ public class PetController {
   ) {
 //        session=null;
     log.info("/petprofile/list : GET");
-
+/*
     // ㅇㅇ동 전체 강아지
     List<PetCardResponseDTO> petList = petService.findingNeighbor(null, keyword);
 
@@ -65,6 +73,8 @@ public class PetController {
     model.addAttribute("petList", petList);
     model.addAttribute("bestPet", bestPet);
 
+
+ */
     return "/pet/neighbor";
   }
 
