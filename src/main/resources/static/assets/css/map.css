@@ -1,0 +1,209 @@
+section {
+    text-align: center;
+    margin-top: 100px;
+    border: 1px solid #000;
+}
+
+
+.mapbox img {
+    position: relative;
+    width: 600px;
+    width: 500px;
+    border: 2px dashed #000;
+}
+
+.buttonbox {
+    border-radius: 50%;
+    width: 50px;
+    height: 50px;
+
+    position: absolute;
+}
+
+
+
+
+.choice {
+    display: block;
+
+    color: #fff;
+
+    border-radius: 50%;
+    font-size: 12px;
+}
+
+
+.a1 {
+    /* background: #000; */
+
+    top: 120px;
+    left: 39.9%;
+
+    width: 2.5rem;
+    height: 2.5rem;
+    /* border: 1px solid #000; */
+
+}
+
+.a2 {
+    /* background: blue; */
+
+    top: 160px;
+    left: 39.8%;
+
+    width: 2.5rem;
+    height: 2.5rem;
+}
+
+.a3 {
+    /* background: red; */
+
+    top: 210px;
+    left: 40.5%;
+
+    width: 2.5rem;
+    height: 2.5rem;
+}
+
+.a4 {
+    /* background: yellow; */
+  
+    top: 160px;
+    left: 44.5%;
+
+    width: 2.5rem;
+    height: 2.5rem;
+}
+
+.a5 {
+    /* background: greenyellow; */
+
+    top: 210px;
+    left: 45.5%;
+
+    width: 2.5rem;
+    height: 2.5rem;
+}
+
+.a6 {
+    /* background: gray; */
+
+    top: 29%;
+    left: 41.5%;
+
+    width: 2.5rem;
+    height: 2.5rem;
+}
+
+.a7 {
+    /* background: pink; */
+
+    top: 29%;
+    left: 46.8%;
+
+    width: 2.5rem;
+    height: 2.5rem;
+}
+
+.a8 {
+    top: 36%;
+    left: 43%;
+
+    width: 2.5rem;
+    height: 2.5rem;
+}
+
+.a9 {
+    top: 42.5%;
+    left: 45.5%;
+
+    width: 2.5rem;
+    height: 2.5rem;
+}
+
+.a10 {
+    top: 37%;
+    left: 48%;
+
+    width: 2.5rem;
+    height: 2.5rem;
+}
+
+.a11 {
+    top: 38%;
+    left: 52%;
+
+    width: 2.5rem;
+    height: 2.5rem;
+}
+
+.a12 {
+    top: 42%;
+    left: 55%;
+
+    width: 2.5rem;
+    height: 2.5rem;
+}
+
+.a13 {
+    top: 45%;
+    left: 58%;
+
+    width: 2.5rem;
+    height: 2.5rem;
+}
+
+.a14 {
+    top: 48%;
+    left: 55.5%;
+
+    width: 2.5rem;
+    height: 2.5rem;
+}
+
+.b1 {
+    background: black;
+    /* border: 2px solid #000; */
+}
+.b2 {
+    background: blue;   
+}
+.b3 {
+    background: red;
+}
+.b4 {
+    background: yellow;
+    color: #000;
+}
+.b5 {
+    background: orange;
+}
+.b6 {
+    background: orangered;
+}
+.b7 {
+    background: violet;
+}
+.b8 {
+    background: pink;
+}
+.b9 {
+    background: gray;
+}
+.b10 {
+    background: green;
+}
+.b11 {
+    background:  greenyellow;
+    color: black;
+}
+.b12 {
+    background: #fff;
+    color: black;
+}
+.b13 {
+    background: #c45454;
+}
+.b14 {
+    background: #42bd84;
+}

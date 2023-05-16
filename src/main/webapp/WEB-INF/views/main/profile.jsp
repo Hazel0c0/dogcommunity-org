@@ -27,11 +27,11 @@
 <header>
     <div class="inner-header">
         <h1 class="logo">
-            <a href="main.html">
+            <a href="/user/main">
                 <img src="/assets/img/logo-instagram.png" alt="로고이미지">
             </a>
         </h1>
-        <h2 class="intro-text"><a href="main.html">Petstagram</a></h2>
+        <h2 class="intro-text"><a href="/user/main">Petstagram</a></h2>
         <a href="#" class="menu-open">
             <span class="menu-txt">MENU</span>
             <span class="lnr lnr-menu"></span>
@@ -91,7 +91,7 @@
         <textarea id="hashTag" name="hashTag" rows="4" required></textarea>
 
         <label for="profileSuggest">프로필에 계정 추천 표시</label>
-        <p id="suggestProfile">강아지의 프로필이 다른 프로필에서 추천될 수 있는지를 선택하세요.&nbsp;&nbsp;&nbsp;<input type="checkbox"></p>
+        <p id="suggestProfile">강아지의 프로필이 다른 프로필에서 추천될 수 있는지를 선택하세요.&nbsp;&nbsp;&nbsp;<input type="checkbox" name="profileSuggest"></p>
 
         <input type="submit" value="제출">
     </form>

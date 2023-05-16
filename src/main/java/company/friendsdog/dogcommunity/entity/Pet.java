@@ -21,7 +21,4 @@ public class Pet {
     private String petPhoto;
     private LocalDateTime profileDateTime;
     private String hashtag;
-
-
-
 }

@@ -4,19 +4,20 @@
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="company.friendsdog.dogcommunity.repository.UserMapper">
 
-
     <!--   회원 저장-->
     <insert id="save">
         INSERT INTO tbl_user
-        (user_no, id, pwd, user_name,
-         email, phone_num, adds, join_date)
-        VALUES (#{userNo}, #{id}, #{pwd}, #{userName}
-            #{email}, #{phoneNum}, #{adds}, #{joinDate})
+        (user_no, id, pwd, user_name
+         ,email, addr, add_detail
+             , join_date)
+        VALUES ( #{userNo}, #{id}, #{pwd}, #{userName}
+               , #{email}, #{addr}, #{addDetail}
+              ,#{joinDate})
     </insert>
 
     <!--    유저 찾기-->
     <select id="findUser" resultType="user">
-        SELECT id, pwd
+        SELECT user_no,id, pwd ,user_name,email, addr, add_detail,join_data
         FROM tbl_user
         WHERE id = #{id}
     </select>
@@ -27,25 +28,24 @@
         SET pwd=#{pwd},
             email=#{email},
             phone_num=#{phoneNum},
-            adds=#{adds}
+            addr=#{addr}
         WHERE user_no = #{userNo}
     </update>
 
-    <!--    회원가입 시 중복 검사 : resultType int 기입함 -->
+    <!--    회원가입 시 중복 검사  -->
     <select id="isDuplicate" resultType="int">
         SELECT COUNT(*)
         FROM tbl_user
         <if test="type=='email'">
-            WHERE email=#{email}
+            WHERE email=#{keyword}
         </if>
         <if test="type=='phoneNum'">
-            WHERE phone_num=#{phoneNum}
+            WHERE phone_num=#{keyword}
         </if>
         <if test="type=='id'">
-            WHERE id=#{id}
+            WHERE id=#{keyword}
         </if>
     </select>
-
 
 
 </mapper>

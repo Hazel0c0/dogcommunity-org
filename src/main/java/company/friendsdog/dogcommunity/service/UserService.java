@@ -7,6 +7,7 @@ import company.friendsdog.dogcommunity.entity.Pet;
 import company.friendsdog.dogcommunity.entity.User;
 import company.friendsdog.dogcommunity.repository.PetMapper;
 import company.friendsdog.dogcommunity.repository.UserMapper;
+import company.friendsdog.dogcommunity.util.LoginUtil;
 import lombok.Builder;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
@@ -36,7 +37,8 @@ public class UserService {
                 .userName(dto.getUserName())
                 .email(dto.getEmail())
                 .phoneNum(dto.getPhoneNum())
-                .adds(dto.getAdds())
+                .addr(dto.getAddr())
+                .addDetail(dto.getAddDetail())
                 .build();
 
         return userMapper.save(newUser);
@@ -52,36 +54,35 @@ public class UserService {
 
     // 로그인 인증
     public LoginResult loginAuthenticate(LoginRequestDTO dto) {
+
         User foundUser = userMapper.findUser(dto.getId());
 
         if (foundUser == null) {
-            log.info("{} 회원 정보 없음", dto);
+            log.info("{} 회원 정보 없음", dto.getId());
             return NO_ACC;
         }
         if (!encoder.matches(dto.getPwd(), foundUser.getPwd())) {
             log.info("비밀번호 불일치");
             return NO_PW;
         }
-        log.info("{}님 로그인 성공", foundUser.getUserNo());
+        log.info("{}님 로그인 성공", foundUser.getUserName());
         return SUCCESS;
     }
 
     //로그인 상태 유지 (session 저장하기)
     public void maintainLoginState(
-            HttpSession session, Long uNo) {
+            HttpSession session, String id) {
         // 현재 로그인한 사람의 정보
-        Pet findPet = findPet(uNo);
-        LoginPetResponseDTO loginDto = LoginPetResponseDTO.builder()
-                .petNo(findPet.getPetNo())
-                .petName(findPet.getPetName())
-                .petPhoto(findPet.getPetPhoto())
-                .build();
-        session.setAttribute("loginUserPet", loginDto);
+        User foundUser = findUser(id);
+        session.setAttribute(LoginUtil.LOGIN_KEY, foundUser);
         session.setMaxInactiveInterval(60 * 60); // 세션 - 1시간
+
+      Object sessionInfo = session.getAttribute(LoginUtil.LOGIN_KEY);
+      log.info("세션 {}",sessionInfo);
     }
 
     // id로 유저 찾기
-    private Pet findPet(Long uNo) {
-        return petMapper.userFindPet(uNo);
+    private User findUser(String id) {
+        return userMapper.findUser(id);
     }
 }
