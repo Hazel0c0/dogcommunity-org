@@ -4,6 +4,7 @@ import lombok.*;
 
 import java.time.LocalDateTime;
 
+
 @Setter
 @Getter
 @ToString
@@ -20,7 +21,7 @@ public class User {
     private String userName;
     private String email;
     private String phoneNum;
-    private String adds;
+    private String addr;
+    private String addDetail;
     private LocalDateTime joinDate;
-
 }

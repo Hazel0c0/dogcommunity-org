@@ -12,8 +12,7 @@
     <%@ include file="../include/static-head.jsp" %>
 
     <!-- side menu event js defer : 지연 메뉴 걸기 -->
-    <script src="side-menu.js" defer></script>
-
+    <script src="/assets/js/side-menu.js" defer></script>
     <!-- 말풍선 -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.6.0/font/bootstrap-icons.css" />
@@ -27,11 +26,11 @@
 <header>
     <div class="inner-header">
         <h1 class="logo">
-            <a href="main.html">
+            <a href="/user/main">
                 <img src="/assets/img/logo-instagram.png" alt="로고이미지">
             </a>
         </h1>
-        <h2 class="intro-text"><a href="main.html">Petstagram</a></h2>
+        <h2 class="intro-text"><a href="/user/main">Petstagram</a></h2>
         <a href="#" class="menu-open">
             <span class="menu-txt">MENU</span>
             <span class="lnr lnr-menu"></span>

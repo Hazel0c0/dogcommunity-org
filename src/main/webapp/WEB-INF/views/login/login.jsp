@@ -18,34 +18,48 @@
 
 <body>
 <div class="wrap">
-    <section class="loginPage">
-        <h1><img src="/assets/img/logo-instagram.png" alt="로고이미지" id="petstaLogo">Petstagram</h1>
-        <input type="text" placeholder="전화번호, 이메일 또는 아이디 " class="logInPart" name="id">
-        <input type="password" placeholder="비밀번호" class="logInPart" name="pwd">
-        <button class="logInPart ordinaryLogin unactivatedLoginColor">Log In</button>
-    </section>
-    <section class="loginOtherWay">
-        <div>
-            <div class="or"> OR </div>
-        </div>
-        <div>
-            <a href="https://www.facebook.com/" class="loginFB"><span class="fab fa-facebook"></span> Log in with
-                Facebook</a>
-        </div>
-        <div>
-            <a href="#" class="forgotPwd">Forget password?</a>
-        </div>
-    </section>
-    <section class="joinUs">
-        <button class="makeAccount" style="border-color: darkgrey;">
-            <a href="/user/join" class="noneunderline">
-                <p>Don't have an account?
-                    <strong style="color:rgb(89, 166, 221)"> Sign up</strong>
-                </p>
-            </a>
-        </button>
-    </section>
+    <form action="/user/login" name="login" method="post">
+        <section class="loginPage">
+            <h1><img src="/assets/img/logo-instagram.png" alt="로고이미지" id="petstaLogo">Petstagram</h1>
+            <input type="text" placeholder="전화번호, 이메일 또는 아이디 " class="logInPart" name="id">
+            <input type="password" placeholder="비밀번호" class="logInPart" name="pwd">
+            <input type="submit" id="logInBtn" value="Log In"
+                   style="  background: rgb(61, 61, 227); color: white; letter-spacing: 2px; margin-top: 10px;">
+        </section>
+        <section class="loginOtherWay">
+            <div>
+                <div class="or"> OR</div>
+            </div>
+            <div>
+                <a href="https://www.facebook.com/" class="loginFB"><span class="fab fa-facebook"></span> Log in with
+                    Facebook</a>
+            </div>
+            <div>
+                <a href="#" class="forgotPwd">Forget password?</a>
+            </div>
+        </section>
+        <section class="joinUs">
+            <button class="makeAccount" style="border-color: darkgrey;">
+                <a href="/user/join" class="noneunderline">
+                    <p>Don't have an account?
+                        <strong style="color:rgb(89, 166, 221)"> Sign up</strong>
+                    </p>
+                </a>
+            </button>
+        </section>
+    </form>
 </div>
+<script>
+
+    const serverMessage = '${msg}';
+    console.log('msg:' + serverMessage);
+
+    if (serverMessage == 'NO_ACC') {
+        alert('회원가입부터 하십시오.');
+    } else if (serverMessage == 'NO_PW') {
+        alert('비밀번호가 틀렸습니다.');
+    }
+</script>
 </body>
 </html>
 

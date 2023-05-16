@@ -15,8 +15,7 @@ class PetProfileControllerTest {
     @Test
     @DisplayName("프로필 삭제")
     void delete() {
-       Long petNo = 3L;
+        Long petNo = 3L;
         mapper.delete(petNo);
-
     }
 }
