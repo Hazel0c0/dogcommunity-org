@@ -31,6 +31,7 @@ public class PetController {
   @GetMapping("/profile")
   public String petCardMake() {
     log.info("펫 카드 만들기 GET");
+
     return "/main/profile";
   }
 
