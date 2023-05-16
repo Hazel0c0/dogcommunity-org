@@ -12,9 +12,9 @@ import java.time.LocalDateTime;
 @AllArgsConstructor
 @Builder
 public class Reply {
-    private int boardNo;
-    private int petNo;
-    private int replyNo;
+    private Long boardNo;
+    private Long petNo;
+    private Long replyNo;
     private String comment;
     private LocalDateTime replyDateTime;
 

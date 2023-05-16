@@ -1,22 +1,16 @@
 package company.friendsdog.dogcommunity.service;
 
-import company.friendsdog.dogcommunity.controller.PetBoardController;
-import company.friendsdog.dogcommunity.dto.page.Search;
-import company.friendsdog.dogcommunity.dto.request.PetBoardRequestDTO;
-import company.friendsdog.dogcommunity.dto.response.PetBoardDetailResponseDTO;
 import company.friendsdog.dogcommunity.entity.Board;
-import company.friendsdog.dogcommunity.repository.PetBoardMapper;
+import company.friendsdog.dogcommunity.repository.BoardMapper;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 
-import static org.junit.jupiter.api.Assertions.*;
-
 @SpringBootTest
 class PetBoardServiceTest {
     @Autowired
-    PetBoardMapper mapper;
+    BoardMapper mapper;
 
 //    @Test
 //    @DisplayName("게시물 작성")
@@ -36,7 +30,7 @@ class PetBoardServiceTest {
     @Test
     @DisplayName("게시물 삭제")
     void delete() {
-        int boardNo = 1;
+        Long boardNo = 1L;
         mapper.delete(boardNo);
     }
 
@@ -56,7 +50,7 @@ class PetBoardServiceTest {
     @Test
     @DisplayName("하나의 게시물")
     void petFindOne() {
-        Board board = mapper.petFindOne(2);
+        Board board = mapper.petFindOne(2L);
         System.out.println("build = " + board);
 
     }
