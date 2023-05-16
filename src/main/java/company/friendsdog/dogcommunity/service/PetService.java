@@ -2,6 +2,7 @@
 package company.friendsdog.dogcommunity.service;
 
 import company.friendsdog.dogcommunity.dto.PetProfileModifyRequestDTO;
+import company.friendsdog.dogcommunity.dto.request.PetProfileRequestDTO;
 import company.friendsdog.dogcommunity.dto.response.PetCardResponseDTO;
 import company.friendsdog.dogcommunity.entity.Pet;
 import company.friendsdog.dogcommunity.entity.User;
@@ -23,8 +24,22 @@ public class PetService {
   private final PetMapper petMapper;
 
   // 펫 카드 저장하기
-  public boolean petCardMake(Pet pet, HttpSession session) {
-    petMapper.save()
+  public boolean petCardMake(PetProfileRequestDTO dto, HttpSession session) {
+    User sUser = LoginUtil.getCurrentLoginUser(session);
+    Pet newPet=Pet.builder()
+        .userNo(sUser.getUserNo())
+        .petName(dto.getPetName())
+        .petAge(dto.getPetAge())
+        .petKind(dto.getPetKind())
+        .petGender(dto.getPetGender())
+        .petPhoto(dto.getPetPhoto())
+        .hashtag(dto.getHashtag())
+        .addr(sUser.getAddr())
+        .addDetail(sUser.getAddDetail())
+        .build();
+
+    return petMapper.save(newPet);
+
   }
 
   // 이웃 찾기 (동별)
@@ -49,15 +64,15 @@ public class PetService {
     // 세션(유저정보) -> 유저 addr
 //    String addr = LoginUtil.getCurrentLoginUser(session).getAddr();
     String addr = "강남구"; // 세션
-    keyword = "역삼동"; // ㅇㅇ동
+//    keyword = "역삼동"; // ㅇㅇ동
 
-    List<PetCardResponseDTO> addrList = petMapper.findByAddress(addr, keyword);
+//    List<PetCardResponseDTO> addrList = petMapper.findByAddress(addr, keyword);
 
-    return addrList;
+//    return addrList;
   }
   public void bestPet(HttpSession session){
-    Stream<PetCardResponseDTO> onePet = findingNeighbor(session)
-        .stream().limit(1);
+//    Stream<PetCardResponseDTO> onePet = findingNeighbor(session)
+//        .stream().limit(1);
   }
   public List<PetCardResponseDTO> findingNeighborDetail(){
     /*

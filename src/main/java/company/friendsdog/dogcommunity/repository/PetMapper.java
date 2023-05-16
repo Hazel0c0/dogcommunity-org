@@ -10,6 +10,11 @@ import java.util.List;
 
 @Mapper
 public interface PetMapper {
+
+  // 펫 추가하기
+  boolean save(Pet pet);
+
+
   // 모든 펫 찾기
   List<Pet> findAll();
 
@@ -36,6 +41,8 @@ public interface PetMapper {
   List<String> findDong(String addr);
 
   PetCardResponseDTO randomPet(String addDetail);
+
+
 
   // pet dto 수정할거 필드 2~3개
 }
