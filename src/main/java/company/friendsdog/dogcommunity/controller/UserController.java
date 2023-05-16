@@ -67,29 +67,29 @@ public class UserController {
   public String login(HttpServletRequest request) {
     log.info("로그인 GET");
 
+    String referer = request.getHeader("Referer");
+    log.info("referer: {}", referer);
     return "/login/login";
   }
 
+
   // 로그인 검증 요청
   @PostMapping("/login")
-  public String login(LoginRequestDTO dto
-      , HttpServletRequest request
-      , RedirectAttributes ra
+  public String login(LoginRequestDTO dto,
+                    RedirectAttributes ra
   ){
+    log.info("로그인 잘됨", dto);
     LoginResult loginResult = userService.loginAuthenticate(dto);
 
-    if (loginResult== SUCCESS){
-      log.info("로그인 성공 : {}",loginResult);
-      // 세션에 로그인 정보 저장하기
-      userService.maintainLoginState(
-              request.getSession(), dto.getUserNo());
-      return "redirect:/";
+    if (loginResult == SUCCESS){
+
+      return "redirect: /user/main";
     }
 
-    log.info("로그인 실패");
-    // 일회용 데이터
+    //모달대신 1회용으로 쓰고 버릴 데이터
     ra.addFlashAttribute("msg", loginResult);
-    return "redirect:/members/sign-in";
+    //로그인 실패시
+    return "redirect:/user/login";
   }
 
   // 로그아웃 요청 처리
