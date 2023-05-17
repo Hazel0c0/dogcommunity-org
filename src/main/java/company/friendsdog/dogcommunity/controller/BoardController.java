@@ -51,9 +51,9 @@ public class BoardController {
 
     // 게시판 상세 조회 요청
     @GetMapping("/detail")
-    public String petFindOne(Long petNo, Search search, Model model) {
+    public String petFindOne(Long boardNo, Search search, Model model) {
         log.info("/board/detail : GET");
-        BoardDetailResponseDTO dto = boardService.petFindOne(petNo);
+        BoardDetailResponseDTO dto = boardService.petFindOne(boardNo);
         model.addAttribute("b", dto);
         model.addAttribute("p", search);
 
@@ -81,10 +81,10 @@ public class BoardController {
     }
     // 게시판 삭제 요청 처리
     @PostMapping("/delete")
-    public String delete(Long petNo, HttpSession session) {
+    public String delete(Long boardNo, HttpSession session) {
         log.info("/board/delete : POST");
-        log.info("petNo - {}", petNo);
-        boardService.delete(petNo, session);
+        log.info("boardNo - {}", boardNo);
+        boardService.delete(boardNo, session);
         return "redirect:/board/list";
     }
 

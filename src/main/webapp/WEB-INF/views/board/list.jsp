@@ -55,7 +55,7 @@
             <div><img src="${b.petPhoto}"> </div>
             <div><img src="${b.attachedImg}" alt=""> </div>
             <div class="card-wrapper">
-                <section class="card" data-petNo="${b.petNo}">
+                <section class="card" data-boardNo="${b.boardNo}">
                     <div class="card-title-wrapper">
                         <h2 class="card-title">${b.likes}</h2>
                         <h2 class="card-title">${b.shortTitle}</h2>
@@ -138,9 +138,9 @@
         } else { // 삭제 버튼 제외한 부분은 글 상세조회 요청
 
             // section태그에 붙은 글번호 읽기
-            const petNo = e.target.closest('section.card').dataset.petNo;
+            const boardNo = e.target.closest('section.card').dataset.boardNo;
             // 상세 조회 요청 보내기
-            window.location.href= '/board/detail?petNo=' + petNo + '&type=${p.type}&keyword=${p.keyword}';
+            window.location.href= '/board/detail?boardNo=' + boardNo + '&type=${p.type}&keyword=${p.keyword}';
         }
     });
 

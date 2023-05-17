@@ -59,19 +59,19 @@ public class BoardService {
     }
 
     // 게시판 삭제 처리
-    public boolean delete(Long petNo, HttpSession session) {
+    public boolean delete(Long boardNo, HttpSession session) {
         Long userNoInfo = LoginUtil.getCurrentLoginUser(session).getUserNo();
         Pet pet = petMapper.userFindPet(userNoInfo);
         Long petNoInfo = pet.getPetNo();
-        log.info("petNo - {}", petNoInfo);
-        return petBoardMapper.delete(petNoInfo);
+
+        return petBoardMapper.delete(boardNo);
     }
 
 
     // 게시판 확인
-    public BoardDetailResponseDTO petFindOne(Long petNo) {
-        Board board = petBoardMapper.petFindOne(petNo);
-        petBoardMapper.upHitsCount(petNo);
+    public BoardDetailResponseDTO petFindOne(Long boardNo) {
+        Board board = petBoardMapper.petFindOne(boardNo);
+        petBoardMapper.upHitsCount(boardNo);
         return new BoardDetailResponseDTO(board);
     }
 

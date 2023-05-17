@@ -26,7 +26,7 @@
         FROM tbl_board a
                  INNER JOIN tbl_pet b
                             ON a.pet_no = b.pet_no
-        WHERE a.pet_no = #{petNo}
+        WHERE a.board_no = #{boardNo}
     </select>
 
     <insert id="save">
@@ -37,13 +37,13 @@
 
     <delete id="delete">
         DELETE FROM tbl_board
-        WHERE pet_no = #{petNo}
+        WHERE board_no = #{boardNo}
     </delete>
 
     <update id="modify">
         UPDATE tbl_board
         SET content = #{content}, attached_img = #{attachedImg}
-        WHERE pet_no = #{petNo}
+        WHERE board_no = #{boardNo}
     </update>
 
     <select id="count" resultType="Long">
@@ -58,6 +58,6 @@
     <update id="upHitsCount">
         update tbl_board
         set hits = hits + 1
-        where pet_no = #{petNo}
+        where board_no = #{boardNo}
     </update>
 </mapper>

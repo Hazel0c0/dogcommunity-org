@@ -13,19 +13,19 @@ public interface BoardMapper {
     List<Board> petFindAll(Search page);
 
     // 게시물 상세 조회
-    Board petFindOne(Long petNo);
+    Board petFindOne(Long boardNo);
 
     // 게시물 업로드
     boolean save(Board board);
 
     // 게시물 삭제
-    boolean delete(Long petNo);
+    boolean delete(Long boardNo);
 
     // 게시물 수정
     boolean modify(Board board);
 
     // 조회수 상승
-    void upHitsCount(Long petNo);
+    void upHitsCount(Long boardNo);
 
     // 총 게시물 수
     int count(Search search);

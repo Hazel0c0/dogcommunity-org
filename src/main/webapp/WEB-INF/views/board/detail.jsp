@@ -115,14 +115,14 @@
 <%@ include file="../include/header.jsp" %>
 
 <div id="wrap" class="form-container">
-    <h1>${b.petNo}번 게시물 내용~ </h1>
+    <h1>${b.boardNo}번 게시물 내용~ </h1>
     <h2># 작성일자: ${b.date}</h2>
     <label for="title">제목</label>
-    <input type="text" id="title" name="title" value="${b.title}" readonly>
+    <input type="file" id="attachedImg" name="attachedImg" value="${b.attachedImg}" readonly>
     <label for="content">내용</label>
     <div id="content">${b.content}</div>
     <div class="buttons">
-        <button class="list-btn" type="button" onclick="window.location.href='/board/list?pageNo=${b.pageNo}&type=${b.type}&keyword=${b.keyword}'">목록</button>
+        <button class="list-btn" type="button" onclick="window.location.href='/board/list?&type=${b.type}&keyword=${b.keyword}'">목록</button>
     </div>
 
 
@@ -133,7 +133,7 @@
 <script>
     // 댓글 관련 스크립트
     // 원본 글 번호
-    const bno = '${b.petNo}';
+    const bno = '${b.boardNo}';
 
     // 댓글 요청 URI
     const URL = '/api/v1/replies';
