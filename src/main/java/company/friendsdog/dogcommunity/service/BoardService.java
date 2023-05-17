@@ -59,9 +59,12 @@ public class BoardService {
     }
 
     // 게시판 삭제 처리
-    public boolean delete(Long petNo) {
-
-        return petBoardMapper.delete(petNo);
+    public boolean delete(Long petNo, HttpSession session) {
+        Long userNoInfo = LoginUtil.getCurrentLoginUser(session).getUserNo();
+        Pet pet = petMapper.userFindPet(userNoInfo);
+        Long petNoInfo = pet.getPetNo();
+        log.info("petNo - {}", petNoInfo);
+        return petBoardMapper.delete(petNoInfo);
     }
 
 

@@ -59,7 +59,6 @@ public class BoardController {
 
         return "board/detail";
 
-
     }
 
     // 게시판 글쓰기 화면 조회 요청
@@ -85,7 +84,7 @@ public class BoardController {
     public String delete(Long petNo, HttpSession session) {
         log.info("/board/delete : POST");
         log.info("petNo - {}", petNo);
-        boardService.delete(petNo);
+        boardService.delete(petNo, session);
         return "redirect:/board/list";
     }
 
