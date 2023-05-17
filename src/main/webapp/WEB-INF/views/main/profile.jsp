@@ -66,6 +66,10 @@
 <!--//Profile Change Body label이랑 id 맞추고 dto랑 name 맞춘다-->
 <div class="profileChange">
     <form action="/pet/profile"  method="post"  name = "petProfile" class="profile">
+
+        <label for="petPhoto">프로필 사진 추가하기</label>
+        <input type="file" id="petPhoto" name="petPhtoto" accept="image/*">
+
         <label for="petName">반려동물 이름</label>
         <input type="text" id="petName" name="petName" required>
 
@@ -75,19 +79,15 @@
         <label for="petKind">품종</label>
         <input type="text" id="petKind" name="petKind" required>
 
-        <label for="petPhoto">프로필 사진 변경</label>
-        <input type="text" id="petPhoto" name="petPhtoto" required>
-<%--        <input id = "img-input" type="file" name="petPhoto" accept="image" >--%>
-        <button type="submit">전송</button>
 
 
         <label for="petGender">성별</label>
         <select id="petGender" name="petGender">
             <option value="">선택하세요</option>
-            <option value="female">여</option>
-            <option value="male">남</option>
-            <option value="noGender">중성</option>
-            <option value="secret">밝히고 싶지 않음</option>
+            <option value="FEMALE">여</option>
+            <option value="MALE">남</option>
+            <option value="NO_GENDER">중성</option>
+            <option value="SECRET">밝히고 싶지 않음</option>
         </select>
 
         <label for="hashTag">소개</label>

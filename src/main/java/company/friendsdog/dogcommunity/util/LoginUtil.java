@@ -9,6 +9,8 @@ public class LoginUtil {
 
     // 로그인 한 유저의 펫 - 세션키
     public static final String LOGIN_KEY = "loginUser";
+    // 자동로그인 쿠키
+    public static final String AUTO_LOGIN_COOKIE="auto";
 
     // 세션에서 유저 객체 가져오기
     public static User getCurrentLoginUser(
