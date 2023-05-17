@@ -7,7 +7,7 @@ CREATE TABLE tbl_pet
     pet_age       INT,
     pet_kind      VARCHAR(20)          NOT NULL,
     pet_gender    VARCHAR(100)         NOT NULL,
-    pet_photo     VARCHAR(2000) UNIQUE NOT NULL,
+    pet_photo     VARCHAR(2000) , -- 테스트용으로 NOT NULL 조건 없앰 //UNIQUE NOT NULL
     profile_date_time TIMESTAMP            NOT NULL DEFAULT CURRENT_TIMESTAMP,
     hashtag       VARCHAR(1000),
     addr VARCHAR(10),

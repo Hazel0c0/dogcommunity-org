@@ -105,16 +105,18 @@ section.signUpPage button {
 }
 
 /* 하단부 로그인 */
-section.logIn>* {
+section.logIn > * {
     width: 90%;
     font-size: 1.2em;
     background: white;
     display: flex;
+    text-align: center;
+    justify-content: center; /* 버튼 텍스트 중앙정렬 */
+    align-items: center; /* 버튼 텍스트 중앙정렬 */
 }
 
-
 section.logIn p {
-    /* border: 1px solid #000; */
+     /*border: 1px solid #000;*/
     margin-top: 20px;
 }
 

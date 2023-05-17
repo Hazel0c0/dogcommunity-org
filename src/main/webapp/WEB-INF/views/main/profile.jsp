@@ -14,13 +14,12 @@
     <script src="/assets/js/side-menu.js" defer></script>
     <!-- 말풍선 -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.6.0/font/bootstrap-icons.css" />
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.6.0/font/bootstrap-icons.css"/>
     <!-- css -->
     <link rel="stylesheet" href="/assets/css/profile.css">
 </head>
 
 <body>
-
 
 
 <!-- header -->
@@ -58,14 +57,14 @@
 <aside class="sidebar">
     <div class="profile-box">
         <div class="profile-img"><a href=""></a></div>
-        <h3 id="petNickname">멍멍이</h3>
-        <p id="profileIntro">#안뇽</p>
+        <h3 id="profilePetName">멍멍이</h3>
+        <p id="profileHashTag">#안뇽</p>
     </div>
 </aside>
 
 <!--//Profile Change Body label이랑 id 맞추고 dto랑 name 맞춘다-->
 <div class="profileChange">
-    <form action="/pet/profile"  method="post"  name = "petProfile" class="profile">
+    <form action="/pet/profile" method="post" name="petProfile" class="profile" enctype="multipart/form-data">
         <label for="petName">반려동물 이름</label>
         <input type="text" id="petName" name="petName" required>
 
@@ -76,45 +75,50 @@
         <input type="text" id="petKind" name="petKind" required>
 
         <label for="petPhoto">프로필 사진 변경</label>
-        <input type="text" id="petPhoto" name="petPhtoto" required>
-<%--        <input id = "img-input" type="file" name="petPhoto" accept="image" >--%>
-        <button type="submit">전송</button>
-
+        <input type="file" id="petPhoto" name="petPhoto" accept="image" >
 
         <label for="petGender">성별</label>
         <select id="petGender" name="petGender">
             <option value="">선택하세요</option>
-            <option value="female">여</option>
-            <option value="male">남</option>
-            <option value="noGender">중성</option>
-            <option value="secret">밝히고 싶지 않음</option>
+            <option value="FEMALE">여</option>
+            <option value="MALE">남</option>
+            <option value="NO_GENDER">중성</option>
+            <option value="SECRET">밝히고 싶지 않음</option>
         </select>
 
         <label for="hashTag">소개</label>
-        <textarea id="hashTag" name="hashTag" rows="4" required></textarea>
+        <textarea id="hashTag" name="hashtag" rows="4" required></textarea>
 
-<%--        <label for="profileSuggest">프로필에 계정 추천 표시</label>--%>
-<%--        <p id="suggestProfile">강아지의 프로필이 다른 프로필에서 추천될 수 있는지를 선택하세요.&nbsp;&nbsp;&nbsp;<input type="checkbox" name="profileSuggest"></p>--%>
+        <label for="profileSuggest">프로필에 계정 추천 표시</label>
+        <p>강아지의 프로필이 다른 프로필에서 추천될 수 있는지를 선택하세요.
+            &nbsp;&nbsp;&nbsp;
+            <input type="checkbox" id="profileSuggest" name="profileSuggest">
+        </p>
 
-        <input type="submit" value="제출">
+        <input type="submit" value="제출" id="submitBtn">
     </form>
 </div>
 <script>
 
+    const $profilePetName = document.getElementById('profilePetName');
+    const $profileHashTag = document.getElementById('profileHashTag');
+    const $petName = document.getElementById('petName');
     const $hashTag = document.getElementById('hashTag');
-    const $profileIntro= document.getElementById('profileIntro');
-    const $petName= document.getElementById('petName');
-    const $petNickname= document.getElementById('petNickname');
+    const $submitBtn = document.getElementById('submitBtn');
 
-    $hashTag.onkeyup = e => {
-        // console.log(e);
+    $submitBtn.addEventListener('click', function (e) {
+        // e.preventDefault(); // 기본 제출 동작 방지
 
-        if (e.key === 'Enter') {
-            $profileIntro.textContent = $hashTag.value;
-            $petNickname.textContent = $petName.value;
+        $profilePetName.textContent = $petName.value;
+        let hashTagValue = $hashTag.value;
+        if (!hashTagValue.includes('#')) {
+            hashTagValue = '#' + hashTagValue;
         }
+        $profileHashTag.textContent = hashTagValue;
+        console.log($petName.value);
+        console.log($hashTag.value);
+    });
 
-    };
 
 </script>
 </body>

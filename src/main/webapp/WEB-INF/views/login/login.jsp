@@ -21,10 +21,15 @@
     <form action="/user/login" name="login" method="post">
         <section class="loginPage">
             <h1><img src="/assets/img/logo-instagram.png" alt="로고이미지" id="petstaLogo">Petstagram</h1>
-            <input type="text" placeholder="전화번호, 이메일 또는 아이디 " class="logInPart" name="id">
+            <input type="text" placeholder="아이디 " class="logInPart" name="id">
             <input type="password" placeholder="비밀번호" class="logInPart" name="pwd">
             <input type="submit" id="logInBtn" value="Log In"
                    style="  background: rgb(61, 61, 227); color: white; letter-spacing: 2px; margin-top: 10px;">
+            <label for="auto-login">
+                <em>
+                    자동 로그인  <input type="checkbox" id="auto-login" name="autoLogin">
+                </em>
+            </label>
         </section>
         <section class="loginOtherWay">
             <div>
