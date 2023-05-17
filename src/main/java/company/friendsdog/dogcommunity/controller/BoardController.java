@@ -56,7 +56,7 @@ public class BoardController {
         BoardDetailResponseDTO dto = boardService.petFindOne(boardNo);
         model.addAttribute("b", dto);
         model.addAttribute("p", search);
-
+        log.info("dto- {}", dto);
         return "board/detail";
 
     }

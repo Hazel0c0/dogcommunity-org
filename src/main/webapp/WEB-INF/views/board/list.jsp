@@ -141,7 +141,7 @@
             // section태그에 붙은 글번호 읽기
             const boardNo = e.target.closest('section.card').dataset.boardNo;
             // 상세 조회 요청 보내기
-            window.location.href= '/board/detail?boardNo=' + boardNo + '&type=${p.type}&keyword=${p.keyword}';
+            window.location.href= '/board/detail';
         }
     });
 
