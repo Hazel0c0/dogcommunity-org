@@ -8,9 +8,7 @@ import lombok.*;
 //@EqualsAndHashCode
 
 // dto setter랑 noArgs 필수라서 추가 완료 : 빛나
-@Setter
 @Getter
-@NoArgsConstructor
 @ToString
 @EqualsAndHashCode
 @NoArgsConstructor

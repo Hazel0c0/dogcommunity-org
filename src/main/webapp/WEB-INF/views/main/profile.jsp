@@ -113,7 +113,7 @@
     const $submitBtn = document.getElementById('submitBtn');
 
     $submitBtn.addEventListener('click', function (e) {
-         e.preventDefault(); // 기본 제출 동작 방지
+         // e.preventDefault(); // 기본 제출 동작 방지
 
         $profilePetName.textContent = $petName.value;
         let hashTagValue = $hashTag.value;
