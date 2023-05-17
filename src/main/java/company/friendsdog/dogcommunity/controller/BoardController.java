@@ -82,8 +82,9 @@ public class BoardController {
     }
     // 게시판 삭제 요청 처리
     @PostMapping("/delete")
-    public String delete(Long petNo) {
+    public String delete(Long petNo, HttpSession session) {
         log.info("/board/delete : POST");
+        log.info("petNo - {}", petNo);
         boardService.delete(petNo);
         return "redirect:/board/list";
     }
@@ -98,8 +99,12 @@ public class BoardController {
 
     // 게시판 수정 요청 처리
     @PostMapping("/upload")
-    public String modify(BoardRequestDTO dto) {
+    public String modify(BoardRequestDTO dto,  HttpSession session) {
         log.info("/api/v1/board/upload : POST");
+        log.info("content -  {}", dto.getContent());
+        log.info("attachedImg - {}", dto.getAttachedImg());
+        log.info("petPhoto - {}", dto.getPetPhoto());
+        log.info("petName - {}", dto.getPetName());
         boardService.modify(dto);
         return "redirect:/board/list";
     }

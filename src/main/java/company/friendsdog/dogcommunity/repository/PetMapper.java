@@ -18,8 +18,8 @@ public interface PetMapper {
   // '동'으로 펫 찾기
   List<Pet> findPetByAddr(String addDetail);
 
-
-
+  // userNo로 펫 찾기
+  Pet userFindPet(Long uNo);
 
   Pet findOne(Long petNo);
 
