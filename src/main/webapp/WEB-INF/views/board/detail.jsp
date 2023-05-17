@@ -125,7 +125,7 @@
         <button class="list-btn" type="button" onclick="window.location.href='/board/list?pageNo=${b.pageNo}&type=${b.type}&keyword=${b.keyword}'">목록</button>
     </div>
 
-  zz
+
 
 </div>
 

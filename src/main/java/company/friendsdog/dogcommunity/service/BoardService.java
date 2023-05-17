@@ -58,6 +58,7 @@ public class BoardService {
 
     // 게시판 삭제 처리
     public boolean delete(Long petNo) {
+
         return petBoardMapper.delete(petNo);
     }
 
