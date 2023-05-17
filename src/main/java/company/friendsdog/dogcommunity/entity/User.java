@@ -15,7 +15,7 @@ import java.time.LocalDateTime;
 public class User {
 
     // 회원가입 시 필요 정보
-    private int userNo;
+    private Long userNo;
     private String id;
     private String pwd;
     private String userName;
@@ -24,4 +24,5 @@ public class User {
     private String addr;
     private String addDetail;
     private LocalDateTime joinDate;
+    private LocalDateTime cookieLimitTime;
 }

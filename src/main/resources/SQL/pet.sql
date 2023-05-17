@@ -2,20 +2,22 @@
 drop table tbl_pet;
 CREATE TABLE tbl_pet
 (
-      pet_no        INT AUTO_INCREMENT PRIMARY KEY, -- 반려동물 번호
-      pet_name      VARCHAR(10)          NOT NULL,
-      pet_age       INT,
-      pet_kind      VARCHAR(20)          NOT NULL,
-      pet_gender    VARCHAR(100)         NOT NULL,
-      pet_photo     VARCHAR(2000) UNIQUE NOT NULL,
-      pet_date_time TIMESTAMP            NOT NULL DEFAULT CURRENT_TIMESTAMP,
-      hashtag       VARCHAR(1000),
-      user_no       INT,
-      likes INT default 0,
-      hits INT default 0
+    user_no INT,
+    pet_no        INT AUTO_INCREMENT PRIMARY KEY, -- 반려동물 번호
+    pet_name      VARCHAR(10)          NOT NULL,
+    pet_age       INT,
+    pet_kind      VARCHAR(20)          NOT NULL,
+    pet_gender    VARCHAR(100)         NOT NULL,
+    pet_photo     VARCHAR(2000) UNIQUE NOT NULL,
+    profile_date_time TIMESTAMP            NOT NULL DEFAULT CURRENT_TIMESTAMP,
+    hashtag       VARCHAR(1000),
+    addr VARCHAR(10),
+    add_detail VARCHAR(10)
 --   FOREIGN KEY (user_no)
 --   REFERENCES tbl_user(user_no)
 );
+# 테스트 사진
+http://thumbnail.10x10.co.kr/webimage/image/basic600/290/B002903467.jpg?cmd=thumb&w=500&h=500&fit=true&ws=false
 
 
 insert into tbl_pet(user_no,pet_name,pet_age,pet_kind,pet_gender,pet_photo,pet_date_time,hashTag)
@@ -33,14 +35,16 @@ SELECT P.pet_no
      , P.pet_gender
      , P.pet_photo
      , P.pet_date_time
-     , P.hashTag
+     , P.hashtag
      , U.addr
      , U.add_detail
+     , P.likes
+     , P.hits
 FROM tbl_pet P
-           LEFT JOIN tbl_user U
-                     ON P.user_no = U.user_no
+         LEFT JOIN tbl_user U
+                   ON P.user_no = U.user_no
 WHERE U.addr = '강남구'
-ORDER BY pet_date_time DESC
+ORDER BY pet_age DESC
 ;
 
 update tbl_pet set pet_gender='MALE'
@@ -54,3 +58,28 @@ where pet_no in (4);
 
 update tbl_pet set pet_gender='SECRET'
 where pet_no in (5);
+select *
+from tbl_pet P
+    LEFT JOIN tbl_user U
+        ON P.user_no = U.user_no;
+
+select pet_name,
+       MAX(pet_age)
+FROM tbl_pet P
+    LEFT JOIN tbl_user U
+        ON P.user_no = U.user_no
+group by add_detail
+having MAX(pet_age)
+
+Select *
+From tbl_pet P
+         LEFT JOIN tbl_user U
+                   ON P.user_no = U.user_no
+where add_detail='논현동'
+Order by rand()
+Limit 1;
+
+select add_detail
+from tbl_user
+where addr='강남구'
+group by add_detail

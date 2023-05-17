@@ -16,6 +16,7 @@ public class PetProfileModifyRequestDTO {
 
     private String petPhoto;
 
-    private String hashTag;
+    private String hashtag;
     private int petNo;
+    private Long petNo;
 }

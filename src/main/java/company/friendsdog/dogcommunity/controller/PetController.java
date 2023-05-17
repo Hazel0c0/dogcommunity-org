@@ -1,6 +1,7 @@
 package company.friendsdog.dogcommunity.controller;
 
 import company.friendsdog.dogcommunity.dto.PetProfileModifyRequestDTO;
+import company.friendsdog.dogcommunity.dto.request.PetProfileRequestDTO;
 import company.friendsdog.dogcommunity.dto.response.PetCardResponseDTO;
 import company.friendsdog.dogcommunity.entity.Pet;
 import company.friendsdog.dogcommunity.service.PetService;
@@ -24,50 +25,76 @@ import static org.springframework.http.ResponseEntity.*;
 @RequestMapping("/pet")
 @Slf4j
 public class PetController {
+  private final PetService petService;
 
-    // 펫 프로필 기입
-    @GetMapping("/profile")
-    public String petCard(){
-        log.info("GET");
-        return "/main/profile";
-    }
+  // 펫 프로필 카드 만들기 페이지 요청
+  @GetMapping("/profile")
+  public String petCardMake() {
+    log.info("펫 카드 만들기 GET");
 
-    private final PetService petService;
+    return "/main/profile";
+  }
 
-    // 이웃 펫 찾기
-    @GetMapping("/neighbor")
-    public String findingNeighbor(Model model
-//            , HttpSession session
-    ) {
-//        session=null;
-        log.info("/petprofile/list : GET");
+  // 펫 프로필 정보 요청
+  @PostMapping("/profile")
+  public String petCardMake(PetProfileRequestDTO dto, HttpSession session) {
+    log.info("펫 입력 정보 : {}", dto);
+    log.info("세션 : {}", session);
+
+    boolean petSave = petService.petCardMake(dto, session);
+    log.info("펫 저장 : {}", petSave);
+
+    return "/user/main";
+  }
 
 
-        List<PetCardResponseDTO> neighborList = petService.findingNeighbor(null);
+  // 지도 띄워주기
+  @GetMapping("/map")
+  public String map(
+      HttpSession session,
+      Model model) {
+    // 유저 있는 동네 보내주기
+    List<String> dongList = petService.findAddrDetail(session);
+    log.info("dong  : {}", dongList);
 
+    model.addAttribute("dong", dongList);
 
-        model.addAttribute("petList",neighborList);
+    return "neighbor/map";
+  }
 
-        return "/pet/neighbor";
-    }
+  /**
+   * 선택한 동네 강아지 보기
+   *
+   * @param addDetail - 유저가 선택한 동
+   */
+  @GetMapping("/neighbor")
+  public String findNeighbor(
+      String addDetail
+      , Model model) {
+    List<Pet> foundPet = petService.findNeighbor(addDetail);
 
-    @PostMapping("/delete")
-    public String delete(Long petNo) {
-        log.info("/pet/delete : POST");
-        petService.delete(petNo);
-        return "redirect:/pet/list";
+    model.addAttribute("petList",foundPet);
 
-    }
+    return "neighbor/neighbor";
+  }
 
-    //프로필 조회 요청
+  @PostMapping("/delete")
+  public String delete(Long petNo) {
+    log.info("/pet/delete : POST");
+    petService.delete(petNo);
+    return "redirect:/pet/list";
 
-    @GetMapping("/detail")
-    public Pet detail(Long petNo){
+  }
 
-        Pet pet = petService.getDetail(petNo);
-        //pet
-        return pet;
-    }
+  //프로필 조회 요청
+
+  @GetMapping("/detail")
+  public Pet detail(Long petNo) {
+
+    Pet pet = petService.getDetail(petNo);
+    //pet
+    return pet;
+  }
 
 
     @GetMapping ("/modify") // 수정 폼 을 열어주는애
@@ -94,12 +121,6 @@ public class PetController {
         // true / false 여부
         boolean flag = petService.modify(dto);
 
-        model.addAttribute("petNo", dto.getPetNo());
-        model.addAttribute("hashTag", dto.getHashTag());
-
-//       어디로 리던 할꺼임 ??????>
-        return "pet/profileMod";
+        return "";
     }
-
-
 }

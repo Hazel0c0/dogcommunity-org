@@ -29,7 +29,7 @@ public class UserController {
   private final UserService userService;
 
   @GetMapping("/main")
-  public String Main(){
+  public String Main() {
     log.info("GET");
     return "/main/main";
   }
@@ -37,15 +37,15 @@ public class UserController {
   // 회원가입
   // 회원가입창
   @GetMapping("/join")
-  public String userJoin(){
+  public String userJoin() {
     log.info("회원가입 GET");
     return "/login/sign-up";
   }
 
   // 회원가입 처리 요청
   @PostMapping("/join")
-  public String userJoin(JoinRequestDTO dto){
-    log.info("회원가입 POST : {}",dto);
+  public String userJoin(JoinRequestDTO dto) {
+    log.info("회원가입 POST : {}", dto);
     boolean flag = userService.userJoin(dto);
 
     // 회원가입 끝나면 main 창으로
@@ -73,16 +73,20 @@ public class UserController {
     return "/login/login";
   }
 
-
+  // 로그인 검증
   @PostMapping("/login")
   public String login(LoginRequestDTO dto
       , HttpServletRequest request
+      , HttpServletResponse response
       , RedirectAttributes ra
-  ){
-    LoginResult loginResult = userService.loginAuthenticate(dto);
+  ) {
+    log.info("POST login info : {}", dto);
+    LoginResult loginResult = userService.loginAuthenticate(
+        dto, request.getSession(), response);
 
-    if (loginResult== SUCCESS){
-      log.info("로그인 성공 : {}",loginResult);
+    // 로그인 성공시
+    if (loginResult == SUCCESS) {
+      log.info("로그인 성공 : {}", loginResult);
       // 세션에 로그인 정보 저장하기
       userService.maintainLoginState(
           request.getSession(), dto.getId());
@@ -98,7 +102,7 @@ public class UserController {
 
   // 로그아웃 요청 처리
   @GetMapping("/logout")
-  public String logout(HttpSession session){
+  public String logout(HttpSession session) {
 
     return "redirect:/";
   }

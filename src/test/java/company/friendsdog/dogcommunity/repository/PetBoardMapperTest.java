@@ -9,7 +9,6 @@ import org.springframework.boot.test.context.SpringBootTest;
 
 import java.util.List;
 
-import static org.junit.jupiter.api.Assertions.*;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
 @SpringBootTest
@@ -17,7 +16,7 @@ class PetBoardMapperTest {
 
 
     @Autowired
-    PetBoardMapper mapper;
+    BoardMapper mapper;
     @Test
     @DisplayName("게시물 작성")
     void save() {
@@ -27,7 +26,7 @@ class PetBoardMapperTest {
                     .title("테스트제목2 ")
                     .content("테스트내용2 ")
                     .attachedImg("http://thumbnail.10x10.co.kr/webimage/image/basic600/290/B002903467.jpg?cmd=thumb&w=500&h=500&fit=true&ws=false")
-                    .petNo(2)
+                    .petNo(2L)
                     .build();
             mapper.save(b);
 
@@ -37,14 +36,14 @@ class PetBoardMapperTest {
     @Test
     @DisplayName("게시물 삭제")
     void delete() {
-        int petNo = 1;
+        Long petNo = 1L;
         mapper.delete(petNo);
     }
     @Test
     @DisplayName("게시물 수정")
     void modify() {
         Board b = Board.builder()
-                .petNo(2)
+                .petNo(2L)
                 .title("영시기2")
                 .content("지워니2")
                 .attachedImg("https://img1.daumcdn.net/thumb/R800x0/?scode=mtistory2&fname=https%3A%2F%2Ft1.daumcdn.net%2Fcfile%2Ftistory%2F2208AF3556A1D58E14")
@@ -55,7 +54,7 @@ class PetBoardMapperTest {
     @Test
     @DisplayName("하나의 게시물")
     void petFindOne() {
-        Board board = mapper.petFindOne(3);
+        Board board = mapper.petFindOne(3L);
         System.out.println("build = " + board);
     }
 
