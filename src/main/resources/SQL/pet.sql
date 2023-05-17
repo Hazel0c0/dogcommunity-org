@@ -42,3 +42,15 @@ FROM tbl_pet P
 WHERE U.addr = '강남구'
 ORDER BY pet_date_time DESC
 ;
+
+update tbl_pet set pet_gender='MALE'
+where pet_no in (1);
+
+update tbl_pet set pet_gender='FEMALE'
+where pet_no in (2, 3);
+
+update tbl_pet set pet_gender='NO_GENDER'
+where pet_no in (4);
+
+update tbl_pet set pet_gender='SECRET'
+where pet_no in (5);

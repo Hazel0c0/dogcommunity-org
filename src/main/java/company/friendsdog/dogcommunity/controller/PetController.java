@@ -70,12 +70,27 @@ public class PetController {
     }
 
 
-    @PostMapping("/modify")
+    @GetMapping ("/modify") // 수정 폼 을 열어주는애
+                                // 페이지 이동
+                            // db에서 업데이트를 할려면 뭐가 필요한지
+    public String modifyData() {
+
+//        // true / false 여부
+//        boolean flag = petService.modify(dto);
+
+        return "pet/modify";
+    }
+
+    @PostMapping("pet/modify") //수정 폼안에 있는 데이터를 보내주는애
+
     public String modifyData(PetProfileModifyRequestDTO dto) {
 
         // true / false 여부
         boolean flag = petService.modify(dto);
 
-        return "";
+//       어디로 리던 할꺼임 ??????>
+        return "redirect:/pet/";
     }
+
+
 }
