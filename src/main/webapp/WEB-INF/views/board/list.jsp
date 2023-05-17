@@ -50,7 +50,7 @@
     <div class="card-container">
 
         <c:forEach var="b" items="${bList}">
-            <form action="/board/delete" method="post" enctype="multipart/form-data">
+
             <div>${b.petName}</div>
             <div><img src="${b.petPhoto}"> </div>
             <div><img src="${b.attachedImg}" alt=""> </div>
@@ -73,13 +73,14 @@
                             ${b.shortContent}
                     </div>
                 </section>
-
+                <form action="/board/delete" method="post">
                     <div class="card-btn-group">
                         <button type="submit">삭제</button>
                     </div>
-
+                    <input type="hidden" name="boardNo" value="${b.boardNo}">
+                </form>
             </div>
-        </form>
+
         </c:forEach>
 
 
