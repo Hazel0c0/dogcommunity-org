@@ -50,11 +50,12 @@
     <div class="card-container">
 
         <c:forEach var="b" items="${bList}">
+            <input type="hidden" name="boardNo" value="${b.boardNo}">
             <div>${b.petName}</div>
             <div><img src="${b.petPhoto}"> </div>
             <div><img src="${b.attachedImg}" alt=""> </div>
             <div class="card-wrapper">
-                <section class="card" data-petNo="${b.petNo}">
+                <section class="card" data-boardNo="${b.boardNo}">
                     <div class="card-title-wrapper">
                         <h2 class="card-title">${b.likes}</h2>
                         <h2 class="card-title">${b.shortTitle}</h2>
@@ -72,14 +73,14 @@
                             ${b.shortContent}
                     </div>
                 </section>
-
+                <form action="/board/delete" method="post">
                     <div class="card-btn-group">
-                        <button class="del-btn" data-href="/board/delete?petNo=${petNo}">
-                            <i class="fas fa-times"></i>
-                        </button>
+                        <button type="submit">삭제</button>
                     </div>
-
+                    <input type="hidden" name="boardNo" value="${b.boardNo}">
+                </form>
             </div>
+
         </c:forEach>
 
 
@@ -138,9 +139,9 @@
         } else { // 삭제 버튼 제외한 부분은 글 상세조회 요청
 
             // section태그에 붙은 글번호 읽기
-            const petNo = e.target.closest('section.card').dataset.petNo;
+            const boardNo = e.target.closest('section.card').dataset.boardNo;
             // 상세 조회 요청 보내기
-            window.location.href= '/board/detail?petNo=' + petNo + '&type=${p.type}&keyword=${p.keyword}';
+            window.location.href= '/board/detail';
         }
     });
 

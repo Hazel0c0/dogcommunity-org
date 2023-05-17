@@ -5,6 +5,7 @@ import company.friendsdog.dogcommunity.dto.request.BoardRequestDTO;
 import company.friendsdog.dogcommunity.dto.response.BoardDetailResponseDTO;
 import company.friendsdog.dogcommunity.dto.response.BoardListResponseDTO;
 import company.friendsdog.dogcommunity.entity.Board;
+import company.friendsdog.dogcommunity.entity.Pet;
 import company.friendsdog.dogcommunity.repository.BoardMapper;
 import company.friendsdog.dogcommunity.repository.PetMapper;
 import company.friendsdog.dogcommunity.util.LoginUtil;
@@ -43,11 +44,12 @@ public class BoardService {
         board.setAttachedImg(imgPath);
         Long userNoInfo = LoginUtil.getCurrentLoginUser(session).getUserNo();
         log.info("userNoInfo - {}",userNoInfo);
-        Long petNoInfo = petMapper.userFindPet(userNoInfo).getPetNo();
+        Pet pet = petMapper.userFindPet(userNoInfo);
+        Long petNoInfo = pet.getPetNo();
         log.info("petNoInfo - {}", petNoInfo);
-        String petNameInfo = petMapper.userFindPet(userNoInfo).getPetName();
+        String petNameInfo = pet.getPetName();
         log.info("petNameInfo - {}", petNameInfo);
-        String petPhotoInfo = petMapper.userFindPet(userNoInfo).getPetPhoto();
+        String petPhotoInfo = pet.getPetPhoto();
         log.info("petPhotoInfo - {}", petPhotoInfo);
         board.setPetNo(petNoInfo);
         board.setPetName(petNameInfo);
@@ -57,15 +59,19 @@ public class BoardService {
     }
 
     // 게시판 삭제 처리
-    public boolean delete(Long petNo) {
-        return petBoardMapper.delete(petNo);
+    public boolean delete(Long boardNo, HttpSession session) {
+        Long userNoInfo = LoginUtil.getCurrentLoginUser(session).getUserNo();
+        Pet pet = petMapper.userFindPet(userNoInfo);
+        Long petNoInfo = pet.getPetNo();
+
+        return petBoardMapper.delete(boardNo);
     }
 
 
     // 게시판 확인
-    public BoardDetailResponseDTO petFindOne(Long petNo) {
-        Board board = petBoardMapper.petFindOne(petNo);
-        petBoardMapper.upHitsCount(petNo);
+    public BoardDetailResponseDTO petFindOne(Long boardNo) {
+        Board board = petBoardMapper.petFindOne(boardNo);
+        petBoardMapper.upHitsCount(boardNo);
         return new BoardDetailResponseDTO(board);
     }
 

@@ -80,4 +80,12 @@
         Order by rand()
             Limit 1;
     </select>
+
+    <select id="userFindPet" resultType="pet">
+        SELECT
+        user_no, pet_no, pet_name,pet_age
+        ,pet_kind,pet_gender,pet_photo
+        FROM tbl_pet
+        WHERE user_No = #{userNo}
+    </select>
 </mapper>

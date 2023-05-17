@@ -51,14 +51,13 @@ public class BoardController {
 
     // 게시판 상세 조회 요청
     @GetMapping("/detail")
-    public String petFindOne(Long petNo, Search search, Model model) {
+    public String petFindOne(Long boardNo, Search search, Model model) {
         log.info("/board/detail : GET");
-        BoardDetailResponseDTO dto = boardService.petFindOne(petNo);
+        BoardDetailResponseDTO dto = boardService.petFindOne(boardNo);
         model.addAttribute("b", dto);
         model.addAttribute("p", search);
-
+        log.info("dto- {}", dto);
         return "board/detail";
-
 
     }
 
@@ -82,9 +81,10 @@ public class BoardController {
     }
     // 게시판 삭제 요청 처리
     @PostMapping("/delete")
-    public String delete(Long petNo) {
+    public String delete(Long boardNo, HttpSession session) {
         log.info("/board/delete : POST");
-        boardService.delete(petNo);
+        log.info("boardNo - {}", boardNo);
+        boardService.delete(boardNo, session);
         return "redirect:/board/list";
     }
 
@@ -98,8 +98,12 @@ public class BoardController {
 
     // 게시판 수정 요청 처리
     @PostMapping("/upload")
-    public String modify(BoardRequestDTO dto) {
+    public String modify(BoardRequestDTO dto,  HttpSession session) {
         log.info("/api/v1/board/upload : POST");
+        log.info("content -  {}", dto.getContent());
+        log.info("attachedImg - {}", dto.getAttachedImg());
+        log.info("petPhoto - {}", dto.getPetPhoto());
+        log.info("petName - {}", dto.getPetName());
         boardService.modify(dto);
         return "redirect:/board/list";
     }
