@@ -24,4 +24,5 @@ public class User {
     private String addr;
     private String addDetail;
     private LocalDateTime joinDate;
+    private LocalDateTime cookieLimitTime;
 }

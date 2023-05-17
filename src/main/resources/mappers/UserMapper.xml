@@ -7,17 +7,26 @@
     <!--   회원 저장-->
     <insert id="save">
         INSERT INTO tbl_user
-        (user_no, id, pwd, user_name
-         ,email, addr, add_detail
-             , join_date)
+
+        ( user_no, id, pwd, user_name
+        , email, addr, add_detail
+        , join_date)
+
         VALUES ( #{userNo}, #{id}, #{pwd}, #{userName}
                , #{email}, #{addr}, #{addDetail}
-              ,#{joinDate})
+               , #{joinDate})
     </insert>
 
     <!--    유저 찾기-->
     <select id="findUser" resultType="user">
-        SELECT user_no,id, pwd ,user_name,email, addr, add_detail,join_date
+        SELECT user_no,
+               id,
+               pwd,
+               user_name,
+               email,
+               addr,
+               add_detail,
+               join_date
         FROM tbl_user
         WHERE id = #{id}
     </select>
@@ -45,6 +54,21 @@
         <if test="type=='id'">
             WHERE id=#{keyword}
         </if>
+    </select>
+
+    <update id="saveAutoLogin">
+        update tbl_user
+        set session_id = #{sessionId},
+            cookie_limit_time = #{cookieLimitTime}
+        where id = #{id}
+    </update>
+
+    <select id="findUserByCookie" resultType="user">
+        SELECT id,
+               pwd,
+               cookie_limit_time
+        FROM tbl_user
+        WHERE session_id = #{sessionId}
     </select>
 
 

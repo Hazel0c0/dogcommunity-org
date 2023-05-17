@@ -66,7 +66,9 @@
 
 <!--//Profile Change Body label이랑 id 맞추고 dto랑 name 맞춘다-->
 <div class="profileChange">
+
     <form action="/pet/profile" method="post" name="petProfile" class="profile" enctype="multipart/form-data">
+
         <label for="petName">반려동물 이름</label>
         <input type="text" id="petName" name="petName" required>
 
@@ -78,6 +80,7 @@
 
         <label for="petPhoto">프로필 사진 변경</label>
         <input type="file" id="petPhoto" name="petPhoto" accept="image">
+
 
         <label for="petGender">성별</label>
         <select id="petGender" name="petGender">
