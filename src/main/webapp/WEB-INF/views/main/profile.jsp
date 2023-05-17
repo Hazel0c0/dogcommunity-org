@@ -56,9 +56,11 @@
 <!--main left sidebar-->
 <aside class="sidebar">
     <div class="profile-box">
-        <div class="profile-img"><a href=""></a></div>
-        <h3 id="profilePetName">멍멍이</h3>
-        <p id="profileHashTag">#안뇽</p>
+        <a href="/pet/profile">
+            <div class="profile-img"> </div>
+            <h3 id="profilePetName">멍멍이</h3>
+            <p id="profileHashTag">#안뇽</p>
+        </a>
     </div>
 </aside>
 
@@ -75,7 +77,7 @@
         <input type="text" id="petKind" name="petKind" required>
 
         <label for="petPhoto">프로필 사진 변경</label>
-        <input type="file" id="petPhoto" name="petPhoto" accept="image" >
+        <input type="file" id="petPhoto" name="petPhoto" accept="image">
 
         <label for="petGender">성별</label>
         <select id="petGender" name="petGender">
@@ -99,15 +101,16 @@
     </form>
 </div>
 <script>
-
+    <%--  좌측 프로필 영역 --%>
     const $profilePetName = document.getElementById('profilePetName');
     const $profileHashTag = document.getElementById('profileHashTag');
+    <%--  우측 프로필 수정 영역 --%>
     const $petName = document.getElementById('petName');
     const $hashTag = document.getElementById('hashTag');
     const $submitBtn = document.getElementById('submitBtn');
 
     $submitBtn.addEventListener('click', function (e) {
-        // e.preventDefault(); // 기본 제출 동작 방지
+         e.preventDefault(); // 기본 제출 동작 방지
 
         $profilePetName.textContent = $petName.value;
         let hashTagValue = $hashTag.value;
@@ -115,9 +118,25 @@
             hashTagValue = '#' + hashTagValue;
         }
         $profileHashTag.textContent = hashTagValue;
-        console.log($petName.value);
-        console.log($hashTag.value);
+        // console.log($petName.value);
+        // console.log($hashTag.value);
+
+        // 파일 잡아오기
+        const fileInput = document.getElementById('petPhoto');
+        const fileData = fileInput.files[0];
+
+        if (fileData) {
+            const reader = new FileReader();
+            reader.readAsDataURL(fileData);
+
+            reader.onload = function(e) {
+                const profileImg = document.querySelector('.profile-img');
+                profileImg.style.backgroundImage = 'url(' + e.target.result + ')';
+            };
+        }
     });
+
+
 
 
 </script>
