@@ -11,6 +11,7 @@
         ( user_no, id, pwd, user_name
         , email, addr, add_detail
         , join_date)
+
         VALUES ( #{userNo}, #{id}, #{pwd}, #{userName}
                , #{email}, #{addr}, #{addDetail}
                , #{joinDate})

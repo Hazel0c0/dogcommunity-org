@@ -42,9 +42,9 @@
             <span class="lnr lnr-cross"></span>
         </a>
         <ul>
-            <li><a href="#"><span class="lnr lnr-home"> 홈</span></a></li>
+            <li><a href="/user/main"><span class="lnr lnr-home"> 홈</span></a></li>
             <li><a href="#"><span class="lnr lnr-magnifier"> 검색</span></a></li>
-            <li><a href="#"><span class="lnr lnr-map"> 내 주변 친구</span></a></li>
+            <li><a href="/pet/map"><span class="lnr lnr-map"> 내 주변 친구</span></a></li>
             <li><a href="#"><span class="lnr lnr-heart"> 자랑하기</span></a></li>
             <li><a href="#"><span class="lnr lnr-bubble"> 메시지</span></a></li>
             <li><a href="#"><span class="lnr lnr-alarm"> 알림</span></a></li>
@@ -55,10 +55,17 @@
 
 <!--main sidebar-->
 <aside class="sidebar">
+<%--    <div class="profile-box">--%>
+<%--        <div class="profile-img"><a href="/pet/profile"></a></div>--%>
+<%--            <h3>멍뭉이</h3>--%>
+<%--        <p id="profileIntro"> #왈왈으르릉 #가까이오지마</p>--%>
+<%--    </div>--%>
     <div class="profile-box">
-        <div class="profile-img"><a href=""></a></div>
-        <h3><a href="">멍뭉이</a></h3>
-        <p id="profileIntro"> #왈왈으르릉 #가까이오지마</p>
+        <a href="/pet/profile">
+            <div class="profile-img"></div>
+                <h3 id="profilePetName">멍멍이</h3>
+                <p id="profileHashTag">#안뇽</p>
+        </a>
     </div>
 </aside>
 

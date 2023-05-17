@@ -162,7 +162,7 @@ aside.sidebar .profile-box {
 aside.sidebar .profile-box .profile-img {
     border: 2px solid yellow;
     background: url('/assets/img/dog.png') no-repeat center;
-    background-size: contain;
+    background-size: cover;
     border-radius: 50%;
     height: 300px;
 }

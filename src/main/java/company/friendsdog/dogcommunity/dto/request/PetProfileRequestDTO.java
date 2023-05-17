@@ -3,7 +3,14 @@ package company.friendsdog.dogcommunity.dto.request;
 import company.friendsdog.dogcommunity.entity.Gender;
 import lombok.*;
 
+//@Getter
+//@ToString
+//@EqualsAndHashCode
+
+// dto setter랑 noArgs 필수라서 추가 완료 : 빛나
+@Setter
 @Getter
+@NoArgsConstructor
 @ToString
 @EqualsAndHashCode
 @NoArgsConstructor
@@ -16,4 +23,5 @@ public class PetProfileRequestDTO {
   private Gender petGender;
   private String petPhoto;
   private String hashtag;
+
 }
