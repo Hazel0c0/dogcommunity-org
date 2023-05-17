@@ -34,7 +34,8 @@
 
     <update id="modify">
         UPDATE tbl_pet
-        SET pet_photo=#{petPhoto}
+        SET pet_photo=#{petPhoto},
+        hashtag=#{hashtag}
         WHERE pet_no=#{petNo}
     </update>
 

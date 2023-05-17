@@ -73,23 +73,32 @@ public class PetController {
     @GetMapping ("/modify") // 수정 폼 을 열어주는애
                                 // 페이지 이동
                             // db에서 업데이트를 할려면 뭐가 필요한지
-    public String modifyData() {
+    public String modifyData(int petNo, Model model) {
 
 //        // true / false 여부
 //        boolean flag = petService.modify(dto);
 
-        return "pet/modify";
+        String hashTag = petService.getDetail((long) petNo).getHashtag();
+
+        model.addAttribute("petNo", petNo);
+        model.addAttribute("hashTag", hashTag);
+
+        log.info("petNo : {} ", petNo);
+
+        return "pet/profileMod";
     }
 
-    @PostMapping("pet/modify") //수정 폼안에 있는 데이터를 보내주는애
-
-    public String modifyData(PetProfileModifyRequestDTO dto) {
+    @PostMapping("/modify") //수정 폼안에 있는 데이터를 보내주는애
+    public String modifyData(PetProfileModifyRequestDTO dto, Model model) {
 
         // true / false 여부
         boolean flag = petService.modify(dto);
 
+        model.addAttribute("petNo", dto.getPetNo());
+        model.addAttribute("hashTag", dto.getHashTag());
+
 //       어디로 리던 할꺼임 ??????>
-        return "redirect:/pet/";
+        return "pet/profileMod";
     }
 
 

@@ -60,6 +60,7 @@
         <div class="profile-img"><a href=""></a></div>
         <h3 id="petNickname">멍멍이</h3>
         <p id="profileIntro">#안뇽</p>
+
     </div>
         <div>
         <form action="/pet/modify" method="post" name = "modify">
@@ -72,24 +73,29 @@
         </div>
 </aside>
 
-\
+
 
 
 
 <!--//Profile Change Body label이랑 id 맞추고 dto랑 name 맞춘다-->
+?
 <div class="profileChange">
-    <form class="profile">
-        <label for="petName">반려동물 이름</label>
-        <input type="text" id="petName" name="petName" required>
 
-        <label for="petAge">나이</label>
-        <input type="text" id="petAge" name="petAge" required>
+    <form action="/pet/modify" method="post" id="pet-profile-form">
+        <input type="hidden" name="petNo" value="${petNo}">
 
-        <label for="petKind">품종</label>
-        <input type="text" id="petKind" name="petKind" required>
+        <!-- 사진 수정하기 -->
+        <label for="petPhoto">사진 수정하기:</label>
+        <input type="file" name="petPhoto" id="petPhoto">
 
-        <label for="area">거주 지역</label>
-        <input type="text" id="area" name="area" required>
+        <!-- 소개글 수정 -->
+        <label for="hashTag">소개글:</label>
+        <input type="text" name="hashTag" id="hashTag" value="${hashTag}">
+
+
+        <button type="submit" onclick="" >수정</button>
+    </form>
+
 
         <label for="petGender">성별</label>
         <select id="petGender" name="petGender">
@@ -107,6 +113,7 @@
         <p id="suggestProfile">강아지의 프로필이 다른 프로필에서 추천될 수 있는지를 선택하세요.&nbsp;&nbsp;&nbsp;<input type="checkbox" name="profileSuggest"></p>
 
         <input type="submit" value="제출">
+
     </form>
 </div>
 <script>
@@ -125,6 +132,8 @@
         }
 
     };
+
+
 
 </script>
 </body>

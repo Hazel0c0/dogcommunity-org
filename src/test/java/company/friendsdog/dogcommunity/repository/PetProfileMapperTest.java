@@ -41,7 +41,8 @@ class PetProfileMapperTest {
     //given
         Pet p = Pet.builder()
                 .petPhoto("사진수정")
-                .petNo(1L)
+                .hashtag("소개글수정")
+                .petNo(6L)
                 .build();
 
 

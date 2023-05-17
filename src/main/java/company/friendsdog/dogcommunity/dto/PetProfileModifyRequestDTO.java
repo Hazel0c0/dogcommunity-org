@@ -15,5 +15,7 @@ import lombok.ToString;
 public class PetProfileModifyRequestDTO {
 
     private String petPhoto;
+
+    private String hashTag;
     private int petNo;
 }
