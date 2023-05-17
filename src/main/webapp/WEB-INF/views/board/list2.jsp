@@ -14,7 +14,7 @@
     <%@ include file="../include/static-head.jsp" %>
 
 
-    <script src="side-menu.js" defer></script>
+    <!-- <script src="side-menu.js" defer></script> -->
 
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.6.0/font/bootstrap-icons.css" />
@@ -33,17 +33,18 @@
         <!-- 닫기 버튼 -->
         <div class="xbutton" id="xbutton"><button><i class="bi bi-x-lg"></i></button></div>
         <!-- 상세보기 모달 창 -->
+
         <div class="my-modal" id="modal">
             <!-- 이미지 박스  -->
             <div class="modal-imgbox bdrr">
-                <img src="../petstagram/뭉치.jpg" alt="#">
+                <img src="/src/main/resources/static/assets/img/dog1.jpg" alt="#">
             </div>
 
             <!-- 본문 내용 박스 -->
             <div class="modal-mainbox bdrr">
                 <!-- 프로필 사진 및 작성자 닉네임 박스 -->
                 <div class="card-title topmini">
-                    <div class="modal-miniprofile"><img src="../petstagram/불독2.png" alt="#" class="profile"></div>
+                    <div class="modal-miniprofile"><img src="/src/main/resources/static/assets/img/dog1.jpg" alt="#" class="profile"></div>
                     <div class="modal-profile">
                         <h1 class="modal-nickname">뭉치</h1>
                     </div>
@@ -54,7 +55,7 @@
                     <!-- 유저 프로필 및 작성 내용 보여주는 박스 -->
                     <div class="user-Content">
                         <div class="card-title">
-                            <div class="modal-miniprofile"><img src="../petstagram/불독2.png" alt="#" class="profile">
+                            <div class="modal-miniprofile"><img src="/src/main/resources/static/assets/img/dog1.jpg" alt="#" class="profile">
                             </div>
                             <h1 class="modal-nickname">뭉치</h1>
                             <div class="modal-text"> 하하하하하하하</div>
@@ -108,7 +109,7 @@
                         <div class="xh xx">
                             <label for="newReplyText" hidden>댓글 내용</label>
                             <textarea name="replyText" id="newReplyText" cols="1" rows="1"
-                                placeholder="댓글달기.."></textarea>
+                                placeholder="댓글달기.." style="overflow: hidden;"></textarea>
                         </div>
                         <div class="inputbutton xh" role="button">게시</div>
                     </div>
@@ -124,13 +125,13 @@
 
     <section class="like" style="display: none;">
         <div class="bodymodal">
-            <div class="xbutton"><button><i class="bi bi-x-lg"></i></button></div>
+            <div class="likesbutton"><button><i class="bi bi-x-lg"></i></button></div>
             <div class="titlelike">좋아요</div>
             <div class="text">userNickName 님은 이 게시물을 좋아한 총 사람 수를 볼 수 있습니다.</div>
             <div class="likebody">
                 <!-- jsp로 좋아요 누른 사람들 나오게 만들어야함 -->
                 <div class="users">
-                    <div class="modal-miniprofile"><img src="../petstagram/불독2.png" alt="#" class="profile"></div>
+                    <div class="modal-miniprofile"><img src="/src/main/resources/static/assets/img/dog1.jpg" alt="#" class="profile"></div>
                     <div class="modal-profile">
                         <h1 class="modal-nickname">뭉치</h1>
                     </div>
@@ -262,9 +263,9 @@
             }
             // 닫기버튼
             $closebutton.addEventListener('click', e => {
-                console.log(e.target);
-                if(e.target.matches('.xbutton button')){
-                    console.log('button 클릭!')
+                // console.log(e.target);
+                if (e.target.matches('.xbutton button')) {
+                    // console.log('button 클릭!')
                     $backgr.style.display = 'none';
                 }
             })
@@ -272,22 +273,37 @@
         });
 
         // 좋아요 누른사람 확인하는 모달
-        
+
         // 좋아요 버튼
         const $userLikes = document.querySelector('.like');
         // const $userlikesButton = document.querySelector('.backgr');
 
         const replymodal = document.querySelector('.bodymodal');
 
+        const $likeclose = document.querySelector('.likesbutton')
+
         $backgr.addEventListener('click', e => {
             console.log(e.target)
-            if(e.target.matches('.userlikes')){
+            if (e.target.matches('.userlikes')) {
                 $userLikes.style.display = 'block';
             }
-        })
+            // 닫기버튼
+            $likeclose.addEventListener('click', e => {
+                console.log(e.target);
+                if (e.target.matches('.bi')) {
+                    $userLikes.style.display = 'none';
+                }
 
 
+            });
 
+        });
+        // 전역 이벤트로 좋아요 누른사람 보기 모달 창 닫기
+        // window.addEventListener('click' e =>{
+        //     if(e.target === $userLikes){
+        //         modal.style.display = 'none';
+        //     }
+        // })
     </script>
 </body>
 

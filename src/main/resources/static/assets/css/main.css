@@ -390,7 +390,12 @@ flex-grow: 1;
     transform: translate(-50%, -50%);
 
     background: #fff;
-    width: 50%;
+    width: 70%;
+    height: 70%;
+    display: flex;
+    justify-content: space-between;
+
+    border-radius: 15px;
 }
 
 /* 닫기버튼 */
@@ -402,6 +407,7 @@ flex-grow: 1;
     /* text-align: center; */
     margin-bottom: 50px;
     margin-right: 300px;
+    margin-top: 50px;
     background: #fff;
 }
 
@@ -417,11 +423,12 @@ flex-grow: 1;
 
 /* 모달 창 이미지 박스 (액자)*/
 .modal-imgbox {
-    width: 30%;
+    width: 50%;
     height: 100%;
     /* border: 1px solid #000; */
     /* position: relative; */
     overflow: hidden;
+
     display: flex;
     justify-content: flex-end;
 }
@@ -432,6 +439,8 @@ flex-grow: 1;
     /* width: 90%;
     height: 90%; */
     /* position: absolute; */
+    width: 100%;
+    height: 100%;
 
 }
 /* 왼쪽 이미지 박스 , 오른쪽 본문 내용 박스 */
@@ -439,7 +448,7 @@ flex-grow: 1;
     border-radius: 10px;
 }
 .modal-mainbox {
-    width: 20%;
+    width: 50%;
     background: #fff;
     /* border-radius: 10px; */
 }
@@ -463,13 +472,22 @@ flex-grow: 1;
     /* width: 40px; */
     /* margin-left: 5px; */
 }
+.modal-miniprofile img {
+    object-fit: cover;
+    border-radius: 50%;
+    width: 2.5rem;
+    height: 2.5rem;
+    display: block;
 
+   margin-top: 7px;
+   margin-left: 5px;
+}
 /* mini profile img */
 .profile {
     object-fit: cover;
     border-radius: 50%;
-    width: 1.7rem;
-    height: 1.7rem;
+    width: 2.5rem;
+    height: 2.5rem;
     display: block;
 
    margin-top: 7px;
@@ -539,11 +557,11 @@ flex-grow: 1;
 
 /* 사용자 댓글 입력창  */
 .row .modal-card #newReplyText {
-    width: 100%;
+    width: 90%;
     height: 30px;
 
-    margin-top: 10px;
-    margin-left: 10px;
+    /* margin-top: 10px;
+    margin-left: 10px; */
     /* textarea 크기 조절 고정 */
 
     font-size: 20px;
@@ -575,6 +593,7 @@ flex-grow: 1;
     background: orange;
     width: 400px;
     height: 400px;
+    /* margin-top: 50px; */
     margin: auto;
     border-radius: 15px;
 }
@@ -591,8 +610,9 @@ flex-grow: 1;
     /* justify-content: center; */
     border-bottom: 1px solid #000;
 }
-.xbutton {
+.likesbutton {
   margin-right: 10px;
+  margin-top: 50px;
     /* width: 15px;
     height: 20px; */
     float: right;
