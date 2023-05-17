@@ -22,7 +22,8 @@ public class BoardListResponseDTO {
     private String petPhoto;
     private String shortTitle;
     private String shortContent;
-    private String date;
+    // date => boardDateTime 으로 변경
+    private String boardDateTime;
     private String attachedImg;
     private Long likes;
     private Long hits;
@@ -32,7 +33,7 @@ public class BoardListResponseDTO {
         this.boardNo = board.getBoardNo();
         this.shortTitle = board.getTitle();
         this.shortContent = makeShortContent(board.getContent());
-        this.date = makePrettierDateString(board.getBoardDateTime());
+        this.boardDateTime = makePrettierDateString(board.getBoardDateTime());
         this.attachedImg = board.getAttachedImg();
         this.likes = board.getLikes();
         this.hits = board.getHits();
