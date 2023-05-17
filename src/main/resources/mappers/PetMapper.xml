@@ -16,26 +16,24 @@
                 , #{addDetail})
     </insert>
 
-
-<!--  ㅇㅇ동 강아지 찾기-->
-    <select id="findByAddress" resultType="neighbor">
-        SELECT P.pet_no
-             , P.pet_name
-             , P.pet_age
-             , P.pet_kind
-             , P.pet_gender
-             , P.pet_photo
-             , P.pet_date_time
-             , P.hashtag
-             , U.addr
-             , U.add_detail
-            ,P.likes , P.hits
-        FROM tbl_pet P
-        GROUP BY
-                 LEFT JOIN tbl_user U
-                           ON P.user_no = U.user_no
-        WHERE U.addr = #{addr} and U.add_detail=#{addDetail}
+    <!--    '동' 찾기 -->
+    <select id="findDong" resultType="String">
+        select add_detail
+        from tbl_user
+        where addr=#{addr}
+        group by add_detail
     </select>
+
+<!--  ㅇㅇ동 모든 강아지 찾기-->
+    <select id="findPetByAddr" resultType="pet">
+        SELECT user_no, pet_No, pet_name, pet_age
+             , pet_kind, pet_gender,pet_photo
+             ,profile_date_time, hashtag, addr, add_detail
+        FROM tbl_pet
+        WHERE add_detail = #{addDetail}
+    </select>
+
+<!--    ========================================= -->
 
     <delete id="delete">
         DELETE FROM tbl_pet
@@ -59,22 +57,9 @@
         WHERE pet_no = #{petNo}
     </select>
 
-    <select id="userFindPet" resultType="pet">
-        SELECT
-            user_no, pet_no, pet_name,pet_age
-               ,pet_kind,pet_gender,pet_photo
-        FROM tbl_pet
-        WHERE user_No = #{userNo}
-    </select>
 
-<!--    동 리스트 -->
-    <select id="findDong" resultType="String">
-        select add_detail
-        from tbl_user
-        where addr=#{addr}
-        group by add_detail
-    </select>
 
+<!--  안쓰면 지우기 ( 지원)-->
 <!--    렌던 펫 -->
     <select id="randomPet" resultType="neighbor">
         SELECT P.pet_no

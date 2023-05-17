@@ -27,12 +27,6 @@
 
 <h1>주변 친구 찾기</h1>
 
-<div>신사동
-  <div>${bestPet.petName}</div>
-  <div>${bestPet.petPhoto}</div>
-
-</div>
-
 <hr>
 <%--주변 친구 펫 카드들--%>
 <div class="pet-card-list">
@@ -43,9 +37,8 @@
       <div class="pet-photo">
         <img src="${plist.petPhoto}" alt="${plist.petName}">
       </div>
-      <div>♥ : ${plist.likes}      hits: ${plist.hits}</div>
+<%--      <div>♥ : ${plist.likes}      hits: ${plist.hits}</div>--%>
       <div class="hashtag">${plist.hashtag}</div>
-
     </div>
   </c:forEach>
 </div>

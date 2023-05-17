@@ -38,48 +38,44 @@ public class PetController {
   // 펫 프로필 정보 요청
   @PostMapping("/profile")
   public String petCardMake(PetProfileRequestDTO dto, HttpSession session) {
-    log.info("펫 입력 정보 : {}",dto);
-    log.info("세션 : {}",session);
+    log.info("펫 입력 정보 : {}", dto);
+    log.info("세션 : {}", session);
 
-    petService.petCardMake(dto,session);
+    boolean petSave = petService.petCardMake(dto, session);
+    log.info("펫 저장 : {}", petSave);
+
     return "/user/main";
   }
 
 
-  // 강남구 강아지 요청
-  @GetMapping("/neighbor1")
-  public String findingNeighbor(Model model
-    ,HttpSession session //세션에 유저 정보 (ㅇㅇ구)
-  ){
+  // 지도 띄워주기
+  @GetMapping("/map")
+  public String map(
+      HttpSession session,
+      Model model) {
+    // 유저 있는 동네 보내주기
+    List<String> dongList = petService.findAddrDetail(session);
+    log.info("dong  : {}", dongList);
 
+    model.addAttribute("dong", dongList);
 
-    return null;
+    return "neighbor/map";
   }
 
+  /**
+   * 선택한 동네 강아지 보기
+   *
+   * @param addDetail - 유저가 선택한 동
+   */
+  @GetMapping("/neighbor")
+  public String findNeighbor(
+      String addDetail
+      , Model model) {
+    List<Pet> foundPet = petService.findNeighbor(addDetail);
 
+    model.addAttribute("petList",foundPet);
 
-  // 이웃 펫 찾기
-  @GetMapping("/neighbor2")
-  public String findingNeighbor2(Model model
-      , String keyword
-//            , HttpSession session
-  ) {
-//        session=null;
-    log.info("/petprofile/list : GET");
-/*
-    // ㅇㅇ동 전체 강아지
-    List<PetCardResponseDTO> petList = petService.findingNeighbor(null, keyword);
-
-    // ㅇㅇ동 가장 인기있는 강아지
-    PetCardResponseDTO bestPet = petList.stream()
-                                        .findFirst().get();
-
-    model.addAttribute("petList", petList);
-    model.addAttribute("bestPet", bestPet);
-
-
- */
-    return "/pet/neighbor";
+    return "neighbor/neighbor";
   }
 
   @PostMapping("/delete")

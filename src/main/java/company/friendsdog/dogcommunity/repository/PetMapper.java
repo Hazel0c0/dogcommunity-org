@@ -13,15 +13,13 @@ public interface PetMapper {
 
   // 펫 추가하기
   boolean save(Pet pet);
+  // '구'로 동 찾기
+  List<String> findDong(String addr);
+  // '동'으로 펫 찾기
+  List<Pet> findPetByAddr(String addDetail);
 
 
-  // 모든 펫 찾기
-  List<Pet> findAll();
 
-  // 이웃 펫 조회하기
-  List<PetCardResponseDTO> findByAddress(
-      @Param("addr") String adds,
-      @Param("addDetail") String addDetail);
 
   Pet findOne(Long petNo);
 
@@ -35,10 +33,6 @@ public interface PetMapper {
   //펫 프로필 수정 클래스담아서
 
   boolean modify(Pet pet);
-
-  Pet userFindPet(Long uNo);
-
-  List<String> findDong(String addr);
 
   PetCardResponseDTO randomPet(String addDetail);
 
