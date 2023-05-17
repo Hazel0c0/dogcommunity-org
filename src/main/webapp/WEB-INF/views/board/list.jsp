@@ -50,7 +50,7 @@
     <div class="card-container">
 
         <c:forEach var="b" items="${bList}">
-
+            <input type="hidden" name="boardNo" value="${b.boardNo}">
             <div>${b.petName}</div>
             <div><img src="${b.petPhoto}"> </div>
             <div><img src="${b.attachedImg}" alt=""> </div>
