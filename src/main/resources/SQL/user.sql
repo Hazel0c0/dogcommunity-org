@@ -24,11 +24,10 @@ values ('SU', '진수', 1234, 'dlwstn0722@naver.com', '01041358412', '논현동'
        ('YOSICK', '영식', 0000, 'yosick@naver.com', 01067513626, '역삼동', '강남구', '2023-05-18'),
        ('SOONGU', '순구', 9007, 'soongu9@google.com', 01015213129, '신사동', '강남구', '2023-05-20');
 
-#  자동로그인 컬럼 추기
+#  자동로그인 컬럼 추가
 ALTER TABLE tbl_user
     ADD session_id VARCHAR(200) default 'none';
 
 ALTER TABLE tbl_user
     ADD cookie_limit_time DATETIME;
 
-ALTER TABLE tbl_user DROP COLUMN limit_time;
