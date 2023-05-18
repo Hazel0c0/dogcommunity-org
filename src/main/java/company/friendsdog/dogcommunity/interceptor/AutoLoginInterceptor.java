@@ -25,7 +25,7 @@ public class AutoLoginInterceptor implements HandlerInterceptor {
   private final UserService userService;
   @Override
   public boolean preHandle(HttpServletRequest request, HttpServletResponse response, Object handler) throws Exception {
-    log.info("auto login");
+//    log.info("auto login");
     // getCookies
     Cookie c = WebUtils.getCookie(request, AUTO_LOGIN_COOKIE);
 
