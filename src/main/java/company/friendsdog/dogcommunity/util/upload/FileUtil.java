@@ -11,20 +11,6 @@ import java.util.UUID;
 
 public class FileUtil {
 
-    /*
-       1. 사용자가 파일을 업로드했을 때
-          중복이 없는 새로운 파일명을 생성해서
-          해당 파일명으로 업로드하는 메서드
-     */
-
-    /**
-     *
-     * @param file - 사용자가 업로드한 파일 객체
-     * @param rootPath - 서버에 파일업로드 루트 경로
-     *                   (ex: D:/spring-prj/upload/)
-     * @return - 업로드가 완료된 파일의 위치 경로
-     *            (ex: /2023/05/16/ddjkfsjdk_상어.jpg)
-     */
     public static String uploadFile(
             MultipartFile file,
             String rootPath
