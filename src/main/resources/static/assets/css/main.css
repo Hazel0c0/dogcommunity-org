@@ -459,10 +459,11 @@ flex-grow: 1;
 }
 .topmini {
     border-bottom: 1px solid gray;
+
 }
 
 .card-title {
-   
+   padding: 5px;
     display: flex;
 
 }
@@ -512,8 +513,12 @@ flex-grow: 1;
     background: orangered;
     height: 100%;
     font-size: 16px;
-
 }
+
+.replytitle {
+    display: flex;
+}
+
 
 /* 버튼들 담겨 있는 박스 */
 .eventbuttons {

@@ -21,11 +21,20 @@
     <!-- css -->
     <link rel="stylesheet" href="/assets/css/main.css">
 
+    <style>
+        .reply {
+            display: flex;
+            margin-right: 5px;
+        }
+    </style>
+
 </head>
 
 <body>
 
     <!--  모달 창 -->
+    <!-- <form var="b" items="b"> -->
+
 
     <section class="backgr" style="display: none;">
 
@@ -33,20 +42,28 @@
         <!-- 닫기 버튼 -->
         <div class="xbutton" id="xbutton"><button><i class="bi bi-x-lg"></i></button></div>
         <!-- 상세보기 모달 창 -->
+        <!-- <form action="/board/list2" method="get"> -->
+
 
         <div class="my-modal" id="modal">
             <!-- 이미지 박스  -->
             <div class="modal-imgbox bdrr">
-                <img src="/src/main/resources/static/assets/img/dog1.jpg" alt="#">
+                <!-- <img src="${attachedImg}" alt="#"> -->
+
+                <!-- setAttribute 로 값 전달 -->
+                <img class="boardimg" alt="#">
             </div>
 
             <!-- 본문 내용 박스 -->
             <div class="modal-mainbox bdrr">
                 <!-- 프로필 사진 및 작성자 닉네임 박스 -->
                 <div class="card-title topmini">
-                    <div class="modal-miniprofile"><img src="/src/main/resources/static/assets/img/dog1.jpg" alt="#" class="profile"></div>
+                    <div class="modal-miniprofile">
+                        <!-- setAttribute 값 전달 -->
+                        <img alt="#" class="profile top"></div>
                     <div class="modal-profile">
-                        <h1 class="modal-nickname">뭉치</h1>
+                        <!-- setAttribute 값 전달 -->
+                        <h1 class="modal-nickname NN1"></h1>
                     </div>
                 </div>
 
@@ -55,10 +72,14 @@
                     <!-- 유저 프로필 및 작성 내용 보여주는 박스 -->
                     <div class="user-Content">
                         <div class="card-title">
-                            <div class="modal-miniprofile"><img src="/src/main/resources/static/assets/img/dog1.jpg" alt="#" class="profile">
+                            <!-- setAttribute 값 전달 -->
+                            <div class="modal-miniprofile">
+                                <img alt="#" class="profile PF1">
                             </div>
-                            <h1 class="modal-nickname">뭉치</h1>
-                            <div class="modal-text"> 하하하하하하하</div>
+                            <!-- setAttribute 값 전달 -->
+                            <h1 class="modal-nickname NN2"></h1>
+                            <!-- setAttribute 값 전달 -->
+                            <div class="modal-text shorttext"></div>
                         </div>
 
                     </div>
@@ -68,7 +89,28 @@
                         <!-- 댓글 내용 박스 -->
                         <div id="replyCollpase" class="replycard">
                             <div id="replyData">
-                                <!-- Js로 댓글 정보 DIV  -->
+                               <div class="reply">
+                                <div class="reply-profile">
+                                    <img src="#" alt="프사">
+                                </div>
+                                 <div class="reply-writer">정동관1</div>
+                                 <div class="reply-content">캬캬캬캬캬캬캬캬</div>
+                               </div>
+                               <div class="reply">
+                                <div class="reply-profile">
+                                    <img src="#" alt="프사">
+                                </div>
+                                 <div class="reply-writer">정동관2</div>
+                                 <div class="reply-content">캬캬캬캬캬캬캬캬</div>
+                               </div>
+                               <div class="reply">
+                                <div class="reply-profile">
+                                    <img src="#" alt="프사">
+                                </div>
+                                 <div class="reply-writer">정동관3</div>
+                                 <div class="reply-content">캬캬캬캬캬캬캬캬</div>
+                               </div>
+                                    <!-- Js로 댓글 정보 DIV  -->
                                 <!-- 닉네임 및 댓글내용 (15자 이상 자세히보기) -->
                                 <!-- 기본으로 15개 보여주고 넘어갈시 페이징으로 불러오기 해야함 -->
                             </div>
@@ -100,6 +142,10 @@
                         <span class="aamz"><button class="abl"><i class="bi bi-lightning"></i></button></span>
                         <!-- 저장 버튼 (보류) viewcount 로 대체예정-->
                     </div>
+                    <!-- </form> -->
+
+
+
                 </section>
                 <div class="userlikes">좋아요 누른사람 보기</div>
                 <!-- 댓글 입력 박스 -->
@@ -108,8 +154,8 @@
                     <div class="modal-card">
                         <div class="xh xx">
                             <label for="newReplyText" hidden>댓글 내용</label>
-                            <textarea name="replyText" id="newReplyText" cols="1" rows="1"
-                                placeholder="댓글달기.." style="overflow: hidden;"></textarea>
+                            <textarea name="replyText" id="newReplyText" cols="1" rows="1" placeholder="댓글달기.."
+                                style="overflow: hidden;"></textarea>
                         </div>
                         <div class="inputbutton xh" role="button">게시</div>
                     </div>
@@ -119,7 +165,7 @@
             </div>
         </div>
     </section>
-
+    <!-- </form> -->
 
     <!-- 서브 모달도 앱솔루트 z index 줘서 위치 조정해야함 모달은 무조건 body 밑에 깔아야함-->
 
@@ -131,7 +177,7 @@
             <div class="likebody">
                 <!-- jsp로 좋아요 누른 사람들 나오게 만들어야함 -->
                 <div class="users">
-                    <div class="modal-miniprofile"><img src="/src/main/resources/static/assets/img/dog1.jpg" alt="#" class="profile"></div>
+                    <div class="modal-miniprofile"><img src="${b.petPhoto}" alt="#" class="profile"></div>
                     <div class="modal-profile">
                         <h1 class="modal-nickname">뭉치</h1>
                     </div>
@@ -203,7 +249,7 @@
                             </div>
 
                         </div> <!-- 사용자 이름 박스 끝-->
-                        <div class="card-img"><img src="${b.attachedImg}" alt="#"></div> <!-- 이미지-->
+                        <div class="card-img"><img src="${b.attachedImg}" alt="게시글 사진"></div> <!-- 이미지-->
 
                         <div class="card-content">
                             <!-- 게시글 내용 시작 -->
@@ -248,18 +294,44 @@
 
         $boxRow1.addEventListener('click', e => {
             // console.log(e.target);
-
             // e.preventDefault();
+            // const boardNo = e.target.parentElement.previousElementSibling.textContent;
+            const $boardNo = e.target.closest('#card').dataset.bno;
+            const $petPhoto = e.target.closest('#card').querySelector('.miniprofile img').src;
+            const $attachedImg = e.target.src;
+            const $petName = e.target.closest('#card').querySelector('.nickname').textContent;
+
+            const $shortContent = e.target.closest('#card').querySelector('.card-text').textContent;
+                console.log($shortContent);
+
+            // 모달창에 정보 전달
+            // 여기서는 간단히 console.log로 출력하도록 했습니다.
+            // console.log(
+                // `boardNo: \${boardNo}, petPhoto: \${petPhoto}, attachedImg: \${attachedImg}, petName: \${petName},shortContent : \${shortContent}`);
+            // 게시글 이미지 전달 
+            const $boardimg = document.querySelector('.boardimg');
+            $boardimg.setAttribute('src', $attachedImg);
+            // 상단 미니 프로필 1
+            const $boardprofile = document.querySelector('.profile');
+            $boardprofile.setAttribute('src', $petPhoto);
+            // 상단 미니 프로필 2 
+            const $boardprofile2 = document.querySelector('.PF1');
+            $boardprofile2.setAttribute('src', $petPhoto);
+            // 상단 닉네임 1
+            const $boarduserNickName1 = document.querySelector('.NN1');
+            console.log($boarduserNickName1);
+            $boarduserNickName1.textContent=$petName;
+            // 상단 닉네임 2 
+            const $boarduserNickName2 = document.querySelector('.NN2');
+            $boarduserNickName2.textContent=$petName;
+            // 게시판 글 내용
+            const $boardtext = document.querySelector('.shorttext');
+            $boardtext.textContent=$shortContent;
+
 
             if (e.target.matches('.card-img img')) {
                 // console.log('detail 클릭 !');
                 $backgr.style.display = 'block';
-
-                // 닫기버튼
-                // closebutton.onclick = e => {
-                //     $backger.style.display = 'none';
-                // }
-
             }
             // 닫기버튼
             $closebutton.addEventListener('click', e => {
@@ -283,18 +355,16 @@
         const $likeclose = document.querySelector('.likesbutton')
 
         $backgr.addEventListener('click', e => {
-            console.log(e.target)
+            // console.log(e.target)
             if (e.target.matches('.userlikes')) {
                 $userLikes.style.display = 'block';
             }
             // 닫기버튼
             $likeclose.addEventListener('click', e => {
-                console.log(e.target);
+                // console.log(e.target);
                 if (e.target.matches('.bi')) {
                     $userLikes.style.display = 'none';
                 }
-
-
             });
 
         });
@@ -304,6 +374,11 @@
         //         modal.style.display = 'none';
         //     }
         // })
+
+        // function makeDtailPageButtonClickEvent() {
+        //     const $pageUI = document.querySelector('card-container');
+        //     $pageUI.
+        // }
     </script>
 </body>
 
