@@ -26,11 +26,11 @@
 <header>
     <div class="inner-header">
         <h1 class="logo">
-            <a href="/user/main">
+            <a href="/main">
                 <img src="/assets/img/logo-instagram.png" alt="로고이미지">
             </a>
         </h1>
-        <h2 class="intro-text"><a href="/user/main">Petstagram</a></h2>
+        <h2 class="intro-text"><a href="/main">Petstagram</a></h2>
         <a href="#" class="menu-open">
             <span class="menu-txt">MENU</span>
             <span class="lnr lnr-menu"></span>
@@ -42,7 +42,7 @@
             <span class="lnr lnr-cross"></span>
         </a>
         <ul>
-            <a href="/user/main"><span class="lnr lnr-home"> 홈</span></a>
+            <a href="/main"><span class="lnr lnr-home"> 홈</span></a>
             <a href="#"><span class="lnr lnr-magnifier"> 검색</span></a>
             <a href="#"><span class="lnr lnr-map"> 내 주변 친구</span></a>
             <a href="#"><span class="lnr lnr-heart"> 자랑하기</span></a>
