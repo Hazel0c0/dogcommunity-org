@@ -25,13 +25,13 @@ public class AutoLoginInterceptor implements HandlerInterceptor {
   private final UserService userService;
   @Override
   public boolean preHandle(HttpServletRequest request, HttpServletResponse response, Object handler) throws Exception {
-    log.info("auto login");
+//    log.info("auto login");
     // getCookies
     Cookie c = WebUtils.getCookie(request, AUTO_LOGIN_COOKIE);
 
     if (c!=null){
       String sessionId = c.getValue(); // 쿠키에 저장된 session id
-      log.info("세션아이디 : {}",sessionId);
+//      log.info("세션아이디 : {}",sessionId);
 
       // 세션아이디로 유저 조회하기
       User foundUser = userMapper.findUserByCookie(sessionId);
