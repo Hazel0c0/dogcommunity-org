@@ -78,7 +78,7 @@
         <div id="card-container">
             <!--메인박스-->
         
-            <!-- <%@ include file="../main/list.jsp" %> -->
+            <%-- <%@ include file="../main/list.jsp" %> --%>
     </div>
 
 
