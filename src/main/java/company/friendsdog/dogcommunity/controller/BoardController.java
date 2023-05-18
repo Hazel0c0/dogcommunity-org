@@ -77,7 +77,11 @@ public class BoardController {
         log.info("경로 - {}",rootPath);
 
         String imgPath = FileUtil.uploadFile(dto.getAttachedImg(), rootPath);
-        boardService.save(dto,session, imgPath);
+
+        String local = "http://localhost:8585/local";
+        String fullLocal = local + imgPath;
+
+        boardService.save(dto,session, fullLocal);
         return "redirect:/board/list";
     }
     // 게시판 삭제 요청 처리
