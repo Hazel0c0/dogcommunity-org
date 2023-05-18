@@ -3,7 +3,6 @@ package company.friendsdog.dogcommunity.service;
 
 import company.friendsdog.dogcommunity.dto.PetProfileModifyRequestDTO;
 import company.friendsdog.dogcommunity.dto.request.PetProfileRequestDTO;
-import company.friendsdog.dogcommunity.dto.response.PetCardResponseDTO;
 import company.friendsdog.dogcommunity.entity.Pet;
 import company.friendsdog.dogcommunity.entity.User;
 import company.friendsdog.dogcommunity.repository.PetMapper;
@@ -22,7 +21,8 @@ public class PetService {
   private final PetMapper petMapper;
 
   // 펫 카드 저장하기
-  public boolean petCardMake(PetProfileRequestDTO dto, HttpSession session) {
+  public boolean petCardMake(final PetProfileRequestDTO dto
+      , final HttpSession session, final String savePath) {
     User sUser = LoginUtil.getCurrentLoginUser(session);
     Pet newPet=Pet.builder()
         .userNo(sUser.getUserNo())
@@ -30,7 +30,7 @@ public class PetService {
         .petAge(dto.getPetAge())
         .petKind(dto.getPetKind())
         .petGender(dto.getPetGender())
-        .petPhoto(dto.getPetPhoto())
+        .petPhoto(savePath)
         .hashtag(dto.getHashtag())
         .addr(sUser.getAddr())
         .addDetail(sUser.getAddDetail())

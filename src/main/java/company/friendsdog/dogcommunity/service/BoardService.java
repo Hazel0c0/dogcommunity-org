@@ -40,10 +40,12 @@ public class BoardService {
     public boolean save(BoardRequestDTO dto, HttpSession session, String imgPath) {
 
         Board board = new Board(dto);
+
         log.info(imgPath);
         board.setAttachedImg(imgPath);
         Long userNoInfo = LoginUtil.getCurrentLoginUser(session).getUserNo();
         log.info("userNoInfo - {}",userNoInfo);
+
 
 //        Long petNoInfo = petMapper.userFindPet(userNoInfo).getPetNo();
 //        log.info("petNoInfo - {}", petNoInfo);

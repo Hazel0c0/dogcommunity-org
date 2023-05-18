@@ -14,7 +14,7 @@
     <script src="/assets/js/side-menu.js" defer></script>
     <!-- 말풍선 -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.6.0/font/bootstrap-icons.css" />
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.6.0/font/bootstrap-icons.css"/>
     <!-- css -->
     <link rel="stylesheet" href="/assets/css/profile.css">
 </head>
@@ -22,16 +22,15 @@
 <body>
 
 
-
 <!-- header -->
 <header>
     <div class="inner-header">
         <h1 class="logo">
-            <a href="/user/main">
+            <a href="/main">
                 <img src="/assets/img/logo-instagram.png" alt="로고이미지">
             </a>
         </h1>
-        <h2 class="intro-text"><a href="/user/main">Petstagram</a></h2>
+        <h2 class="intro-text"><a href="/main">Petstagram</a></h2>
         <a href="#" class="menu-open">
             <span class="menu-txt">MENU</span>
             <span class="lnr lnr-menu"></span>
@@ -43,7 +42,7 @@
             <span class="lnr lnr-cross"></span>
         </a>
         <ul>
-            <a href="/user/main"><span class="lnr lnr-home"> 홈</span></a>
+            <a href="/main"><span class="lnr lnr-home"> 홈</span></a>
             <a href="#"><span class="lnr lnr-magnifier"> 검색</span></a>
             <a href="#"><span class="lnr lnr-map"> 내 주변 친구</span></a>
             <a href="#"><span class="lnr lnr-heart"> 자랑하기</span></a>
@@ -57,9 +56,11 @@
 <!--main left sidebar-->
 <aside class="sidebar">
     <div class="profile-box">
-        <div class="profile-img"><a href=""></a></div>
-        <h3 id="petNickname">멍멍이</h3>
-        <p id="profileIntro">#안뇽</p>
+        <a href="/pet/profile">
+            <div class="profile-img"> </div>
+            <h3 id="profilePetName">멍멍이</h3>
+            <p id="profileHashTag">#안뇽</p>
+        </a>
     </div>
         <div>
          <button type="submit" onclick="http://localhost:8585/modify">수정하기</button>
@@ -70,10 +71,9 @@
 
 <!--//Profile Change Body label이랑 id 맞추고 dto랑 name 맞춘다-->
 <div class="profileChange">
-    <form action="/pet/profile"  method="post"  name = "petProfile" class="profile">
 
-        <label for="petPhoto">프로필 사진 추가하기</label>
-        <input type="file" id="petPhoto" name="petPhtoto" accept="image/*">
+    <form action="/pet/profile" method="post" name="petProfile"
+          class="profile" enctype="multipart/form-data">
 
         <label for="petName">반려동물 이름</label>
         <input type="text" id="petName" name="petName" required>
@@ -84,6 +84,8 @@
         <label for="petKind">품종</label>
         <input type="text" id="petKind" name="petKind" required>
 
+        <label for="petPhoto">프로필 사진</label>
+        <input type="file" id="petPhoto" name="petPhoto" accept="image/*">
 
 
         <label for="petGender">성별</label>
@@ -96,30 +98,55 @@
         </select>
 
         <label for="hashTag">소개</label>
-        <textarea id="hashTag" name="hashTag" rows="4" required></textarea>
+        <textarea id="hashTag" name="hashtag" rows="4" required></textarea>
 
-<%--        <label for="profileSuggest">프로필에 계정 추천 표시</label>--%>
-<%--        <p id="suggestProfile">강아지의 프로필이 다른 프로필에서 추천될 수 있는지를 선택하세요.&nbsp;&nbsp;&nbsp;<input type="checkbox" name="profileSuggest"></p>--%>
+        <label for="profileSuggest">프로필에 계정 추천 표시</label>
+        <p>강아지의 프로필이 다른 프로필에서 추천될 수 있는지를 선택하세요.
+            &nbsp;&nbsp;&nbsp;
+            <input type="checkbox" id="profileSuggest" name="profileSuggest">
+        </p>
 
-        <input type="submit" value="제출">
+        <input type="submit" value="제출" id="submitBtn">
     </form>
 </div>
 <script>
-
+    <%--  좌측 프로필 영역 --%>
+    const $profilePetName = document.getElementById('profilePetName');
+    const $profileHashTag = document.getElementById('profileHashTag');
+    <%--  우측 프로필 수정 영역 --%>
+    const $petName = document.getElementById('petName');
     const $hashTag = document.getElementById('hashTag');
-    const $profileIntro= document.getElementById('profileIntro');
-    const $petName= document.getElementById('petName');
-    const $petNickname= document.getElementById('petNickname');
+    const $submitBtn = document.getElementById('submitBtn');
 
-    $hashTag.onkeyup = e => {
-        // console.log(e);
+    $submitBtn.addEventListener('click', function (e) {
+         // e.preventDefault(); // 기본 제출 동작 방지
 
-        if (e.key === 'Enter') {
-            $profileIntro.textContent = $hashTag.value;
-            $petNickname.textContent = $petName.value;
+        $profilePetName.textContent = $petName.value;
+        let hashTagValue = $hashTag.value;
+        if (!hashTagValue.includes('#')) {
+            hashTagValue = '#' + hashTagValue;
         }
+        $profileHashTag.textContent = hashTagValue;
+        // console.log($petName.value);
+        // console.log($hashTag.value);
 
-    };
+        // 파일 잡아오기
+        const fileInput = document.getElementById('petPhoto');
+        const fileData = fileInput.files[0];
+
+        if (fileData) {
+            const reader = new FileReader();
+            reader.readAsDataURL(fileData);
+
+            reader.onload = function(e) {
+                const profileImg = document.querySelector('.profile-img');
+                profileImg.style.backgroundImage = 'url(' + e.target.result + ')';
+            };
+        }
+    });
+
+
+
 
 </script>
 </body>

@@ -29,7 +29,7 @@
     </section>
     <section class="signUpPage">
         <p id="showMessage"></p>
-        <input type="email" placeholder="전화번호 또는 이메일" name="email" id="email" class="phone">
+        <input type="email" placeholder="이메일" name="email" id="email" class="email">
         <select type="text" placeholder="주소" name="addr" id="addr">
             <option value="">구 선택</option>
             <option value="강남구">강남구</option>
@@ -54,7 +54,7 @@
         <button class="haveAccount" style="border-color: darkgrey;">
             <a href="/user/login" class="logInBtn">
                 <p>Have an account?
-                    <strong style="color:rgb(89, 166, 221)"> Log in</strong>
+                    <strong style="color:rgb(89, 166, 221)">&nbsp;&nbsp;Log in</strong>
                 </p>
             </a>
         </button>
