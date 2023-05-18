@@ -72,128 +72,31 @@
 <!-- body -->
 
 <section id="boxRow1">
-    <div id="card-container">
-        <!--메인박스-->
-        <div id="card-wrapper">
-            <!-- 메인박스 안 작은박스-->
-            <section id="card">
-                <!-- 실제 내용을 담는 박스-->
-                <div class="card-title">
-                    <!-- 사용자 이름 박스 시작-->
-                    <div class="miniprofile"><img src="" alt="#"></div>
-                    <div class="profile">
-                        <h1 class="nickname">작성자 : 뭉치</h1>
-                    </div>
+   
+  
 
-                </div> <!-- 사용자 이름 박스 끝-->
-                <div class="card-img"><img src="../petstagram/불독2.png" alt="#"></div> <!-- 이미지-->
-
-                <div class="card-content">
-                    <!-- 게시글 내용 시작 -->
-                    <section class="eventbuttons">
-                        <!-- 버튼 담는 박스 -->
-                        <div class="th">
-                            <span class="aamw"><button class="abl"><i class="bi bi-heart"></i></button></span>
-                            <!-- 좋아요 버튼-->
-                            <span class="aamx"><button class="abl"><i class="bi bi-chat"></i></button></span>
-                            <!-- 댓글 버튼-->
-                            <span class="aamy"><button class="abl"><i class="bi bi-messenger"></i></button></span>
-                            <!-- 메세지 버튼-->
-                        </div>
-                        <div class="tj">
-                            <span class="aamz"><button class="abl"><i class="bi bi-lightning"></i></button></span>
-                            <!-- 저장 버튼 (보류) viewcount 로 대체예정-->
-                        </div>
-                    </section>
-                    <div class="card-text">작성자 :하하하하하하하</div> <!-- 작성내용   -->
-                    <div class="regdate">작성일자시간</div>
-                </div> <!-- 게시글 내용 끝-->
-            </section>
-        </div>
+        <div id="card-container">
+            <!--메인박스-->
+        
+            <!-- <%@ include file="../main/list.jsp" %> -->
     </div>
 
-    <div id="card-container">
-        <!--메인박스-->
-        <div id="card-wrapper">
-            <!-- 메인박스 안 작은박스-->
-            <section id="card">
-                <!-- 실제 내용을 담는 박스-->
-                <div class="card-title">
-                    <!-- 사용자 이름 박스 시작-->
-                    <div class="miniprofile"><img src="../petstagram/불독2.png" alt="#"></div>
-                    <div class="profile">
-                        <h1 class="nickname">작성자 : 뭉치</h1>
-                    </div>
 
-                </div> <!-- 사용자 이름 박스 끝-->
-                <div class="card-img"><img src="/assets/img/bulldog.jpg" alt="#"></div> <!-- 이미지-->
-
-                <div class="card-content">
-                    <!-- 게시글 내용 시작 -->
-                    <section class="eventbuttons">
-                        <!-- 버튼 담는 박스 -->
-                        <div class="th">
-                            <span class="aamw"><button class="abl"><i class="bi bi-heart"></i></button></span>
-                            <!-- 좋아요 버튼-->
-                            <span class="aamx"><button class="abl"><i class="bi bi-chat"></i></button></span>
-                            <!-- 댓글 버튼-->
-                            <span class="aamy"><button class="abl"><i class="bi bi-messenger"></i></button></span>
-                            <!-- 메세지 버튼-->
-                        </div>
-                        <div class="tj">
-                            <span class="aamz"><button class="abl"><i class="bi bi-lightning"></i></button></span>
-                            <!-- 저장 버튼 (보류) viewcount 로 대체예정-->
-                        </div>
-                    </section>
-                    <div class="card-text">작성자 :하하하하하하하</div> <!-- 작성내용   -->
-                    <div class="regdate">작성일자시간</div>
-                </div> <!-- 게시글 내용 끝-->
-            </section>
-        </div>
-    </div>
-
-    <div id="card-container">
-        <!--메인박스-->
-        <div id="card-wrapper">
-            <!-- 메인박스 안 작은박스-->
-            <section id="card">
-                <!-- 실제 내용을 담는 박스-->
-                <div class="card-title">
-                    <!-- 사용자 이름 박스 시작-->
-                    <div class="miniprofile"><img src="../petstagram/불독2.png" alt="#"></div>
-                    <div class="profile">
-                        <h1 class="nickname">작성자 : 뭉치</h1>
-                    </div>
-
-                </div> <!-- 사용자 이름 박스 끝-->
-                <div class="card-img"><img src="../petstagram/불독2.png" alt="#"></div> <!-- 이미지-->
-
-                <div class="card-content">
-                    <!-- 게시글 내용 시작 -->
-                    <section class="eventbuttons">
-                        <!-- 버튼 담는 박스 -->
-                        <div class="th">
-                            <span class="aamw"><button class="abl"><i class="bi bi-heart"></i></button></span>
-                            <!-- 좋아요 버튼-->
-                            <span class="aamx"><button class="abl"><i class="bi bi-chat"></i></button></span>
-                            <!-- 댓글 버튼-->
-                            <span class="aamy"><button class="abl"><i class="bi bi-messenger"></i></button></span>
-                            <!-- 메세지 버튼-->
-                        </div>
-                        <div class="tj">
-                            <span class="aamz"><button class="abl"><i class="bi bi-lightning"></i></button></span>
-                            <!-- 저장 버튼 (보류) viewcount 로 대체예정-->
-                        </div>
-                    </section>
-                    <div class="card-text">작성자 :하하하하하하하</div> <!-- 작성내용   -->
-                    <div class="regdate">작성일자시간</div>
-                </div> <!-- 게시글 내용 끝-->
-            </section>
-        </div>
-    </div>
 </section>
 <!--// body-->
 
+
+<script>
+    // const cardcontainer =document.getElementById(card_container);
+    // fetch("list.jsp")
+    // .then(response => response.text())
+    // .then(data => {
+    //     cardcontainer.innerHTML = data;
+    // })
+    // .catch(error => {
+    //     console.error("Error : ", error)
+    // });
+</script>
 </body>
 
 </html>

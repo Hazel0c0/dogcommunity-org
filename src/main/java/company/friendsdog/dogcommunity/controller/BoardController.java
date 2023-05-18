@@ -46,13 +46,14 @@ public class BoardController {
         model.addAttribute("bList", dto);
         model.addAttribute("p", page);
 
-        return "board/list";
+        return "/board/test";
     }
 
     // 게시판 상세 조회 요청
     @GetMapping("/detail")
     public String petFindOne(Long boardNo, Search search, Model model) {
         log.info("/board/detail : GET");
+        log.info("boardNo - {}", boardNo);
         BoardDetailResponseDTO dto = boardService.petFindOne(boardNo);
         model.addAttribute("b", dto);
         model.addAttribute("p", search);

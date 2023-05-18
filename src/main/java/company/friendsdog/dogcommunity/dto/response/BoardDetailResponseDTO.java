@@ -15,7 +15,7 @@ public class BoardDetailResponseDTO {
     private String petPhoto;
     private String title;
     private String content;
-    private String date;
+    private String boardDateTime;
     private String attachedImg;
     private Long likes;
     private Long hits;
@@ -25,7 +25,7 @@ public class BoardDetailResponseDTO {
         this.petNo = board.getPetNo();
         this.title = board.getTitle();
         this.content = board.getContent();
-        this.date = BoardListResponseDTO.makePrettierDateString(board.getBoardDateTime());
+        this.boardDateTime = BoardListResponseDTO.makePrettierDateString(board.getBoardDateTime());
         this.attachedImg = board.getAttachedImg();
         this.likes = board.getLikes();
         this.hits = board.getHits();
