@@ -1,8 +1,10 @@
 package company.friendsdog.dogcommunity.util;
 
-import company.friendsdog.dogcommunity.entity.Pet;
 import company.friendsdog.dogcommunity.entity.User;
+import org.springframework.web.util.WebUtils;
 
+import javax.servlet.http.Cookie;
+import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
 public class LoginUtil {
@@ -20,9 +22,19 @@ public class LoginUtil {
         return loginUser;
     }
 
-    //로그인 여부 확인 : 범용으로 쓰게 static 로그인을 했는지 알려면 세션 받아오기
+    //로그인 여부 확인
     public static boolean isLogin(HttpSession session) {
         return session.getAttribute(LOGIN_KEY) != null;
+    }
+
+    // 자동 로그인 여부 확인
+    public static boolean isAutoLogin(HttpServletRequest request) {
+        return WebUtils.getCookie(request, AUTO_LOGIN_COOKIE) != null;
+    }
+
+    // 쿠키 가져오기
+    public static Cookie getCookie(HttpServletRequest request){
+        return WebUtils.getCookie(request, LoginUtil.AUTO_LOGIN_COOKIE);
     }
 
     // 로그인한 사람의 계정명을 반환하는 메서드
