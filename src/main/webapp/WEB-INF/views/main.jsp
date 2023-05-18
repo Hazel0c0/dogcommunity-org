@@ -9,7 +9,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
-    <%@ include file="../include/static-head.jsp" %>
+    <%@ include file="include/static-head.jsp" %>
 
     <!-- side menu event js defer : 지연 메뉴 걸기 -->
     <script src="/assets/js/side-menu.js" defer></script>
@@ -26,11 +26,11 @@
 <header>
     <div class="inner-header">
         <h1 class="logo">
-            <a href="/user/main">
+            <a href="/main">
                 <img src="/assets/img/logo-instagram.png" alt="로고이미지">
             </a>
         </h1>
-        <h2 class="intro-text"><a href="/user/main">Petstagram</a></h2>
+        <h2 class="intro-text"><a href="/main">Petstagram</a></h2>
         <a href="#" class="menu-open">
             <span class="menu-txt">MENU</span>
             <span class="lnr lnr-menu"></span>
@@ -42,7 +42,7 @@
             <span class="lnr lnr-cross"></span>
         </a>
         <ul>
-            <li><a href="/user/main"><span class="lnr lnr-home"> 홈</span></a></li>
+            <li><a href="/main"><span class="lnr lnr-home"> 홈</span></a></li>
             <li><a href="#"><span class="lnr lnr-magnifier"> 검색</span></a></li>
             <li><a href="/pet/map"><span class="lnr lnr-map"> 내 주변 친구</span></a></li>
             <li><a href="#"><span class="lnr lnr-heart"> 자랑하기</span></a></li>
