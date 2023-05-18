@@ -31,8 +31,8 @@ public class Board {
 //        this.attachedImg = dto.getAttachedImg();
         this.boardDateTime = LocalDateTime.now();
         this.boardNo = dto.getBoardNo();
-        this.likes = dto.getLikes();
-        this.hits = dto.getHits();
+        this.likes = 0L;
+        this.hits = 0L;
         this.petName = dto.getPetName();
         this.petPhoto = dto.getPetPhoto();
     }
