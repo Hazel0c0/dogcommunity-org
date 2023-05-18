@@ -116,7 +116,7 @@ uri="http://java.sun.com/jsp/jstl/core" %>
 </head>
 
 <body>
-    <%@ include file="../include/header.jsp" %>
+    <%-- <%@ include file="../include/header.jsp" %> --%>
 
     <div id="wrap" class="form-container">
         <h1>꾸러기 게시판 글쓰기</h1>
