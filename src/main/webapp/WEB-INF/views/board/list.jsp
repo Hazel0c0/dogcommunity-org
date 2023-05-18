@@ -1,4 +1,4 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <html>
@@ -23,7 +23,7 @@
     <div class="main-title-wrapper">
         <h1 class="main-title">게시판</h1>
 
-            <button class="add-btn">새 글 쓰기</button>
+        <button class="add-btn">새 글 쓰기</button>
 
     </div>
 
@@ -52,8 +52,8 @@
         <c:forEach var="b" items="${bList}">
             <input type="hidden" name="boardNo" value="${b.boardNo}">
             <div>${b.petName}</div>
-            <div><img src="${b.petPhoto}"> </div>
-            <div><img src="${b.attachedImg}" alt=""> </div>
+            <div><img src="${b.petPhoto}"></div>
+            <div><img src="${b.attachedImg}" alt=""></div>
             <div class="card-wrapper">
                 <section class="card" data-boardNo="${b.boardNo}">
                     <div class="card-title-wrapper">
@@ -104,7 +104,6 @@
 </div>
 
 
-
 <script>
 
     const $cardContainer = document.querySelector('.card-container');
@@ -141,7 +140,7 @@
             // section태그에 붙은 글번호 읽기
             const boardNo = e.target.closest('section.card').dataset.boardNo;
             // 상세 조회 요청 보내기
-            window.location.href= '/board/detail';
+            window.location.href = '/board/detail';
         }
     });
 
@@ -168,7 +167,6 @@
         const $delBtn = e.target.closest('.card-wrapper')?.querySelector('.del-btn');
         $delBtn.style.opacity = '0';
     }
-
 
 
     $cardContainer.onmouseover = e => {
@@ -199,7 +197,6 @@
     document.querySelector('.add-btn').onclick = e => {
         window.location.href = '/board/write';
     };
-
 
 
     // 셀렉트옵션 검색타입 태그 고정
