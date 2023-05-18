@@ -53,7 +53,7 @@
                   
                   <div class="card-wrapper">
                     <div>${b.petName}</div>
-                    <div><img src="/local${b.petPhoto}"> </div>
+                    <div><img src="${b.petPhoto}"> </div>
                     <div><img src="/local${b.attachedImg}" alt=""> </div>
                       <section class="card" data-boardNo="${b.boardNo}">
                         <input type="hidden" name="boardNo" value="${b.boardNo}">
