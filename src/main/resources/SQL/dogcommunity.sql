@@ -8,15 +8,13 @@ CREATE TABLE tbl_user
 (
     user_no        INT AUTO_INCREMENT PRIMARY KEY,
     id        VARCHAR(100) UNIQUE NOT NULL,
-    pwd      VARCHAR(100)        NOT NULL,
+    pwd VARCHAR(100)        NOT NULL,
     user_name      VARCHAR(20),
     email     VARCHAR(30) UNIQUE,
     phone_num VARCHAR(20) UNIQUE,
     adds      VARCHAR(100)        NOT NULL,
     join_date TIMESTAMP DEFAULT CURRENT_TIMESTAMP
 );
-insert into tbl_user(id,pwd,user_name,email,phone_num,adds)
-    VALUES ('aaa','asdf','popo','popo@on.com','123-1234-1234','dobong');
 
 drop table tbl_user;
 
@@ -58,13 +56,12 @@ CREATE TABLE tbl_board (
 -- 댓글번호 , 내용 , 작성자
 --  auto increment 자동으로 번호가 매겨져서 생략...
 -- reply_comment
-create table tbl_reply
-(
-    reply_no        INT AUTO_INCREMENT PRIMARY KEY,
-    comment         Varchar(500) not null,
-    reply_date_time TIMESTAMP    not null default current_timestamp
---     board_no Int,
---     pet_no INT,
---     FOREIGN KEY (pet_no) REFERENCES User(pet_no),
---     FOREIGN KEY (board_no)REFERENCES board(board_no)
+CREATE TABLE tbl_reply (
+    reply_no INT AUTO_INCREMENT PRIMARY KEY,
+    comment VARCHAR(500) NOT NULL,
+    reply_date_time TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP,
+ --   board_no INT,
+ --   pet_no INT,
+ --   FOREIGN KEY (pet_no) REFERENCES tbl_pet(pet_no),
+ --   FOREIGN KEY (board_no) REFERENCES tbl_board(board_no)
 );

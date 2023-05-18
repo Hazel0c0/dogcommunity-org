@@ -62,9 +62,17 @@
         <p id="profileIntro">#안뇽</p>
     </div>
         <div>
-         <button type="submit" onclick="http://localhost:8585/modify">수정하기</button>
+        <form action="/pet/modify" method="post" name = "modify">
+        <label for="petPhoto">펫 프로필 사진</label>
+        <input type="text" id="petPhoto" name="petPhoto" required>
+
+
+         <button type="submit" onclick="pet/modify">수정하기</button>
+          <button type="submit" onclick="">수정하기완료</button>
         </div>
 </aside>
+
+\
 
 
 

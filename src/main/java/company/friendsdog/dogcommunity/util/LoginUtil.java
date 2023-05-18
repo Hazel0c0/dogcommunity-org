@@ -1,5 +1,6 @@
 package company.friendsdog.dogcommunity.util;
 
+import company.friendsdog.dogcommunity.entity.Pet;
 import company.friendsdog.dogcommunity.entity.User;
 
 import javax.servlet.http.HttpSession;
@@ -8,11 +9,18 @@ import javax.servlet.http.HttpSession;
 public class LoginUtil {
 
     // 로그인 한 유저의 펫 - 세션키
-    public static final String LOGIN_KEY = "loginUserPet";
+    public static final String LOGIN_KEY = "loginUser";
 
-    public static User getCurrentLoginUserNo(
-            HttpSession session) {
-        User loginUser = (User) session.getAttribute(LOGIN_KEY);
-        return loginUser;
+//    // 세션에서 유저 객체 가져오기
+//    public static User getCurrentLoginUser(
+//            HttpSession session) {
+//        User loginUser = (User) session.getAttribute(LOGIN_KEY);
+//
+//        return loginUser;
+//    }
+
+    //로그인 여부 확인 : 범용으로 쓰게 static 로그인을 했는지 알려면 세션 받아오기
+    public static boolean isLogin(HttpSession session) {
+        return session.getAttribute(LOGIN_KEY) != null;
     }
 }
