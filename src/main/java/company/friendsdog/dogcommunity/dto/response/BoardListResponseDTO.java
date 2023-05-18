@@ -4,17 +4,16 @@ import company.friendsdog.dogcommunity.entity.Board;
 import company.friendsdog.dogcommunity.entity.Pet;
 import company.friendsdog.dogcommunity.repository.BoardMapper;
 import company.friendsdog.dogcommunity.repository.PetMapper;
-import lombok.EqualsAndHashCode;
-import lombok.Getter;
-import lombok.RequiredArgsConstructor;
-import lombok.ToString;
+import lombok.*;
 
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 
+@Setter
 @Getter
 @ToString
 @EqualsAndHashCode
+@NoArgsConstructor
 public class BoardListResponseDTO {
     private Long petNo;
     private Long boardNo;

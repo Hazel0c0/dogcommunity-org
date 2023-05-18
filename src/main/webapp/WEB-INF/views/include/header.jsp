@@ -18,6 +18,7 @@
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.6.0/font/bootstrap-icons.css" />
     <!-- css -->
     <link rel="stylesheet" href="/assets/css/main.css">
+
 </head>
 
 <body>
@@ -45,7 +46,7 @@
             <li><a href="/user/main"><span class="lnr lnr-home"> 홈</span></a></li>
             <li><a href="#"><span class="lnr lnr-magnifier"> 검색</span></a></li>
             <li><a href="/pet/map"><span class="lnr lnr-map"> 내 주변 친구</span></a></li>
-            <li><a href="#"><span class="lnr lnr-heart"> 자랑하기</span></a></li>
+            <li><a href="/board/list"><span class="lnr lnr-heart"> 자랑하기</span></a></li>
             <li><a href="#"><span class="lnr lnr-bubble"> 메시지</span></a></li>
             <li><a href="#"><span class="lnr lnr-alarm"> 알림</span></a></li>
             <li><a href="/pet/profile"><span class="lnr lnr-user"> 프로필</span></a></li>
@@ -53,13 +54,7 @@
     </nav>
 </header>
 
-<!--main sidebar-->
 <aside class="sidebar">
-    <%--    <div class="profile-box">--%>
-    <%--        <div class="profile-img"><a href="/pet/profile"></a></div>--%>
-    <%--            <h3>멍뭉이</h3>--%>
-    <%--        <p id="profileIntro"> #왈왈으르릉 #가까이오지마</p>--%>
-    <%--    </div>--%>
     <div class="profile-box">
         <a href="/pet/profile">
             <div class="profile-img"></div>
