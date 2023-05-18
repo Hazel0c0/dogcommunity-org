@@ -17,7 +17,7 @@
 <a href="/user/join">회원가입</a>
 <a href="/user/main">메인화면</a>
 <a href="/pet/profile">펫 프로필카드 만들기</a>
-<a href="/board/list">게시판 글쓰기</a>
+<a href="/board/write">게시판 글쓰기</a>
 <a href="/pet/map">주변 친구 찾기</a>
 
 </body>

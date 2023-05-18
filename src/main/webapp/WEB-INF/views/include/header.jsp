@@ -46,7 +46,7 @@
             <li><a href="/user/main"><span class="lnr lnr-home"> 홈</span></a></li>
             <li><a href="#"><span class="lnr lnr-magnifier"> 검색</span></a></li>
             <li><a href="/pet/map"><span class="lnr lnr-map"> 내 주변 친구</span></a></li>
-            <li><a href="/board/list"><span class="lnr lnr-heart"> 자랑하기</span></a></li>
+            <li><a href="/board/write"><span class="lnr lnr-heart"> 자유게시판</span></a></li>
             <li><a href="#"><span class="lnr lnr-bubble"> 메시지</span></a></li>
             <li><a href="#"><span class="lnr lnr-alarm"> 알림</span></a></li>
             <li><a href="/pet/profile"><span class="lnr lnr-user"> 프로필</span></a></li>
