@@ -28,12 +28,6 @@ public class UserController {
 
   private final UserService userService;
 
-  @GetMapping("/main")
-  public String Main() {
-    log.info("GET");
-    return "/main/main";
-  }
-
   // 회원가입
   // 회원가입창
   @GetMapping("/join")

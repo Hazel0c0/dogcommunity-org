@@ -7,17 +7,16 @@ import javax.servlet.http.HttpServletRequest;
 
 @Controller
 public class HomeController {
-
-//  @GetMapping("/")
-//  public String home() {
-//    return "index";
-//  }
-
   @GetMapping("/")
   public String home(HttpServletRequest request) {
     if (request.getSession()!=null){
-      return "main/main";
+      return "main";
     }
     return "login/login";
+  }
+
+  @GetMapping("/main")
+  public String Main() {
+    return "main";
   }
 }
