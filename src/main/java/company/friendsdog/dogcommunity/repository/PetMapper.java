@@ -16,7 +16,7 @@ public interface PetMapper {
   // '구'로 동 찾기
   List<String> findDong(String addr);
   // '동'으로 펫 찾기
-  List<Pet> findPetByAddr(String addDetail);
+  List<Pet> findPetByAddr(String addr);
 
   // userNo로 펫 찾기
   Pet userFindPet(Long uNo);

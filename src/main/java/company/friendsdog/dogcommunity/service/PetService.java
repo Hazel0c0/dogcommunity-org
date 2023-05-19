@@ -51,9 +51,9 @@ public class PetService {
   }
 
   // ㅇㅇ동에 있는 모든 강아지 찾기
-  public List<Pet> findNeighbor(String addDetail){
-    log.info("선택한 동네 : {}",addDetail);
-    List<Pet> petByAddr = petMapper.findPetByAddr(addDetail);
+  public List<Pet> findNeighbor(String addr){
+    log.info("선택한 동네 : {}",addr);
+    List<Pet> petByAddr = petMapper.findPetByAddr(addr);
     return petByAddr;
   }
 

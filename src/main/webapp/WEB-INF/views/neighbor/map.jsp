@@ -430,7 +430,7 @@
             infowindow.setPosition(mouseEvent.latLng);
             infowindow.setMap(map);
 
-
+            window.location.href = '/map/neighbor?addr='+area.name;
         });
     }
 </script>

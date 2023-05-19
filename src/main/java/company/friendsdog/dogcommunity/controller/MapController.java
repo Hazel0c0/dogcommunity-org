@@ -35,13 +35,13 @@ public class MapController {
   /**
    * 선택한 동네 강아지 보기
    *
-   * @param addDetail - 유저가 선택한 동
+   * @param addr - 유저가 선택한 동
    */
   @GetMapping("/neighbor")
   public String findNeighbor(
-      String addDetail
+      String addr
       , Model model) {
-    List<Pet> foundPet = petService.findNeighbor(addDetail);
+    List<Pet> foundPet = petService.findNeighbor(addr);
 
     model.addAttribute("petList",foundPet);
 

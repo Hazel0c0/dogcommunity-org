@@ -30,7 +30,7 @@
              , pet_kind, pet_gender,pet_photo
              ,profile_date_time, hashtag, addr, add_detail
         FROM tbl_pet
-        WHERE add_detail = #{addDetail}
+        WHERE addr = #{addr}
     </select>
 
 <!--    ========================================= -->
@@ -76,7 +76,7 @@
         From tbl_pet P
                  LEFT JOIN tbl_user U
                            ON P.user_no = U.user_no
-        where add_detail=#{add_detail}
+        where addr=#{addr}
         Order by rand()
             Limit 1;
     </select>

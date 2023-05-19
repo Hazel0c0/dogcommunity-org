@@ -79,3 +79,5 @@ select add_detail
 from tbl_user
 where addr='강남구'
 group by add_detail
+
+select pet_name from tbl_pet where
