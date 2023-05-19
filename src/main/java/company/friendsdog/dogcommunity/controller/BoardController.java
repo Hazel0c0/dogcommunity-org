@@ -84,6 +84,7 @@ public class BoardController {
         log.info("dto @@@@@@@@@@@@@@ - {}", dto);
         return "redirect:/board/list";
     }
+
     // 게시판 삭제 요청 처리
     @PostMapping("/delete")
     public String delete(Long boardNo, HttpSession session) {
