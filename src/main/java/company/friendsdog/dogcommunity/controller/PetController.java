@@ -98,7 +98,9 @@ public class PetController {
 
   @GetMapping("/modify")
   public String modify() {
+
     return "main/profile-modify";
+
   }
 
   @PostMapping("/modify")
@@ -108,5 +110,6 @@ public class PetController {
     boolean flag = petService.modify(dto);
 
     return "user/main";
+
   }
 }
