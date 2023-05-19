@@ -96,6 +96,10 @@ public class PetController {
     return pet;
   }
 
+  @GetMapping("/modify")
+  public String modify() {
+    return "main/profile-modify";
+  }
 
   @PostMapping("/modify")
   public String modifyData(PetProfileModifyRequestDTO dto) {
