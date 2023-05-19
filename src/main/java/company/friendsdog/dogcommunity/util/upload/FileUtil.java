@@ -31,7 +31,7 @@ public class FileUtil {
         String fullPath = newPath + "/" + newFileName;
 
 
-        return fullPath.substring(rootPath.length());
+        return "/local"+fullPath.substring(rootPath.length());
     }
 
     private static String makeDateFormatDirectory(String rootPath) {
@@ -47,7 +47,6 @@ public class FileUtil {
                 len2(m),
                 len2(d)
         );
-
         String directoryPath = rootPath;
         for (String s : dateInfo) {
             directoryPath += "/" + s;
