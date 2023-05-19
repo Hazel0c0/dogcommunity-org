@@ -20,6 +20,7 @@ import org.springframework.web.multipart.MultipartFile;
 import javax.servlet.http.HttpSession;
 import java.util.List;
 
+import static com.spring.mvc.util.upload.FileUtil.*;
 import static org.springframework.http.ResponseEntity.*;
 
 @Controller
@@ -53,7 +54,7 @@ public class PetController {
     String savePath = null;
     MultipartFile petPhoto = dto.getPetPhoto();
     if(!petPhoto.isEmpty()){
-      savePath = FileUtil.uploadFile(petPhoto, rootPath);
+      savePath = uploadFile(petPhoto, rootPath);
     }
 
     boolean petSave = petService.petCardMake(dto, session,savePath);

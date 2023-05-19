@@ -98,11 +98,11 @@ public class BoardService {
         Long userNoInfo = LoginUtil.getCurrentLoginUser(session).getUserNo();
         log.info("userNoInfo - {}",userNoInfo);
         Long petNoInfo = petMapper.userFindPet(userNoInfo).getPetNo();
-//        log.info("petNoInfo - {}", petNoInfo);
+        log.info("petNoInfo - {}", petNoInfo);
         String petNameInfo = petMapper.userFindPet(userNoInfo).getPetName();
-//        log.info("petNameInfo - {}", petNameInfo);
+        log.info("petNameInfo - {}", petNameInfo);
         String petPhotoInfo = petMapper.userFindPet(userNoInfo).getPetPhoto();
-//        log.info("petPhotoInfo - {}", petPhotoInfo);
+        log.info("petPhotoInfo - {}", petPhotoInfo);
         pet.setPetNo(petNoInfo);
         pet.setPetName(petNameInfo);
         pet.setPetPhoto(petPhotoInfo);
