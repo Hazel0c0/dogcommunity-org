@@ -5,7 +5,6 @@ import company.friendsdog.dogcommunity.dto.request.PetProfileRequestDTO;
 import company.friendsdog.dogcommunity.dto.response.PetCardResponseDTO;
 import company.friendsdog.dogcommunity.entity.Pet;
 import company.friendsdog.dogcommunity.service.PetService;
-import company.friendsdog.dogcommunity.util.upload.FileUtil;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Value;
@@ -21,6 +20,7 @@ import org.springframework.web.multipart.MultipartFile;
 import javax.servlet.http.HttpSession;
 import java.util.List;
 
+import static com.spring.mvc.util.upload.FileUtil.*;
 import static org.springframework.http.ResponseEntity.*;
 
 @Controller
@@ -28,6 +28,9 @@ import static org.springframework.http.ResponseEntity.*;
 @RequestMapping("/pet")
 @Slf4j
 public class PetController {
+
+  @Value("${file.upload.root-path}")
+  private String rootPath;
 
   private final PetService petService;
 
@@ -39,8 +42,7 @@ public class PetController {
     return "/main/profile";
   }
 
-  @Value("${file-upload.root-path}")
-  private String rootPath;
+
 
   // 펫 프로필 정보 요청
   @PostMapping("/profile")
@@ -52,7 +54,7 @@ public class PetController {
     String savePath = null;
     MultipartFile petPhoto = dto.getPetPhoto();
     if(!petPhoto.isEmpty()){
-      savePath =FileUtil.uploadFile(petPhoto, rootPath);
+      savePath = uploadFile(petPhoto, rootPath);
     }
 
     boolean petSave = petService.petCardMake(dto, session,savePath);
@@ -80,6 +82,12 @@ public class PetController {
     return pet;
   }
 
+  @GetMapping("/modify")
+  public String modify() {
+
+    return "main/profile-modify";
+
+  }
 
   @PostMapping("/modify")
   public String modifyData(PetProfileModifyRequestDTO dto) {
@@ -87,6 +95,7 @@ public class PetController {
     // true / false 여부
     boolean flag = petService.modify(dto);
 
-    return "";
+    return "user/main";
+
   }
 }

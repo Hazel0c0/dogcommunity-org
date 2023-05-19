@@ -10,8 +10,11 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Document</title>
 
+    <!--공통 JSP-->
     <%@ include file="../include/static-head.jsp" %>
+    <!--회원 가입 CSS-->
     <link rel="stylesheet" href="/assets/css/sign-up.css">
+
 </head>
 
 <body>

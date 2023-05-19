@@ -10,8 +10,9 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Document</title>
 
+    <!--공통 JSP-->
     <%@ include file="../include/static-head.jsp" %>
-
+    <!--로그인 CSS-->
     <link rel="stylesheet" href="/assets/css/login.css">
 
 </head>
@@ -23,14 +24,19 @@
             <h1><img src="/assets/img/logo-instagram.png" alt="로고이미지" id="petstaLogo">Petstagram</h1>
             <input type="text" placeholder="아이디 " class="logInPart" name="id">
             <input type="password" placeholder="비밀번호" class="logInPart" name="pwd">
-            <input type="submit" id="logInBtn" value="Log In"
-                   style="  background: rgb(61, 61, 227); color: white; letter-spacing: 2px; margin-top: 10px;">
             <label for="auto-login">
                 <em>
                     자동 로그인  <input type="checkbox" id="auto-login" name="autoLogin">
                 </em>
             </label>
+            <input type="submit" id="logInBtn" value="Log In"
+                   style="  background: rgb(61, 61, 227); color: white; letter-spacing: 2px; margin-top: 10px;">
         </section>
+
+        <a id="custom-login-btn" href="/kakao/login">
+            <img src="//mud-kage.kakao.com/14/dn/btqbjxsO6vP/KPiGpdnsubSq3a0PHEGUK1/o.jpg" width="250"/>
+        </a>
+
         <section class="loginOtherWay">
             <div>
                 <div class="or"> OR</div>
@@ -45,7 +51,7 @@
         </section>
         <section class="joinUs">
             <button class="makeAccount" style="border-color: darkgrey;">
-                <a href="/user/join" class="noneunderline">
+                <a href="/user/join">
                     <p>Don't have an account?
                         <strong style="color:rgb(89, 166, 221)"> Sign up</strong>
                     </p>
