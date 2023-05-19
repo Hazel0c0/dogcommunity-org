@@ -42,8 +42,10 @@ public class MapController {
       String addr
       , Model model) {
     List<Pet> foundPet = petService.findNeighbor(addr);
+    boolean noneBanner=true;
 
     model.addAttribute("petList",foundPet);
+    model.addAttribute("noneBanner",noneBanner);
 
     return "neighbor/neighbor";
   }

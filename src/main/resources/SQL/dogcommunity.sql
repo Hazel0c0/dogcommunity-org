@@ -2,6 +2,12 @@
 
 create database dogcommunity;
 
+create database dogcommunity
+    default character set utf8
+    collate utf8_general_ci;
+
+drop database dogcommunity;
+
 use dogcommunity;
 
 
