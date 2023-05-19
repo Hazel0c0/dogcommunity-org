@@ -5,7 +5,6 @@ import company.friendsdog.dogcommunity.dto.request.PetProfileRequestDTO;
 import company.friendsdog.dogcommunity.dto.response.PetCardResponseDTO;
 import company.friendsdog.dogcommunity.entity.Pet;
 import company.friendsdog.dogcommunity.service.PetService;
-import company.friendsdog.dogcommunity.util.upload.FileUtil;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Value;
@@ -54,7 +53,7 @@ public class PetController {
     String savePath = null;
     MultipartFile petPhoto = dto.getPetPhoto();
     if(!petPhoto.isEmpty()){
-      savePath =FileUtil.uploadFile(petPhoto, rootPath);
+      savePath = FileUtil.uploadFile(petPhoto, rootPath);
     }
 
     boolean petSave = petService.petCardMake(dto, session,savePath);
