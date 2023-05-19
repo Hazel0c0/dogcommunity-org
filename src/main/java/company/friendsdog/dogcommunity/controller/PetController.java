@@ -111,9 +111,11 @@ public class PetController {
     return pet;
   }
 
-  @GetMapping("modify")
+  @GetMapping("/modify")
   public String modify() {
-    return "pet/profileModify";
+
+    return "main/profile-modify";
+
   }
 
   @PostMapping("/modify")
@@ -122,6 +124,7 @@ public class PetController {
     // true / false 여부
     boolean flag = petService.modify(dto);
 
-    return "";
+    return "user/main";
+
   }
 }
