@@ -21,13 +21,16 @@
     <!-- css -->
     <link rel="stylesheet" href="/assets/css/main.css">
 
-    <style>
-        .reply {
-            display: flex;
-            margin-right: 5px;
-        }
-    </style>
+  
+<style>
+    .bi-heart {
+  color: black;
+}
 
+.bi-heart.active {
+  color: pink;
+}
+</style>
 </head>
 
 <body>
@@ -39,13 +42,15 @@
     <section class="backgr" style="display: none;">
 
 
-        <!-- 닫기 버튼 -->
+      
+
+        <div class="my-modal" id="modal">
+
+              <!-- 닫기 버튼 -->
         <div class="xbutton" id="xbutton"><button><i class="bi bi-x-lg"></i></button></div>
         <!-- 상세보기 모달 창 -->
         <!-- <form action="/board/list2" method="get"> -->
 
-
-        <div class="my-modal" id="modal">
             <!-- 이미지 박스  -->
             <div class="modal-imgbox bdrr">
                 <!-- <img src="${attachedImg}" alt="#"> -->
@@ -85,32 +90,33 @@
                     </div>
 
                     <!-- 사용자 및 다른 사용자가 작성한 댓글 목록 -->
-                    <div class="usersReply">
+                    <div class="usersReply" id="replies">
                         <!-- 댓글 내용 박스 -->
                         <div id="replyCollpase" class="replycard">
                             <div id="replyData">
-                               <div class="reply">
-                                <div class="reply-profile">
-                                    <img src="#" alt="프사">
+                                <div class="float-left">댓 (<span id="replyCnt">0</span>)</div>
+                                <div class="reply">
+                                    <div class="reply-profile">
+                                        <img src="#" alt="#">
+                                    </div>
+                                    <div class="reply-writer">정동관1</div>
+                                    <div class="reply-content">캬캬캬캬캬캬캬캬</div>
                                 </div>
-                                 <div class="reply-writer">정동관1</div>
-                                 <div class="reply-content">캬캬캬캬캬캬캬캬</div>
-                               </div>
-                               <div class="reply">
-                                <div class="reply-profile">
-                                    <img src="#" alt="프사">
+                                <!-- <div class="reply">
+                                    <div class="reply-profile">
+                                        <img src="#" alt="프사">
+                                    </div>
+                                    <div class="reply-writer">정동관2</div>
+                                    <div class="reply-content">캬캬캬캬캬캬캬캬</div>
                                 </div>
-                                 <div class="reply-writer">정동관2</div>
-                                 <div class="reply-content">캬캬캬캬캬캬캬캬</div>
-                               </div>
-                               <div class="reply">
-                                <div class="reply-profile">
-                                    <img src="#" alt="프사">
-                                </div>
-                                 <div class="reply-writer">정동관3</div>
-                                 <div class="reply-content">캬캬캬캬캬캬캬캬</div>
-                               </div>
-                                    <!-- Js로 댓글 정보 DIV  -->
+                                <div class="reply">
+                                    <div class="reply-profile">
+                                        <img src="#" alt="프사">
+                                    </div>
+                                    <div class="reply-writer">정동관3</div>
+                                    <div class="reply-content">캬캬캬캬캬캬캬캬</div> -->
+                                <!-- </div> -->
+                                <!-- Js로 댓글 정보 DIV  -->
                                 <!-- 닉네임 및 댓글내용 (15자 이상 자세히보기) -->
                                 <!-- 기본으로 15개 보여주고 넘어갈시 페이징으로 불러오기 해야함 -->
                             </div>
@@ -131,7 +137,10 @@
                 <section class="eventbuttons">
                     <!-- 버튼 담는 박스 -->
                     <div class="th">
-                        <span class="aamw"><button class="abl"><i class="bi bi-heart"></i></button></span>
+                        <span class="aamw"><button class="abl">
+                            <i class="bi bi-heart"></i>
+                            <i class="bi bi-heart-fill" style="display: none;"></i>
+                        </button></span>
                         <!-- 좋아요 버튼-->
                         <span class="aamx"><button class="abl"><i class="bi bi-chat"></i></button></span>
                         <!-- 댓글 버튼-->
@@ -186,6 +195,8 @@
             </div>
         </div>
     </section>
+
+    
     <!-- header -->
     <header>
         <div class="inner-header">
@@ -302,12 +313,12 @@
             const $petName = e.target.closest('#card').querySelector('.nickname').textContent;
 
             const $shortContent = e.target.closest('#card').querySelector('.card-text').textContent;
-                console.log($shortContent);
+            console.log($shortContent);
 
             // 모달창에 정보 전달
             // 여기서는 간단히 console.log로 출력하도록 했습니다.
             // console.log(
-                // `boardNo: \${boardNo}, petPhoto: \${petPhoto}, attachedImg: \${attachedImg}, petName: \${petName},shortContent : \${shortContent}`);
+            // `boardNo: \${boardNo}, petPhoto: \${petPhoto}, attachedImg: \${attachedImg}, petName: \${petName},shortContent : \${shortContent}`);
             // 게시글 이미지 전달 
             const $boardimg = document.querySelector('.boardimg');
             $boardimg.setAttribute('src', $attachedImg);
@@ -320,13 +331,13 @@
             // 상단 닉네임 1
             const $boarduserNickName1 = document.querySelector('.NN1');
             console.log($boarduserNickName1);
-            $boarduserNickName1.textContent=$petName;
+            $boarduserNickName1.textContent = $petName;
             // 상단 닉네임 2 
             const $boarduserNickName2 = document.querySelector('.NN2');
-            $boarduserNickName2.textContent=$petName;
+            $boarduserNickName2.textContent = $petName;
             // 게시판 글 내용
             const $boardtext = document.querySelector('.shorttext');
-            $boardtext.textContent=$shortContent;
+            $boardtext.textContent = $shortContent;
 
 
             if (e.target.matches('.card-img img')) {
@@ -336,7 +347,7 @@
             // 닫기버튼
             $closebutton.addEventListener('click', e => {
                 // console.log(e.target);
-                if (e.target.matches('.xbutton button')) {
+                if (e.target.matches('.xbutton button i')) {
                     // console.log('button 클릭!')
                     $backgr.style.display = 'none';
                 }
@@ -358,6 +369,8 @@
             // console.log(e.target)
             if (e.target.matches('.userlikes')) {
                 $userLikes.style.display = 'block';
+
+
             }
             // 닫기버튼
             $likeclose.addEventListener('click', e => {
@@ -368,6 +381,83 @@
             });
 
         });
+
+        
+                // 댓글 목록 렌더링 함수
+        function renderReplyList({
+            count,
+            replies
+        }) {
+
+        // 총 댓글 수 렌더링
+        document.getElementById('replyCnt').textContent = count;
+        if (replies === null || replies.length === 0) {
+            tag += ""
+
+        }else {
+
+            // 댓글 내용 렌더링
+            // 각 댓글 하나의 태그
+            for (let rep of replies) {
+            const {
+                petNo,
+                replyNo,
+                comment
+            } = rep;
+
+             tag += " <div class='reply' id='replybox'>" +
+                                    "<div class='reply-profile'>" +
+                                        "<img src='#' alt='프사'>" +
+                                        "</div>" +
+                                    "<div class='reply-writer'>"+petNo+"</div>" +
+                                    "<div class='reply-content'>"+comment+"</div>" +
+                                "</div>";
+
+                            }
+
+        // 생성된 댓글 tag 렌더링
+        document.getElementById('replyData').innerHTML = tag;
+
+
+    }
+    // 댓글 목록 불러오기 함수
+    function getReplyList(boardNo = 1) {
+
+        fetch(`\${URL}/\${boardNo}`)
+        .then(res => res.josn())
+        .then(responseResult => {
+            console.log(responseResult);
+            // renderReplyList(responseResult);
+        });
+
+    }
+
+}
+
+const likeButton = document.querySelector('.aamw .abl');
+
+likeButton.addEventListener('click', function() {
+  const heartIcon = likeButton.querySelector('.bi-heart');
+  heartIcon.classList.toggle('active');
+});
+
+
+
+
+    // 메인 실행 부 
+
+    (function(){
+        // 댓글 불러오기
+        renderReplyList();
+
+    })
+
+
+
+
+
+
+
         // 전역 이벤트로 좋아요 누른사람 보기 모달 창 닫기
         // window.addEventListener('click' e =>{
         //     if(e.target === $userLikes){
