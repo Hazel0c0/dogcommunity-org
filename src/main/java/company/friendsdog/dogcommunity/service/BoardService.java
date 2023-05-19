@@ -36,26 +36,26 @@ public class BoardService {
 
     }
 
-//     게시판 업로드 중간처리
+    //     게시판 업로드 중간처리
     public boolean save(BoardRequestDTO dto, HttpSession session, String imgPath) {
 
         Board board = new Board(dto);
 
-        log.info(imgPath);
+//        log.info(imgPath);
         board.setAttachedImg(imgPath);
         Long userNoInfo = LoginUtil.getCurrentLoginUser(session).getUserNo();
-        log.info("userNoInfo - {}",userNoInfo);
+//        log.info("userNoInfo - {}",userNoInfo);
 
 
-//        Long petNoInfo = petMapper.userFindPet(userNoInfo).getPetNo();
+        Long petNoInfo = petMapper.userFindPet(userNoInfo).getPetNo();
 //        log.info("petNoInfo - {}", petNoInfo);
-//        String petNameInfo = petMapper.userFindPet(userNoInfo).getPetName();
+        String petNameInfo = petMapper.userFindPet(userNoInfo).getPetName();
 //        log.info("petNameInfo - {}", petNameInfo);
-//        String petPhotoInfo = petMapper.userFindPet(userNoInfo).getPetPhoto();
+        String petPhotoInfo = petMapper.userFindPet(userNoInfo).getPetPhoto();
 //        log.info("petPhotoInfo - {}", petPhotoInfo);
-//        board.setPetNo(petNoInfo);
-//        board.setPetName(petNameInfo);
-//        board.setPetPhoto(petPhotoInfo);
+        board.setPetNo(petNoInfo);
+        board.setPetName(petNameInfo);
+        board.setPetPhoto(petPhotoInfo);
 
         log.info("board의 값 : - {}", board);
         return petBoardMapper.save(board);
@@ -80,9 +80,9 @@ public class BoardService {
 
     // 게시판 수정
     public boolean modify(BoardRequestDTO dto) {
-        log.info("dto : {}", dto);
+//        log.info("dto : {}", dto);
         Board board = new Board(dto);
-        log.info("board : {}", board);
+//        log.info("board : {}", board);
         return petBoardMapper.modify(board);
     }
 
@@ -90,12 +90,23 @@ public class BoardService {
     public int count(Search search) {
         return petBoardMapper.count(search);
     }
-    
 
 
+    public Pet petFindInfo(HttpSession session) {
+        Pet pet = new Pet();
 
-
-
-
-
+        Long userNoInfo = LoginUtil.getCurrentLoginUser(session).getUserNo();
+        log.info("userNoInfo - {}",userNoInfo);
+        Long petNoInfo = petMapper.userFindPet(userNoInfo).getPetNo();
+//        log.info("petNoInfo - {}", petNoInfo);
+        String petNameInfo = petMapper.userFindPet(userNoInfo).getPetName();
+//        log.info("petNameInfo - {}", petNameInfo);
+        String petPhotoInfo = petMapper.userFindPet(userNoInfo).getPetPhoto();
+//        log.info("petPhotoInfo - {}", petPhotoInfo);
+        pet.setPetNo(petNoInfo);
+        pet.setPetName(petNameInfo);
+        pet.setPetPhoto(petPhotoInfo);
+        pet.setUserNo(userNoInfo);
+        return petMapper.petFindInfo(pet);
+    }
 }

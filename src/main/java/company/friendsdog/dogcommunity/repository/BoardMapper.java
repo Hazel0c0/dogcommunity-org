@@ -30,4 +30,5 @@ public interface BoardMapper {
     // 총 게시물 수
     int count(Search search);
 
+    boolean petFindInfo(Board board);
 }

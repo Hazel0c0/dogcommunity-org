@@ -52,20 +52,21 @@ public class BoardController {
     // 게시판 상세 조회 요청
     @GetMapping("/detail")
     public String petFindOne(Long boardNo, Search search, Model model) {
-        log.info("/board/detail : GET");
-        log.info("boardNo - {}", boardNo);
+//        log.info("/board/detail : GET");
+//        log.info("boardNo - {}", boardNo);
         BoardDetailResponseDTO dto = boardService.petFindOne(boardNo);
         model.addAttribute("b", dto);
         model.addAttribute("p", search);
-        log.info("dto- {}", dto);
+//        log.info("dto- {}", dto);
         return "board/detail";
 
     }
 
     // 게시판 글쓰기 화면 조회 요청
     @GetMapping("/write")
-    public String save(HttpSession session) {
-        log.info("/board/write : GET@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@");
+    public String save(HttpSession session, Model model) {
+        Pet pet = boardService.petFindInfo(session);
+        model.addAttribute("p", pet);
         return "board/write";
     }
 
@@ -73,9 +74,13 @@ public class BoardController {
     @PostMapping("/write")
     public String save(BoardRequestDTO dto, HttpSession session) {
         log.info("/board/write : POST@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@ - {}", dto);
-        log.info("첨부파일 사진 이름: {}", dto.getAttachedImg().getOriginalFilename());
-        log.info("경로 - {}",rootPath);
+//        log.info("첨부파일 사진 이름: {}", dto.getAttachedImg().getOriginalFilename());
+//        log.info("경로 - {}",rootPath);
 
+        String imgPath = uploadFile(dto.getAttachedImg(), rootPath);
+        boardService.save(dto, session, imgPath);
+        log.info("dto @@@@@@@@@@@@@@ - {}", dto);
+        return "redirect:/board/list";
         String imgPath = FileUtil.uploadFile(dto.getAttachedImg(), rootPath);
 
         String local = "http://localhost:8585/local";
@@ -84,13 +89,14 @@ public class BoardController {
         boardService.save(dto,session, fullLocal);
         return "redirect:/board/list2";
     }
+
     // 게시판 삭제 요청 처리
     @PostMapping("/delete")
     public String delete(Long boardNo, HttpSession session) {
         log.info("/board/delete : POST");
         log.info("boardNo - {}", boardNo);
         boardService.delete(boardNo, session);
-        return "redirect:/board/list2";
+        return "redirect:/board/list";
     }
 
     // 게시판 수정 화면 조회 요청
