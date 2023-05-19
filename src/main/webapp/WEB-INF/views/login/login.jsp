@@ -46,7 +46,7 @@
         </section>
         <section class="joinUs">
             <button class="makeAccount" style="border-color: darkgrey;">
-                <a href="/user/join" class="noneunderline">
+                <a href="/user/join">
                     <p>Don't have an account?
                         <strong style="color:rgb(89, 166, 221)"> Sign up</strong>
                     </p>

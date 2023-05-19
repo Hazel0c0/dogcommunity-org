@@ -25,7 +25,10 @@
             width: 60%;
             /*border: 4px solid red;*/
             padding: 20px;
-            border-radius: 4px;
+        }
+
+        section > * {
+            border-radius: 6px;
         }
 
         h1 {
