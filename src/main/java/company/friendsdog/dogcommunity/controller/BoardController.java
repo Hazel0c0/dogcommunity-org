@@ -37,7 +37,7 @@ public class BoardController {
     private final BoardService boardService;
 
     // 게시판 목록 조회 요청
-    @GetMapping("/list")
+    @GetMapping("/list2")
     public String petFindAll(Search page, Model model) {
         log.info("/board/list : GET");
         log.info("page : {}", page);
@@ -46,13 +46,14 @@ public class BoardController {
         model.addAttribute("bList", dto);
         model.addAttribute("p", page);
 
-        return "board/list";
+        return "/board/list2";
     }
 
     // 게시판 상세 조회 요청
     @GetMapping("/detail")
     public String petFindOne(Long boardNo, Search search, Model model) {
         log.info("/board/detail : GET");
+        log.info("boardNo - {}", boardNo);
         BoardDetailResponseDTO dto = boardService.petFindOne(boardNo);
         model.addAttribute("b", dto);
         model.addAttribute("p", search);
@@ -76,7 +77,11 @@ public class BoardController {
         log.info("경로 - {}",rootPath);
 
         String imgPath = FileUtil.uploadFile(dto.getAttachedImg(), rootPath);
-        boardService.save(dto,session, imgPath);
+
+        String local = "http://localhost:8585/local";
+        String fullLocal = local + imgPath;
+
+        boardService.save(dto,session, fullLocal);
         return "redirect:/board/list";
     }
     // 게시판 삭제 요청 처리

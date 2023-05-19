@@ -2,8 +2,10 @@ package company.friendsdog.dogcommunity.controller;
 
 import company.friendsdog.dogcommunity.dto.request.JoinRequestDTO;
 import company.friendsdog.dogcommunity.dto.request.LoginRequestDTO;
+import company.friendsdog.dogcommunity.entity.User;
 import company.friendsdog.dogcommunity.service.LoginResult;
 import company.friendsdog.dogcommunity.service.UserService;
+import company.friendsdog.dogcommunity.util.LoginUtil;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.http.ResponseEntity;
@@ -19,6 +21,7 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import static company.friendsdog.dogcommunity.service.LoginResult.*;
+import static company.friendsdog.dogcommunity.util.LoginUtil.*;
 
 @Controller
 @Slf4j
@@ -27,12 +30,6 @@ import static company.friendsdog.dogcommunity.service.LoginResult.*;
 public class UserController {
 
   private final UserService userService;
-
-  @GetMapping("/main")
-  public String Main() {
-    log.info("GET");
-    return "/main/main";
-  }
 
   // 회원가입
   // 회원가입창
@@ -91,7 +88,7 @@ public class UserController {
       userService.maintainLoginState(
           request.getSession(), dto.getId());
 
-      return "redirect:/user/main";
+      return "redirect:/main";
     }
 
     log.info("로그인 실패");
@@ -102,8 +99,25 @@ public class UserController {
 
   // 로그아웃 요청 처리
   @GetMapping("/logout")
-  public String logout(HttpSession session) {
+  public String logout(
+      HttpServletRequest request,
+      HttpServletResponse response
 
-    return "redirect:/";
+  ) {
+    HttpSession session = request.getSession();
+
+    // 로그아웃 처리
+    if (isLogin(session)) {
+      if (isAutoLogin(request)) {
+        userService.autoLoginClear(request, response);
+      }
+
+      // 세션 로그인 정보 삭제
+      session.removeAttribute(LOGIN_KEY);
+      session.invalidate();
+
+      return "redirect:/";
+    }
+    return "redirect:/user/login";
   }
 }

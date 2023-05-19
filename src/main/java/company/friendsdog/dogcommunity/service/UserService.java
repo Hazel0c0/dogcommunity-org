@@ -14,8 +14,10 @@ import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
+import org.springframework.web.util.WebUtils;
 
 import javax.servlet.http.Cookie;
+import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
@@ -81,7 +83,7 @@ public class UserService {
       autoLoginCookie.setMaxAge(60 * 60 * 24); // 쿠키 사용 시간 (1일)
       autoLoginCookie.setPath("/"); //전체경로 설정
 
-      log.info("service cookie : {}",autoLoginCookie);
+      log.info("service cookie : {}", autoLoginCookie);
       // 쿠키 응답 전송
       response.addCookie(autoLoginCookie);
 
@@ -107,11 +109,34 @@ public class UserService {
     session.setMaxInactiveInterval(60 * 60 * 24); // 세션 - 1시간
 
     Object sessionInfo = session.getAttribute(LoginUtil.LOGIN_KEY);
-    log.info("세션 {}", sessionInfo);
+//    log.info("세션 {}", sessionInfo);
   }
 
   // id로 유저 찾기
   private User findUser(String id) {
     return userMapper.findUser(id);
+  }
+
+  // 자동로그인 해제
+  public void autoLoginClear(HttpServletRequest request, HttpServletResponse response) {
+    Cookie cookie = LoginUtil.getCookie(request);
+
+    // 쿠키 삭제
+    if (cookie != null) {
+      cookie.setMaxAge(0);
+      cookie.setPath("/");
+      response.addCookie(cookie);
+    }
+
+    // DB 자동로그인 해제
+    userMapper.saveAutoLogin(
+        AutoLoginDTO.builder()
+            .sessionId("none")
+            .cookieLimitTime(LocalDateTime.now())
+            .id(LoginUtil.getCurrentLoginUser(request.getSession()).getId())
+            .build()
+    );
+
+
   }
 }
