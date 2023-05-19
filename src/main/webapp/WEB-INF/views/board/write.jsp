@@ -146,7 +146,7 @@
 
         <div class="form-group">
             <label for="content"><i class="fas fa-bone"></i>&nbsp;&nbsp;내용</label>
-            <textarea id="content" name="content" rows="8" required></textarea>
+            <textarea id="content" name="content" rows="8" maxlength="200" required></textarea>
         </div>
 
         <div class="form-group upload-box">

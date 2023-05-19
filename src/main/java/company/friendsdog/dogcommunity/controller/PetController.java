@@ -103,6 +103,6 @@ public class PetController {
     // true / false 여부
     boolean flag = petService.modify(dto);
 
-    return "";
+    return "user/main";
   }
 }
