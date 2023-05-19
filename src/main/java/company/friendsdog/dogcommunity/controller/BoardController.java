@@ -37,7 +37,7 @@ public class BoardController {
     private final BoardService boardService;
 
     // 게시판 목록 조회 요청
-    @GetMapping("/list")
+    @GetMapping("/list2")
     public String petFindAll(Search page, Model model) {
         log.info("/board/list : GET");
         log.info("page : {}", page);
@@ -46,7 +46,7 @@ public class BoardController {
         model.addAttribute("bList", dto);
         model.addAttribute("p", page);
 
-        return "/board/test";
+        return "/board/list2";
     }
 
     // 게시판 상세 조회 요청
