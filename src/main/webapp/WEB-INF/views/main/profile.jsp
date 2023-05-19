@@ -54,6 +54,7 @@
 </header>
 
 <!--main left sidebar-->
+    <form action="/pet/modify" method="post" id="pet-profile-form">
 <aside class="sidebar">
     <div class="profile-box">
         <a href="/pet/profile">
@@ -66,7 +67,7 @@
          <button type="submit" onclick="http://localhost:8585/modify">수정하기</button>
         </div>
 </aside>
-
+</form>
 
 
 <!--//Profile Change Body label이랑 id 맞추고 dto랑 name 맞춘다-->

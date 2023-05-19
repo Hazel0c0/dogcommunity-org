@@ -46,14 +46,16 @@
     <update id="modify">
         UPDATE tbl_pet
         SET pet_photo=#{petPhoto},
-        hashtag=#{hashtag}
+        hashtag=#{hashtag},
+        pet_kind=#{petKind},
+        pet_age=#{petAge}
         WHERE pet_no=#{petNo}
     </update>
 
     <select id="findOne" resultType="pet">
         SELECT
-            pet_no,pet_name,pet_name,pet_age,pet_kind,
-            pet_gender,pet_photo
+            user_no,pet_no,pet_name,pet_age,pet_kind,
+            pet_gender,pet_photo,profile_date_time, hashtag, addr, add_detail
         FROM tbl_pet
         WHERE pet_no = #{petNo}
     </select>

@@ -3,6 +3,7 @@ package company.friendsdog.dogcommunity.service;
 
 import company.friendsdog.dogcommunity.dto.PetProfileModifyRequestDTO;
 import company.friendsdog.dogcommunity.dto.request.PetProfileRequestDTO;
+import company.friendsdog.dogcommunity.dto.response.PetCardResponseDTO;
 import company.friendsdog.dogcommunity.entity.Pet;
 import company.friendsdog.dogcommunity.entity.User;
 import company.friendsdog.dogcommunity.repository.PetMapper;
@@ -77,14 +78,23 @@ public class PetService {
 
 
   //수정 요청 하면  컨트롤러가 다시 수정을 요청한다. 수정창
-  public boolean modify(PetProfileModifyRequestDTO dto) {
+  //업로드 받은 파일 DB 에 담을 수 없다...
+  public boolean modify(PetProfileModifyRequestDTO dto, Long userNo) {
+    // 유저 넘버로 펫 찾기
+  // 하나 하나 로그 찍어보기
     Pet pet = new Pet();
-    pet.setPetNo((long) dto.getPetNo());
-    pet.setPetPhoto(dto.getPetPhoto());
+    pet.setPetNo(dto.getPetNo());
+    pet.setHashtag(dto.getHashtag());
+    pet.setPetPhoto(String.valueOf(dto.getPetPhoto()));
     return petMapper.modify(pet);
   }
 
 
-
+  public Pet findOne(Long  petNo) {
+//    log.info("userNo : {}", userNo);
+    Pet foundPet = petMapper.findOne(petNo);
+    log.info(" petNo {}", petNo);
+    return foundPet;
+  }
 }
 
