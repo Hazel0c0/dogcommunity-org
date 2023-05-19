@@ -11,8 +11,8 @@
     <title>Document</title>
 
     <!--메인 화면 공통 부분 JSP-->
-    <%@ include file="../include/static-head.jsp" %>
-    <%@ include file="../include/header.jsp" %>
+    <%@ include file="include/static-head.jsp" %>
+    <%@ include file="include/header.jsp" %>
 
     <!-- Body 부분 말풍선 -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet">
