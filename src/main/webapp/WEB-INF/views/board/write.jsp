@@ -1,183 +1,192 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8"
-pageEncoding="UTF-8"%> <%@ taglib prefix="c"
-uri="http://java.sun.com/jsp/jstl/core" %>
-<!DOCTYPE html>
-<html lang="ko">
+<%@ page contentType="text/html; charset=UTF-8" language="java" %>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 
+<!doctype html>
+<html lang="en">
 <head>
-    <meta charset="UTF-8" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>게시판 글쓰기</title>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>My Pet 자랑하기</title>
 
+    <!--메인 화면 공통 부분 JSP-->
     <%@ include file="../include/static-head.jsp" %>
+    <%@ include file="../include/header.jsp" %>
+    <!-- css -->
+    <link rel="stylesheet" href="/assets/css/main-static.css">
+<%-- 추후 완성 후 분리 예정 <link rel="stylesheet" href="/assets/css/write.css">--%>
 
-    <!-- ck editor -->
-    <script src="https://cdn.ckeditor.com/4.17.2/standard/ckeditor.js"></script>
     <style>
-        .form-container {
-            width: 500px;
-            margin: auto;
+        /* 게시물 작성 CSS */
+        section {
+            /*margin-top: 300px;*/
+            /*margin-left: 400px;*/
+            width: 60%;
+            /*border: 4px solid red;*/
             padding: 20px;
-            background-image: linear-gradient(135deg, #a1c4fd, #fbc2eb);
-            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-            border-radius: 4px;
-            font-size: 18px;
         }
 
-        .form-container h1 {
-            font-size: 40px;
-            font-weight: 700;
-            letter-spacing: 10px;
+        section > * {
+            border-radius: 6px;
+        }
+
+        h1 {
             text-align: center;
-            margin-bottom: 20px;
-            color: #ffffff;
+            color: darkslategray;
+            margin-bottom: 5px;
         }
 
+        #formContent {
+            border: 2px double gray;
+            padding: 10px;
+        }
+
+        .form-group {
+            margin-bottom: 20px;
+            width: 100%;
+            display: flex;
+            border: 1px solid black;
+        }
+
+        /* 글씨 영역 */
         label {
-            display: block;
-            margin-bottom: 5px;
-            font-size: 20px;
+            display: inline-block;
+            width: 200px;
+            background: pink;
+            font-weight: 800;
+            color: darkslategray;
+            padding: 20px;
+
+        }
+
+        textarea {
+            width: 100%;
+            padding: 10px;
+            font-size: 16px;
+            resize: vertical;
+            /*background: green;*/
         }
 
         input[type="text"],
-        textarea {
-            font-size: 18px;
+        input[type="file"],
+        input[type="number"] {
             width: 100%;
-            padding: 8px;
-            box-sizing: border-box;
-            border: 2px solid #ffffff;
-            border-radius: 8px;
-            margin-bottom: 10px;
-            background-color: rgba(255, 255, 255, 0.8);
-        }
-
-        textarea {
-            resize: none;
-            height: 200px;
-        }
-
-        .buttons {
-            display: flex;
-            justify-content: flex-end;
-            margin-top: 20px;
+            padding: 10px;
+            font-size: 16px;
+            text-align: center;
+            /*background: yellow;*/
         }
 
         button {
-            font-size: 20px;
-            padding: 10px 20px;
-            border: none;
-            margin-right: 10px;
-            background-color: #4caf50;
+            background-color: rgba(124, 110, 117, 0.7);
             color: white;
+            letter-spacing: 5px;
+            padding: 10px 15px;
+            border: none;
+            border-radius: 6px;
             cursor: pointer;
-            border-radius: 4px;
-            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-            transition: background-color 0.3s;
-        }
+            width: 100%;
+            font-weight: 700;
 
-        button.list-btn {
-            background: #e61e8c;
         }
 
         button:hover {
-            background-color: #3d8b40;
+
+            background-color: #4CAF50;
+            color: white;
+
         }
 
-        button.list-btn:hover {
-            background: #e61e8c93;
+        /* 파일 사진 업로드 박스 구간 */
+        .upload-box {
+            width: 40%;
+            margin: auto;
+            margin-bottom: 20px;
+            height: 400px;
+            border: 3px dotted gray;
+            display: flex;
+            justify-content: center;
+            align-content: center;
+            color: black;
+            font-size: 0.8em;
+            text-align: center;
+            align-items: center;
+            cursor: pointer;
         }
 
-        .attachedImg {
-        margin-bottom: 70px;
-        text-align: center;
-    }
-    .attachedImg label {
-        font-weight: 700;
-        font-size: 1.2em;
-        cursor: pointer;
-        color: rgb(140, 217, 248);
-    }
-    .attachedImg .thumbnail-box {
-        width: 200px;
-        height: 200px;
-        border-radius: 50%;
-        overflow: hidden;
-        margin: 30px auto 10px;
-        cursor: pointer;
-    }
-  
-    .attachedImg .thumbnail-box img {
-        width: 200px;
-        height: 200px;
-    }
+        #attachedImg {
+            display: none;
+        }
 
     </style>
 </head>
 
 <body>
-    <%-- <%@ include file="../include/header.jsp" %> --%>
+<section style="margin-top: 150px; margin-left: 25px;">
 
-    <div id="wrap" class="form-container">
-        <h1>꾸러기 게시판 글쓰기</h1>
-        <form action="/board/write" method="post" enctype="multipart/form-data">
-            <label for="likes">좋아요 수</label>
-            <input type="text" id="likes" name="likes" required />
-            <div class="attachedImg">
-                <div class="thumbnail-box">
-                    <img src="/assets/img/dog.png" alt="프로필 썸네일">
-                </div>
-    
-                <label>첨부 이미지 추가</label>
-    
-                <input 
-                    type="file"
-                    id="attached-img" 
-                    accept="image/*"
-                    style="display: none;"
-                    name="attachedImg"
-                >
-            </div>
-            <label for="content">글내용</label>
-            <textarea id="content" name="content" maxlength="200" required></textarea>
-            <div class="buttons">
-                <button class="list-btn" type="button" onclick="window.location.href='/board/list'">
-                    목록
-                </button>
-                <button type="submit">글쓰기</button>
-            </div>
-        </form>
-    </div>
-    <script>
-        // 프로필 사진 관련 스크립트
-        const $profile = document.querySelector('.attachedImg');
-        const $fileInput = document.getElementById('attached-img');
+    <h1><i class="fas fa-paw"></i>&nbsp;<em style="font-size: 35px">My Pet 게시판</em></h1>
+    <form method="post" action="/board/write" enctype="multipart/form-data" id="formContent">
 
-        // 프로필 추가 영역 클릭 이벤트
-        $profile.onclick = e => {
-            $fileInput.click();
-        };
+        <div class="form-group">
+            <label for="boardNo"><i class="fas fa-bone"></i>&nbsp;&nbsp;게시판 번호</label>
+            <input type="text" id="boardNo" name="boardNo" value="12345" readonly>
+        </div>
 
-        // 프로필 사진 선택시 썸네일 이벤트
-        $fileInput.onchange = e => {
-            // 첨부한 파일의 데이터를 읽어오기
-            const fileData = $fileInput.files[0];
-            // console.log(fileData);
+        <%--펫 번호 db 전달용--%>
+        <%--        <div class="form-group">--%>
+        <%--            <label for="petNo"><i class="fas fa-dog"></i>&nbsp;&nbsp;펫 번호</label>--%>
+        <input type="hidden" id="petNo" name="petNo" value="56789" readonly>
+        <%--        </div>--%>
 
-            // 첨부파일의 바이트데이터를 읽어들이는 객체 생성
-            const reader = new FileReader();
+        <div class="form-group">
+            <label for="petName"><i class="fas fa-dog"></i>&nbsp;&nbsp;펫 이름</label>
+            <input type="text" id="petName" name="petName" value="작성자 펫의 이름" readonly>
+        </div>
 
-            // 파일의 바이트데이터를 읽어서 img태그의 src속성이나
-            // a태그의 href속성에 넣기 위한 형태로 읽음
-            reader.readAsDataURL(fileData);
+        <div class="form-group">
+            <label for="content"><i class="fas fa-bone"></i>&nbsp;&nbsp;내용</label>
+            <textarea id="content" name="content" rows="8" required></textarea>
+        </div>
 
-            // 첨부파일이 등록되는 순간 img태그에 이미지를 세팅
-            reader.onloadend = e => {
-                const $imgTag = document.querySelector('.thumbnail-box img');
-                $imgTag.setAttribute('src', reader.result);
-            };
-        };
-    </script>
+        <div class="form-group upload-box">
+            <p>이미지 파일을 첨부하시려면<br><br>이곳을 클릭하세요.</p>
+        </div>
+        <input type="file" id="attachedImg" name="attachedImg" accept="image">
+
+        <button type="submit" id="submitBtn">제출</button>
+
+    </form>
+</section>
+
+<script>
+    const $uploadBox = document.querySelector('.upload-box');
+    const $attachedImg = document.getElementById('attachedImg');
+
+    $uploadBox.onclick = () => {
+        $attachedImg.click();
+        console.log("눌러짐");
+    };
+
+    $attachedImg .addEventListener('change', function (e) {
+        // e.preventDefault();
+        const fileData = $attachedImg.files[0];
+
+        if (fileData) {
+                const reader = new FileReader();
+                reader.readAsDataURL(fileData);
+
+                reader.onload = function (e) {
+                    console.log(e);
+                    $uploadBox.style.backgroundImage = 'url(' + e.target.result + ')';
+                    $uploadBox.style.backgroundSize = 'contain';
+                    $uploadBox.style.backgroundRepeat = 'no-repeat';
+                    $uploadBox.style.backgroundPosition = 'center';
+                };
+            }
+    });
+
+</script>
 </body>
-
 </html>
+

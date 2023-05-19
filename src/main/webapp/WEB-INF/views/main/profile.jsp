@@ -9,62 +9,19 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
+
+    <!--메인 화면 공통 부분 JSP-->
     <%@ include file="../include/static-head.jsp" %>
-    <!-- side menu event js defer : 지연 메뉴 걸기 -->
-    <script src="/assets/js/side-menu.js" defer></script>
-    <!-- 말풍선 -->
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.6.0/font/bootstrap-icons.css"/>
-    <!-- css -->
+    <%@ include file="../include/header.jsp" %>
+
+    <!--메인 화면 CSS : main-static은 공통 + 추가 개별 CSS 넣기 -->
+    <link rel="stylesheet" href="/assets/css/main-static.css">
     <link rel="stylesheet" href="/assets/css/profile.css">
+
 </head>
 
 <body>
 
-
-<!-- header -->
-<header>
-    <div class="inner-header">
-        <h1 class="logo">
-            <a href="/user/main">
-                <img src="/assets/img/logo-instagram.png" alt="로고이미지">
-            </a>
-        </h1>
-        <h2 class="intro-text"><a href="/user/main">Petstagram</a></h2>
-        <a href="#" class="menu-open">
-            <span class="menu-txt">MENU</span>
-            <span class="lnr lnr-menu"></span>
-        </a>
-    </div>
-
-    <nav class="gnb">
-        <a href="#" class="close">
-            <span class="lnr lnr-cross"></span>
-        </a>
-        <ul>
-            <a href="/user/main"><span class="lnr lnr-home"> 홈</span></a>
-            <a href="#"><span class="lnr lnr-magnifier"> 검색</span></a>
-            <a href="#"><span class="lnr lnr-map"> 내 주변 친구</span></a>
-            <a href="#"><span class="lnr lnr-heart"> 자랑하기</span></a>
-            <a href="#"><span class="lnr lnr-bubble"> 메시지</span></a>
-            <a href="#"><span class="lnr lnr-alarm"> 알림</span></a>
-            <a href="#"><span class="lnr lnr-user"> 프로필</span></a>
-        </ul>
-    </nav>
-</header>
-
-<!--main left sidebar-->
-<aside class="sidebar">
-    <div class="profile-box">
-        <a href="/pet/profile">
-            <div class="profile-img"> </div>
-            <h3 id="profilePetName">멍멍이</h3>
-            <p id="profileHashTag">#안뇽</p>
-        </a>
-    </div>
-</aside>
-
-<!--//Profile Change Body label이랑 id 맞추고 dto랑 name 맞춘다-->
 <div class="profileChange">
 
     <form action="/pet/profile" method="post" name="petProfile" class="profile" enctype="multipart/form-data">
@@ -94,7 +51,7 @@
         <label for="hashTag">소개</label>
         <textarea id="hashTag" name="hashtag" rows="4" required></textarea>
 
-        <label for="profileSuggest">프로필에 계정 추천 표시</label>
+        <label for="profileSuggest">프로필에 계정 추천. 표시</label>
         <p>강아지의 프로필이 다른 프로필에서 추천될 수 있는지를 선택하세요.
             &nbsp;&nbsp;&nbsp;
             <input type="checkbox" id="profileSuggest" name="profileSuggest">
@@ -113,7 +70,7 @@
     const $submitBtn = document.getElementById('submitBtn');
 
     $submitBtn.addEventListener('click', function (e) {
-         // e.preventDefault(); // 기본 제출 동작 방지
+        e.preventDefault(); // 기본 제출 동작 방지 : db로 값 넘길때 주석 해지 필수~!
 
         $profilePetName.textContent = $petName.value;
         let hashTagValue = $hashTag.value;
@@ -132,7 +89,7 @@
             const reader = new FileReader();
             reader.readAsDataURL(fileData);
 
-            reader.onload = function(e) {
+            reader.onload = function (e) {
                 const profileImg = document.querySelector('.profile-img');
                 profileImg.style.backgroundImage = 'url(' + e.target.result + ')';
             };
@@ -140,9 +97,6 @@
     });
 
 
-
-
 </script>
 </body>
-
 </html>
