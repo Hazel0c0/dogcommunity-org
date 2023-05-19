@@ -18,7 +18,6 @@
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.6.0/font/bootstrap-icons.css" />
     <!-- css -->
     <link rel="stylesheet" href="/assets/css/main.css">
-
 </head>
 
 <body>
@@ -27,11 +26,11 @@
 <header>
     <div class="inner-header">
         <h1 class="logo">
-            <a href="/user/main">
+            <a href="/main">
                 <img src="/assets/img/logo-instagram.png" alt="로고이미지">
             </a>
         </h1>
-        <h2 class="intro-text"><a href="/user/main">Petstagram</a></h2>
+        <h2 class="intro-text"><a href="/main">Petstagram</a></h2>
         <a href="#" class="menu-open">
             <span class="menu-txt">MENU</span>
             <span class="lnr lnr-menu"></span>
@@ -43,13 +42,15 @@
             <span class="lnr lnr-cross"></span>
         </a>
         <ul>
-            <li><a href="/user/main"><span class="lnr lnr-home"> 홈</span></a></li>
+            <li><a href="/main"><span class="lnr lnr-home"> 홈</span></a></li>
             <li><a href="#"><span class="lnr lnr-magnifier"> 검색</span></a></li>
-            <li><a href="/pet/map"><span class="lnr lnr-map"> 내 주변 친구</span></a></li>
             <li><a href="/board/write"><span class="lnr lnr-heart"> 자유게시판</span></a></li>
+            <li><a href="/map/map"><span class="lnr lnr-map"> 내 주변 친구</span></a></li>
+            <li><a href="#"><span class="lnr lnr-heart"> 자랑하기</span></a></li>
             <li><a href="#"><span class="lnr lnr-bubble"> 메시지</span></a></li>
             <li><a href="#"><span class="lnr lnr-alarm"> 알림</span></a></li>
             <li><a href="/pet/profile"><span class="lnr lnr-user"> 프로필</span></a></li>
+            <li><a href="/user/logout"> 로그아웃</a></li>
         </ul>
     </nav>
 </header>
