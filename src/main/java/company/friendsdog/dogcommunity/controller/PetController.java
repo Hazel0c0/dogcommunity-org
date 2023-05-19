@@ -29,6 +29,9 @@ import static org.springframework.http.ResponseEntity.*;
 @Slf4j
 public class PetController {
 
+  @Value("${file.upload.root-path}")
+  private String rootPath;
+
   private final PetService petService;
 
   // 펫 프로필 카드 만들기 페이지 요청
@@ -39,8 +42,7 @@ public class PetController {
     return "/main/profile";
   }
 
-  @Value("${file-upload.root-path}")
-  private String rootPath;
+
 
   // 펫 프로필 정보 요청
   @PostMapping("/profile")

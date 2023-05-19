@@ -82,7 +82,7 @@ public class BoardController {
         String fullLocal = local + imgPath;
 
         boardService.save(dto,session, fullLocal);
-        return "redirect:/board/list";
+        return "redirect:/board/list2";
     }
     // 게시판 삭제 요청 처리
     @PostMapping("/delete")
@@ -90,7 +90,7 @@ public class BoardController {
         log.info("/board/delete : POST");
         log.info("boardNo - {}", boardNo);
         boardService.delete(boardNo, session);
-        return "redirect:/board/list";
+        return "redirect:/board/list2";
     }
 
     // 게시판 수정 화면 조회 요청
@@ -110,6 +110,6 @@ public class BoardController {
         log.info("petPhoto - {}", dto.getPetPhoto());
         log.info("petName - {}", dto.getPetName());
         boardService.modify(dto);
-        return "redirect:/board/list";
+        return "redirect:/board/list2";
     }
 }
