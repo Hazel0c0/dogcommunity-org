@@ -48,7 +48,7 @@
             <li><a href="#"><span class="lnr lnr-heart"> 자랑하기</span></a></li>
             <li><a href="#"><span class="lnr lnr-bubble"> 메시지</span></a></li>
             <li><a href="#"><span class="lnr lnr-alarm"> 알림</span></a></li>
-            <li><a href="/pet/profile"><span class="lnr lnr-user"> 프로필</span></a></li>
+            <li><a href="/pet/modify"><span class="lnr lnr-user"> 프로필</span></a></li>
             <li><a href="/user/logout"> 로그아웃</a></li>
         </ul>
     </nav>
