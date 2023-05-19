@@ -4,6 +4,7 @@ import company.friendsdog.dogcommunity.dto.page.Search;
 import company.friendsdog.dogcommunity.dto.request.BoardRequestDTO;
 import company.friendsdog.dogcommunity.dto.response.BoardDetailResponseDTO;
 import company.friendsdog.dogcommunity.dto.response.BoardListResponseDTO;
+import company.friendsdog.dogcommunity.entity.Pet;
 import company.friendsdog.dogcommunity.entity.User;
 import company.friendsdog.dogcommunity.repository.UserMapper;
 import company.friendsdog.dogcommunity.service.BoardService;
@@ -23,6 +24,7 @@ import javax.servlet.http.HttpSession;
 import java.io.IOException;
 import java.util.List;
 
+import static com.spring.mvc.util.upload.FileUtil.uploadFile;
 import static company.friendsdog.dogcommunity.util.LoginUtil.LOGIN_KEY;
 
 @Controller
@@ -80,13 +82,6 @@ public class BoardController {
         String imgPath = uploadFile(dto.getAttachedImg(), rootPath);
         boardService.save(dto, session, imgPath);
         log.info("dto @@@@@@@@@@@@@@ - {}", dto);
-        return "redirect:/board/list";
-        String imgPath = FileUtil.uploadFile(dto.getAttachedImg(), rootPath);
-
-        String local = "http://localhost:8585/local";
-        String fullLocal = local + imgPath;
-
-        boardService.save(dto,session, fullLocal);
         return "redirect:/board/list2";
     }
 
