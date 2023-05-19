@@ -111,6 +111,10 @@ public class PetController {
     return pet;
   }
 
+  @GetMapping("modify")
+  public String modify() {
+    return "pet/profileModify";
+  }
 
   @PostMapping("/modify")
   public String modifyData(PetProfileModifyRequestDTO dto) {
