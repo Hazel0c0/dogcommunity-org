@@ -130,18 +130,18 @@
 
         <div class="form-group">
             <label for="boardNo"><i class="fas fa-bone"></i>&nbsp;&nbsp;게시판 번호</label>
-            <input type="text" id="boardNo" name="boardNo" value="12345" readonly>
+            <input type="text" id="boardNo" name="boardNo" value="${boardNo}" readonly>
         </div>
 
         <%--펫 번호 db 전달용--%>
         <%--        <div class="form-group">--%>
         <%--            <label for="petNo"><i class="fas fa-dog"></i>&nbsp;&nbsp;펫 번호</label>--%>
-        <input type="hidden" id="petNo" name="petNo" value="56789" readonly>
+        <input type="hidden" id="petNo" name="petNo" value="${p.petNo}" readonly>
         <%--        </div>--%>
 
         <div class="form-group">
             <label for="petName"><i class="fas fa-dog"></i>&nbsp;&nbsp;펫 이름</label>
-            <input type="text" id="petName" name="petName" value="작성자 펫의 이름" readonly>
+            <input type="text" id="petName" name="petName" value="${p.petName}" readonly>
         </div>
 
         <div class="form-group">

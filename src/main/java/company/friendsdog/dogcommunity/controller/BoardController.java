@@ -4,9 +4,11 @@ import company.friendsdog.dogcommunity.dto.page.Search;
 import company.friendsdog.dogcommunity.dto.request.BoardRequestDTO;
 import company.friendsdog.dogcommunity.dto.response.BoardDetailResponseDTO;
 import company.friendsdog.dogcommunity.dto.response.BoardListResponseDTO;
+import company.friendsdog.dogcommunity.entity.Pet;
 import company.friendsdog.dogcommunity.entity.User;
 import company.friendsdog.dogcommunity.repository.UserMapper;
 import company.friendsdog.dogcommunity.service.BoardService;
+import company.friendsdog.dogcommunity.util.LoginUtil;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Value;
@@ -52,20 +54,21 @@ public class BoardController {
     // 게시판 상세 조회 요청
     @GetMapping("/detail")
     public String petFindOne(Long boardNo, Search search, Model model) {
-        log.info("/board/detail : GET");
-        log.info("boardNo - {}", boardNo);
+//        log.info("/board/detail : GET");
+//        log.info("boardNo - {}", boardNo);
         BoardDetailResponseDTO dto = boardService.petFindOne(boardNo);
         model.addAttribute("b", dto);
         model.addAttribute("p", search);
-        log.info("dto- {}", dto);
+//        log.info("dto- {}", dto);
         return "board/detail";
 
     }
 
     // 게시판 글쓰기 화면 조회 요청
     @GetMapping("/write")
-    public String save(HttpSession session) {
-        log.info("/board/write : GET@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@");
+    public String save(HttpSession session, Model model) {
+        Pet pet = boardService.petFindInfo(session);
+        model.addAttribute("p", pet);
         return "board/write";
     }
 
@@ -73,11 +76,12 @@ public class BoardController {
     @PostMapping("/write")
     public String save(BoardRequestDTO dto, HttpSession session) {
         log.info("/board/write : POST@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@ - {}", dto);
-        log.info("첨부파일 사진 이름: {}", dto.getAttachedImg().getOriginalFilename());
-        log.info("경로 - {}",rootPath);
+//        log.info("첨부파일 사진 이름: {}", dto.getAttachedImg().getOriginalFilename());
+//        log.info("경로 - {}",rootPath);
 
         String imgPath = uploadFile(dto.getAttachedImg(), rootPath);
-        boardService.save(dto,session, imgPath);
+        boardService.save(dto, session, imgPath);
+        log.info("dto @@@@@@@@@@@@@@ - {}", dto);
         return "redirect:/board/list";
     }
     // 게시판 삭제 요청 처리
