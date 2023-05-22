@@ -11,17 +11,13 @@ import java.time.LocalDateTime;
 @NoArgsConstructor
 @AllArgsConstructor
 @Builder
+//펫번호,내용,댓글번호
+// int 말고 Long
 public class Reply {
-    private  int boardNo;
-    private String userNickname;
-    private int replyNo;
+    private Long boardNo;
+    private Long petNo;
+    private Long replyNo;
     private String comment;
     private LocalDateTime replyDateTime;
-
-    //좋아요
-    private int likes;
-    //싫어요
-    private int hate;
-
-
+    private String petName;
 }

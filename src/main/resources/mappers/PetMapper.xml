@@ -1,0 +1,100 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="company.friendsdog.dogcommunity.repository.PetMapper">
+
+<!--    펫 저장하기 -->
+    <insert id="save">
+        INSERT INTO tbl_pet
+            (user_no, pet_name, pet_age, pet_kind
+            , pet_gender,pet_photo, hashtag, addr
+             , add_detail)
+        VALUES
+            (#{userNo}, #{petName}, #{petAge}, #{petKind}
+                , #{petGender}, #{petPhoto}, #{hashtag}, #{addr}
+                , #{addDetail})
+    </insert>
+
+    <!--    '동' 찾기 -->
+    <select id="findDong" resultType="String">
+        select add_detail
+        from tbl_user
+        where addr=#{addr}
+        group by add_detail
+    </select>
+
+<!--  ㅇㅇ동 모든 강아지 찾기-->
+    <select id="findPetByAddr" resultType="pet">
+        SELECT user_no, pet_No, pet_name, pet_age
+             , pet_kind, pet_gender,pet_photo
+             ,profile_date_time, hashtag, addr, add_detail
+        FROM tbl_pet
+        WHERE add_detail = #{addDetail}
+    </select>
+
+<!--    ========================================= -->
+
+    <delete id="delete">
+        DELETE FROM tbl_pet
+        WHERE pet_no = #{petNo}
+    </delete>
+
+    <!--펫 사진 수정 update,modify -->
+    <!--    set 수정할거  where이 조건-->
+
+    <update id="modify">
+        UPDATE tbl_pet
+        SET pet_photo=#{petPhoto}
+        WHERE pet_no=#{petNo}
+    </update>
+
+    <select id="findOne" resultType="pet">
+        SELECT
+            pet_no,pet_name,pet_name,pet_age,pet_kind,
+            pet_gender,pet_photo
+        FROM tbl_pet
+        WHERE pet_no = #{petNo}
+    </select>
+
+
+
+<!--  안쓰면 지우기 ( 지원)-->
+<!--    렌던 펫 -->
+    <select id="randomPet" resultType="neighbor">
+        SELECT P.pet_no
+                , P.pet_name
+                , P.pet_age
+                , P.pet_kind
+                , P.pet_gender
+                , P.pet_photo
+                , P.pet_date_time
+                , P.hashtag
+                , U.addr
+                , U.add_detail
+                ,P.likes , P.hits
+        From tbl_pet P
+                 LEFT JOIN tbl_user U
+                           ON P.user_no = U.user_no
+        where add_detail=#{add_detail}
+        Order by rand()
+            Limit 1;
+    </select>
+
+    <select id="userFindPet" resultType="pet">
+        SELECT
+        user_no, pet_no, pet_name,pet_age
+        ,pet_kind,pet_gender,pet_photo
+        FROM tbl_pet
+        WHERE user_No = #{userNo}
+    </select>
+
+    <select id="petFindInfo" resultType="pet">
+        SELECT
+        user_no, pet_no, pet_name,pet_age
+        ,pet_kind,pet_gender,pet_photo
+        FROM tbl_pet
+        WHERE user_No = #{userNo}
+    </select>
+
+</mapper>

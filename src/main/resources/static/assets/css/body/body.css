@@ -1,0 +1,666 @@
+
+/** {*/
+/*    box-sizing: border-box;*/
+/*}*/
+
+/*body {*/
+/*    background-color: #f0f0f0;*/
+/*    display: flex;*/
+
+/*}*/
+
+/*button {*/
+/*    outline: none;*/
+/*    border: none;*/
+/*}*/
+
+/*#wrap {*/
+/*    width: 60%;*/
+/*    margin: 100px auto;*/
+/*}*/
+
+
+/*!* reset *!*/
+/*a {*/
+/*    color: inherit;*/
+/*    text-decoration: none;*/
+/*}*/
+
+/*!* common style *!*/
+/*.hide {*/
+/*    display: none !important;*/
+/*}*/
+
+/*!* header style *!*/
+/*header {*/
+/*    background: black;*/
+/*    position: fixed;*/
+/*    width: 100%;*/
+/*    top: 0;*/
+/*    z-index: 1000;*/
+/*    font-size: 33px;*/
+/*    font-family: Linearicons-Free;*/
+/*}*/
+
+/*header.on {*/
+/*    background: #222;*/
+/*    border-bottom: 1px solid #2c2c2c;*/
+/*    transition: .4s;*/
+/*}*/
+
+/*header .inner-header {*/
+/*    !* background: orange; *!*/
+/*    width: 94%;*/
+/*    margin: 0 auto;*/
+/*    height: 150px;*/
+/*    display: flex;*/
+/*    justify-content: space-between;*/
+/*    align-items: center;*/
+/*    font-weight: 500;*/
+/*    color: #fff;*/
+/*}*/
+
+/*header .inner-header .logo {*/
+/*    !* background: tomato; *!*/
+/*    margin-right: 20px;*/
+/*}*/
+
+/*header .inner-header .logo a {*/
+/*    display: block;*/
+/*}*/
+
+/*header .inner-header .logo a img {*/
+/*    height: 70px;*/
+/*}*/
+
+/*header .inner-header .intro-text {*/
+/*    !* background: greenyellow; *!*/
+/*    flex: 7;*/
+/*    letter-spacing: 3px;*/
+/*    text-transform: uppercase;*/
+/*    !* margin: 20px; *!*/
+/*}*/
+
+/*header .inner-header .menu-open {*/
+/*    !* background: skyblue; *!*/
+/*    flex: 1.5;*/
+/*    display: flex;*/
+/*    justify-content: flex-end;*/
+/*    align-items: center;*/
+/*}*/
+
+/*header .inner-header .menu-open .lnr-menu {*/
+/*    font-size: 33px;*/
+/*    margin-left: 15px;*/
+/*}*/
+
+/*!* header gnb style *!*/
+/*header .gnb {*/
+/*    background: #000;*/
+/*    color: white;*/
+/*    height: 100vh;*/
+
+/*    padding: 70px 30px;*/
+/*    box-sizing: border-box;*/
+/*    !* border: red; *!*/
+
+/*    position: fixed;*/
+/*    z-index: 2000;*/
+/*    right: -100%;*/
+/*    top: 60px;*/
+/*    transition: .5s;*/
+
+/*    display: flex;*/
+/*    flex-direction: row-reverse;*/
+/*}*/
+
+/*header .gnb.on {*/
+/*    right: 0;*/
+/*}*/
+
+/*header .gnb .close {*/
+/*    display: block;*/
+/*    color: #fff;*/
+/*}*/
+
+/*header .gnb ul {*/
+/*    margin-right: 20px;*/
+/*}*/
+
+/*header .gnb ul li {*/
+/*    font-size: 30px;*/
+/*    font-weight: 700;*/
+/*    line-height: 2;*/
+/*}*/
+
+/*header .gnb ul li:hover,*/
+/*header .gnb ul li.active {*/
+/*    color: rgb(233, 101, 123);*/
+/*}*/
+
+/*!*======left side bar=========== *!*/
+/*aside.sidebar {*/
+/*    background-color: green;*/
+/*    width: 20%;*/
+/*    display: flex;*/
+/*    flex-direction: column;*/
+/*    flex-wrap: wrap;*/
+/*    padding: 30px;*/
+/*    height: 300vh;*/
+/*    color: white;*/
+/*    !* flex: 2 *!*/
+/*}*/
+
+/*aside.sidebar .profile-box {*/
+/*    border: 2px antiquewhite;*/
+/*    margin-top: 150px;*/
+/*    padding: 30px;*/
+/*    text-align: center;*/
+/*}*/
+
+/*aside.sidebar .profile-box .profile-img {*/
+/*    border: 2px solid yellow;*/
+/*    background: url('/assets/img/dog.png') no-repeat center;*/
+/*    background-size: contain;*/
+/*    border-radius: 50%;*/
+/*    height: 300px;*/
+/*}*/
+
+/*aside.sidebar .profile-box h3 {*/
+/*    border: 1px solid orange;*/
+/*    margin: 20px;*/
+/*}*/
+
+/* 메인 페이지 바디 부분 CSS */
+/* =====Begin main page body===== */
+
+#boxRow1 {
+    display: flex;
+    /*border: 3px solid red;*/
+    flex-direction: row;
+    justify-content: space-around;
+    width: 80%;
+}
+
+#boxRow1>* {
+    width: 100%;
+}
+
+/* 메인 박스 */ #card-container {
+
+                flex-direction: row;
+                flex-wrap: wrap;
+                margin-left: 30px;
+                margin-top: 50px;
+                /* height: 500px; */
+                /* text-align: center; */
+            }
+
+/* 메인박스 안 작은 박스 */
+#card-container #card-wrapper {
+    position: relative;
+    /* width: 25%; */
+    margin-top: 180px;
+    margin-right: 3%;
+    margin-left: 10px;
+    height: 450px;
+    margin-bottom: 100px;
+    cursor: pointer;
+    transition: 0.5s;
+
+    border: 1px solid #000;
+}
+
+/* 실제 내용을 담는 박스 */
+#card-container #card-wrapper #card {
+    height: 450px;
+    border-radius: 20px;
+    box-shadow: 0 15px 0 #999;
+    overflow: hidden;
+    transition: 0.5s;
+    border: 2px solid #000;
+}
+
+/*  사용자 이름 박스 */
+#card-container #card-wrapper #card .card-title {
+    background: orange;
+    padding: 1px;
+    margin: 3px auto;
+    /* position: relative; */
+    display: flex;
+
+}
+
+/* 유저의 프로필 사진 */
+#card-container #card-wrapper #card .card-title .miniprofile {
+    display: block;
+    width: 25px;
+    height: 25px;
+    overflow: hidden;
+    margin-left: 10px;
+
+}
+
+/* 유저 프로필 사진 이미지 */
+#card-container #card-wrapper #card .card-title .miniprofile img {
+    object-fit: cover;
+    border-radius: 50%;
+    width: 1.5rem;
+    height: 1.5rem;
+    display: block;
+}
+
+/* 프로필 박스 (닉네임을 담고있는 ) */
+#card-container #card-wrapper #card .card-title .profile {
+    /* display: flex; */
+    justify-content: flex-start;
+    /* width: 100%; */
+}
+
+/* 유저의 닉네임 */
+#card-container #card-wrapper #card .card-title .nickname {
+    font-size: 14px;
+    width: fit-content;
+    margin-top: 5px;
+    margin-left: 5px;
+    /* margin-left: 10px; */
+
+}
+
+/* 사진 박스 */
+#card-container #card-wrapper #card .card-img {
+    background: violet;
+    width: 100%;
+    height: 60%;
+    position: relative;
+
+    /* 사진 넘치는 부분 가리기 */
+    overflow: hidden;
+}
+
+/*  사진 박스안에 실제 사진이 담기는 곳 */
+#card-container #card-wrapper #card .card-img img {
+    position: absolute;
+
+    /* 이미지 가운데 정렬 */
+    /* top: 50%;
+left: 50%; */
+    /* transform: translate(-50%, -50%); */
+    width: 25rem;
+    height: 20rem;
+    /* 사진 박스안에 꽉 채우기 사진 픽셀 깨짐 */
+    /* width: 100%; */
+    /* height: 100%; */
+}
+
+/* 사진 바로 밑 게시글 내용 시작 박스 */
+#card-container #card-wrapper #card .card-content {
+    border: 1px solid blue;
+
+    /* padding: 5px; */
+}
+
+/* 내용 박스 맨위 버튼들이 담겨 있는 박스 */
+#card-container #card-wrapper #card .card-content .eventbuttons {
+    margin-top: 5px;
+    margin-left: 10px;
+    margin-right: 10px;
+    display: flex;
+    justify-content: space-between;
+}
+
+/* 첫번째 버튼 */
+/* #card-container #card-wrapper #card .card-content .eventbuttons:nth-child(1){
+flex-grow: 1;
+}
+/* 두번째 버튼 */
+#card-container #card-wrapper #card .card-content .eventbuttons:nth-child(2) {
+    flex-grow: 1;
+}
+
+/* 세번째 버튼  */
+#card-container #card-wrapper #card .card-content .eventbuttons:nth-child(3) {
+    flex-grow: 1;
+}
+
+/* 마지막 버튼 */
+#card-container #card-wrapper #card .card-content .eventbuttons:nth-child(4) {
+    flex-grow: 2;
+}
+
+
+/* 버튼들을 담고있는 박스 */
+#card-container #card-wrapper #card .card-content .eventbuttons span {
+    border: 1px solid pink;
+    /* margin-bottom: 3px; */
+}
+
+/* 담겨있는 버튼 묶음 */
+#card-container #card-wrapper #card .card-content .eventbuttons span button {
+    background: #fff;
+}
+
+#card-container #card-wrapper #card .card-content .eventbuttons span i {
+    background: #fff;
+}
+
+/* 내용 박스 맨 밑 텍스트 내용들 */
+#card-container #card-wrapper #card .card-content .card-text {
+    margin: 5px 5px 3px 5px;
+    font-size: 14px;
+    height: 50px;
+}
+
+#card-container #card-wrapper #card .card-content .regdate {
+    margin-top: 3px;
+    margin-right: 4px;
+    font-size: 7px;
+    float: right;
+}
+
+/*==End main body== */
+
+
+
+   /* body {
+    margin: 100px auto;
+    background: rgba(98, 95, 95, 05);
+
+
+} */
+
+.backgr {
+    width: 100%;
+    height: 100vh;
+    position: absolute;
+    left: 0;
+    top: 0;
+    margin: 100px auto;
+    background: rgba(98, 95, 95, 0.8);
+    z-index: 100;
+}
+
+
+/* 상세보기 모달 창 */
+.backgr .my-modal {
+    /* border: 1px solid #000; */
+    /* background: #fff; */
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+
+    background: #fff;
+    width: 70%;
+    height: 70%;
+    display: flex;
+    justify-content: space-between;
+
+    border-radius: 15px;
+}
+
+/* 닫기버튼 */
+.xbutton {
+    width:  100px;
+    height: 100px;
+    /* border: 1px solid #000; */
+    float: right;
+    /* text-align: center; */
+    margin-bottom: 50px;
+    margin-right: 300px;
+    margin-top: 50px;
+    background: #fff;
+}
+
+.xbutton button {
+    width: 100px;
+    height: 100px;
+    background: #fff;
+}
+
+.xbutton button i {
+    color: #fff;
+}
+
+/* 모달 창 이미지 박스 (액자)*/
+.modal-imgbox {
+    width: 50%;
+    height: 100%;
+    /* border: 1px solid #000; */
+    /* position: relative; */
+    overflow: hidden;
+
+    display: flex;
+    justify-content: flex-end;
+}
+
+/* 메인 이미지 */
+.modal-imgbox img {
+    object-fit: cover;
+    /* width: 90%;
+    height: 90%; */
+    /* position: absolute; */
+    width: 100%;
+    height: 100%;
+
+}
+/* 왼쪽 이미지 박스 , 오른쪽 본문 내용 박스 */
+.bdrr {
+    border-radius: 10px;
+}
+.modal-mainbox {
+    width: 50%;
+    background: #fff;
+    /* border-radius: 10px; */
+}
+
+.modal-content {
+    height: 75%;
+    /* background: #fff; */
+}
+.topmini {
+    border-bottom: 1px solid gray;
+}
+
+.card-title {
+
+    display: flex;
+
+}
+/* 사용자 mini 프로필 */
+.card-title .modal-miniprofile {
+    border: 1px solid #000;
+    /* width: 40px; */
+    /* margin-left: 5px; */
+}
+.modal-miniprofile img {
+    object-fit: cover;
+    border-radius: 50%;
+    width: 2.5rem;
+    height: 2.5rem;
+    display: block;
+
+   margin-top: 7px;
+   margin-left: 5px;
+}
+/* mini profile img */
+.profile {
+    object-fit: cover;
+    border-radius: 50%;
+    width: 2.5rem;
+    height: 2.5rem;
+    display: block;
+
+   margin-top: 7px;
+   margin-left: 5px;
+}
+
+.user-Content .modal-text {
+    margin-left: 5px;
+    font-size: 16px;
+    font-weight: 700;
+    margin-top: 8px;
+
+}
+
+.modal-nickname {
+    font-size: 14px;
+}
+
+/*  댓글 내용 박스 */
+.usersReply {
+    /* border: 1px solid #000; */
+    background: orangered;
+    height: 100%;
+    font-size: 16px;
+
+}
+
+/* 버튼들 담겨 있는 박스 */
+.eventbuttons {
+    margin-top: 5px;
+    margin-left: 10px;
+    margin-right: 10px;
+    display: flex;
+    justify-content: space-between;
+
+    height: 30px;
+    border: 1px solid #000;
+}
+
+.eventbuttons span button {
+    background: #fff;
+    height: 25px;
+}
+
+.eventbuttons span i {
+    background: #fff;
+
+}
+
+/* 버튼 끝  */
+
+/* 댓글 입력박스  */
+.row {
+    background: olive;
+}
+
+.xx {
+    width: 80%;
+}
+
+.row .modal-card {
+    display: flex;
+    justify-content: space-between;
+
+   height: 49px;
+}
+
+/* 사용자 댓글 입력창  */
+.row .modal-card #newReplyText {
+    width: 90%;
+    height: 30px;
+
+    /* margin-top: 10px;
+    margin-left: 10px; */
+    /* textarea 크기 조절 고정 */
+
+    font-size: 20px;
+    border: none;
+    resize: none;
+
+}
+
+.row .modal-card .inputbutton {
+    margin-top: 10px;
+    margin-right: 10px;
+    width: 10%;
+    font-size: 12px;
+    font-weight: 700;
+
+    color: rgb(147, 203, 225);
+    text-align: center;
+}
+.row .modal-card .inputbutton:hover {
+
+    color: blue;
+}
+.like {
+    border: 1px solid #000;
+}
+/* 전체 박스와 같은 크기의 메인박스 */
+.bodymodal {
+    border: 1px solid #000;
+    background: orange;
+    width: 400px;
+    height: 400px;
+    /* margin-top: 50px; */
+    margin: auto;
+    border-radius: 15px;
+}
+/*  맨위 상위 박스 좋아요 */
+.titlelike {
+    text-align: center;
+    margin-top: 5px;
+    margin-bottom: 15px;
+
+    font-size: 20px;
+    font-weight: 700;
+
+    /* display: flex; */
+    /* justify-content: center; */
+    border-bottom: 1px solid #000;
+}
+.likesbutton {
+  margin-right: 10px;
+  margin-top: 50px;
+    /* width: 15px;
+    height: 20px; */
+    float: right;
+}
+.xbutton i {
+    width: 100%;
+    height: 100%;
+}
+
+
+
+/* 중간 안내문 (userNickName님은 이 게시물을 좋아한 총 사람 수를 볼 수 있습니다. */
+.like {
+    width: 100%;
+    height: 100vh;
+    position: absolute;
+    left: 0;
+    top: 0;
+    margin: 100px auto;
+    background: rgba(98, 95, 95, 0.8);
+    z-index: 200;
+
+}
+.text {
+    text-align: center;
+    font-weight: 700;
+
+}
+.likebody {
+    height: 300px;
+    background: green;
+}
+/* 이 게시글에 좋아요를 누른 사람들 */
+.users {
+    display: flex;
+    justify-content: flex-start;
+    border: 1px solid #000;
+}
+
+/* 프로필 사진 */
+.modal-miniprofile img {
+    object-fit: cover;
+    border-radius: 50%;
+    width: 1.5rem;
+    height: 1.5rem;
+    display: block;
+}
+.modal-nickname {
+    font-size: 14px;
+}

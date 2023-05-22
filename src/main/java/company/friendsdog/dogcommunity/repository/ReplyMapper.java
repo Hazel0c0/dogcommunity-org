@@ -2,6 +2,7 @@ package company.friendsdog.dogcommunity.repository;
 
 import company.friendsdog.dogcommunity.entity.Reply;
 import org.apache.ibatis.annotations.Mapper;
+import org.apache.ibatis.annotations.Param;
 
 import java.util.List;
 
@@ -17,11 +18,16 @@ public interface ReplyMapper {
     //댓글 등록
     boolean save(Reply reply);
 
+    // 사용자 가 ?
     //댓글 개별 조회
-    List<Reply> findOne(long replyNo);
+    Reply findOne(long replyNo);
 
     //댓글 전체 조회
-    List<Reply>findAll();
+    List<Reply>findAll(
+            @Param("bn")long boardNo,
+            @Param("pn")long petNo
+
+    );
 
 
     //댓글 삭제
@@ -29,6 +35,10 @@ public interface ReplyMapper {
 
     //댓글 수정
     boolean modify(Reply reply);
+
+    //댓글 수 조회
+
+    int count (long replyNo);
 
 
 }

@@ -4,6 +4,7 @@ import lombok.*;
 
 import java.time.LocalDateTime;
 
+
 @Setter
 @Getter
 @ToString
@@ -14,13 +15,14 @@ import java.time.LocalDateTime;
 public class User {
 
     // 회원가입 시 필요 정보
-    private int userNo;
+    private Long userNo;
     private String id;
-    private String password;
+    private String pwd;
     private String userName;
     private String email;
-    private String nickname;
-    private String adds;
-    private LocalDateTime userDate;
-
+    private String phoneNum;
+    private String addr;
+    private String addDetail;
+    private LocalDateTime joinDate;
+    private LocalDateTime cookieLimitTime;
 }

@@ -1,0 +1,35 @@
+/* css 기본 설정 리셋하는 양식 */
+
+@import url('https://cdn.jsdelivr.net/npm/reset-css@5.0.1/reset.min.css');
+
+/* common style */
+*{
+    box-sizing: border-box;
+}
+
+/* body 선택자에 기본 폰트크기와 글꼴을 넣어주세요 */
+body{
+    font-size: 18px;
+}
+
+/* 추가 reset 사항이 있으면 아래에 적어주세요. */
+a{
+    color: inherit;
+    text-decoration: none;
+}
+
+/* float 튀어나오는것 제어하는 clear 요소 */
+.clearfix::after {
+    content: '';
+    display: block;
+    clear: both;
+}
+
+/* 화면 정중앙 배치 */
+.center {
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+
+}
