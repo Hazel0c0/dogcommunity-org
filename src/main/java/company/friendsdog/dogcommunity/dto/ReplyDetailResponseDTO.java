@@ -15,6 +15,10 @@ public class ReplyDetailResponseDTO {
 
     private Long replyNo;
 
+    private String petName;
+
+    private String petPhoto;
+
     private String comment;
 
 
@@ -23,6 +27,9 @@ public class ReplyDetailResponseDTO {
         this.petNo =reply.getPetNo();
         this.replyNo = reply.getReplyNo();
         this.comment = reply.getComment();
+        this.petName = reply.getPetName();
+        this.petPhoto = reply.getPetPhoto();
+
 
     }
 }

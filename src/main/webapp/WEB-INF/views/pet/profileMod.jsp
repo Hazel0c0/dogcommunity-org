@@ -63,13 +63,23 @@
 
     </div>
         <div>
-        <form action="/pet/modify" method="post" name = "modify">
-        <label for="petPhoto">펫 프로필 사진</label>
-        <input type="text" id="petPhoto" name="petPhoto" required>
+         <form action="/pet/modify" method="post" id="pet-profile-form" enctype="multipart/form-data">
 
+               <!-- 사진 수정하기 -->
+               <label for="petPhoto">사진 수정하기:</label>
+               <input type="file" name="petPhoto" id="petPhoto" accept="image/*">
 
-         <button type="submit" onclick="pet/modify">수정하기</button>
-          <button type="submit" onclick="">수정하기완료</button>
+               <!-- 소개글 수정 -->
+               <label for="hashTag">소개글:</label>
+               <input type="text" name="hashtag" id="hashTag" value="${hashTag}">
+
+                <!-- 소개글 수정 -->
+               <label for="petKind">종 수정하기</label>
+               <input type="text" name="petKind" id="petKind" value="${petKind}">
+
+               <button type="submit" onclick="" >수정</button>
+           </form>
+
         </div>
 </aside>
 
@@ -81,20 +91,7 @@
 ?
 <div class="profileChange">
 
-    <form action="/pet/modify" method="post" id="pet-profile-form">
-        <input type="hidden" name="petNo" value="${petNo}">
 
-        <!-- 사진 수정하기 -->
-        <label for="petPhoto">사진 수정하기:</label>
-        <input type="file" name="petPhoto" id="petPhoto">
-
-        <!-- 소개글 수정 -->
-        <label for="hashTag">소개글:</label>
-        <input type="text" name="hashTag" id="hashTag" value="${hashTag}">
-
-
-        <button type="submit" onclick="" >수정</button>
-    </form>
 
 
         <label for="petGender">성별</label>

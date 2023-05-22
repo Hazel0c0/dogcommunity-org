@@ -24,7 +24,8 @@ public class PetProfileModifyRequestDTO {
 
    private String hashtag;
 
-   private Long petNo;
+
+
 
 //   public MultipartFile getPetPhoto() {
 //      return petPhoto;

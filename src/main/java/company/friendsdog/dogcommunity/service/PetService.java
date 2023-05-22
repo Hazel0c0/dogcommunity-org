@@ -8,9 +8,11 @@ import company.friendsdog.dogcommunity.entity.Pet;
 import company.friendsdog.dogcommunity.entity.User;
 import company.friendsdog.dogcommunity.repository.PetMapper;
 import company.friendsdog.dogcommunity.util.LoginUtil;
+import company.friendsdog.dogcommunity.util.upload.FileUtil;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
+import org.springframework.web.multipart.MultipartFile;
 
 import javax.servlet.http.HttpSession;
 import java.util.List;
@@ -20,6 +22,9 @@ import java.util.List;
 @Slf4j
 public class PetService {
   private final PetMapper petMapper;
+
+
+
 
   // 펫 카드 저장하기
   public boolean petCardMake(final PetProfileRequestDTO dto
@@ -79,13 +84,28 @@ public class PetService {
 
   //수정 요청 하면  컨트롤러가 다시 수정을 요청한다. 수정창
   //업로드 받은 파일 DB 에 담을 수 없다...
-  public boolean modify(PetProfileModifyRequestDTO dto, Long userNo) {
+  public boolean modify(PetProfileModifyRequestDTO dto, Long petNo, String rootPath) {
+    log.info("선택한 동네 : {}",dto);
+    log.info("선택한 동네 : {}",petNo);
     // 유저 넘버로 펫 찾기
   // 하나 하나 로그 찍어보기
     Pet pet = new Pet();
-    pet.setPetNo(dto.getPetNo());
+
+
+    // 파일 저장 하고 그 경로를 리턴
+    String imgPath = FileUtil.uploadFile(dto.getPetPhoto(),rootPath);
+    log.info("선택한 동네 : {}",dto);
+    String local = "/local";
+    log.info("선택한 동네 : {}",dto);
+    String fullLocal = local + imgPath;
+    log.info("선택한 동네 : {}",dto);
+
+    pet.setPetNo(petNo);
     pet.setHashtag(dto.getHashtag());
-    pet.setPetPhoto(String.valueOf(dto.getPetPhoto()));
+    pet.setPetPhoto(fullLocal);
+//    pet.setPetPhoto(dto.getPetPhoto());
+    pet.setPetKind(dto.getPetKind());
+//    pet.setPetPhoto(String.valueOf(dto.getPetPhoto()));
     return petMapper.modify(pet);
   }
 

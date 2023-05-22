@@ -13,7 +13,7 @@ import java.time.LocalDateTime;
 @AllArgsConstructor
 @Builder
 public class Board {
-    private Long petNo;
+    private Long petNo; // <= userNo 역할을 대신 해주는 거닌깐
     private Long boardNo;
     private String title;
     private String content;
