@@ -14,6 +14,7 @@ public class ReplyListResponseDTO {
 
     private int count;
 
+
     private List<ReplyDetailResponseDTO> replies;
 
 

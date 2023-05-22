@@ -201,7 +201,9 @@ aside.sidebar .profile-box h3 {
                 flex-wrap: wrap;
                 margin-left: 30px;
                 margin-top: 50px;
-                /* height: 500px; */
+
+                height: 500px;
+                
                 /* text-align: center; */
                 flex-basis: calc(25% - 20px);
             }

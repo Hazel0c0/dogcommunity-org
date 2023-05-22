@@ -37,8 +37,20 @@
 }
 /* 모달창 좋아요 끝 */
 
-/* 리스트창 좋아요 시작 */
 
+/* 리스트창 좋아요 시작 */
+.abl2.bi-heart-fill {
+  display: none;
+  color: pink;
+}
+
+.abl2.bi-heart.active {
+  display: none;
+}
+
+.abl2.bi-heart.active + .bi-heart-fill {
+  display: inline-block;
+}
 </style>
 </head>
 
@@ -278,7 +290,7 @@
                                 <!-- 버튼 담는 박스 -->
                                 <div class="th">
                                     <span class="aamw">
-                                        <button class="abl">
+                                        <button class="abl abl2">
                                             <i class="bi bi-heart"></i>
                                             <i class="bi bi-heart-fill"></i>
                                         </button>
@@ -459,7 +471,14 @@ likeButton.addEventListener('click', function() {
 
 
 
+const likeButton2 = document.querySelector('.aamw .abl2');
 
+likeButton.addEventListener('click', function() {
+  const heartIcon2 = likeButton2.querySelector('.bi-heart-main');
+  const fillHeartIcon2 = likeButton2.querySelector('.bi-heart-fill-main');
+  heartIcon2.classList.toggle('active');
+  fillHeartIcon2.classList.toggle('active');
+});
 
 
     // 메인 실행 부 
