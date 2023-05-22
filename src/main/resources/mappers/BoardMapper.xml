@@ -6,7 +6,7 @@
 <mapper namespace="company.friendsdog.dogcommunity.repository.BoardMapper">
 
     <select id="petFindAll" resultType="petBoard">
-        SELECT  a.board_no, a.content,
+        SELECT  a.board_no, a.content, b.pet_no,
         a.board_date_time, a.attached_img, a.likes, a.hits, b.pet_name, b.pet_photo
         ,a.board_no
         FROM tbl_board a
@@ -22,13 +22,23 @@
     </select>
 
     <select id="petFindOne" resultType="petBoard">
-        SELECT  a.board_no, a.content,
-                a.board_date_time, a.attached_img, a.likes, a.hits, b.pet_name, b.pet_photo
+        SELECT  a.board_no, a.content, b.pet_no,
+        a.board_date_time, a.attached_img, a.likes, a.hits, b.pet_name, b.pet_photo
         FROM tbl_board a
         INNER JOIN tbl_pet b
         ON a.pet_no = b.pet_no
         WHERE a.board_no = #{boardNo}
     </select>
+
+    <select id="boardFindInfo" resultType="petBoard">
+        SELECT  a.board_no, a.content, b.pet_no,
+        a.board_date_time, a.attached_img, b.pet_name, b.pet_photo
+        FROM tbl_board a
+        INNER JOIN tbl_pet b
+        ON a.pet_no = b.pet_no
+        WHERE a.board_no = #{boardNo}
+    </select>
+
 
     <insert id="save">
         INSERT INTO tbl_board
@@ -61,4 +71,6 @@
         set hits = hits + 1
         where board_no = #{boardNo}
     </update>
+
+
 </mapper>

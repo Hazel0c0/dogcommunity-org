@@ -10,7 +10,7 @@ import lombok.*;
 
 public class ReplyModifyRequestDTO {
 
-    private  Long bno;
+    private  Long boardNo;
 
     private Long replyNo;
 
@@ -18,7 +18,7 @@ public class ReplyModifyRequestDTO {
 
     public Reply toEntity(){
         return Reply.builder()
-                .boardNo(this.bno)
+                .boardNo(this.boardNo)
                 .replyNo(this.replyNo)
                 .comment(this.comment)
                 .build();

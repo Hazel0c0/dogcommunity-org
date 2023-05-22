@@ -15,16 +15,16 @@ public class ReplyPostRequestDTO {
 
     @NotBlank
     private String comment;
-    
+
     @NotNull
     private  Long petNo;
     @NotNull
-    private  Long bno;
+    private  Long boardNo;
 
     public Reply toEntity(){
         return Reply.builder()
                 .comment(this.comment)
-                .boardNo(this.bno)
+                .boardNo(this.boardNo)
                 .build();
     }
 
