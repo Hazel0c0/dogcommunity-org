@@ -92,7 +92,7 @@ public class BoardService {
     }
 
 
-    public Pet petFindInfo(HttpSession session) {
+    public Pet userFindPet(HttpSession session) {
         Pet pet = new Pet();
 
         Long userNoInfo = LoginUtil.getCurrentLoginUser(session).getUserNo();
@@ -107,6 +107,6 @@ public class BoardService {
         pet.setPetName(petNameInfo);
         pet.setPetPhoto(petPhotoInfo);
         pet.setUserNo(userNoInfo);
-        return petMapper.petFindInfo(pet);
+        return petMapper.userFindPet(pet);
     }
 }

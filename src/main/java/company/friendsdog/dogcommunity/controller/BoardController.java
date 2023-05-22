@@ -76,7 +76,7 @@ public class BoardController {
         {
             return "redirect:/pet/profile";
         }
-        Pet pet = boardService.petFindInfo(session);
+        Pet pet = boardService.userFindPet(session);
         model.addAttribute("p", pet);
 
         return "board/write";

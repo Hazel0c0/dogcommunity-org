@@ -35,7 +35,7 @@ public interface PetMapper {
   boolean modify(Pet pet);
 
   PetCardResponseDTO randomPet(String addDetail);
-  Pet petFindInfo(Pet pet);
+  Pet userFindPet(Pet pet);
 
 
   // pet dto 수정할거 필드 2~3개
