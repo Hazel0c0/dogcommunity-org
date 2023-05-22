@@ -19,12 +19,12 @@ public class ReplyPostRequestDTO {
     @NotNull
     private  Long petNo;
     @NotNull
-    private  Long board;
+    private  Long boardNo;
 
     public Reply toEntity(){
         return Reply.builder()
                 .comment(this.comment)
-                .boardNo(this.board)
+                .boardNo(this.boardNo)
                 .build();
     }
 
