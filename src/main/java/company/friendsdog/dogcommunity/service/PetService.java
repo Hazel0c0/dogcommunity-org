@@ -40,22 +40,20 @@ public class PetService {
 
   }
 
-  // 유저 있는 동 찾기
-  public List<String> findAddrDetail(HttpSession session) {
-    log.info("session : {}",session);
-    String addr = LoginUtil.getCurrentLoginUser(session).getAddr();
-    // '구'로 '동'찾기
-    List<String> dongList = petMapper.findDong(addr);
-
-    return dongList;
-  }
-
   // ㅇㅇ동에 있는 모든 강아지 찾기
   public List<Pet> findNeighbor(String addr){
     log.info("선택한 동네 : {}",addr);
     List<Pet> petByAddr = petMapper.findPetByAddr(addr);
     return petByAddr;
   }
+  // ㅇㅇ동 강아지 수
+  public int petCount(String addr){
+    return petMapper.petCount(addr);
+  }
+
+
+
+
 
 
   public boolean delete(Long petNo) {

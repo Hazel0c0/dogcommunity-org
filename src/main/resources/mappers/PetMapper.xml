@@ -33,6 +33,12 @@
         WHERE addr = #{addr}
     </select>
 
+    <select id="petCount" resultType="int">
+        SELECT COUNT(*)
+        FROM tbl_pet
+        WHERE addr = #{addr}
+    </select>
+
 <!--    ========================================= -->
 
     <delete id="delete">
