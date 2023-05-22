@@ -428,15 +428,17 @@
             const {
                 petNo,
                 replyNo,
-                comment
+                comment,
+                petPhoto,
+                petName
             } = rep;
 
-             tag += " <div class='reply' id='replybox'>" +
+             tag += " <div class='reply' id='replybox' data-replyId='"+replyNo+"'>" +
                                     "<div class='reply-profile'>" +
-                                        "<img src='#' alt='프사'>" +
+                                        "<img src='"+ petPhoto +"' alt='프사'>" +
                                         "</div>" +
-                                    "<div class='reply-writer'>"+petNo+"</div>" +
-                                    "<div class='reply-content'>"+comment+"</div>" +
+                                    "<div class='reply-writer'>"+ petName +"</div>" +
+                                    "<div class='reply-content'>"+ comment +"</div>" +
                                 "</div>";
 
                             }
@@ -474,6 +476,7 @@ likeButton.addEventListener('click', function() {
 const likeButton2 = document.querySelector('.aamw .abl2');
 
 likeButton.addEventListener('click', function() {
+    event.stopPropagation();
   const heartIcon2 = likeButton2.querySelector('.bi-heart-main');
   const fillHeartIcon2 = likeButton2.querySelector('.bi-heart-fill-main');
   heartIcon2.classList.toggle('active');
