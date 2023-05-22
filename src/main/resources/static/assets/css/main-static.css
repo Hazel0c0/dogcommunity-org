@@ -1,3 +1,94 @@
+/* 메인 페이지 공통으로 들어가는 CSS : 모든 페이지 필히 첨부 바람*/
+* {
+    box-sizing: border-box;
+}
+
+body {
+    background-color: #f0f0f0;
+    display: flex;
+
+}
+
+button {
+    outline: none;
+    border: none;
+}
+
+#wrap {
+    width: 60%;
+    margin: 100px auto;
+}
+
+
+/* reset */
+a {
+    color: inherit;
+    text-decoration: none;
+}
+
+/* common style */
+.hide {
+    display: none !important;
+}
+
+/* header style */
+header {
+    background: black;
+    position: fixed;
+    width: 100%;
+    top: 0;
+    z-index: 1000;
+    font-size: 33px;
+    font-family: Linearicons-Free;
+}
+
+header.on {
+    background: #222;
+    border-bottom: 1px solid #2c2c2c;
+    transition: .4s;
+}
+
+header .inner-header {
+    /* background: orange; */
+    width: 94%;
+    margin: 0 auto;
+    height: 150px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-weight: 500;
+    color: #fff;
+}
+
+header .inner-header .logo {
+    /* background: tomato; */
+    margin-right: 20px;
+}
+
+header .inner-header .logo a {
+    display: block;
+}
+
+header .inner-header .logo a img {
+    height: 70px;
+}
+
+header .inner-header .intro-text {
+    /* background: greenyellow; */
+    flex: 7;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    /* margin: 20px; */
+}
+
+header .inner-header .menu-open {
+    /* background: skyblue; */
+    flex: 1.5;
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+}
+
 header .inner-header .menu-open .lnr-menu {
     font-size: 33px;
     margin-left: 15px;
@@ -46,7 +137,6 @@ header .gnb ul li:hover,
 header .gnb ul li.active {
     color: rgb(233, 101, 123);
 }
-
 /*======left side bar=========== */
 aside.sidebar {
     background-color: green;
@@ -55,13 +145,13 @@ aside.sidebar {
     flex-direction: column;
     flex-wrap: wrap;
     padding: 30px;
-    height: 100vh;
+    height: 300vh;
     color: white;
     /* flex: 2 */
 }
 
 aside.sidebar .profile-box {
-    border: 2px solid red;
+    border: 2px antiquewhite;
     margin-top: 150px;
     padding: 30px;
     text-align: center;

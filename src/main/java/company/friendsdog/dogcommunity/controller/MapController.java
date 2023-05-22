@@ -25,23 +25,23 @@ public class MapController {
       HttpSession session,
       Model model) {
     // 유저 있는 동네 보내주기
-//    List<String> dongList = petService.findAddrDetail(session);
-//    log.info("dong  : {}", dongList);
-//
-//    model.addAttribute("dong", dongList);
+    List<String> dongList = petService.findAddrDetail(session);
+    log.info("dong  : {}", dongList);
+
+    model.addAttribute("dong", dongList);
 
     return "neighbor/map";
   }
   /**
    * 선택한 동네 강아지 보기
    *
-   * @param addr - 유저가 선택한 동
+   * @param addDetail - 유저가 선택한 동
    */
   @GetMapping("/neighbor")
   public String findNeighbor(
-      String addr
+      String addDetail
       , Model model) {
-    List<Pet> foundPet = petService.findNeighbor(addr);
+    List<Pet> foundPet = petService.findNeighbor(addDetail);
 
     model.addAttribute("petList",foundPet);
 

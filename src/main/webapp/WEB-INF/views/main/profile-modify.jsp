@@ -24,16 +24,16 @@
 
 <div class="profileChange">
 
-    <form action="/pet/profile" method="post" name="petProfile" class="profile" enctype="multipart/form-data">
+    <form action="/pet/modify" method="post" name="petProfile" class="profile" enctype="multipart/form-data">
 
         <label for="petName">반려동물 이름</label>
-        <input type="text" id="petName" name="petName" required>
+        <input type="text" id="petName" name="petName" readonly>
 
         <label for="petAge">나이</label>
-        <input type="text" id="petAge" name="petAge" required>
+        <input type="text" id="petAge" name="petAge" readonly>
 
         <label for="petKind">품종</label>
-        <input type="text" id="petKind" name="petKind" required>
+        <input type="text" id="petKind" name="petKind" readonly>
 
         <label for="petPhoto">프로필 사진 변경</label>
         <input type="file" id="petPhoto" name="petPhoto" accept="image">
@@ -57,7 +57,7 @@
             <input type="checkbox" id="profileSuggest" name="profileSuggest">
         </p>
 
-        <input type="submit" value="제출" id="submitBtn">
+        <input type="submit" value="수정" id="submitBtn">
     </form>
 </div>
 <script>
