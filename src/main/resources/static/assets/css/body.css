@@ -6,6 +6,9 @@ body {
     background-color: #f0f0f0;
     display: flex;
 
+
+    /* 사이드바 고정후 게시글 깨지는거 교정 */
+    justify-content: flex-end;
 }
 
 button {
@@ -148,6 +151,12 @@ aside.sidebar {
     height: 100vh;
     color: white;
     /* flex: 2 */
+
+
+    /* 사이드바 고정 설정 추가 */
+    position: fixed;
+    top: 0;
+    left: 0;
 }
 
 aside.sidebar .profile-box {
@@ -178,13 +187,15 @@ aside.sidebar .profile-box h3 {
     flex-direction: row;
     justify-content: space-around;
     width: 80%;
+    flex-wrap: wrap;
 }
 
 #boxRow1>* {
     width: 100%;
 }
 
-/* 메인 박스 */ #card-container {
+/* 메인 박스 */ 
+#card-container {
 
                 flex-direction: row;
                 flex-wrap: wrap;
@@ -192,6 +203,7 @@ aside.sidebar .profile-box h3 {
                 margin-top: 50px;
                 /* height: 500px; */
                 /* text-align: center; */
+                flex-basis: calc(25% - 20px);
             }
 
 /* 메인박스 안 작은 박스 */
@@ -284,12 +296,14 @@ aside.sidebar .profile-box h3 {
     /* 이미지 가운데 정렬 */
     /* top: 50%;
 left: 50%; */
+
     /* transform: translate(-50%, -50%); */
-    width: 25rem;
-    height: 20rem;
+    /* width: 25rem;
+    height: 20rem; */
     /* 사진 박스안에 꽉 채우기 사진 픽셀 깨짐 */
-    /* width: 100%; */
-    /* height: 100%; */
+
+    width: 100%;
+    height: 100%;
 }
 
 /* 사진 바로 밑 게시글 내용 시작 박스 */
@@ -457,7 +471,7 @@ flex-grow: 1;
 }
 
 .modal-content {
-    height: 75%;
+    height: 72%;
     /* background: #fff; */
 }
 .topmini {

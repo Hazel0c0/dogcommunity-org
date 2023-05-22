@@ -19,17 +19,26 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.6.0/font/bootstrap-icons.css" />
     <!-- css -->
-    <link rel="stylesheet" href="/assets/css/main.css">
+    <link rel="stylesheet" href="/assets/css/body.css">
 
   
 <style>
-    .bi-heart {
-  color: black;
+.bi-heart-fill {
+  display: none;
+  color: pink;
 }
 
 .bi-heart.active {
-  color: pink;
+  display: none;
 }
+
+.bi-heart.active + .bi-heart-fill {
+  display: inline-block;
+}
+/* 모달창 좋아요 끝 */
+
+/* 리스트창 좋아요 시작 */
+
 </style>
 </head>
 
@@ -137,9 +146,9 @@
                 <section class="eventbuttons">
                     <!-- 버튼 담는 박스 -->
                     <div class="th">
-                        <span class="aamw"><button class="abl">
+                        <span class="aamw"><button class="abl a2">
                             <i class="bi bi-heart"></i>
-                            <i class="bi bi-heart-fill" style="display: none;"></i>
+                            <i class="bi bi-heart-fill"></i>
                         </button></span>
                         <!-- 좋아요 버튼-->
                         <span class="aamx"><button class="abl"><i class="bi bi-chat"></i></button></span>
@@ -268,7 +277,12 @@
                             <section class="eventbuttons">
                                 <!-- 버튼 담는 박스 -->
                                 <div class="th">
-                                    <span class="aamw"><button class="abl"><i class="bi bi-heart"></i></button></span>
+                                    <span class="aamw">
+                                        <button class="abl">
+                                            <i class="bi bi-heart"></i>
+                                            <i class="bi bi-heart-fill"></i>
+                                        </button>
+                                    </span>
                                     <!-- 좋아요 버튼-->
                                     <span class="aamx"><button class="abl"><i class="bi bi-chat"></i></button></span>
                                     <!-- 댓글 버튼-->
@@ -316,7 +330,7 @@
             console.log($shortContent);
 
             // 모달창에 정보 전달
-            // 여기서는 간단히 console.log로 출력하도록 했습니다.
+          
             // console.log(
             // `boardNo: \${boardNo}, petPhoto: \${petPhoto}, attachedImg: \${attachedImg}, petName: \${petName},shortContent : \${shortContent}`);
             // 게시글 이미지 전달 
@@ -438,8 +452,12 @@ const likeButton = document.querySelector('.aamw .abl');
 
 likeButton.addEventListener('click', function() {
   const heartIcon = likeButton.querySelector('.bi-heart');
+  const fillHeartIcon = likeButton.querySelector('.bi-heart-fill');
   heartIcon.classList.toggle('active');
+  fillHeartIcon.classList.toggle('active');
 });
+
+
 
 
 
