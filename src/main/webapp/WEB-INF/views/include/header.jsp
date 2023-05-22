@@ -13,11 +13,8 @@
 
     <!-- side menu event js defer : 지연 메뉴 걸기 -->
     <script src="/assets/js/side-menu.js" defer></script>
-    <!-- 말풍선 -->
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.6.0/font/bootstrap-icons.css" />
     <!-- css -->
-    <link rel="stylesheet" href="/assets/css/main.css">
+    <link rel="stylesheet" href="/assets/css/main-static.css">
 </head>
 
 <body>
@@ -49,7 +46,7 @@
             <li><a href="/board/write"><span class="lnr lnr-heart"> 자랑하기</span></a></li>
             <li><a href="#"><span class="lnr lnr-bubble"> 메시지</span></a></li>
             <li><a href="#"><span class="lnr lnr-alarm"> 알림</span></a></li>
-            <li><a href="/pet/profile"><span class="lnr lnr-user"> 프로필</span></a></li>
+            <li><a href="/pet/modify"><span class="lnr lnr-user"> 프로필 수정</span></a></li>
             <li><a href="/user/logout"> 로그아웃</a></li>
         </ul>
     </nav>

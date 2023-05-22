@@ -11,11 +11,9 @@
     <title>My Pet 자랑하기</title>
 
     <!--메인 화면 공통 부분 JSP-->
-    <%@ include file="../include/static-head.jsp" %>
     <%@ include file="../include/header.jsp" %>
     <!-- css -->
     <link rel="stylesheet" href="/assets/css/main-static.css">
-<%-- 추후 완성 후 분리 예정 <link rel="stylesheet" href="/assets/css/write.css">--%>
 
     <style>
         /* 게시물 작성 CSS */
