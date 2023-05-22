@@ -6,8 +6,10 @@ import company.friendsdog.dogcommunity.dto.response.BoardDetailResponseDTO;
 import company.friendsdog.dogcommunity.dto.response.BoardListResponseDTO;
 import company.friendsdog.dogcommunity.entity.Pet;
 import company.friendsdog.dogcommunity.entity.User;
+import company.friendsdog.dogcommunity.repository.PetMapper;
 import company.friendsdog.dogcommunity.repository.UserMapper;
 import company.friendsdog.dogcommunity.service.BoardService;
+import company.friendsdog.dogcommunity.util.LoginUtil;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Value;
@@ -36,6 +38,7 @@ public class BoardController {
     private String rootPath;
 
     private final BoardService boardService;
+    private final PetMapper petMapper;
 
     // 게시판 목록 조회 요청
     @GetMapping("/list2")
@@ -66,8 +69,15 @@ public class BoardController {
     // 게시판 글쓰기 화면 조회 요청
     @GetMapping("/write")
     public String save(HttpSession session, Model model) {
+        Long userNoInfo = LoginUtil.getCurrentLoginUser(session).getUserNo();
+        Pet p = petMapper.userFindPet(userNoInfo);
+        if(p == null)
+        {
+            return "redirect:/pet/profile";
+        }
         Pet pet = boardService.petFindInfo(session);
         model.addAttribute("p", pet);
+
         return "board/write";
     }
 
