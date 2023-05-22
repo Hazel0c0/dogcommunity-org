@@ -85,6 +85,8 @@ public class ReplyService {
         //findOne 함수선언
         Reply reply = replyMapper.findOne(replyNo);
         long boardNo = replyMapper.findOne(replyNo).getBoardNo();
+        reply.setBoardNo(boardNo);
+
         replyMapper.remove(replyNo);
         return getList(reply.getBoardNo(), reply.getPetNo());
     }

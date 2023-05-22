@@ -24,8 +24,8 @@ public interface ReplyMapper {
 
     //댓글 전체 조회
     List<Reply>findAll(
-            @Param("bn")long boardNo,
-            @Param("pn")long petNo
+            long boardNo,
+            long petNo
 
     );
 
@@ -38,7 +38,7 @@ public interface ReplyMapper {
 
     //댓글 수 조회
 
-    int count (long replyNo);
+    int count (long boardNo);
 
 
 }
