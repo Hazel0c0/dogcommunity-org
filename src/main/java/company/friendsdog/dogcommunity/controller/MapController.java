@@ -25,13 +25,10 @@ public class MapController {
       HttpSession session,
       Model model) {
     // 유저 있는 동네 보내주기
-//    List<String> dongList = petService.findAddrDetail(session);
-//    log.info("dong  : {}", dongList);
-//
-//    model.addAttribute("dong", dongList);
 
     return "neighbor/map";
   }
+
   /**
    * 선택한 동네 강아지 보기
    *
