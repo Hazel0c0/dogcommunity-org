@@ -50,7 +50,7 @@
         <label for="hashTag">소개</label>
         <textarea id="hashTag" name="hashtag" rows="4" required></textarea>
 
-        <label for="profileSuggest">프로필에 계정 추천. 표시</label>
+        <label for="profileSuggest">프로필에 계정 추천 표시</label>
         <p>강아지의 프로필이 다른 프로필에서 추천될 수 있는지를 선택하세요.
             &nbsp;&nbsp;&nbsp;
             <input type="checkbox" id="profileSuggest" name="profileSuggest">

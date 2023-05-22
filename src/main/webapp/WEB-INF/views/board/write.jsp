@@ -51,7 +51,7 @@
         label {
             display: inline-block;
             width: 200px;
-            background: pink;
+            background: rgb(255, 236, 192);
             font-weight: 800;
             color: darkslategray;
             padding: 20px;
@@ -77,7 +77,7 @@
         }
 
         button {
-            background-color: rgba(124, 110, 117, 0.7);
+            background-color: #4CAF50;
             color: white;
             letter-spacing: 5px;
             padding: 10px 15px;
@@ -91,7 +91,7 @@
 
         button:hover {
 
-            background-color: #4CAF50;
+            background-color: #09620c;
             color: white;
 
         }
@@ -121,39 +121,37 @@
 </head>
 
 <body>
-<section style="margin-top: 150px; margin-left: 25px;">
+<section>
 
     <h1><i class="fas fa-paw"></i>&nbsp;<em style="font-size: 35px">My Pet 게시판</em></h1>
     <form method="post" action="/board/write" enctype="multipart/form-data" id="formContent">
+        <div class="writeArea">
 
-        <div class="form-group">
-            <label for="boardNo"><i class="fas fa-bone"></i>&nbsp;&nbsp;게시판 번호</label>
-            <input type="text" id="boardNo" name="boardNo" value="${boardNo}" readonly>
+            <div class="form-group">
+                <label for="boardNo"><i class="fas fa-bone"></i>&nbsp;&nbsp;게시판 번호</label>
+                <input type="text" id="boardNo" name="boardNo" value="${boardNo}" readonly>
+            </div>
+
+            <input type="hidden" id="petNo" name="petNo" value="${p.petNo}" readonly>
+
+            <div class="form-group">
+                <label for="petName"><i class="fas fa-dog"></i>&nbsp;&nbsp;펫 이름</label>
+                <input type="text" id="petName" name="petName" value="${p.petName}" readonly>
+            </div>
+
+            <div class="form-group">
+                <label for="content"><i class="fas fa-bone"></i>&nbsp;&nbsp;내용</label>
+                <textarea id="content" name="content" rows="8" maxlength="200" placeholder="글을 작성해주세요" required></textarea>
+            </div>
         </div>
+        <div class="imgUpload">
+            <div class="form-group upload-box">
+                <p>이미지 파일을 첨부하시려면<br><br>이곳을 클릭하세요.</p>
+            </div>
+            <input type="file" id="attachedImg" name="attachedImg" accept="image">
 
-        <%--펫 번호 db 전달용--%>
-        <%--        <div class="form-group">--%>
-        <%--            <label for="petNo"><i class="fas fa-dog"></i>&nbsp;&nbsp;펫 번호</label>--%>
-        <input type="hidden" id="petNo" name="petNo" value="${p.petNo}" readonly>
-        <%--        </div>--%>
-
-        <div class="form-group">
-            <label for="petName"><i class="fas fa-dog"></i>&nbsp;&nbsp;펫 이름</label>
-            <input type="text" id="petName" name="petName" value="${p.petName}" readonly>
+            <button type="submit" id="submitBtn">제출</button>
         </div>
-
-        <div class="form-group">
-            <label for="content"><i class="fas fa-bone"></i>&nbsp;&nbsp;내용</label>
-            <textarea id="content" name="content" rows="8" maxlength="200" required></textarea>
-        </div>
-
-        <div class="form-group upload-box">
-            <p>이미지 파일을 첨부하시려면<br><br>이곳을 클릭하세요.</p>
-        </div>
-        <input type="file" id="attachedImg" name="attachedImg" accept="image">
-
-        <button type="submit" id="submitBtn">제출</button>
-
     </form>
 </section>
 
@@ -166,24 +164,24 @@
         console.log("눌러짐");
     };
 
-    $attachedImg .addEventListener('change', function (e) {
+    $attachedImg.addEventListener('change', function (e) {
         // e.preventDefault();
         const fileData = $attachedImg.files[0];
 
         if (fileData) {
-                const reader = new FileReader();
-                reader.readAsDataURL(fileData);
+            const reader = new FileReader();
+            reader.readAsDataURL(fileData);
 
-                reader.onload = function (e) {
-                    console.log(e);
-                    $uploadBox.style.backgroundImage = 'url(' + e.target.result + ')';
-                    $uploadBox.style.backgroundSize = 'contain';
-                    $uploadBox.style.backgroundRepeat = 'no-repeat';
-                    $uploadBox.style.backgroundPosition = 'center';
-                };
-            }
+            reader.onload = function (e) {
+                console.log(e);
+                $uploadBox.style.backgroundImage = 'url(' + e.target.result + ')';
+                $uploadBox.style.backgroundSize = 'contain';
+                $uploadBox.style.backgroundRepeat = 'no-repeat';
+                $uploadBox.style.backgroundPosition = 'center';
+                $uploadBox.querySelector('p').style.display = 'none';
+            };
+        }
     });
-
 </script>
 </body>
 </html>

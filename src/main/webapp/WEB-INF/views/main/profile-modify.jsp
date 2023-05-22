@@ -24,7 +24,7 @@
 <div class="profileChange">
 
     <form action="/pet/modify" method="post" name="petProfile" class="profile" enctype="multipart/form-data">
-
+        <%-- placeholder="${}"--%>
         <label for="petName">반려동물 이름</label>
         <input type="text" id="petName" name="petName" readonly>
 
@@ -36,7 +36,6 @@
 
         <label for="petPhoto">프로필 사진 변경</label>
         <input type="file" id="petPhoto" name="petPhoto" accept="image">
-
 
         <label for="petGender">성별</label>
         <select id="petGender" name="petGender">
@@ -50,7 +49,7 @@
         <label for="hashTag">소개</label>
         <textarea id="hashTag" name="hashtag" rows="4" required></textarea>
 
-        <label for="profileSuggest">프로필에 계정 추천. 표시</label>
+        <label for="profileSuggest">프로필에 계정 추천 표시</label>
         <p>강아지의 프로필이 다른 프로필에서 추천될 수 있는지를 선택하세요.
             &nbsp;&nbsp;&nbsp;
             <input type="checkbox" id="profileSuggest" name="profileSuggest">

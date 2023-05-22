@@ -37,13 +37,14 @@
     <nav class="gnb">
         <a href="#" class="close">
             <span class="lnr lnr-cross"></span>
+
         </a>
         <ul>
             <li><a href="/main"><span class="lnr lnr-home"> 홈</span></a></li>
             <li><a href="#"><span class="lnr lnr-magnifier"> 검색</span></a></li>
             <li><a href="/map/map"><span class="lnr lnr-map"> 내 주변 친구</span></a></li>
             <li><a href="/board/list2"><span class="lnr lnr-bubble"> 자유게시판</span></a></li>
-            <li><a href="/board/write"><span class="lnr lnr-heart"> 자랑하기</span></a></li>
+            <li><a href="/board/write"><span class="lnr lnr-heart"> 글 쓰기</span></a></li>
             <li><a href="#"><span class="lnr lnr-bubble"> 메시지</span></a></li>
             <li><a href="#"><span class="lnr lnr-alarm"> 알림</span></a></li>
             <li><a href="/pet/modify"><span class="lnr lnr-user"> 프로필 수정</span></a></li>
@@ -56,8 +57,16 @@
     <div class="profile-box">
         <a href="/pet/profile">
             <div class="profile-img"></div>
-            <h3 id="profilePetName">멍멍이</h3>
-            <p id="profileHashTag">#안뇽</p>
+            <h3 id="profilePetName">멍뭉이</h3>
+            <p id="profileHashTag">행복한 멍뭉이</p>
         </a>
+
+<%--        <c:if test="${sessionScope.login != null}">--%>
+<%--            <a href="/pet/profile">--%>
+<%--                <div class="profile-img"></div>--%>
+<%--                <h3 id="profilePetName">${}</h3>--%>
+<%--                <p id="profileHashTag">${}</p>--%>
+<%--            </a>--%>
+<%--        </c:if>--%>
     </div>
 </aside>
