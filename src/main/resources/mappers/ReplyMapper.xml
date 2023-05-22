@@ -32,7 +32,7 @@
     <select id="findOne" resultType="reply">
         SELECT
         board_no, pet_no, reply_no ,
-        comment , reply_date_time, pet_name
+        comment , reply_date_time, pet_name, petPhoto
         FROM tbl_reply
         WHERE reply_no = #{replyNo}
     </select>

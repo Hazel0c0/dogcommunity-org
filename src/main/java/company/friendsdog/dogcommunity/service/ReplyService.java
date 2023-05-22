@@ -4,6 +4,7 @@ import company.friendsdog.dogcommunity.dto.ReplyDetailResponseDTO;
 import company.friendsdog.dogcommunity.dto.request.ReplyModifyRequestDTO;
 import company.friendsdog.dogcommunity.dto.request.ReplyPostRequestDTO;
 import company.friendsdog.dogcommunity.dto.response.ReplyListResponseDTO;
+import company.friendsdog.dogcommunity.entity.Board;
 import company.friendsdog.dogcommunity.entity.Reply;
 import company.friendsdog.dogcommunity.entity.User;
 import company.friendsdog.dogcommunity.repository.BoardMapper;
@@ -60,10 +61,11 @@ public class ReplyService {
         reply.setPetName(petName);
         Long petNo = petMapper.userFindPet(userNoInfo).getPetNo();
         reply.setPetNo(petNo);
+        String petPhoto = petMapper.userFindPet(userNoInfo).getPetPhoto();
+        reply.setPetPhoto(petPhoto);
 
-//        boardMapper.petFindInfo()
-//        reply.setAccount(user.get);
-//        reply.setReplyWriter(user.getNickName());
+        reply.setBoardNo(dto.getBoardNo());
+        reply.setComment(dto.getComment());
         //예외처리
         boolean flag = replyMapper.save(reply);
         if(!flag){
@@ -82,7 +84,7 @@ public class ReplyService {
 
         //findOne 함수선언
         Reply reply = replyMapper.findOne(replyNo);
-        long boardNo = reply.getBoardNo();
+        long boardNo = replyMapper.findOne(replyNo).getBoardNo();
         replyMapper.remove(replyNo);
         return getList(reply.getBoardNo(), reply.getPetNo());
     }
