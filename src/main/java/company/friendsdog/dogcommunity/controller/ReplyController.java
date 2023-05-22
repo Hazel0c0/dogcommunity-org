@@ -23,14 +23,14 @@ public class ReplyController {
 
     private final ReplyService replyService;
 
-    @GetMapping("/{boardNo}/page/{petNo}")
+    @GetMapping("/{boardNo}")
     public ResponseEntity<?> getList(
-            @PathVariable long boardNo,
-            @PathVariable int petNo
+            @PathVariable long boardNo
     ) {
-        log.info("/replies/{}/petNo/{} : GET!!", boardNo, petNo);
+        log.info("/replies/{} : GET!!", boardNo);
 
-        ReplyListResponseDTO replyList = replyService.getList(boardNo, petNo);
+        ReplyListResponseDTO replyList = replyService.getList(boardNo);
+
 
 
         return ok().body(replyList);

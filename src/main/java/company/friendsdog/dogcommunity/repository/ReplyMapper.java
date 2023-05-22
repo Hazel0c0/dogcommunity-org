@@ -23,11 +23,7 @@ public interface ReplyMapper {
     Reply findOne(long replyNo);
 
     //댓글 전체 조회
-    List<Reply>findAll(
-            long boardNo,
-            long petNo
-
-    );
+    List<Reply>findAll(long boardNo);
 
 
     //댓글 삭제

@@ -32,11 +32,13 @@ public class ReplyService {
     private BoardMapper boardMapper;
 
     // 댓글목록 조회 서비스
-    public ReplyListResponseDTO getList(long boardNo,long petNo) {
-        List<ReplyDetailResponseDTO> replies = replyMapper.findAll(boardNo,petNo)
+    public ReplyListResponseDTO getList(long boardNo) {
+
+        List<ReplyDetailResponseDTO> replies = replyMapper.findAll(boardNo)
                 .stream()
                 .map(ReplyDetailResponseDTO::new)
                 .collect(toList());
+        log.info("replies@@@@@@@@@@@@@@@@@@@@@------ {}", replies);
 
         int count = replyMapper.count(boardNo);
 
@@ -72,7 +74,7 @@ public class ReplyService {
         }
 
         //ReplyLIST GET lIST 리턴
-        return getList(reply.getBoardNo(), reply.getPetNo());
+        return getList(reply.getBoardNo());
     }
 
     //댓글 삭제 서비스
@@ -86,7 +88,7 @@ public class ReplyService {
         reply.setBoardNo(boardNo);
 
         replyMapper.remove(replyNo);
-        return getList(reply.getBoardNo(), reply.getPetNo());
+        return getList(reply.getBoardNo());
     }
 
     //댓글 수정
@@ -95,7 +97,7 @@ public class ReplyService {
             throws Exception{
 
         replyMapper.modify(dto.toEntity());
-        return getList(dto.getBoardNo(), dto.getReplyNo());
+        return getList(dto.getBoardNo());
 
     }
 }

@@ -322,6 +322,10 @@
 
 
     <script>
+
+        const URL = '/replies';
+        const boardNo = '${b.boardNo}';
+
         const $boxRow1 = document.getElementById('boxRow1');
         const $cardContainer = document.getElementById('card-container');
 

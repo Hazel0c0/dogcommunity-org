@@ -1,16 +1,21 @@
 package company.friendsdog.dogcommunity.dto;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
 import company.friendsdog.dogcommunity.entity.Reply;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 import lombok.ToString;
 
+import java.time.LocalDateTime;
+import java.util.List;
+
 @Setter@Getter
 @ToString
 @NoArgsConstructor
 public class ReplyDetailResponseDTO {
 
+    private Long boardNo;
     private Long petNo;
 
     private Long replyNo;
@@ -18,6 +23,9 @@ public class ReplyDetailResponseDTO {
     private String comment;
     private String petPhoto;
     private String petName;
+
+    @JsonFormat(pattern = "yyyy년 MM월 dd일 HH:mm")
+    private LocalDateTime replyDateTime;
 
 
 
@@ -28,6 +36,7 @@ public class ReplyDetailResponseDTO {
         this.comment = reply.getComment();
         this.petName = reply.getPetName();
         this.petPhoto = reply.getPetPhoto();
-
+        this.replyDateTime = reply.getReplyDateTime();
+        this.boardNo = reply.getBoardNo();
     }
 }

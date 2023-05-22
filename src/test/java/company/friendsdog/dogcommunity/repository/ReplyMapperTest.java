@@ -84,4 +84,12 @@ class ReplyMapperTest {
         //then
         assertEquals("피카츄",reply.getComment());
     }
+
+    @Test
+    @DisplayName("1번 게시판 조회")
+    void findAllTest() {
+        long boardNo = 23L;
+        List<Reply> reply = replyMapper.findAll(boardNo);
+        System.out.println("reply = " + reply);
+    }
 }
