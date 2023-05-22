@@ -95,7 +95,7 @@ public class ReplyService {
             throws Exception{
 
         replyMapper.modify(dto.toEntity());
-        return getList(dto.getBno(), dto.getReplyNo());
+        return getList(dto.getBoardNo(), dto.getReplyNo());
 
     }
 }
