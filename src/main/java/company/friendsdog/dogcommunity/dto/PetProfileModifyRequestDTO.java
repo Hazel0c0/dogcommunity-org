@@ -11,6 +11,8 @@ import org.springframework.web.multipart.MultipartFile;
 @Setter @Getter
 @ToString
 @NoArgsConstructor
+
+//받는 DTO
 public class PetProfileModifyRequestDTO {
 
     private String petPhoto;
