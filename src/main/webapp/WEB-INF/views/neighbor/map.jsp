@@ -7,12 +7,19 @@
   <meta charset="UTF-8">
   <title>Insert title here</title>
   <style>
+      .mapper {
+          position: relative;
+          top: 150px;
+      }
       .area {
+          font-size: 1.5em;
+          font-weight: 700;
+
           position: absolute;
           background: #fff;
-          border: 1px solid #888;
-          border-radius: 3px;
-          font-size: 12px;
+          border: 1px solid #cd5c5c;
+          border-radius: 5px;
+
           top: -5px;
           left: 15px;
           padding: 2px;
@@ -27,11 +34,22 @@
           font-weight: bold;
       }
   </style>
+
+  <!--메인 화면 공통 부분 JSP-->
+  <%@ include file="../include/static-head.jsp" %>
+  <%@ include file="../include/header.jsp" %>
+
+  <!--메인 화면 CSS : main-static은 공통 + 추가 개별 CSS 넣기 -->
+  <link rel="stylesheet" href="/assets/css/main-static.css">
+  <link rel="stylesheet" href="/assets/css/profile.css">
 </head>
 
 <body>
-<h1>지도다</h1>
-<div id="map" style="width:1000px;height:800px;"></div>
+
+<div class="mapper">
+  <div id="map" style="width:1000px;height:800px;"></div>
+</div>
+
 <script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=a94d5e073ab51eafbcb28e8d1ee644b6">
 </script>
 <script src="/assets/js/map.js"></script>
@@ -96,14 +114,6 @@
 
     // 다각형에 click 이벤트를 등록하고 이벤트가 발생하면 다각형의 이름과 면적을 인포윈도우에 표시합니다
     kakao.maps.event.addListener(polygon, 'click', function (mouseEvent) {
-      var content = '<div class="info">' +
-        '   <div class="title">' + area.name + '</div>' +
-        '   <div class="size">총 면적 : 약 ' + Math.floor(polygon.getArea()) + ' m<sup>2</sup></div>' +
-        '</div>';
-
-      infowindow.setContent(content);
-      infowindow.setPosition(mouseEvent.latLng);
-      infowindow.setMap(map);
 
       window.location.href = '/map/neighbor?addr=' + area.name;
     });

@@ -13,8 +13,7 @@ public interface PetMapper {
 
   // 펫 추가하기
   boolean save(Pet pet);
-  // '구'로 동 찾기
-  List<String> findDong(String addr);
+
   // '동'으로 펫 찾기
   List<Pet> findPetByAddr(String addr);
 
@@ -36,6 +35,8 @@ public interface PetMapper {
 
   PetCardResponseDTO randomPet(String addDetail);
   Pet petFindInfo(Pet pet);
+
+  int petCount(String addr);
 
 
   // pet dto 수정할거 필드 2~3개
