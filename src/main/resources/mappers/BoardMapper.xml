@@ -63,7 +63,9 @@
         <if test="type == 'content'">
             WHERE content LIKE CONCAT('%', #{keyword}, '%')
         </if>
-
+        <if test="type == 'petName'">
+            WHERE b.pet_name LIKE CONCAT('%', #{keyword}, '%')
+        </if>
     </select>
 
     <update id="upHitsCount">
