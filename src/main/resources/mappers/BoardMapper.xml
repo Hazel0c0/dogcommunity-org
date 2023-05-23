@@ -5,7 +5,7 @@
 <!-- namespace에는 인터페이스 풀 네임(패키지+인터페이스이름) -->
 <mapper namespace="company.friendsdog.dogcommunity.repository.BoardMapper">
 
-    <select id="petFindAll" resultType="petBoard">
+    <select id="boardFindAll" resultType="petBoard">
         SELECT  a.board_no, a.content, b.pet_no,
         a.board_date_time, a.attached_img, a.likes, a.hits, b.pet_name, b.pet_photo
         ,a.board_no
@@ -21,7 +21,7 @@
         ORDER BY board_date_time DESC
     </select>
 
-    <select id="petFindOne" resultType="petBoard">
+    <select id="boardFindOne" resultType="petBoard">
         SELECT  a.board_no, a.content, b.pet_no,
         a.board_date_time, a.attached_img, a.likes, a.hits, b.pet_name, b.pet_photo
         FROM tbl_board a

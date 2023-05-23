@@ -43,27 +43,33 @@ public class BoardController {
 
     // 게시판 목록 조회 요청
     @GetMapping("/list2")
-    public String petFindAll(Long boardNo, Search page, Model model) {
+    public String petFindAll(Search page, Model model) {
         log.info("/board/list : GET");
         log.info("page : {}", page);
-        List<BoardListResponseDTO> dto = boardService.petFindAll(page);
+        List<BoardListResponseDTO> dto = boardService.boardFindAll(page);
+        log.info("listdto[0] : {}", dto.get(0));
         PageMaker maker = new PageMaker(page, boardService.count(page));
+
         model.addAttribute("bList", dto);
         model.addAttribute("p", page);
         model.addAttribute("maker", maker);
 
-        // 게시글 모달창
-        if(!(boardNo == null)) {
-            log.info("boardNo - {}", boardNo);
-            BoardDetailResponseDTO responseDTO = boardService.petFindOne(boardNo);
-            model.addAttribute("b", responseDTO);
-            log.info("dto- {}", responseDTO);
-        }
 
-       log.info("Controller - boardNo ---{}", boardNo);
         return "/board/list2";
     }
 
+//    // 게시판 상세 조회 요청
+//    @GetMapping("/detail")
+//    public String boardFindOne(Long boardNo, Search search, Model model) {
+////        log.info("/board/detail : GET");
+//        log.info("boardNo - {}", boardNo);
+//        BoardDetailResponseDTO dto = boardService.boardFindOne(boardNo);
+//        model.addAttribute("b", dto);
+//        model.addAttribute("p", search);
+//        log.info("dto- {}", dto);
+//        return "board/detail";
+//
+//    }
 
     // 게시판 글쓰기 화면 조회 요청
     @GetMapping("/write")
