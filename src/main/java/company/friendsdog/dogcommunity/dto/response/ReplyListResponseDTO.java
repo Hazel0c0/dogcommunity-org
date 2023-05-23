@@ -1,6 +1,6 @@
 package company.friendsdog.dogcommunity.dto.response;
 
-import company.friendsdog.dogcommunity.dto.ReplyDetailResponseDTO;
+import company.friendsdog.dogcommunity.dto.response.ReplyDetailResponseDTO;
 import lombok.*;
 
 import java.util.List;

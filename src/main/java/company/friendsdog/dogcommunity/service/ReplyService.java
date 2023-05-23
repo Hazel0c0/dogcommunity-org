@@ -1,6 +1,6 @@
 package company.friendsdog.dogcommunity.service;
 
-import company.friendsdog.dogcommunity.dto.ReplyDetailResponseDTO;
+import company.friendsdog.dogcommunity.dto.response.ReplyDetailResponseDTO;
 import company.friendsdog.dogcommunity.dto.request.ReplyModifyRequestDTO;
 import company.friendsdog.dogcommunity.dto.request.ReplyPostRequestDTO;
 import company.friendsdog.dogcommunity.dto.response.ReplyListResponseDTO;
@@ -27,20 +27,24 @@ import static java.util.stream.Collectors.toList;
 @Slf4j
 public class ReplyService {
 
-    private PetMapper petMapper;
-    private ReplyMapper replyMapper;
-    private BoardMapper boardMapper;
+    private final PetMapper petMapper;
+    private final ReplyMapper replyMapper;
+    private final BoardMapper boardMapper;
 
     // 댓글목록 조회 서비스
     public ReplyListResponseDTO getList(long boardNo) {
+        log.info("service board No : {}",boardNo);
 
         List<ReplyDetailResponseDTO> replies = replyMapper.findAll(boardNo)
                 .stream()
-                .map(ReplyDetailResponseDTO::new)
+                .map(reply -> new ReplyDetailResponseDTO(reply))
                 .collect(toList());
-        log.info("replies@@@@@@@@@@@@@@@@@@@@@------ {}", replies);
+
+        log.info("replies service DTO------ {}", replies);
 
         int count = replyMapper.count(boardNo);
+
+        log.info("replies service count{}", count);
 
 
         return  ReplyListResponseDTO.builder()

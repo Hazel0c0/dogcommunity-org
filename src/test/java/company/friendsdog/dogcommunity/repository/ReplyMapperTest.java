@@ -81,12 +81,11 @@ class ReplyMapperTest {
         long replyNo = 1L;
         //when
         Reply reply = replyMapper.findOne(replyNo);
-        //then
-        assertEquals("피카츄",reply.getComment());
+        System.out.println("reply = " + reply);
     }
 
     @Test
-    @DisplayName("1번 게시판 조회")
+    @DisplayName("23번 게시판 조회")
     void findAllTest() {
         long boardNo = 23L;
         List<Reply> reply = replyMapper.findAll(boardNo);

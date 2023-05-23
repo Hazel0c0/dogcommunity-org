@@ -179,7 +179,7 @@
                 </section>
                 <div class="userlikes">좋아요 누른사람 보기</div>
                 <!-- 댓글 입력 박스 -->
-                <div class="row" id="replies">
+                <div class="row" id="replies1">
                     <!-- 댓글 작성 카드 -->
                     <div class="modal-card">
                         <div class="xh xx">

@@ -22,7 +22,7 @@
         FROM tbl_reply a
         INNER JOIN tbl_board b
         ON a.board_no = b.board_no
-        WHERE board_no = #{boardNo}
+        WHERE b.board_no = #{boardNo}
         ORDER BY reply_date_time DESC
     </select>
 
@@ -31,10 +31,12 @@
 
     <select id="findOne" resultType="reply">
         SELECT
-        board_no, pet_no, reply_no ,
-        comment , reply_date_time, pet_name, petPhoto
-        FROM tbl_reply
-        WHERE reply_no = #{replyNo}
+            b.board_no, b.pet_no, a.reply_no ,
+            a.comment , a.reply_date_time, b.pet_name, b.pet_photo
+        FROM tbl_reply a
+                 INNER JOIN tbl_board b
+                            ON a.board_no = b.board_no
+        WHERE reply_no = #{replyNo};
     </select>
 
     <!-- 댓글 삭제-->
@@ -50,7 +52,7 @@
         WHERE reply_no=#{replyNo}
     </update>
 
-    <select id="count" resultType="reply">
+    <select id="count" resultType="int">
         SELECT COUNT(*)
         FROM tbl_reply
         WHERE board_no= #{boardNo}
