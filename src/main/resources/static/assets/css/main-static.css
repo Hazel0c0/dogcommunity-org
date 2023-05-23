@@ -169,3 +169,40 @@ aside.sidebar .profile-box h3 {
     border: 1px solid orange;
     margin: 20px;
 }
+
+/*!* 왼쪽 하단 오늘의 방문자 수 *!*/
+
+/*.stats {*/
+/*    background-color: #fafafa;*/
+/*    border-radius: 5px;*/
+/*    padding: 20px;*/
+/*    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);*/
+/*    display: inline-block;*/
+/*}*/
+
+/*.stat {*/
+/*    text-align: center;*/
+/*    padding: 10px;*/
+/*    background-color: #f9f9f9;*/
+/*    border-radius: 5px;*/
+/*    margin-bottom: 10px;*/
+/*}*/
+
+/*.stat-title {*/
+/*    font-size: 18px;*/
+/*    font-weight: bold;*/
+/*    color: #405de6;*/
+/*    margin-bottom: 5px;*/
+/*}*/
+
+/*.stat-value {*/
+/*    font-size: 24px;*/
+/*    font-weight: bold;*/
+/*    color: #e050e5;*/
+/*    margin-bottom: 5px;*/
+/*}*/
+
+/*.stat-desc {*/
+/*    font-size: 14px;*/
+/*    color: gray;*/
+}

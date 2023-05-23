@@ -59,7 +59,7 @@
         <a href="/pet/profile">
             <div class="profile-img"></div>
             <h3 id="profilePetName">멍뭉이</h3>
-            <p id="profileHashTag">행복한 멍뭉이</p>
+            <p id="profileHashTag"># 행복한 멍뭉이</p>
         </a>
 
 <%--        <c:if test="${login != null}">--%>
