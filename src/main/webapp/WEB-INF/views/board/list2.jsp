@@ -39,7 +39,7 @@
 
 
 /* 리스트창 좋아요 시작 */
-.abl2.bi-heart-fill {
+/* .abl2.bi-heart-fill {
   display: none;
   color: pink;
 }
@@ -50,7 +50,7 @@
 
 .abl2.bi-heart.active + .bi-heart-fill {
   display: inline-block;
-}
+} */
 </style>
 </head>
 
@@ -290,10 +290,14 @@
                                 <!-- 버튼 담는 박스 -->
                                 <div class="th">
                                     <span class="aamw">
-                                        <button class="abl abl2">
+                                        <!-- <button class="abl abl2">
+                                            <i class="bi bi-heart "onclick="toggleHeart(this)"></i>
+                                            <i class="bi bi-heart-fill" onclick="toggleHeart(this)"></i>
+                                        </button> -->
+                                        <button class="abl" onclick="toggleHeart(this)">
                                             <i class="bi bi-heart"></i>
-                                            <i class="bi bi-heart-fill"></i>
-                                        </button>
+                                            <i class="bi bi-heart-fill" style="display: none;"></i>
+                                          </button>
                                     </span>
                                     <!-- 좋아요 버튼-->
                                     <span class="aamx"><button class="abl"><i class="bi bi-chat"></i></button></span>
@@ -331,7 +335,7 @@
 
         $boxRow1.addEventListener('click', e => {
             // console.log(e.target);
-            // e.preventDefault();
+            e.preventDefault();
             // const boardNo = e.target.parentElement.previousElementSibling.textContent;
             const $boardNo = e.target.closest('#card').dataset.bno;
             const $petPhoto = e.target.closest('#card').querySelector('.miniprofile img').src;
@@ -339,7 +343,7 @@
             const $petName = e.target.closest('#card').querySelector('.nickname').textContent;
 
             const $shortContent = e.target.closest('#card').querySelector('.card-text').textContent;
-            console.log($shortContent);
+            // console.log($shortContent);
 
             // 모달창에 정보 전달
           
@@ -356,7 +360,7 @@
             $boardprofile2.setAttribute('src', $petPhoto);
             // 상단 닉네임 1
             const $boarduserNickName1 = document.querySelector('.NN1');
-            console.log($boarduserNickName1);
+            // console.log($boarduserNickName1);
             $boarduserNickName1.textContent = $petName;
             // 상단 닉네임 2 
             const $boarduserNickName2 = document.querySelector('.NN2');
@@ -428,15 +432,17 @@
             const {
                 petNo,
                 replyNo,
-                comment
+                comment,
+                petPhoto,
+                petName
             } = rep;
 
-             tag += " <div class='reply' id='replybox'>" +
+             tag += " <div class='reply' id='replybox' data-replyId='"+replyNo+"'>" +
                                     "<div class='reply-profile'>" +
-                                        "<img src='#' alt='프사'>" +
+                                        "<img src='"+ petPhoto +"' alt='프사'>" +
                                         "</div>" +
-                                    "<div class='reply-writer'>"+petNo+"</div>" +
-                                    "<div class='reply-content'>"+comment+"</div>" +
+                                    "<div class='reply-writer'>"+ petName +"</div>" +
+                                    "<div class='reply-content'>"+ comment +"</div>" +
                                 "</div>";
 
                             }
@@ -453,13 +459,13 @@
         .then(res => res.josn())
         .then(responseResult => {
             console.log(responseResult);
-            // renderReplyList(responseResult);
+            renderReplyList(responseResult);
         });
 
     }
 
 }
-
+//  backgr 좋아요 버튼 
 const likeButton = document.querySelector('.aamw .abl');
 
 likeButton.addEventListener('click', function() {
@@ -468,17 +474,25 @@ likeButton.addEventListener('click', function() {
   heartIcon.classList.toggle('active');
   fillHeartIcon.classList.toggle('active');
 });
+//  backgr 좋아요 버튼 끝
 
+//  boxRow1 좋아요 버튼
+function toggleHeart(button) {
+  var icons = button.getElementsByClassName("bi");
+  var icon = icons[0];
+  var fillIcon = icons[1];
 
+  if (icon.style.display === "none") {
+    icon.style.display = "inline";
+    fillIcon.style.display = "none";
+  } else {
+    icon.style.display = "none";
+    fillIcon.style.display = "inline";
+    fillIcon.style.color = "pink";
+  }
+}
+//  boxRow1 좋아요 버튼 끝
 
-const likeButton2 = document.querySelector('.aamw .abl2');
-
-likeButton.addEventListener('click', function() {
-  const heartIcon2 = likeButton2.querySelector('.bi-heart-main');
-  const fillHeartIcon2 = likeButton2.querySelector('.bi-heart-fill-main');
-  heartIcon2.classList.toggle('active');
-  fillHeartIcon2.classList.toggle('active');
-});
 
 
     // 메인 실행 부 
