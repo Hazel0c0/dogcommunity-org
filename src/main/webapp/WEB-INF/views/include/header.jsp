@@ -48,7 +48,7 @@
             <li><a href="#"><span class="lnr lnr-bubble"> 메시지</span></a></li>
             <li><a href="#"><span class="lnr lnr-alarm"> 알림</span></a></li>
             <li><a href="/pet/modify"><span class="lnr lnr-user"> 프로필 수정</span></a></li>
-            <li><a href="/user/logout"> 로그아웃</a></li>
+            <li><a href="/user/logout"><span class="lnr lnr-exit"> 로그아웃</span></a></li>
         </ul>
     </nav>
 </header>
@@ -61,11 +61,11 @@
             <p id="profileHashTag">행복한 멍뭉이</p>
         </a>
 
-<%--        <c:if test="${sessionScope.login != null}">--%>
+<%--        <c:if test="${login != null}">--%>
 <%--            <a href="/pet/profile">--%>
-<%--                <div class="profile-img"></div>--%>
-<%--                <h3 id="profilePetName">${}</h3>--%>
-<%--                <p id="profileHashTag">${}</p>--%>
+<%--                <div class="profile-img">${login.petPhoto}</div>--%>
+<%--                <h3 id="profilePetName">${login.petName}</h3>--%>
+<%--                <p id="profileHashTag">ㅎㅎ</p>--%>
 <%--            </a>--%>
 <%--        </c:if>--%>
     </div>

@@ -14,19 +14,16 @@
     <%@ include file="../include/header.jsp" %>
     <!-- css -->
     <link rel="stylesheet" href="/assets/css/main-static.css">
+    <!-- js -->
+    <script src="https://cdn.ckeditor.com/4.17.2/standard/ckeditor.js"></script>
 
     <style>
-        /* 게시물 작성 CSS */
         section {
-            /*margin-top: 300px;*/
-            /*margin-left: 400px;*/
-            width: 60%;
-            /*border: 4px solid red;*/
+            width: 50%;
+            border: 4px solid red;
+            margin: 180px auto;
             padding: 20px;
-        }
-
-        section > * {
-            border-radius: 6px;
+            border-radius: 10px;
         }
 
         h1 {
@@ -36,28 +33,67 @@
         }
 
         #formContent {
+            border-radius: 10px;
             border: 2px double gray;
             padding: 10px;
+            display: flex;
+        }
+
+        #formContent > * {
+            border-radius: 10px;
+        }
+
+        .imgUpload {
+            flex:1.5;
+            /* border: 5px solid red; */
+            margin-right: 20px;
+        }
+
+        .writePlace {
+            flex:2;
+            /* border: 5px solid blue; */
+            display: flex;
+            flex-direction: column;
         }
 
         .form-group {
-            margin-bottom: 20px;
+            margin-bottom: 5px;
             width: 100%;
             display: flex;
             border: 1px solid black;
         }
 
+        /* 파일 이미지 업로드 박스 구간 */
+        .upload-box {
+            border-radius: 10px;
+            margin: auto;
+            height: 400px;
+            border: 3px dotted gray;
+            justify-content: center;
+            /* align-content: center; */
+            color: black;
+            font-size: 0.8em;
+            text-align: center;
+            align-items: center;
+            cursor: pointer;
+
+        }
+
+        #attachedImg {
+            display: none;
+        }
+
+
         /* 글씨 영역 */
         label {
             display: inline-block;
-            width: 200px;
-            background: rgb(255, 236, 192);
+            width: 130px;
+            background: rgb(156, 174, 231);
             font-weight: 800;
             color: darkslategray;
             padding: 20px;
 
         }
-
         textarea {
             width: 100%;
             padding: 10px;
@@ -76,6 +112,15 @@
             /*background: yellow;*/
         }
 
+        .write1 {
+            height: 60px;
+        }
+
+        .write2 {
+            flex:3;
+        }
+
+        /* 버튼 영역 */
         button {
             background-color: #4CAF50;
             color: white;
@@ -86,6 +131,7 @@
             cursor: pointer;
             width: 100%;
             font-weight: 700;
+            /* flex:1; */
 
         }
 
@@ -95,67 +141,44 @@
             color: white;
 
         }
-
-        /* 파일 사진 업로드 박스 구간 */
-        .upload-box {
-            width: 40%;
-            margin: auto;
-            margin-bottom: 20px;
-            height: 400px;
-            border: 3px dotted gray;
-            display: flex;
-            justify-content: center;
-            align-content: center;
-            color: black;
-            font-size: 0.8em;
-            text-align: center;
-            align-items: center;
-            cursor: pointer;
-        }
-
-        #attachedImg {
-            display: none;
-        }
-
     </style>
 </head>
 
 <body>
 <section>
+    <h1><i class="fas fa-paw"></i>&nbsp;<em style="font-size: 30px">My Pet 자랑하기</em></h1>
 
-    <h1><i class="fas fa-paw"></i>&nbsp;<em style="font-size: 35px">My Pet 게시판</em></h1>
-    <form method="post" action="/board/write" enctype="multipart/form-data" id="formContent">
-        <div class="writeArea">
-
-            <div class="form-group">
-                <label for="boardNo"><i class="fas fa-bone"></i>&nbsp;&nbsp;게시판 번호</label>
-                <input type="text" id="boardNo" name="boardNo" value="${boardNo}" readonly>
-            </div>
-
-            <input type="hidden" id="petNo" name="petNo" value="${p.petNo}" readonly>
-
-            <div class="form-group">
-                <label for="petName"><i class="fas fa-dog"></i>&nbsp;&nbsp;펫 이름</label>
-                <input type="text" id="petName" name="petName" value="${p.petName}" readonly>
-            </div>
-
-            <div class="form-group">
-                <label for="content"><i class="fas fa-bone"></i>&nbsp;&nbsp;내용</label>
-                <textarea id="content" name="content" rows="8" maxlength="200" placeholder="글을 작성해주세요" required></textarea>
-            </div>
-        </div>
+    <form id="formContent" method="post" action="/board/write" enctype="multipart/form-data">
         <div class="imgUpload">
             <div class="form-group upload-box">
                 <p>이미지 파일을 첨부하시려면<br><br>이곳을 클릭하세요.</p>
             </div>
             <input type="file" id="attachedImg" name="attachedImg" accept="image">
+        </div>
 
+        <div class="hiddenValues">
+            <input type="hidden" id="boardNo" name="boardNo" value="${boardNo}" readonly>
+            <input type="hidden" id="petNo" name="petNo" value="${p.petNo}" readonly>
+        </div>
+
+        <div class="writePlace">
+            <div class="form-group write1">
+                <label for="petName"><i class="fas fa-dog"></i>&nbsp;&nbsp;마이 펫</label>
+                <input type="text" id="petName" name="petName" value="${p.petName}" readonly>
+            </div>
+            <div class="form-group write2">
+                <label for="content"><i class="fas fa-bone"></i>&nbsp;&nbsp;글 작성</label>
+                <textarea id="content" name="content" rows="8" maxlength="200" placeholder="글을 작성해주세요" required></textarea>
+            </div>
             <button type="submit" id="submitBtn">제출</button>
         </div>
     </form>
+
 </section>
 
 <script>
+    CKEDITOR.replace('content');
+
     const $uploadBox = document.querySelector('.upload-box');
     const $attachedImg = document.getElementById('attachedImg');
 
@@ -179,6 +202,7 @@
                 $uploadBox.style.backgroundRepeat = 'no-repeat';
                 $uploadBox.style.backgroundPosition = 'center';
                 $uploadBox.querySelector('p').style.display = 'none';
+                $uploadBox.style.border = 'none';
             };
         }
     });
