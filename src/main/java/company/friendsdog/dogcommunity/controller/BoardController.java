@@ -6,8 +6,11 @@ import company.friendsdog.dogcommunity.dto.response.BoardDetailResponseDTO;
 import company.friendsdog.dogcommunity.dto.response.BoardListResponseDTO;
 import company.friendsdog.dogcommunity.entity.Pet;
 import company.friendsdog.dogcommunity.entity.User;
+import company.friendsdog.dogcommunity.repository.PetMapper;
 import company.friendsdog.dogcommunity.repository.UserMapper;
 import company.friendsdog.dogcommunity.service.BoardService;
+import company.friendsdog.dogcommunity.util.LoginUtil;
+import company.friendsdog.dogcommunity.util.upload.FileUtil;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Value;
@@ -23,7 +26,6 @@ import javax.servlet.http.HttpSession;
 import java.io.IOException;
 import java.util.List;
 
-import static com.spring.mvc.util.upload.FileUtil.uploadFile;
 import static company.friendsdog.dogcommunity.util.LoginUtil.LOGIN_KEY;
 
 @Controller
@@ -36,6 +38,7 @@ public class BoardController {
     private String rootPath;
 
     private final BoardService boardService;
+    private final PetMapper petMapper;
 
     // 게시판 목록 조회 요청
     @GetMapping("/list2")
@@ -63,13 +66,37 @@ public class BoardController {
 
     }
 
-    // 게시판 글쓰기 화면 조회 요청
+
+    // 작동이 안되서 이거 넣으니깐 됨
     @GetMapping("/write")
-    public String save(HttpSession session, Model model) {
-        Pet pet = boardService.petFindInfo(session);
-        model.addAttribute("p", pet);
+    public String save(HttpSession session) {
+
+//        if(!LoginUtil.isLogin(session)) {
+//            return "redirect:/members/sign-in"; // 인가 처리
+//        } // 이제 문지기인 인터셉터를 세운다
+
+        System.out.println("/board/write : GET");
         return "board/write";
+
     }
+
+
+
+
+//    // 게시판 글쓰기 화면 조회 요청
+//    @GetMapping("/write")
+//    public String save(HttpSession session, Model model) {
+//        Long userNoInfo = LoginUtil.getCurrentLoginUser(session).getUserNo();
+//        Pet p = petMapper.userFindPet(userNoInfo);
+//        if(p == null)
+//        {
+//            return "redirect:/pet/profile";
+//        }
+//        Pet pet = boardService.petFindInfo(session);
+//        model.addAttribute("p", pet);
+//
+//        return "board/write";
+//    }
 
     // 게시판 글쓰기 요청 처리
     @PostMapping("/write")
@@ -78,7 +105,7 @@ public class BoardController {
 //        log.info("첨부파일 사진 이름: {}", dto.getAttachedImg().getOriginalFilename());
 //        log.info("경로 - {}",rootPath);
 
-        String imgPath = uploadFile(dto.getAttachedImg(), rootPath);
+        String imgPath = FileUtil.uploadFile(dto.getAttachedImg(), rootPath);
         boardService.save(dto, session, imgPath);
         log.info("dto @@@@@@@@@@@@@@ - {}", dto);
         return "redirect:/board/list2";

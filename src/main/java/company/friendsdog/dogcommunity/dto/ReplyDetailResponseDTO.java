@@ -15,10 +15,11 @@ public class ReplyDetailResponseDTO {
 
     private Long replyNo;
 
-    private String comment;
-    private String petPhoto;
     private String petName;
 
+    private String petPhoto;
+
+    private String comment;
 
 
     //엔티티를 DTO로 변환하는 하는 생성자
@@ -28,6 +29,7 @@ public class ReplyDetailResponseDTO {
         this.comment = reply.getComment();
         this.petName = reply.getPetName();
         this.petPhoto = reply.getPetPhoto();
+
 
     }
 }

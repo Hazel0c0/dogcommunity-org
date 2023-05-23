@@ -11,7 +11,6 @@
     <title>Document</title>
 
     <!--메인 화면 공통 부분 JSP-->
-    <%@ include file="../include/static-head.jsp" %>
     <%@ include file="../include/header.jsp" %>
 
     <!--메인 화면 CSS : main-static은 공통 + 추가 개별 CSS 넣기 -->
@@ -24,20 +23,19 @@
 
 <div class="profileChange">
 
-    <form action="/pet/modify" method="post" name="petProfile" class="profile" enctype="multipart/form-data">
-
+    <form action="/pet/modify" method="post" name="petProfile" class="profile" id="pet-profile-form" enctype="multipart/form-data">
+        <%-- placeholder="${}"--%>
         <label for="petName">반려동물 이름</label>
-        <input type="text" id="petName" name="petName" readonly>
+        <input type="text" id="petName" name="petName" value="${petName}" readonly>
 
         <label for="petAge">나이</label>
-        <input type="text" id="petAge" name="petAge" readonly>
+        <input type="text" id="petAge" name="petAge" value="${petAge}" readonly>
 
         <label for="petKind">품종</label>
-        <input type="text" id="petKind" name="petKind" readonly>
+        <input type="text" id="petKind" name="petKind" value="${petKind}" readonly>
 
         <label for="petPhoto">프로필 사진 변경</label>
-        <input type="file" id="petPhoto" name="petPhoto" accept="image">
-
+        <input type="file" id="petPhoto" name="petPhoto" accept="image/*">
 
         <label for="petGender">성별</label>
         <select id="petGender" name="petGender">
@@ -49,10 +47,10 @@
         </select>
 
         <label for="hashTag">소개</label>
-        <textarea id="hashTag" name="hashtag" rows="4" required></textarea>
+        <textarea id="hashTag" name="hashtag" rows="4" value="${hashTag}" required></textarea>
 
-        <label for="profileSuggest">프로필에 계정 추천. 표시</label>
-        <p>강아지의 프로필이 다른 프로필에서 추천될 수 있는지를 선택하세요.
+        <label for="profileSuggest">프로필에 계정 추천 표시</label>
+        <p id="choice">강아지의 프로필이 다른 프로필에서 추천될 수 있는지를 선택하세요.
             &nbsp;&nbsp;&nbsp;
             <input type="checkbox" id="profileSuggest" name="profileSuggest">
         </p>

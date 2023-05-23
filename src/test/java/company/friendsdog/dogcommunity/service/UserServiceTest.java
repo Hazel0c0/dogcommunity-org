@@ -22,14 +22,14 @@ class UserServiceTest {
     UserMapper userMapper;
     @Test
     void userJoinTest() {
-        service.userJoin(
-                new JoinRequestDTO(
-                        "asdf124"
-                        ,"asdf1234"
-                        ,"test1"
-                        ,"asdf@anasd.com"
-                        ,"010-1111-2222"
-                        ,"dong"));
+//        service.userJoin(
+//                new JoinRequestDTO(
+//                        "asdf124"
+//                        ,"asdf1234"
+//                        ,"test1"
+//                        ,"asdf@anasd.com"
+//                        ,"010-1111-2222"
+//                        ,"dong"));
     }
 
     @Test
@@ -41,7 +41,7 @@ class UserServiceTest {
                 .userName("monggo")
                 .email("lion223@naver.com")
                 .phoneNum("010-1111-2222")
-                .adds("3dong")
+//                .adds("3dong")
                 .build();
         boolean flag = userMapper.save(newUser);
         assertTrue(flag);

@@ -13,11 +13,9 @@
 
     <!-- side menu event js defer : 지연 메뉴 걸기 -->
     <script src="/assets/js/side-menu.js" defer></script>
-    <!-- 말풍선 -->
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.6.0/font/bootstrap-icons.css" />
     <!-- css -->
-    <link rel="stylesheet" href="/assets/css/main.css">
+    <link rel="stylesheet" href="/assets/css/main-static.css">
+
 </head>
 
 <body>
@@ -40,17 +38,18 @@
     <nav class="gnb">
         <a href="#" class="close">
             <span class="lnr lnr-cross"></span>
+
         </a>
         <ul>
             <li><a href="/main"><span class="lnr lnr-home"> 홈</span></a></li>
             <li><a href="#"><span class="lnr lnr-magnifier"> 검색</span></a></li>
             <li><a href="/map/map"><span class="lnr lnr-map"> 내 주변 친구</span></a></li>
             <li><a href="/board/list2"><span class="lnr lnr-bubble"> 자유게시판</span></a></li>
-            <li><a href="/board/write"><span class="lnr lnr-heart"> 자랑하기</span></a></li>
+            <li><a href="/board/write"><span class="lnr lnr-heart"> 글 쓰기</span></a></li>
             <li><a href="#"><span class="lnr lnr-bubble"> 메시지</span></a></li>
             <li><a href="#"><span class="lnr lnr-alarm"> 알림</span></a></li>
-            <li><a href="/pet/profile"><span class="lnr lnr-user"> 프로필</span></a></li>
-            <li><a href="/user/logout"> 로그아웃</a></li>
+            <li><a href="/pet/modify"><span class="lnr lnr-user"> 프로필 수정</span></a></li>
+            <li><a href="/user/logout"><span class="lnr lnr-exit"> 로그아웃</span></a></li>
         </ul>
     </nav>
 </header>
@@ -59,8 +58,16 @@
     <div class="profile-box">
         <a href="/pet/profile">
             <div class="profile-img"></div>
-            <h3 id="profilePetName">멍멍이</h3>
-            <p id="profileHashTag">#안뇽</p>
+            <h3 id="profilePetName">멍뭉이</h3>
+            <p id="profileHashTag"># 행복한 멍뭉이</p>
         </a>
+
+<%--        <c:if test="${login != null}">--%>
+<%--            <a href="/pet/profile">--%>
+<%--                <div class="profile-img">${login.petPhoto}</div>--%>
+<%--                <h3 id="profilePetName">${login.petName}</h3>--%>
+<%--                <p id="profileHashTag">ㅎㅎ</p>--%>
+<%--            </a>--%>
+<%--        </c:if>--%>
     </div>
 </aside>

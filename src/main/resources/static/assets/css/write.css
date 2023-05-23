@@ -1,10 +1,10 @@
-/* 게시물 작성 CSS */
 section {
-    /*margin-top: 300px;*/
-    /*margin-left: 400px;*/
     width: 60%;
-    border: 4px solid red;
+    /*border: 4px solid red;*/
+    margin-top: 180px;
+    margin-left: 20px;
     padding: 20px;
+    border-radius: 10px;
 }
 
 h1 {
@@ -14,28 +14,67 @@ h1 {
 }
 
 #formContent {
-    border: 2px double black;
+    border-radius: 10px;
+    border: 2px double gray;
     padding: 10px;
+    display: flex;
+}
+
+#formContent > * {
+    border-radius: 10px;
+}
+
+.imgUpload {
+    flex:1.5;
+    /* border: 5px solid red; */
+    margin-right: 20px;
+}
+
+.writePlace {
+    flex:2;
+    /* border: 5px solid blue; */
+    display: flex;
+    flex-direction: column;
 }
 
 .form-group {
-    margin-bottom: 20px;
+    margin-bottom: 5px;
     width: 100%;
     display: flex;
     border: 1px solid black;
 }
 
+/* 파일 이미지 업로드 박스 구간 */
+.upload-box {
+    border-radius: 10px;
+    margin: auto;
+    height: 100%;
+    border: 3px dotted gray;
+    justify-content: center;
+    /* align-content: center; */
+    color: black;
+    font-size: 0.8em;
+    text-align: center;
+    align-items: center;
+    cursor: pointer;
+
+}
+
+#attachedImg {
+    display: none;
+}
+
+
 /* 글씨 영역 */
 label {
     display: inline-block;
-    width: 150px;
-    background: pink;
+    width: 180px;
+    background: rgb(156, 174, 231);
     font-weight: 800;
     color: darkslategray;
     padding: 20px;
 
 }
-
 textarea {
     width: 100%;
     padding: 10px;
@@ -54,8 +93,17 @@ input[type="number"] {
     /*background: yellow;*/
 }
 
+.write1 {
+    height: 60px;
+}
+
+.write2 {
+    flex:3;
+}
+
+/* 버튼 영역 */
 button {
-    background-color: rgba(124, 110, 117, 0.7);
+    background-color: #4CAF50;
     color: white;
     letter-spacing: 5px;
     padding: 10px 15px;
@@ -64,33 +112,13 @@ button {
     cursor: pointer;
     width: 100%;
     font-weight: 700;
+    /* flex:1; */
 
 }
 
 button:hover {
 
-    background-color: #4CAF50;
+    background-color: #09620c;
     color: white;
 
-}
-
-/* 파일 사진 업로드 박스  */
-.upload-box {
-    width: 50%;
-    margin: auto;
-    margin-bottom: 20px;
-    height: 500px;
-    border: 3px dotted gray;
-    display: flex;
-    justify-content: center;
-    align-content: center;
-    color: black;
-    font-size: 0.8em;
-    text-align: center;
-    align-items: center;
-    cursor: pointer;
-}
-
-#attachedImg {
-    display: none;
 }

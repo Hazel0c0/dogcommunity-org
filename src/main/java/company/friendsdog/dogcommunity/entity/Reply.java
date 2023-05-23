@@ -18,6 +18,9 @@ public class Reply {
     private Long petNo;
     private Long replyNo;
     private String comment;
-    private LocalDateTime replyDateTime;
     private String petName;
+
+    private String petPhoto;
+
+    private LocalDateTime replyDateTime;
 }
