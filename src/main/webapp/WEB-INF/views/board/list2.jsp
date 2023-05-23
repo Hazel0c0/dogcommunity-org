@@ -21,12 +21,18 @@
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.6.0/font/bootstrap-icons.css" />
 
 </head>
+<style>
+<%-- a 링크 기본 속성을 배제 하기 위해 걸음 : 빛나--%>
+    a{
+        color: inherit;
+        text-decoration: none;
+    }
 
+</style>
 <body>
 
     <!--  모달 창 -->
     <!-- <form var="b" items="b"> -->
-
 
     <section class="backgr" style="display: none;">
 

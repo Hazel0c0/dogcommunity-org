@@ -1,4 +1,11 @@
-@import url('https://cdn.jsdelivr.net/npm/reset-css@5.0.1/reset.min.css');
+
+/*a 링크 기본 속성해제를 위해 넣었습니다 : 빛나*/
+
+a{
+    color: inherit;
+    text-decoration: none;
+}
+
 
 .bi-heart-fill {
     display: none;
