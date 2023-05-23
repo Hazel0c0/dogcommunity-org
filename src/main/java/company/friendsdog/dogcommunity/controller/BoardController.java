@@ -66,20 +66,37 @@ public class BoardController {
 
     }
 
-    // 게시판 글쓰기 화면 조회 요청
-    @GetMapping("/write")
-    public String save(HttpSession session, Model model) {
-        Long userNoInfo = LoginUtil.getCurrentLoginUser(session).getUserNo();
-        Pet p = petMapper.userFindPet(userNoInfo);
-        if(p == null)
-        {
-            return "redirect:/pet/profile";
-        }
-        Pet pet = boardService.petFindInfo(session);
-        model.addAttribute("p", pet);
 
+    // 작동이 안되서 이거 넣으니깐 됨
+    @GetMapping("/write")
+    public String save(HttpSession session) {
+
+//        if(!LoginUtil.isLogin(session)) {
+//            return "redirect:/members/sign-in"; // 인가 처리
+//        } // 이제 문지기인 인터셉터를 세운다
+
+        System.out.println("/board/write : GET");
         return "board/write";
+
     }
+
+
+
+
+//    // 게시판 글쓰기 화면 조회 요청
+//    @GetMapping("/write")
+//    public String save(HttpSession session, Model model) {
+//        Long userNoInfo = LoginUtil.getCurrentLoginUser(session).getUserNo();
+//        Pet p = petMapper.userFindPet(userNoInfo);
+//        if(p == null)
+//        {
+//            return "redirect:/pet/profile";
+//        }
+//        Pet pet = boardService.petFindInfo(session);
+//        model.addAttribute("p", pet);
+//
+//        return "board/write";
+//    }
 
     // 게시판 글쓰기 요청 처리
     @PostMapping("/write")

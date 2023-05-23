@@ -11,16 +11,17 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Insert title here</title>
 
-    <%@ include file="../include/static-head.jsp" %>
+    <!--메인 화면 공통 부분 JSP-->
+    <!--메인 화면 공통 부분 JSP-->
+    <%@ include file="../include/header.jsp" %>
 
+    <!--메인 화면 CSS : main-static은 공통 + 추가 개별 CSS 넣기 -->
+    <link rel="stylesheet" href="/assets/css/main-static.css">
+    <link rel="stylesheet" href="/assets/css/body.css">
 
     <!-- <script src="side-menu.js" defer></script> -->
-
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.6.0/font/bootstrap-icons.css" />
-    
-    <!-- css -->
-    <link rel="stylesheet" href="/assets/css/body.css">
 
   
 <style>
@@ -202,49 +203,6 @@
             </div>
         </div>
     </section>
-
-    
-    <!-- header -->
-    <header>
-        <div class="inner-header">
-            <h1 class="logo">
-                <a href="main.html">
-                    <img src="/src/main/resources/static/assets/img/logo-instagram.png" alt="로고이미지">
-                </a>
-            </h1>
-            <h2 class="intro-text"><a href="main.html">Petstagram</a></h2>
-            <a href="#" class="menu-open">
-                <span class="menu-txt">MENU</span>
-                <span class="lnr lnr-menu"></span>
-            </a>
-        </div>
-
-        <nav class="gnb">
-            <a href="#" class="close">
-                <span class="lnr lnr-cross"></span>
-            </a>
-            <ul>
-                <li><a href="#"><span class="lnr lnr-home"> 홈</span></a></li>
-                <li><a href="#"><span class="lnr lnr-magnifier"> 검색</span></a></li>
-                <li><a href="#"><span class="lnr lnr-map"> 내 주변 친구</span></a></li>
-                <li><a href="#"><span class="lnr lnr-heart"> 자랑하기</span></a></li>
-                <li><a href="#"><span class="lnr lnr-bubble"> 메시지</span></a></li>
-                <li><a href="#"><span class="lnr lnr-alarm"> 알림</span></a></li>
-                <li><a href="/pet/profile"><span class="lnr lnr-user"> 프로필</span></a></li>
-            </ul>
-        </nav>
-    </header>
-
-
-
-    <!--main sidebar-->
-    <aside class="sidebar">
-        <div class="profile-box">
-            <div class="profile-img"><a href=""></a></div>
-            <h3><a href="">멍뭉이</a></h3>
-            <p id="profileIntro"> #왈왈으르릉 #가까이오지마</p>
-        </div>
-    </aside>
 
 
     <!-- body -->

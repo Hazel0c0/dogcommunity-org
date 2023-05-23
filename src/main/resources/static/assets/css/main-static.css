@@ -137,6 +137,7 @@ header .gnb ul li:hover,
 header .gnb ul li.active {
     color: rgb(233, 101, 123);
 }
+
 /*======left side bar=========== */
 aside.sidebar {
     background-color: green;
