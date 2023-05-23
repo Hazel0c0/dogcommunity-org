@@ -3,7 +3,6 @@ package company.friendsdog.dogcommunity.dto.request;
 import company.friendsdog.dogcommunity.entity.Reply;
 import lombok.*;
 
-import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotNull;
 
 @Setter@Getter
@@ -13,7 +12,6 @@ import javax.validation.constraints.NotNull;
 
 public class ReplyModifyRequestDTO {
 
-
     private String comment;
 
     private Long petNo;
@@ -22,6 +20,7 @@ public class ReplyModifyRequestDTO {
 
     private String petName;
     private String petPhoto;
+    private Long replyNo;
 
     public Reply toEntity(){
         return Reply.builder()
@@ -30,6 +29,7 @@ public class ReplyModifyRequestDTO {
                 .petPhoto(this.petPhoto)
                 .petName(this.petName)
                 .petNo(this.petNo)
+                .replyNo(this.replyNo)
                 .build();
     }
 }

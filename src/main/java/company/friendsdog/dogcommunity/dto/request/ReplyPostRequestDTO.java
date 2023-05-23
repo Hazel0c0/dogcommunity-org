@@ -15,14 +15,16 @@ public class ReplyPostRequestDTO {
 
     @NotBlank
     private String comment;
-
     @NotNull
-    private  Long petNo;
+    private Long petNo;
     @NotNull
-    private  Long boardNo;
+    private Long boardNo;
     @NotNull
-    private  String petName;
-    @NotNull String petPhoto;
+    private String petName;
+    @NotNull
+    private String petPhoto;
+    @NotNull
+    private Long replyNo;
 
     public Reply toEntity(){
         return Reply.builder()
@@ -31,7 +33,7 @@ public class ReplyPostRequestDTO {
                 .petPhoto(this.petPhoto)
                 .petName(this.petName)
                 .petNo(this.petNo)
+                .replyNo(this.replyNo)
                 .build();
     }
-
 }
