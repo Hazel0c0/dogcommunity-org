@@ -62,7 +62,7 @@
 </div>
 <script>
 
-    const serverMessage = '${msg}';
+  const serverMessage = '${msg}';
     console.log('msg:' + serverMessage);
 
     if (serverMessage == 'NO_ACC') {
@@ -70,6 +70,8 @@
     } else if (serverMessage == 'NO_PW') {
         alert('비밀번호가 틀렸습니다.');
     }
+
+
 </script>
 </body>
 </html>

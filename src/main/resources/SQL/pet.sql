@@ -1,3 +1,4 @@
+
 drop table tbl_pet;
 CREATE TABLE tbl_pet
 (
@@ -18,21 +19,13 @@ CREATE TABLE tbl_pet
 # 테스트 사진
 http://thumbnail.10x10.co.kr/webimage/image/basic600/290/B002903467.jpg?cmd=thumb&w=500&h=500&fit=true&ws=false
 
-insert into tbl_pet(user_no, pet_no,pet_name, pet_age, pet_kind, pet_gender, pet_photo
-,profile_date_time , hashTag, addr,add_detail)
-values (11,1, '뭉치', 2, '불독', 'MALE',
-        'http://thumbnail.10x10.co.kr/webimage/image/basic600/290/B002903467.jpg?cmd=thumb&w=500&h=500&fit=true&ws=false',
-        '2023-05-11', '#귀요미,#댕스타그램','강남구','신사동'),
-       (1,2, '떙구', 8, '시츄', 'FEMALE', 'https://dimg.donga.com/wps/NEWS/IMAGE/2013/12/30/59864097.2.jpg', '2023-05-12',
-        '#맞팔#산책할사람#댕댕스타그램','강남구','역삼동'),
-       (2,3, '용식', 3, '진돗개', 'FEMALE',
-        'https://images.mypetlife.co.kr/content/uploads/2022/08/17141309/korean-jindo-gca19cfb7f_1280-768x512.jpg',
-        '2023-05-15', '#선팔#좋아요일상그램','강남구','논현동'),
-       (4,4, '구름', 1, '포메라니안', 'NO_GENDER', 'http://adog.kr/web/upload/NNEditor/20200515/515_22.jpg', '2023-05-18',
-        '#좋반','강남구','신사동'),
-       (3,5, '치치', 4, '웰시코기', 'SECRET',
-        'https://img1.daumcdn.net/thumb/R1280x0/?scode=mtistory2&fname=https%3A%2F%2Ft1.daumcdn.net%2Fcfile%2Ftistory%2F9922A33A5BC4214A0F',
-        '2023-05-20', '#산책스타그램#소통해요','강남구','논현동');
+
+insert into tbl_pet(user_no,pet_name,pet_age,pet_kind,pet_gender,pet_photo,pet_date_time,hashTag)
+values(1,'뭉치',2,'불독','MALE','http://thumbnail.10x10.co.kr/webimage/image/basic600/290/B002903467.jpg?cmd=thumb&w=500&h=500&fit=true&ws=false','2023-05-11','#귀요미,#댕스타그램'),
+      (2,'떙구',8,'시츄','FEMALE','https://dimg.donga.com/wps/NEWS/IMAGE/2013/12/30/59864097.2.jpg','2023-05-12','#맞팔#산책할사람#댕댕스타그램'),
+      (3,'용식',3,'진돗개','FEMALE','https://images.mypetlife.co.kr/content/uploads/2022/08/17141309/korean-jindo-gca19cfb7f_1280-768x512.jpg','2023-05-15','#선팔#좋아요일상그램'),
+      (4,'구름',1,'포메라니안','NO_GENDER','http://adog.kr/web/upload/NNEditor/20200515/515_22.jpg','2023-05-18','#좋반'),
+      (5,'치치',4,'웰시코기','SECRET','https://img1.daumcdn.net/thumb/R1280x0/?scode=mtistory2&fname=https%3A%2F%2Ft1.daumcdn.net%2Fcfile%2Ftistory%2F9922A33A5BC4214A0F','2023-05-20','#산책스타그램#소통해요');
 
 
 SELECT P.pet_no
@@ -54,6 +47,17 @@ WHERE U.addr = '강남구'
 ORDER BY pet_age DESC
 ;
 
+update tbl_pet set pet_gender='MALE'
+where pet_no in (1);
+
+update tbl_pet set pet_gender='FEMALE'
+where pet_no in (2, 3);
+
+update tbl_pet set pet_gender='NO_GENDER'
+where pet_no in (4);
+
+update tbl_pet set pet_gender='SECRET'
+where pet_no in (5);
 select *
 from tbl_pet P
     LEFT JOIN tbl_user U

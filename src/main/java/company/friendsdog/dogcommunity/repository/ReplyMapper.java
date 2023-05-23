@@ -21,11 +21,12 @@ public interface ReplyMapper {
     // 사용자 가 ?
     //댓글 개별 조회
     Reply findOne(long replyNo);
+   Reply findOne(long replyNo);
 
     //댓글 전체 조회
     List<Reply>findAll(
-            long boardNo,
-            long petNo
+            @Param("bn")long boardNo,
+            @Param("pn")long petNo
 
     );
 
@@ -38,7 +39,7 @@ public interface ReplyMapper {
 
     //댓글 수 조회
 
-    int count (long boardNo);
+    int count (long replyNo);
 
 
 }

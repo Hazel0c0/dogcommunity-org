@@ -8,8 +8,13 @@
     <!--  댓글 등록-->
     <insert id="save">
         INSERT INTO tbl_reply
-        (board_no, pet_no, pet_name, reply_no, comment, reply_date_time, pet_photo)
-        VALUES (#{boardNo},#{petNo},#{pet_name},#{replyNo},#{comment},#{replyDateTime}, #{petPhoto})
+<!--        DB값이랑 같아야함-->
+        (reply_no,comment,reply_date_time)
+
+        VALUES
+<!--        ENTITY 랑 같아야함-->
+        (#{replyNo},#{comment},#{replyDateTime})
+<!--mybatis 오류 xml sql 수정-->
     </insert>
 
 
@@ -17,13 +22,16 @@
 
     <select id="findAll" resultType="reply">
         SELECT
-        b.board_no, b.pet_no, a.reply_no ,
-        a.comment , a.reply_date_time, b.pet_name, b.pet_photo
-        FROM tbl_reply a
-        INNER JOIN tbl_board b
-        ON a.board_no = b.board_no
-        WHERE board_no = #{boardNo}
-        ORDER BY reply_date_time DESC
+        a.board_no,a.pet_no,
+        a.reply_no, a.comment,
+        a.
+        a.reply_date_time,
+
+        FROM tbl_reply
+        WHERE reply_no = #{rn}
+        ORDER BY reply_no
+<!--        LIMIT #{p.pageStart}, #{p.amount}-->
+
     </select>
 
 
@@ -31,8 +39,8 @@
 
     <select id="findOne" resultType="reply">
         SELECT
-        board_no, pet_no, reply_no ,
-        comment , reply_date_time, pet_name, petPhoto
+        a.board_no,pet_no,reply_no,
+        comment,reply_date_time
         FROM tbl_reply
         WHERE reply_no = #{replyNo}
     </select>
@@ -46,6 +54,7 @@
     <!-- 댓글 수정-->
     <update id="modify">
         UPDATE tbl_reply
+        <!-- get{}-->
         SET comment =#{comment}
         WHERE reply_no=#{replyNo}
     </update>
