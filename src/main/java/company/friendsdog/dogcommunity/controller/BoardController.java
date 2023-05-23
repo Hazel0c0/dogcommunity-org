@@ -10,6 +10,7 @@ import company.friendsdog.dogcommunity.repository.PetMapper;
 import company.friendsdog.dogcommunity.repository.UserMapper;
 import company.friendsdog.dogcommunity.service.BoardService;
 import company.friendsdog.dogcommunity.util.LoginUtil;
+import company.friendsdog.dogcommunity.util.upload.FileUtil;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Value;
@@ -25,7 +26,6 @@ import javax.servlet.http.HttpSession;
 import java.io.IOException;
 import java.util.List;
 
-import static com.spring.mvc.util.upload.FileUtil.uploadFile;
 import static company.friendsdog.dogcommunity.util.LoginUtil.LOGIN_KEY;
 
 @Controller
@@ -105,7 +105,7 @@ public class BoardController {
 //        log.info("첨부파일 사진 이름: {}", dto.getAttachedImg().getOriginalFilename());
 //        log.info("경로 - {}",rootPath);
 
-        String imgPath = uploadFile(dto.getAttachedImg(), rootPath);
+        String imgPath = FileUtil.uploadFile(dto.getAttachedImg(), rootPath);
         boardService.save(dto, session, imgPath);
         log.info("dto @@@@@@@@@@@@@@ - {}", dto);
         return "redirect:/board/list2";

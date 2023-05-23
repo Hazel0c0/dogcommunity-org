@@ -24,8 +24,6 @@ public class PetService {
   private final PetMapper petMapper;
 
 
-
-
   // 펫 카드 저장하기
   public boolean petCardMake(final PetProfileRequestDTO dto
       , final HttpSession session, final String savePath) {

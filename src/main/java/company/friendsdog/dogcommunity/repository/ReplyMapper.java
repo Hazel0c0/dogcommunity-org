@@ -21,7 +21,6 @@ public interface ReplyMapper {
     // 사용자 가 ?
     //댓글 개별 조회
     Reply findOne(long replyNo);
-   Reply findOne(long replyNo);
 
     //댓글 전체 조회
     List<Reply>findAll(

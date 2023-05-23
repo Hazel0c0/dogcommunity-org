@@ -30,5 +30,5 @@ ALTER TABLE tbl_user
     ADD session_id VARCHAR(200) default 'none';
 
 ALTER TABLE tbl_user
-    ADD cookie_limit_time DATETIME;''
+    ADD cookie_limit_time DATETIME;
 

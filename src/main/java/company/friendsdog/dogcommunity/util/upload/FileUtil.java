@@ -1,4 +1,4 @@
-package com.spring.mvc.util.upload;
+package company.friendsdog.dogcommunity.util.upload;
 
 import org.springframework.web.multipart.MultipartFile;
 
