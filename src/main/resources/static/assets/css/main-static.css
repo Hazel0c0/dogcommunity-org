@@ -157,17 +157,28 @@ aside.sidebar .profile-box {
     text-align: center;
 }
 
+aside.sidebar .profile-box {
+    position: relative;
+}
+
 aside.sidebar .profile-box .profile-img {
-    border: 2px solid yellow;
-    background: url('/assets/img/dog.png') no-repeat center;
-    background-size: contain;
+    border: 5px solid;
+    border-color: red mediumpurple yellow orangered;
     border-radius: 50%;
+    background: url('/assets/img/coolbulldog.png') no-repeat center;
+    background-size: 110%;
     height: 300px;
+    overflow: hidden;
 }
 
 aside.sidebar .profile-box h3 {
-    border: 1px solid orange;
+    /*border: 1px solid orange;*/
     margin: 20px;
+}
+
+aside.sidebar .profile-box #profileHashTag {
+    border: 2px solid #e7e2e2;;
+    padding: 10px;
 }
 
 /*!* 왼쪽 하단 오늘의 방문자 수 *!*/

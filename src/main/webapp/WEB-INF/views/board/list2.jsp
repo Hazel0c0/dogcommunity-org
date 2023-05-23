@@ -4,7 +4,6 @@
 <!DOCTYPE html>
 <html lang="en">
 
-
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -12,33 +11,15 @@
     <title>Insert title here</title>
 
     <!--메인 화면 공통 부분 JSP-->
-    <!--메인 화면 공통 부분 JSP-->
     <%@ include file="../include/header.jsp" %>
 
     <!--메인 화면 CSS : main-static은 공통 + 추가 개별 CSS 넣기 -->
-    <link rel="stylesheet" href="/assets/css/main-static.css">
     <link rel="stylesheet" href="/assets/css/body.css">
 
-    <!-- <script src="side-menu.js" defer></script> -->
+    <!-- <script src="side-menu.js" defer> </script> -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.6.0/font/bootstrap-icons.css" />
 
-  
-<style>
-.bi-heart-fill {
-  display: none;
-  color: pink;
-}
-
-.bi-heart.active {
-  display: none;
-}
-
-
-.bi-heart.active + .bi-heart-fill {
-  display: inline-block;
-}
-</style>
 </head>
 
 <body>
@@ -48,9 +29,6 @@
 
 
     <section class="backgr" style="display: none;">
-
-
-      
 
         <div class="my-modal" id="modal">
 
@@ -62,7 +40,6 @@
             <!-- 이미지 박스  -->
             <div class="modal-imgbox bdrr">
                 <!-- <img src="${attachedImg}" alt="#"> -->
-
                 <!-- setAttribute 로 값 전달 -->
                 <img class="boardimg" alt="#">
             </div>

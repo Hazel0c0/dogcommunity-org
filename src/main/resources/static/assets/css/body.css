@@ -1,8 +1,22 @@
-/* =====Begin main page body===== */
+@import url('https://cdn.jsdelivr.net/npm/reset-css@5.0.1/reset.min.css');
+
+.bi-heart-fill {
+    display: none;
+    color: pink;
+}
+
+.bi-heart.active {
+    display: none;
+}
+
+
+.bi-heart.active + .bi-heart-fill {
+    display: inline-block;
+}
 
 #boxRow1 {
     display: flex;
-    border: 3px solid red;
+    /*border: 3px solid red;*/
     flex-direction: row;
     justify-content: space-around;
     width: 80%;
