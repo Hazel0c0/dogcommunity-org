@@ -1,5 +1,6 @@
 package company.friendsdog.dogcommunity.controller;
 
+import company.friendsdog.dogcommunity.dto.page.PageMaker;
 import company.friendsdog.dogcommunity.dto.page.Search;
 import company.friendsdog.dogcommunity.dto.request.BoardRequestDTO;
 import company.friendsdog.dogcommunity.dto.response.BoardDetailResponseDTO;
@@ -47,9 +48,11 @@ public class BoardController {
         log.info("page : {}", page);
         List<BoardListResponseDTO> dto = boardService.petFindAll(page);
         log.info("listdto[0] : {}", dto.get(0));
+        PageMaker maker = new PageMaker(page, boardService.count(page));
 
         model.addAttribute("bList", dto);
         model.addAttribute("p", page);
+        model.addAttribute("maker", maker);
 
         return "/board/list2";
     }
