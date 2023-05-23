@@ -87,7 +87,7 @@ public class BoardService {
     }
 
     // 게시물 수
-    public int count(Search search) {
+    public Long count(Search search) {
         return petBoardMapper.count(search);
     }
 

@@ -23,7 +23,7 @@ public class PageMaker {
     private int totalCount;
 
 
-    public PageMaker(Page page, int totalCount) {
+    public PageMaker(Page page, Long totalCount) {
         this.page = page;
         this.totalCount = totalCount;
         makePageInfo();
