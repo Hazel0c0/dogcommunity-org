@@ -28,6 +28,7 @@
           display: flex;
           justify-content: space-around;
           margin: 0 100px;
+          position: relative;
       }
 
       #card-container #card-wrapper #card {
@@ -77,7 +78,7 @@
 <div class="mapper">
   <div class="pageBtn-l">
     <a class="pageBtn-img"
-       href="/map/neighbor?addr=${addr.addr}pageNo=${maker.begin - 1}">&lt;</a>
+       href="/map/neighbor?addr=${addr}pageNo=${maker.begin - 1}">&lt;</a>
   </div>
   <%--주변 친구 펫 카드들--%>
   <div class="pet-card-list">

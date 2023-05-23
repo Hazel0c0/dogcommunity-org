@@ -42,8 +42,6 @@ public class PetController {
     return "/main/profile";
   }
 
-
-
   // 펫 프로필 정보 요청
   @PostMapping("/profile")
   public String petCardMake(PetProfileRequestDTO dto, HttpSession session) {

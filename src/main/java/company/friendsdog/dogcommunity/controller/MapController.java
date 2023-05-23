@@ -1,9 +1,12 @@
 package company.friendsdog.dogcommunity.controller;
 
+import company.friendsdog.dogcommunity.dto.request.MapRequestDTO;
 import company.friendsdog.dogcommunity.entity.Pet;
+import company.friendsdog.dogcommunity.entity.Place;
 import company.friendsdog.dogcommunity.page.Page;
 import company.friendsdog.dogcommunity.page.PageMaker;
 import company.friendsdog.dogcommunity.service.BoardService;
+import company.friendsdog.dogcommunity.service.PlaceService;
 import company.friendsdog.dogcommunity.service.PetService;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
@@ -22,6 +25,7 @@ import java.util.List;
 public class MapController {
   private final PetService petService;
   private final BoardService boardService;
+  private final PlaceService placeService;
 
   // 지도 띄워주기
   @GetMapping("/map")
@@ -29,7 +33,27 @@ public class MapController {
       HttpSession session,
       Model model) {
 
-    return "neighbor/map";
+
+    return "map/map";
+  }
+
+  // 선택한 동네 띄우기
+  @GetMapping("/point")
+  public String point(
+      MapRequestDTO mapDTO,
+      Model model) {
+    System.out.println("mapDTO = " + mapDTO);
+
+    List<Place> placeList = placeService.findPlace(mapDTO.getAddr());
+    Place place = placeList.get(0);
+
+    System.out.println("placeList = " + placeList);
+
+    model.addAttribute("map", mapDTO);
+    model.addAttribute("placeList", placeList);
+    model.addAttribute("place", place);
+
+    return "map/point";
   }
 
   /**
@@ -49,11 +73,11 @@ public class MapController {
 
     PageMaker maker = new PageMaker(page, petService.petCount(addr));
 
-    model.addAttribute("addr",addr);
-    model.addAttribute("petList",foundPet);
+    model.addAttribute("addr", addr);
+    model.addAttribute("petList", foundPet);
     model.addAttribute("maker", maker);
-    model.addAttribute("noneSidebar",noneSidebar);
+    model.addAttribute("noneSidebar", noneSidebar);
 
-    return "neighbor/neighbor";
+    return "map/neighbor";
   }
 }

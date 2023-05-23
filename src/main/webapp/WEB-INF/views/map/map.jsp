@@ -8,11 +8,21 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Insert title here</title>
+  <!--메인 화면 공통 부분 JSP-->
+  <%@ include file="../include/static-head.jsp" %>
+  <%@ include file="../include/header.jsp" %>
+
+  <!--메인 화면 CSS : main-static은 공통 + 추가 개별 CSS 넣기 -->
+  <!--메인 화면 CSS : main-static은 공통 + 추가 개별 CSS 넣기 -->
+  <link rel="stylesheet" href="/assets/css/main-static.css">
+  <link rel="stylesheet" href="/assets/css/profile.css">
+  <link rel="stylesheet" href="/assets/css/neighborMap.css">
   <style>
       .mapper {
           position: relative;
           top: 150px;
       }
+      /* 지역 이름 창 */
       .area {
           font-size: 1.5em;
           font-weight: 700;
@@ -37,22 +47,17 @@
       }
   </style>
 
-
-  <!--메인 화면 공통 부분 JSP-->
-  <%@ include file="../include/static-head.jsp" %>
-  <%@ include file="../include/header.jsp" %>
-
-  <!--메인 화면 CSS : main-static은 공통 + 추가 개별 CSS 넣기 -->
-  <!--메인 화면 CSS : main-static은 공통 + 추가 개별 CSS 넣기 -->
-  <link rel="stylesheet" href="/assets/css/main-static.css">
-  <link rel="stylesheet" href="/assets/css/profile.css">
-  <link rel="stylesheet" href="/assets/css/neighborMap.css">
 </head>
 
 <body>
 
 <div class="mapper">
-  <div id="map" style="width:1000px;height:800px;"></div>
+  <div id="map" style="width:1200px;height:800px;"></div>
+  <p id="result"></p>
+
+  <div class="city-list">
+
+  </div>
 </div>
 
 <script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=a94d5e073ab51eafbcb28e8d1ee644b6">
@@ -69,23 +74,34 @@
     customOverlay = new kakao.maps.CustomOverlay({}),
     infowindow = new kakao.maps.InfoWindow({removable: true});
 
-  // 지도에 영역데이터를 폴리곤으로 표시합니다
+
   for (var i = 0, len = areas.length; i < len; i++) {
     displayArea(areas[i]);
   }
 
-  // 다각형을 생상하고 이벤트를 등록하는 함수입니다
+  // 폴리곤 생성
   function displayArea(area) {
 
-    // 다각형을 생성합니다
+
     var polygon = new kakao.maps.Polygon({
-      map: map, // 다각형을 표시할 지도 객체
+      map: map,
       path: area.path,
       strokeWeight: 2,
       strokeColor: '#cd5c5c',
       strokeOpacity: 0.8,
       fillColor: '#fff',
       fillOpacity: 0.7
+    });
+
+    kakao.maps.event.addListener(polygon, 'click', function (mouseEvent) {
+
+      var latlng = mouseEvent.latLng;
+
+      var lat = latlng.getLat();
+      var lng =latlng.getLng();
+
+      window.location.href = '/map/point?lng='+lng+'&lat='+lat+'&addr='+area.name;
+
     });
 
     // 다각형에 mouseover 이벤트를 등록하고 이벤트가 발생하면 폴리곤의 채움색을 변경합니다
@@ -117,11 +133,7 @@
       customOverlay.setMap(null);
     });
 
-    // 다각형에 click 이벤트를 등록하고 이벤트가 발생하면 다각형의 이름과 면적을 인포윈도우에 표시합니다
-    kakao.maps.event.addListener(polygon, 'click', function (mouseEvent) {
 
-      window.location.href = '/map/neighbor?addr=' + area.name;
-    });
   }
 </script>
 </body>
