@@ -20,7 +20,7 @@ public class PageMaker {
     private Page page;
 
     // 총 게시물 수
-    private int totalCount;
+    private Long totalCount;
 
 
     public PageMaker(Page page, Long totalCount) {
