@@ -15,7 +15,7 @@
     <script src="/assets/js/side-menu.js" defer></script>
     <!-- css -->
     <link rel="stylesheet" href="/assets/css/main-static.css">
-    <link rel="stylesheet" href="/assets/css/common.css">
+
 </head>
 
 <body>

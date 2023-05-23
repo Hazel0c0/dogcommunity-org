@@ -11,7 +11,6 @@
     <title>Document</title>
 
     <!--메인 화면 공통 부분 JSP-->
-<%--    <%@ include file="include/static-head.jsp" %>--%>
     <%@ include file="include/header.jsp" %>
 
     <!--메인 화면 CSS : main-static은 공통 + 추가 개별 CSS 넣기 -->
