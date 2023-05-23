@@ -20,11 +20,17 @@ public class ReplyPostRequestDTO {
     private  Long petNo;
     @NotNull
     private  Long boardNo;
+    @NotNull
+    private  String petName;
+    @NotNull String petPhoto;
 
     public Reply toEntity(){
         return Reply.builder()
                 .comment(this.comment)
                 .boardNo(this.boardNo)
+                .petPhoto(this.petPhoto)
+                .petName(this.petName)
+                .petNo(this.petNo)
                 .build();
     }
 
