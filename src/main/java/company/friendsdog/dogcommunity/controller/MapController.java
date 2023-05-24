@@ -54,7 +54,9 @@ public class MapController {
     model.addAttribute("map", mapDTO);
     model.addAttribute("noneSidebar", true);
 
-    List<String> themeList = placeService.findTheme();
+    String addr = mapDTO.getAddr();
+
+    List<String> themeList = placeService.findTheme(addr);
     model.addAttribute("themeList", themeList);
 
     return "map/point";

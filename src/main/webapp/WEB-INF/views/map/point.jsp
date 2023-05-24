@@ -29,7 +29,7 @@
 </div>
 
 <div class="theme">
-    <button type="button" class="theme-btn all">ALL</button>
+  <button type="button" class="theme-btn all">ALL</button>
   <c:forEach var="t" items="${themeList}">
     <button type="button" class="theme-btn search-btn">${t}</button>
   </c:forEach>
@@ -53,19 +53,28 @@
   const markers = []; // 지도에 표시된 마커 객체를 가지고 있을 배열입니다
   const overlays = [];
 
-  fetch(`api/point/\${addr}`)
-    .then(response => response.json())
-    .then(placeList => {
-      for (const p of placeList) {
-        const {img, lng, lat, place, url} = p;
-        // console.log('list :', p);
+  start();
 
-        makeMark(img, lng, lat, place, url);
-      }
-    })
-    .catch(error => {
-      console.error('Error:', error);
-    });
+  function start() {
+    fetch(`api/point/\${addr}`)
+      .then(response => response.json())
+      .then(placeList => {
+        for (const p of placeList) {
+          const {img, lng, lat, place, url} = p;
+          // console.log('list :', p);
+
+          makeMark(img, lng, lat, place, url);
+        }
+      })
+      .catch(error => {
+        console.error('Error:', error);
+      });
+  }
+
+  let $all = document.querySelector('.all');
+  $all.onclick = function () {
+    start();
+  };
 
   [...document.querySelectorAll('.search-btn')].forEach(btn => {
     btn.onclick = function () {

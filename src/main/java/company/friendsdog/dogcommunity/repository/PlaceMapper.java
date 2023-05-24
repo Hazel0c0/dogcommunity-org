@@ -11,7 +11,7 @@ public interface PlaceMapper {
 
   List<Place> findAll(String addr);
 
-  List<String> findTheme();
+  List<String> findTheme(String addr);
 
   List<Place> search(
       @Param("addr") String addr,

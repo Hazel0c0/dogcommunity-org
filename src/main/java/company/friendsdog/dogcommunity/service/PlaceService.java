@@ -19,8 +19,8 @@ public class PlaceService {
     return placeList;
   }
 
-  public List<String> findTheme() {
-    List<String> themeList = placeMapper.findTheme();
+  public List<String> findTheme(String addr) {
+    List<String> themeList = placeMapper.findTheme(addr);
 
     return themeList;
   }

@@ -13,6 +13,7 @@
     <select id="findTheme" resultType="string">
         select keyword
         from tbl_place
+        where addr=#{addr}
         group by keyword
         ORDER BY COUNT(*) DESC
     </select>
