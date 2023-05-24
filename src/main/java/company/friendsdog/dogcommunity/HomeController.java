@@ -21,4 +21,9 @@ public class HomeController {
   public String Main() {
     return "main";
   }
+
+  @GetMapping("/test")
+  public String test() {
+    return "map/point";
+  }
 }

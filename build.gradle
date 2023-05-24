@@ -1,7 +1,7 @@
 plugins {
-	id 'java'
-	id 'org.springframework.boot' version '2.7.11'
-	id 'io.spring.dependency-management' version '1.0.15.RELEASE'
+    id 'java'
+    id 'org.springframework.boot' version '2.7.11'
+    id 'io.spring.dependency-management' version '1.0.15.RELEASE'
 }
 
 group = 'company.friendsdog'
@@ -9,46 +9,52 @@ version = '0.0.1-SNAPSHOT'
 sourceCompatibility = '11'
 
 configurations {
-	compileOnly {
-		extendsFrom annotationProcessor
-	}
+    compileOnly {
+        extendsFrom annotationProcessor
+    }
 }
 
 repositories {
-	mavenCentral()
+    mavenCentral()
 }
 
 
 tasks.named('test') {
-	useJUnitPlatform()
+    useJUnitPlatform()
 }
 dependencies {
-	// mvc
-	implementation 'org.springframework.boot:spring-boot-starter-data-jdbc'
-	implementation 'org.springframework.boot:spring-boot-starter-web'
-	//lonbok
-	compileOnly 'org.projectlombok:lombok'
-	annotationProcessor 'org.projectlombok:lombok'
-	// test
-	testImplementation 'org.springframework.boot:spring-boot-starter-test'
-	// 마이바티스 라이브러리
-	implementation 'org.mybatis.spring.boot:mybatis-spring-boot-starter:2.2.2'
-	// jsp 설정
-	implementation 'org.apache.tomcat.embed:tomcat-embed-jasper'
-	implementation 'javax.servlet:jstl:1.2'
-	// 입력값 검증 라이브러리
-	implementation 'org.springframework.boot:spring-boot-starter-validation'
-	// 스프링 시큐리티 모듈
-	implementation 'org.springframework.boot:spring-boot-starter-security'
+    // mvc
+    implementation 'org.springframework.boot:spring-boot-starter-data-jdbc'
+    implementation 'org.springframework.boot:spring-boot-starter-web'
+    //lonbok
+    compileOnly 'org.projectlombok:lombok'
+    annotationProcessor 'org.projectlombok:lombok'
+    // test
+    testImplementation 'org.springframework.boot:spring-boot-starter-test'
+    // 마이바티스 라이브러리
+    implementation 'org.mybatis.spring.boot:mybatis-spring-boot-starter:2.2.2'
+    // jsp 설정
+    implementation 'org.apache.tomcat.embed:tomcat-embed-jasper'
+    implementation 'javax.servlet:jstl:1.2'
+    // 입력값 검증 라이브러리
+    implementation 'org.springframework.boot:spring-boot-starter-validation'
+    // 스프링 시큐리티 모듈
+    implementation 'org.springframework.boot:spring-boot-starter-security'
 
 	// 입력값 검증 라이브러리
 	implementation 'org.springframework.boot:spring-boot-starter-validation'
 
-	runtimeOnly 'org.mariadb.jdbc:mariadb-java-client'
-	testImplementation 'org.springframework.security:spring-security-test'
+    runtimeOnly 'org.mariadb.jdbc:mariadb-java-client'
+    testImplementation 'org.springframework.security:spring-security-test'
+
+    // json simple
+    implementation 'com.googlecode.json-simple:json-simple:1.1.1'
+
+    // Gson
+    implementation 'com.google.code.gson:gson:2.8.8'
 
 }
 // 제이유닛 테스트 설정(@테스트 작동할 때 쓰는거)
 tasks.named('test') {
-	useJUnitPlatform()
+    useJUnitPlatform()
 }

@@ -53,7 +53,7 @@
         </ul>
     </nav>
 </header>
-
+<c:if test="${noneSidebar!=true}">
 <aside class="sidebar">
     <div class="profile-box">
         <a href="/pet/profile">
@@ -71,3 +71,4 @@
 <%--        </c:if>--%>
     </div>
 </aside>
+</c:if>

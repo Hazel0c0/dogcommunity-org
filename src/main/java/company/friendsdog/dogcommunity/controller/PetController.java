@@ -74,42 +74,11 @@ public class PetController {
         return "/main/profile";
     }
 
-
-    // 지도 띄워주기
-    @GetMapping("/map")
-    public String map(
-            HttpSession session,
-            Model model) {
-        // 유저 있는 동네 보내주기
-        List<String> dongList = petService.findAddrDetail(session);
-        log.info("dong  : {}", dongList);
-
-        model.addAttribute("dong", dongList);
-
-        return "neighbor/map";
-    }
-
-    /**
-     * 선택한 동네 강아지 보기
-     *
-     * @param addDetail - 유저가 선택한 동
-     */
-    @GetMapping("/neighbor")
-    public String findNeighbor(
-            String addDetail
-            , Model model) {
-        List<Pet> foundPet = petService.findNeighbor(addDetail);
-
-        model.addAttribute("petList", foundPet);
-
-        return "neighbor/neighbor";
-    }
-
-    @PostMapping("/delete")
-    public String delete(Long petNo) {
-        log.info("/pet/delete : POST");
-        petService.delete(petNo);
-        return "redirect:/pet/list";
+  @PostMapping("/delete")
+  public String delete(Long petNo) {
+    log.info("/pet/delete : POST");
+    petService.delete(petNo);
+    return "redirect:/pet/list";
 
     }
 
