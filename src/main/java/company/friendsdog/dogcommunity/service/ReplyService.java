@@ -60,14 +60,17 @@ public class ReplyService {
             throws SQLException
     {
         Reply reply = dto.toEntity();
+        log.info("service reply- {}", reply);
         Long userNoInfo = LoginUtil.getCurrentLoginUser(session).getUserNo();
+        log.info("service userInfo - {}", userNoInfo);
         String petName = petMapper.userFindPet(userNoInfo).getPetName();
+        log.info("service petName - {}", petName);
         reply.setPetName(petName);
         Long petNo = petMapper.userFindPet(userNoInfo).getPetNo();
         reply.setPetNo(petNo);
         String petPhoto = petMapper.userFindPet(userNoInfo).getPetPhoto();
         reply.setPetPhoto(petPhoto);
-
+        reply.setReplyNo(dto.getReplyNo());
         reply.setBoardNo(dto.getBoardNo());
         reply.setComment(dto.getComment());
         //예외처리

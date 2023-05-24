@@ -9,6 +9,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 
 import javax.servlet.http.HttpSession;
+import java.time.LocalDateTime;
 import java.util.List;
 
 import static org.junit.jupiter.api.Assertions.*;
@@ -30,15 +31,16 @@ ReplyService replyService;
 @Test
     @DisplayName("댓글 저장")
     void save() {
-    long replyNo = 4L;
+    long replyNo = 1L;
     Reply newReply = Reply.builder()
             .comment("테스트입니다")
             .replyNo(replyNo)
-            .boardNo(4L)
+            .boardNo(23L)
             .petNo(7L)
             .petName("리트")
             .petPhoto("https://cdn.imweb.me/upload/S201807025b39d1981b0b0/5cad95219ca68.jpg")
             .build();
+    System.out.println("newReply = " + newReply);
     //when
     HttpSession session;
 
