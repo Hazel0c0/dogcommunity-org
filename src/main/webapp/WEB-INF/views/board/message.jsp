@@ -9,14 +9,15 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
-
-    <!--메인 화면 공통 부분 JSP-->
-    <%@ include file="../include/header.jsp" %>
     <!-- css -->
     <link rel="stylesheet" href="/assets/css/message.css">
 </head>
 
 <body>
+
+<!--메인 화면 공통 부분 JSP-->
+<%@ include file="../include/header.jsp" %>
+
 <section>
     <div class="base-container">
         <div class="friend-text-div">
@@ -140,6 +141,41 @@
         const input = document.querySelector('.message-input input[type="text"]');
         input.addEventListener('keypress', handleKeyPress);
     });
+
+
+    // fetch 부분
+
+    document.getElementById('insert').onclick = e => {
+
+        // 요청 헤더와 요청 바디를 저장하는 객체
+        const requestInfo = {
+            method: 'POST',
+            headers: {
+                'content-type': 'application/json'
+            },
+            body: JSON.stringify({
+                petNo: document.querySelector('[name=text]').value,
+                author: document.querySelector('[name=author]').value,
+                bno: +document.querySelector('[name=bno]').value
+            })
+        };
+
+        fetch('http://localhost:8585', requestInfo)
+            .then(res => {
+                if (res.status === 200) {
+                    alert('등록 성공!');
+                    return res.json();
+                } else {
+                    alert('등록 실패!');
+                }
+            })
+            .then(result => {
+                console.log(result);
+            });
+    };
+
+
+
 
 </script>
 </body>
