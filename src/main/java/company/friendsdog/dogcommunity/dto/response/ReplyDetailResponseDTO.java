@@ -1,4 +1,4 @@
-package company.friendsdog.dogcommunity.dto;
+package company.friendsdog.dogcommunity.dto.response;
 
 import company.friendsdog.dogcommunity.entity.Reply;
 import lombok.Getter;
