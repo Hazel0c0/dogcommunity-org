@@ -17,7 +17,7 @@ public class ReplyPostRequestDTO {
     private String comment;
     @NotNull
     private Long boardNo;
-    @NotNull
+
     private Long replyNo;
 
     public Reply toEntity(){
