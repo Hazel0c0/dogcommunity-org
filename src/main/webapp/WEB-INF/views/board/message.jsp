@@ -9,7 +9,8 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
-    <!-- css -->
+    <!--메인 화면 공통 부분 JSP-->
+    <%@ include file="../include/header.jsp" %>
 </head>
 <style>
     @import url(https://fonts.googleapis.com/css?family=Montserrat);
@@ -17,7 +18,7 @@
     section {
         width: 50%;
         /*border: 4px solid red;*/
-        margin-top: 300px;
+        margin-top: 200px;
         margin-left: 100px;
         padding: 20px;
         border-radius: 10px;
@@ -167,9 +168,6 @@
 </style>
 <body>
 
-<!--메인 화면 공통 부분 JSP-->
-<%@ include file="../include/header.jsp" %>
-
 <section>
     <div class="base-container">
         <div class="friend-text-div">
@@ -188,7 +186,6 @@
             </div>
         </div>
     </div>
-
     <!-- Chat Interface -->
     <div class="chat-container">
         <div class="chat-log"></div>
