@@ -21,37 +21,38 @@
     <!-- css -->
     <link rel="stylesheet" href="/assets/css/body.css">
 
-  
-<style>
-.bi-heart-fill {
-  display: none;
-  color: pink;
-}
 
-.bi-heart.active {
-  display: none;
-}
+    <style>
+        .bi-heart-fill {
+            display: none;
+            color: pink;
+        }
 
-.bi-heart.active + .bi-heart-fill {
-  display: inline-block;
-}
-/* 모달창 좋아요 끝 */
+        .bi-heart.active {
+            display: none;
+        }
+
+        .bi-heart.active+.bi-heart-fill {
+            display: inline-block;
+        }
+
+        /* 모달창 좋아요 끝 */
 
 
-/* 리스트창 좋아요 시작 */
-.abl2.bi-heart-fill {
-  display: none;
-  color: pink;
-}
+        /* 리스트창 좋아요 시작 */
+        .abl2.bi-heart-fill {
+            display: none;
+            color: pink;
+        }
 
-.abl2.bi-heart.active {
-  display: none;
-}
+        .abl2.bi-heart.active {
+            display: none;
+        }
 
-.abl2.bi-heart.active + .bi-heart-fill {
-  display: inline-block;
-}
-</style>
+        .abl2.bi-heart.active+.bi-heart-fill {
+            display: inline-block;
+        }
+    </style>
 </head>
 
 <body>
@@ -63,14 +64,14 @@
     <section class="backgr" style="display: none;">
 
 
-      
+
 
         <div class="my-modal" id="modal">
 
-              <!-- 닫기 버튼 -->
-        <div class="xbutton" id="xbutton"><button><i class="bi bi-x-lg"></i></button></div>
-        <!-- 상세보기 모달 창 -->
-        <!-- <form action="/board/list2" method="get"> -->
+            <!-- 닫기 버튼 -->
+            <div class="xbutton" id="xbutton"><button><i class="bi bi-x-lg"></i></button></div>
+            <!-- 상세보기 모달 창 -->
+            <!-- <form action="/board/list2" method="get"> -->
 
             <!-- 이미지 박스  -->
             <div class="modal-imgbox bdrr">
@@ -159,9 +160,9 @@
                     <!-- 버튼 담는 박스 -->
                     <div class="th">
                         <span class="aamw"><button class="abl a2">
-                            <i class="bi bi-heart"></i>
-                            <i class="bi bi-heart-fill"></i>
-                        </button></span>
+                                <i class="bi bi-heart"></i>
+                                <i class="bi bi-heart-fill"></i>
+                            </button></span>
                         <!-- 좋아요 버튼-->
                         <span class="aamx"><button class="abl"><i class="bi bi-chat"></i></button></span>
                         <!-- 댓글 버튼-->
@@ -187,7 +188,8 @@
                             <textarea name="replyText" id="newReplyText" cols="1" rows="1" placeholder="댓글달기.."
                                 style="overflow: hidden;"></textarea>
                         </div>
-                        <div class="inputbutton xh" role="button">게시</div>
+                        <button class="inputbutton xh" id="output">게시</button>
+                        <!-- <div class="inputbutton xh" role="button" id="output">게시</div> -->
                     </div>
                 </div>
 
@@ -217,7 +219,7 @@
         </div>
     </section>
 
-    
+
     <!-- header -->
     <header>
         <div class="inner-header">
@@ -322,7 +324,6 @@
 
 
     <script>
-
         const URL = '/replies';
         const boardNo = '${b.boardNo}';
 
@@ -343,10 +344,10 @@
             const $petName = e.target.closest('#card').querySelector('.nickname').textContent;
 
             const $shortContent = e.target.closest('#card').querySelector('.card-text').textContent;
-            console.log($shortContent);
+            // console.log($shortContent);
 
             // 모달창에 정보 전달
-          
+
             // console.log(
             // `boardNo: \${boardNo}, petPhoto: \${petPhoto}, attachedImg: \${attachedImg}, petName: \${petName},shortContent : \${shortContent}`);
             // 게시글 이미지 전달 
@@ -360,7 +361,7 @@
             $boardprofile2.setAttribute('src', $petPhoto);
             // 상단 닉네임 1
             const $boarduserNickName1 = document.querySelector('.NN1');
-            console.log($boarduserNickName1);
+            // console.log($boarduserNickName1);
             $boarduserNickName1.textContent = $petName;
             // 상단 닉네임 2 
             const $boarduserNickName2 = document.querySelector('.NN2');
@@ -368,6 +369,9 @@
             // 게시판 글 내용
             const $boardtext = document.querySelector('.shorttext');
             $boardtext.textContent = $shortContent;
+
+            // 댓글 부르기
+            getReplyList($boardNo);
 
 
             if (e.target.matches('.card-img img')) {
@@ -412,89 +416,161 @@
 
         });
 
-        
-                // 댓글 목록 렌더링 함수
+        let tag = "";
+        // 댓글 목록 렌더링 함수
         function renderReplyList({
             count,
             replies
         }) {
 
-        // 총 댓글 수 렌더링
-        document.getElementById('replyCnt').textContent = count;
-        if (replies === null || replies.length === 0) {
-            tag += ""
+            // 총 댓글 수 렌더링
+            document.getElementById('replyCnt').textContent = count;
+            if (replies === null || replies.length === 0) {
+                tag += "댓글이 없습니다"
 
-        }else {
+            } else {
 
-            // 댓글 내용 렌더링
-            // 각 댓글 하나의 태그
-            for (let rep of replies) {
-            const {
-                petNo,
-                replyNo,
-                comment,
-                petPhoto,
-                petName
-            } = rep;
+                // 댓글 내용 렌더링
+                // 각 댓글 하나의 태그
+                for (let rep of replies) {
+                    const {
+                        petNo,
+                        replyNo,
+                        comment,
+                        petPhoto,
+                        petName
+                    } = rep;
 
-             tag += " <div class='reply' id='replybox' data-replyId='"+replyNo+"'>" +
-                                    "<div class='reply-profile'>" +
-                                        "<img src='"+ petPhoto +"' alt='프사'>" +
-                                        "</div>" +
-                                    "<div class='reply-writer'>"+ petName +"</div>" +
-                                    "<div class='reply-content'>"+ comment +"</div>" +
-                                "</div>";
+                    tag += " <div class='reply' id='replybox' data-replyId='" + replyNo + "'>" +
+                        "<div class='reply-profile'>" +
+                        "<img src='" + petPhoto + "' alt='프사'>" +
+                        "</div>" +
+                        "<div class='reply-writer'>" + petName + "</div>" +
+                        "<div class='reply-content'>" + comment + "</div>" +
+                        "</div>";
 
-                            }
+                }
 
-        // 생성된 댓글 tag 렌더링
-        document.getElementById('replyData').innerHTML = tag;
+                // 생성된 댓글 tag 렌더링
+                document.getElementById('replyData').innerHTML = tag;
 
 
-    }
-    // 댓글 목록 불러오기 함수
-    function getReplyList(boardNo = 1) {
+            }
 
-        fetch(`\${URL}/\${boardNo}`)
-        .then(res => res.josn())
-        .then(responseResult => {
-            console.log(responseResult);
-            // renderReplyList(responseResult);
+        }
+        // 댓글 목록 불러오기 함수
+        function getReplyList(boardNo = 1) {
+
+            fetch(`\${URL}/\${boardNo}`)
+                .then(res => res.json())
+                .then(responseResult => {
+                    console.log(responseResult);
+                    renderReplyList(responseResult);
+                });
+
+        }
+
+        const likeButton = document.querySelector('.aamw .abl');
+
+        likeButton.addEventListener('click', function () {
+            const heartIcon = likeButton.querySelector('.bi-heart');
+            const fillHeartIcon = likeButton.querySelector('.bi-heart-fill');
+            heartIcon.classList.toggle('active');
+            fillHeartIcon.classList.toggle('active');
         });
 
-    }
-
-}
-
-const likeButton = document.querySelector('.aamw .abl');
-
-likeButton.addEventListener('click', function() {
-  const heartIcon = likeButton.querySelector('.bi-heart');
-  const fillHeartIcon = likeButton.querySelector('.bi-heart-fill');
-  heartIcon.classList.toggle('active');
-  fillHeartIcon.classList.toggle('active');
-});
 
 
+        const likeButton2 = document.querySelector('.aamw .abl2');
 
-const likeButton2 = document.querySelector('.aamw .abl2');
+        likeButton.addEventListener('click', function () {
+            event.stopPropagation();
+            const heartIcon2 = likeButton2.querySelector('.bi-heart-main');
+            const fillHeartIcon2 = likeButton2.querySelector('.bi-heart-fill-main');
+            heartIcon2.classList.toggle('active');
+            fillHeartIcon2.classList.toggle('active');
+        });
 
-likeButton.addEventListener('click', function() {
-    event.stopPropagation();
-  const heartIcon2 = likeButton2.querySelector('.bi-heart-main');
-  const fillHeartIcon2 = likeButton2.querySelector('.bi-heart-fill-main');
-  heartIcon2.classList.toggle('active');
-  fillHeartIcon2.classList.toggle('active');
-});
+        // 댓글 등록 처리 이벤트 함수
+        function makeReplyRegisterClickEvent() {
+
+            //  댓글 게시 버튼
+            // const $regBtn = document.getElementById('inputbutton');
+            const $regBtn = document.getElementById('output');
+            // console.log('btn:',$regBtn);
+            // $regBtn.onclick 
+            $regBtn.addEventListener('click', e => {
+
+                // console.log("댓글쓰기버튼 누름!");
+                //  댓글 입력창
+                const $rt = document.getElementById('newReplyText');
+             
+               
+                // console.log($rt.value);
+
+                // 입력 값 검증 == 시작 == 
+
+                // 입력 값 검증 === 끝 ===
+
+                //  user 값 가져오기
+                // fetch('/user/login')
+                //     .then(response => response.json())
+                //     .then(userInfo => {
+
+                //         // 서버로 보낼 데이터
+                //         const payload = {
+                //             comment: $rt.value,
+                //             petNo: userInfo.petNo,
+                //             boardNo: boardNo,
+                //             petName: userInfo.petName,
+                //             petPhoto: userInfo.petPhoto
+                //             // replyNo :  ,
+                //         };
+
+                //         // 댓글 등록 요청 보내기
+                //         fetch('/replies', {
+                //                 method: 'POST',
+                //                 headers: {
+                //                     'content-Type': 'application/json',
+                //                 },
+                //                 body: JSON.stringify(payload)
+                //             })
+                //             .then(response => response.json())
+                //             .then(responseData => {
+                //                 if (responseData === 200) {
+                //                     alert(`댓글이 정상 등록되었습니다`)
+                //                     $rt.value = '';
+                //                 }
+                //             });
+
+                //     });
+
+            });
+            // 원하는 값 가져오기
+            // fetch('/replies', {
+            //     method : 'POST' ,
+            //     headers: {
+            //         'content-Type': 'application/json',
+            //     },
+            //     body: JSON.stringify(payload),
+            // })
+            // .then(response => response.json())
+            // .then(data => {
+            //     //응답처리
+            //     console.log(data);
+            // })
+        }
 
 
-    // 메인 실행 부 
 
-    (function(){
-        // 댓글 불러오기
-        renderReplyList();
 
-    })
+        // 메인 실행 부 
+
+        (function () {
+            //댓글 등록 
+            makeReplyRegisterClickEvent();
+            
+        })();
 
 
 
