@@ -54,7 +54,7 @@ class PetBoardMapperTest {
     @Test
     @DisplayName("하나의 게시물")
     void petFindOne() {
-        Board board = mapper.petFindOne(3L);
+        Board board = mapper.boardFindOne(3L);
         System.out.println("build = " + board);
     }
 
@@ -62,7 +62,7 @@ class PetBoardMapperTest {
     @DisplayName("게시물")
     void petFindAll() {
         Search search = new Search();
-    List<Board> boards = mapper.petFindAll(search);
+    List<Board> boards = mapper.boardFindAll(search);
         System.out.println("boards = " + boards);
 
 }
