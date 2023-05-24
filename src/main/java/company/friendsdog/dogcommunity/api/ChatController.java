@@ -15,6 +15,8 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import javax.servlet.http.HttpSession;
+
 
 @RestController
 @RequiredArgsConstructor
@@ -28,6 +30,7 @@ public class ChatController {
     public ResponseEntity<?> save(
             @Validated @RequestBody ChatPostResponseDTO dto
             , BindingResult result
+            , HttpSession session
             ) {
         if (result.hasErrors()) {
             return ResponseEntity.badRequest().body(result.toString());
@@ -37,7 +40,7 @@ public class ChatController {
         log.info("dto - {}", dto);
 
         try {
-            boolean save = chatService.save(dto);
+            boolean save = chatService.save(dto, session);
             return ResponseEntity.ok().body(save);
         } catch (Exception e) {
             log.warn("500 Status code response!! caused by: {}", e.getMessage());
