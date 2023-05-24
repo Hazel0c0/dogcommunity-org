@@ -10,9 +10,161 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
     <!-- css -->
-    <link rel="stylesheet" href="/assets/css/message.css">
 </head>
+<style>
+    @import url(https://fonts.googleapis.com/css?family=Montserrat);
 
+    section {
+        width: 50%;
+        /*border: 4px solid red;*/
+        margin-top: 300px;
+        margin-left: 100px;
+        padding: 20px;
+        border-radius: 10px;
+        border: 3px solid hotpink;
+        background: url('/assets/img/feet.jpg');
+        background-size: cover;
+    }
+
+    .base-container {
+        width: 100%;
+    }
+
+    .friend-text-div {
+        display: flex;
+        margin-left: 0.5rem;
+    }
+
+    .friend-text-div>img {
+        height: 3rem;
+        align-self: flex-end;
+        border-radius: 50%;
+    }
+
+    .friend-text-container {
+        width: 10rem;
+        display: flex;
+        flex-direction: column;
+    }
+
+    .friend-text {
+        background: #262626;
+        border-radius: 0.5rem;
+        color: #fff;
+        height: fit-content;
+        width: fit-content;
+        padding: 0.5rem 1rem;
+        margin: 0.12rem 0.5rem;
+    }
+
+    .my-text-div {
+        display: flex;
+        justify-content: flex-end;
+    }
+
+    .my-text-container {
+        display: flex;
+        flex-direction: column;
+        align-items: flex-end;
+    }
+
+    .my-text {
+        background: linear-gradient(180deg,
+        rgba(139, 47, 184, 1) 0%,
+        rgba(103, 88, 205, 1) 51%,
+        rgba(89, 116, 219, 1) 92%) no-repeat center;
+        background-attachment: fixed;
+        color: #fff;
+        border-radius: 0.5rem 0.2rem 0.2rem 0.5rem;
+        height: fit-content;
+        width: fit-content;
+        padding: 0.5rem 1rem;
+        margin: 0.12rem 0.5rem;
+    }
+
+    .my-text-container>div:first-child {
+        border-radius: 0.5rem 1rem 0.2rem 0.5rem;
+    }
+
+    .my-text-container>div:last-child {
+        border-radius: 0.5rem 0.2rem 1rem 0.5rem;
+    }
+
+    .friend-text-container>div:first-child {
+        border-radius: 1rem 0.5rem 0.2rem 0.5rem;
+    }
+
+    .friend-text-container>div:last-child {
+        border-radius: 0.5rem 0.2rem 0.5rem 1rem;
+    }
+
+    /*  아래 대화를 전송하는 창 */
+
+    .chat-container {
+        margin-top: 50px;
+        display: flex;
+        flex-direction: column;
+
+    }
+
+    .message-input {
+        margin-top: 10px;
+        display: flex;
+    }
+
+    .message-input input[type="text"] {
+        flex: 1;
+        padding: 5px;
+        border: none;
+        border-radius: 5px;
+        border: 2px solid rgb(208, 77, 121);
+    }
+
+    .message-input button {
+        margin-left: 10px;
+        padding: 5px 10px;
+        border: none;
+        border-radius: 5px;
+        background-color: rgb(224, 125, 141);
+        color: white;
+    }
+
+    .message-input button:hover {
+        background-color: rgb(210, 57, 83);
+    }
+
+    .chat-log {
+        margin-top: 10px;
+    }
+
+    .chat-log .message {
+        margin-bottom: 5px;
+        padding: 5px;
+        border-radius: 5px;
+        background-color: #f1f1f1;
+    }
+
+    .chat-log .my-text {
+        background: linear-gradient(180deg,
+        rgba(139, 47, 184, 1) 0%,
+        rgba(103, 88, 205, 1) 51%,
+        rgba(89, 116, 219, 1) 92%) no-repeat center;
+        background-attachment: fixed;
+        color: #fff;
+        border-radius: 0.5rem 0.2rem 0.2rem 0.5rem;
+        height: fit-content;
+        width: fit-content;
+        padding: 0.5rem 1rem;
+        margin: 0.12rem 0.5rem;
+        float: right;
+    }
+
+    /* 메세지 보낼때 시간찍혀 보내지는 글씨 크기 및 위치 조정 */
+    .timestamp {
+        text-align: right;
+        font-size: 80%;
+    }
+</style>
 <body>
 
 <!--메인 화면 공통 부분 JSP-->
@@ -33,20 +185,6 @@
                 <div class="my-text">미미 안뇽!</div>
                 <div class="my-text">나는 뭉치라고해</div>
                 <div class="my-text">나는 불독인데 너는 뭐니?</div>
-            </div>
-        </div>
-        <div class="friend-text-div">
-            <img src="/assets/img/poodle.jpeg" alt="말거는 강아지 이미지">
-            <div class="friend-text-container">
-                <div class="friend-text">나는 푸들!</div>
-                <div class="friend-text">혹시 나랑..산책 갈래?</div>
-            </div>
-        </div>
-        <div class="my-text-div">
-            <div class="my-text-container">
-                <div class="my-text">그럴까?</div>
-                <div class="my-text">우리 동네에 사는구나!</div>
-                <div class="my-text">같이 산책가자 ㅎ</div>
             </div>
         </div>
     </div>
@@ -144,7 +282,6 @@
 
 
     // fetch 부분
-
     document.getElementById('insert').onclick = e => {
 
         // 요청 헤더와 요청 바디를 저장하는 객체
@@ -154,9 +291,8 @@
                 'content-type': 'application/json'
             },
             body: JSON.stringify({
-                petNo: document.querySelector('[name=text]').value,
-                author: document.querySelector('[name=author]').value,
-                bno: +document.querySelector('[name=bno]').value
+                petNo: document.querySelector('[name=text]').value
+
             })
         };
 
