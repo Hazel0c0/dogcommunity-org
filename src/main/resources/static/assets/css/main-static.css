@@ -95,6 +95,7 @@ header .inner-header .menu-open .lnr-menu {
 }
 
 /* header gnb style */
+
 header .gnb {
     background: #000;
     color: white;
@@ -137,6 +138,7 @@ header .gnb ul li:hover,
 header .gnb ul li.active {
     color: rgb(233, 101, 123);
 }
+
 /*======left side bar=========== */
 aside.sidebar {
     background-color: green;
@@ -157,52 +159,32 @@ aside.sidebar .profile-box {
     text-align: center;
 }
 
+aside.sidebar .profile-box {
+    position: relative;
+}
+
 aside.sidebar .profile-box .profile-img {
-    border: 2px solid yellow;
-    background: url('/assets/img/dog.png') no-repeat center;
-    background-size: contain;
+    border: 5px solid;
+    border-color: #d24560 mediumpurple yellow orange;
     border-radius: 50%;
+    background: url('/assets/img/MainBullDog.png') no-repeat center;
+    background-size: 110%;
     height: 300px;
+    overflow: hidden;
 }
 
 aside.sidebar .profile-box h3 {
-    border: 1px solid orange;
+    /*border: 1px solid orange;*/
     margin: 20px;
 }
 
-/*!* 왼쪽 하단 오늘의 방문자 수 *!*/
-
-/*.stats {*/
-/*    background-color: #fafafa;*/
-/*    border-radius: 5px;*/
-/*    padding: 20px;*/
-/*    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);*/
-/*    display: inline-block;*/
-/*}*/
-
-/*.stat {*/
-/*    text-align: center;*/
-/*    padding: 10px;*/
-/*    background-color: #f9f9f9;*/
-/*    border-radius: 5px;*/
-/*    margin-bottom: 10px;*/
-/*}*/
-
-/*.stat-title {*/
-/*    font-size: 18px;*/
-/*    font-weight: bold;*/
-/*    color: #405de6;*/
-/*    margin-bottom: 5px;*/
-/*}*/
-
-/*.stat-value {*/
-/*    font-size: 24px;*/
-/*    font-weight: bold;*/
-/*    color: #e050e5;*/
-/*    margin-bottom: 5px;*/
-/*}*/
-
-/*.stat-desc {*/
-/*    font-size: 14px;*/
-/*    color: gray;*/
+aside.sidebar .profile-box #profileHashTag {
+    border: 2px solid #e7e2e2;;
+    padding: 10px;
 }
+
+/*=======Begin right side bar========= */
+
+
+/*=======end of right side bar========= */
+
