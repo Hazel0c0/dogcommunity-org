@@ -14,7 +14,8 @@
     <%@ include file="../include/header.jsp" %>
 
     <!--메인 화면 CSS : main-static은 공통 + 추가 개별 CSS 넣기 -->
-    <link rel="stylesheet" href="/assets/css/body.css">
+    <!---메인 바디 속성 추가로 body.css -> list.css로 동관님 css 이름 변경 : 빛나 -->
+    <link rel="stylesheet" href="/assets/css/list.css">
 
     <!-- <script src="side-menu.js" defer> </script> -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet">
