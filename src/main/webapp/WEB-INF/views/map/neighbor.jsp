@@ -9,14 +9,15 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-  <!--메인 화면 공통 부분 JSP-->
-  <%@ include file="../include/static-head.jsp" %>
   <%@ include file="../include/header.jsp" %>
 
   <!--메인 화면 CSS : main-static은 공통 + 추가 개별 CSS 넣기 -->
   <link rel="stylesheet" href="/assets/css/main-static.css">
-  <link rel="stylesheet" href="/assets/css/profile.css">
-  <link rel="stylesheet" href="/assets/css/neighborMap.css">
+  <link rel="stylesheet" href="/assets/css/body.css">
+
+  <!-- <script src="side-menu.js" defer></script> -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.6.0/font/bootstrap-icons.css" />
 
   <style>
       .pet-img {
@@ -43,12 +44,12 @@
 
       .pageBtn-l {
           position: absolute;
-          top: 60%;
+          top: 50%;
       }
 
       .pageBtn-r {
           position: absolute;
-          top: 60%;
+          top: 50%;
           right: 0;
       }
 
@@ -131,6 +132,13 @@
     <a class="pageBtn-img"
        href="/map/neighbor?pageNo=${maker.finalPage}">&gt;</a>
   </div>
+
+  <c:forEach var="i" begin="${maker.begin}" end="${maker.end}">
+    <li data-page-num="${i}" class="page-item">
+      <a class="page-link" href="/board/list?pageNo=${i}&type=${s.type}&keyword=${s.keyword}">${i}</a>
+    </li>
+  </c:forEach>
+
 </div>
 
 <c:forEach var="i" begin="${maker.begin}" end="${maker.end}">
