@@ -5,6 +5,14 @@
 <!-- namespace에는 인터페이스 풀 네임(패키지+인터페이스이름) -->
 <mapper namespace="company.friendsdog.dogcommunity.repository.ChatMapper">
 
+    <select id="chatAll" resultType="chat">
+    SELECT
+    a.message, a.chat_current_time, b.pet_name, b.pet_photo, b.pet_no
+    FROM tbl_chat a
+    INNER JOIN tbl_pet b
+    ON a.pet_no = b.pet_no
+    </select>
+
     <insert id="save">
         INSERT INTO tbl_chat
         (pet_no, pet_name, message, pet_photo)

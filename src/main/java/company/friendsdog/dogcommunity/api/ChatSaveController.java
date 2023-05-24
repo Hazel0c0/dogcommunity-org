@@ -1,10 +1,7 @@
 package company.friendsdog.dogcommunity.api;
 
 import company.friendsdog.dogcommunity.dto.request.ChatPostResponseDTO;
-import company.friendsdog.dogcommunity.entity.Chat;
-import company.friendsdog.dogcommunity.repository.ChatMapper;
 import company.friendsdog.dogcommunity.service.ChatService;
-import company.friendsdog.dogcommunity.service.ReplyService;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.http.ResponseEntity;
@@ -22,7 +19,7 @@ import javax.servlet.http.HttpSession;
 @RequiredArgsConstructor
 @RequestMapping("/chat")
 @Slf4j
-public class ChatController {
+public class ChatSaveController {
     private final ChatService chatService;
 
     // 메시지 등록
