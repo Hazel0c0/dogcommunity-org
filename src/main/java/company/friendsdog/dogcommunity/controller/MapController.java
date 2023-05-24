@@ -52,7 +52,23 @@ public class MapController {
     model.addAttribute("map", mapDTO);
     model.addAttribute("noneSidebar", true);
 
+    List<String> themeList = placeService.findTheme();
+    model.addAttribute("themeList", themeList);
+
     return "map/point";
+  }
+
+  @ResponseBody
+  @GetMapping("/api/point/{addr}/{keyword}")
+  @CrossOrigin(origins = {"http://127.0.0.1:5500"})
+  public ResponseEntity<?> themeSearch(
+      @PathVariable String addr,
+      @PathVariable String keyword) {
+    log.info("addr {} , keywore {}",addr,keyword);
+
+    List<Place> places = placeService.themeSearch(addr, keyword);
+    System.out.println("places = " + places);
+    return ok().body(places);
   }
 
   @ResponseBody
@@ -61,10 +77,8 @@ public class MapController {
   public ResponseEntity<?> point(
       @PathVariable String addr
   ) {
-
     List<Place> placeList = placeService.findPlace(addr);
-
-    System.out.println("placeList = " + placeList);
+//    System.out.println("placeList = " + placeList);
     return ok().body(placeList);
   }
 

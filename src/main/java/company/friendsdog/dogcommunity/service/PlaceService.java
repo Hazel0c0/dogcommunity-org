@@ -18,4 +18,14 @@ public class PlaceService {
 
     return placeList;
   }
+
+  public List<String> findTheme() {
+    List<String> themeList = placeMapper.findTheme();
+
+    return themeList;
+  }
+  public List<Place> themeSearch(String addr, String keyword) {
+
+    return placeMapper.search(addr,keyword);
+  }
 }

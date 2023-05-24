@@ -73,6 +73,7 @@
   <!--메인 화면 CSS : main-static은 공통 + 추가 개별 CSS 넣기 -->
   <link rel="stylesheet" href="/assets/css/main-static.css">
   <link rel="stylesheet" href="/assets/css/profile.css">
+
 </head>
 <body>
 <div class="mapper">

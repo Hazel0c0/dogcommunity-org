@@ -15,7 +15,7 @@ public class Place {
   Double lng;
   Double lat;
   String img;
-  Keyword keyword;
+  String keyword;
   String url;
 }
 
