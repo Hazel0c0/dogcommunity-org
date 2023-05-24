@@ -56,6 +56,7 @@
         </p>
 
         <input type="submit" value="수정" id="submitBtn">
+<%--            <button type="submit" onclick="" id="submitBtn" >수정</button>--%>
     </form>
 </div>
 <script>
@@ -68,7 +69,7 @@
     const $submitBtn = document.getElementById('submitBtn');
 
     $submitBtn.addEventListener('click', function (e) {
-        e.preventDefault(); // 기본 제출 동작 방지 : db로 값 넘길때 주석 해지 필수~!
+        // e.preventDefault(); // 기본 제출 동작 방지 : db로 값 넘길때 주석 해지 필수~!
 
         $profilePetName.textContent = $petName.value;
         let hashTagValue = $hashTag.value;

@@ -49,6 +49,7 @@
                 <a href="#" class="forgotPwd">Forget password?</a>
             </div>
         </section>
+    </form>
         <section class="joinUs">
             <button class="makeAccount" style="border-color: darkgrey;">
                 <a href="/user/join">
@@ -58,7 +59,6 @@
                 </a>
             </button>
         </section>
-    </form>
 </div>
 <script>
 
