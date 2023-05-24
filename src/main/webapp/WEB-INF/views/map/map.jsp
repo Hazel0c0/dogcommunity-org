@@ -17,42 +17,13 @@
   <link rel="stylesheet" href="/assets/css/main-static.css">
   <link rel="stylesheet" href="/assets/css/profile.css">
   <link rel="stylesheet" href="/assets/css/neighborMap.css">
-  <style>
-      .mapper {
-          position: relative;
-          top: 150px;
-      }
-      /* 지역 이름 창 */
-      .area {
-          font-size: 1.5em;
-          font-weight: 700;
-
-          position: absolute;
-          background: #fff;
-          border: 1px solid #cd5c5c;
-          border-radius: 5px;
-
-          top: -5px;
-          left: 15px;
-          padding: 2px;
-      }
-
-      .info {
-          font-size: 12px;
-          padding: 5px;
-      }
-
-      .info .title {
-          font-weight: bold;
-      }
-  </style>
 
 </head>
 
 <body>
 
-<div class="mapper">
-  <div id="map" style="width:1200px;height:800px;"></div>
+<div class="wrapper">
+  <div id="map"></div>
   <p id="result"></p>
 
   <div class="city-list">
@@ -100,6 +71,7 @@
       var lat = latlng.getLat();
       var lng =latlng.getLng();
 
+      // window.location.href = '/map/api/point?lng='+lng+'&lat='+lat+'&addr='+area.name;
       window.location.href = '/map/point?lng='+lng+'&lat='+lat+'&addr='+area.name;
 
     });

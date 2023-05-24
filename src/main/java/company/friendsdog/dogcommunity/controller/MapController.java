@@ -10,13 +10,17 @@ import company.friendsdog.dogcommunity.service.PlaceService;
 import company.friendsdog.dogcommunity.service.PetService;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.*;
 
 import javax.servlet.http.HttpSession;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
+
+import static org.springframework.http.ResponseEntity.ok;
 
 @Controller
 @RequiredArgsConstructor
@@ -33,28 +37,37 @@ public class MapController {
       HttpSession session,
       Model model) {
 
+    model.addAttribute("noneSidebar", true);
 
     return "map/map";
   }
 
   // 선택한 동네 띄우기
   @GetMapping("/point")
-  public String point(
+  public String map(
       MapRequestDTO mapDTO,
-      Model model) {
-    System.out.println("mapDTO = " + mapDTO);
-
-    List<Place> placeList = placeService.findPlace(mapDTO.getAddr());
-    Place place = placeList.get(0);
-
-    System.out.println("placeList = " + placeList);
+      Model model
+  ) {
 
     model.addAttribute("map", mapDTO);
-    model.addAttribute("placeList", placeList);
-    model.addAttribute("place", place);
+    model.addAttribute("noneSidebar", true);
 
     return "map/point";
   }
+
+  @ResponseBody
+  @GetMapping("/api/point/{addr}")
+  @CrossOrigin(origins = {"http://127.0.0.1:5500"})
+  public ResponseEntity<?> point(
+      @PathVariable String addr
+  ) {
+
+    List<Place> placeList = placeService.findPlace(addr);
+
+    System.out.println("placeList = " + placeList);
+    return ok().body(placeList);
+  }
+
 
   /**
    * 선택한 동네 강아지 보기
@@ -67,16 +80,14 @@ public class MapController {
       Model model,
       Page page
   ) {
+    model.addAttribute("noneSidebar", true);
 
     List<Pet> foundPet = petService.findNeighbor(addr);
-    boolean noneSidebar = true;
-
     PageMaker maker = new PageMaker(page, petService.petCount(addr));
-
     model.addAttribute("addr", addr);
+
     model.addAttribute("petList", foundPet);
     model.addAttribute("maker", maker);
-    model.addAttribute("noneSidebar", noneSidebar);
 
     return "map/neighbor";
   }
