@@ -13,7 +13,6 @@
     <!--메인 화면 공통 부분 JSP-->
     <%@ include file="../include/header.jsp" %>
     <!-- css -->
-    <link rel="stylesheet" href="/assets/css/main-static.css">
     <link rel="stylesheet" href="/assets/css/write.css">
     <!-- js -->
     <script src="https://cdn.ckeditor.com/4.17.2/standard/ckeditor.js"></script>
@@ -64,7 +63,7 @@
     };
 
     $attachedImg.addEventListener('change', function (e) {
-        // e.preventDefault();
+        e.preventDefault();
         const fileData = $attachedImg.files[0];
 
         if (fileData) {

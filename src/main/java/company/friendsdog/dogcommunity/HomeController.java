@@ -12,14 +12,14 @@ public class HomeController {
   @GetMapping("/")
   public String home(HttpSession session) {
     if (LoginUtil.isLogin(session)){
-      return "main";
+      return "redirect:/board/main";
     }
     return "login/login";
   }
 
   @GetMapping("/main")
   public String Main() {
-    return "main";
+    return "redirect:/board/main";
   }
 
 }

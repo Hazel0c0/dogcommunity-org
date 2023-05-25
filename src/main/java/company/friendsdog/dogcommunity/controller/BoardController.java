@@ -42,7 +42,7 @@ public class BoardController {
     private final PetMapper petMapper;
 
     // 게시판 목록 조회 요청
-    @GetMapping("/list2")
+    @GetMapping("/main")
     public String petFindAll(Search page, Model model) {
         log.info("/board/list : GET");
         log.info("page : {}", page);
@@ -96,7 +96,7 @@ public class BoardController {
         String imgPath = uploadFile(dto.getAttachedImg(), rootPath);
         boardService.save(dto, session, imgPath);
         log.info("dto @@@@@@@@@@@@@@ - {}", dto);
-        return "redirect:/board/list2";
+        return "redirect:/board/main";
     }
 
     // 게시판 삭제 요청 처리
@@ -105,7 +105,7 @@ public class BoardController {
         log.info("/board/delete : POST");
         log.info("boardNo - {}", boardNo);
         boardService.delete(boardNo, session);
-        return "redirect:/board/list";
+        return "redirect:/board/main";
     }
 
     // 게시판 수정 화면 조회 요청
@@ -125,6 +125,13 @@ public class BoardController {
         log.info("petPhoto - {}", dto.getPetPhoto());
         log.info("petName - {}", dto.getPetName());
         boardService.modify(dto);
-        return "redirect:/board/list2";
+        return "redirect:/board/main";
     }
+
+//    // 게시판 수정 화면 조회 요청 : 빛나 message.jsp 테스트 용
+//    @GetMapping("/message")
+//    public String save() {
+//        log.info("/api/v1/board/message : GET");
+//        return "board/message";
+//    }
 }

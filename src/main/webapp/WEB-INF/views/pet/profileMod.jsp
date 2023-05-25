@@ -23,20 +23,19 @@
 
 <div class="profileChange">
 
-    <form action="/pet/profile" method="post" name="petProfile" class="profile" enctype="multipart/form-data">
-
+    <form action="/pet/modify" method="post" name="petProfile" class="profile" id="pet-profile-form" enctype="multipart/form-data">
+        <%-- placeholder="${}"--%>
         <label for="petName">반려동물 이름</label>
-        <input type="text" id="petName" name="petName" required>
+        <input type="text" id="petName" name="petName" value="${petName}" readonly>
 
         <label for="petAge">나이</label>
-        <input type="text" id="petAge" name="petAge" required>
+        <input type="text" id="petAge" name="petAge" value="${petAge}" readonly>
 
         <label for="petKind">품종</label>
-        <input type="text" id="petKind" name="petKind" required>
+        <input type="text" id="petKind" name="petKind" value="${petKind}" readonly>
 
         <label for="petPhoto">프로필 사진 변경</label>
-        <input type="file" id="petPhoto" name="petPhoto" accept="image">
-
+        <input type="file" id="petPhoto" name="petPhoto" accept="image/*">
 
         <label for="petGender">성별</label>
         <select id="petGender" name="petGender">
@@ -48,7 +47,7 @@
         </select>
 
         <label for="hashTag">소개</label>
-        <textarea id="hashTag" name="hashtag" rows="4" required></textarea>
+        <textarea id="hashTag" name="hashtag" rows="4" value="${hashTag}" required></textarea>
 
         <label for="profileSuggest">프로필에 계정 추천 표시</label>
         <p id="choice">강아지의 프로필이 다른 프로필에서 추천될 수 있는지를 선택하세요.
@@ -56,7 +55,8 @@
             <input type="checkbox" id="profileSuggest" name="profileSuggest">
         </p>
 
-        <input type="submit" value="제출" id="submitBtn">
+        <input type="submit" value="수정" id="submitBtn">
+<%--            <button type="submit" onclick="" id="submitBtn" >수정</button>--%>
     </form>
 </div>
 <script>
@@ -69,7 +69,7 @@
     const $submitBtn = document.getElementById('submitBtn');
 
     $submitBtn.addEventListener('click', function (e) {
-        e.preventDefault(); // 기본 제출 동작 방지 : db로 값 넘길때 주석 해지 필수~!
+        // e.preventDefault(); // 기본 제출 동작 방지 : db로 값 넘길때 주석 해지 필수~!
 
         $profilePetName.textContent = $petName.value;
         let hashTagValue = $hashTag.value;

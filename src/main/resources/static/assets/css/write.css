@@ -5,17 +5,19 @@ section {
     margin-left: 20px;
     padding: 20px;
     border-radius: 10px;
+    background-color: #eccbd1;
+    height: 700px;
 }
 
 h1 {
     text-align: center;
-    color: darkslategray;
+    color: #826caf;
     margin-bottom: 5px;
 }
 
 #formContent {
     border-radius: 10px;
-    border: 2px double gray;
+    border: 6px double gray;
     padding: 10px;
     display: flex;
 }
@@ -103,7 +105,7 @@ input[type="number"] {
 
 /* 버튼 영역 */
 button {
-    background-color: #4CAF50;
+    background-color: #e380b2;
     color: white;
     letter-spacing: 5px;
     padding: 10px 15px;
