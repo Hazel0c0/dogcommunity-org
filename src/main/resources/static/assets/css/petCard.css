@@ -1,12 +1,8 @@
-.pet-img {
-    width: 300px;
-    height: 300px;
-}
 
 .pet-card-list {
     display: flex;
     justify-content: space-around;
-    margin: 0 100px;
+    /* margin: 0 100px; */
     position: relative;
 }
 
@@ -15,11 +11,16 @@
     width: 300px;
 }
 
-.nickname {
-    font-size: 1.5em;
-    text-align: center;
+.mapper {
+    margin-top: 300px;
+    width: 100%;
 }
 
+/* .nickname {
+    font-size: 1.5em;
+    text-align: center;
+} */
+/* 
 .pageBtn-l {
     position: absolute;
     top: 50%;
@@ -29,8 +30,8 @@
     position: absolute;
     top: 50%;
     right: 0;
-}
-
+} */
+/* 
 .pageBtn-img {
     border: 2px solid black;
     border-radius: 50%;
@@ -41,15 +42,15 @@
     line-height: 70px;
     font-size: 3em;
     align-items: center;
-}
+} */
 
 /*    프로필 카드 */
 /* 메인 박스 */
 #card-container {
     display: flex;
     flex-wrap: wrap;
-    margin-left: 90px;
-    margin-top: 50px;
+    /* margin-left: 90px;
+    margin-top: 50px; */
     /* height: 500px; */
     /* text-align: center; */
 }
@@ -57,9 +58,9 @@
 /* 메인박스 안 작은 박스 */
 #card-container #card-wrapper {
     position: relative;
-    width: 25%;
+    /* width: 25%; */
     /* margin-top: 3%; */
-    margin-right: 3%;
+    /* margin-right: 3%; */
     height: 450px;
     margin-bottom: 100px;
     cursor: pointer;
@@ -118,11 +119,12 @@
 
 /* 유저의 닉네임 */
 #card-container #card-wrapper #card .card-title .nickname {
-    font-size: 14px;
+    font-size: 16px;
+    font-weight: 700;
     width: fit-content;
     margin-top: 5px;
-    margin-left: 5px;
-    /* margin-left: 10px; */
+    /* margin-left: 5px; */
+    margin-left: 10px;
 
 }
 
@@ -161,9 +163,19 @@
 
 /* 하단 페이지 버튼 */
 .page-btn {
-    position: fixed;
+    /* position: fixed; */
     bottom: 10%;
     /* float: left; */
     display: flex;
-    text-align: center;
+    /* text-align: center; */
+
+    justify-content: center;
+}
+.page-btn li {
+    list-style-type: none;
+}
+.bi {
+    width: 50px;
+    height: 50px;
+   font-size: 45px;
 }
