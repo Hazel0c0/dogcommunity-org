@@ -9,8 +9,9 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
-    <%@ include file="../include/static-head.jsp" %>
 
+    <%-- 공통 적용 reset CSS--%>
+    <%@ include file="../include/static-head.jsp" %>
     <!-- side menu event js defer : 지연 메뉴 걸기 -->
     <script src="/assets/js/side-menu.js" defer></script>
     <!-- css -->
@@ -42,25 +43,24 @@
         </a>
         <ul>
             <li><a href="/main"><span class="lnr lnr-home"> 홈</span></a></li>
-            <li><a href="#"><span class="lnr lnr-magnifier"> 검색</span></a></li>
-            <li><a href="/pet/neighbor"><span class="lnr lnr-map"> 내 주변 친구</span></a></li>
-            <li><a href="/map/map"><span class="lnr lnr-map"> 산책가까? </span></a></li>
-            <li><a href="/board/list2"><span class="lnr lnr-bubble"> 자유게시판</span></a></li>
-            <li><a href="/board/write"><span class="lnr lnr-heart"> 글 쓰기</span></a></li>
-            <li><a href="#"><span class="lnr lnr-bubble"> 메시지</span></a></li>
             <li><a href="#"><span class="lnr lnr-alarm"> 알림</span></a></li>
-            <li><a href="/pet/modify"><span class="lnr lnr-user"> 프로필 수정</span></a></li>
+            <li><a href="/map/map"><span class="lnr lnr-map"> 내 주변 친구</span></a></li>
+            <li><a href="/board/list2"><span class="lnr lnr-heart"> Feed 보기</span></a></li>
+            <li><a href="/board/write"><span class="lnr lnr-file-add"> 글 작성</span></a></li>
+            <li><a href="/board/message"><span class="lnr lnr-bubble"> 메시지</span></a></li>
+            <li><a href="/pet/profile"><span class="lnr lnr-paw"> 프로필</span></a></li>
+            <li><a href="/pet/modify"><span class="lnr lnr-paw"> 프로필 수정</span></a></li>
             <li><a href="/user/logout"><span class="lnr lnr-exit"> 로그아웃</span></a></li>
         </ul>
     </nav>
 </header>
-<c:if test="${noneSidebar!=true}">
+
 <aside class="sidebar">
     <div class="profile-box">
         <a href="/pet/profile">
             <div class="profile-img"></div>
             <h3 id="profilePetName">멍뭉이</h3>
-            <p id="profileHashTag"># 행복한 멍뭉이</p>
+            <p id="profileHashTag"># 자유로운 산책과<br>  만남을 추구하는<br> 행복한 멍뭉이</p>
         </a>
 
 <%--        <c:if test="${login != null}">--%>
@@ -72,4 +72,3 @@
 <%--        </c:if>--%>
     </div>
 </aside>
-</c:if>

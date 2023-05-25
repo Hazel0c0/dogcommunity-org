@@ -1,9 +1,9 @@
-
 /* =====Begin Profile Change body===== */
 .profileChange {
     width: 60%;
-
+    margin-top: 50px;
 }
+
 form {
     width: 500px;
     margin: 160px auto;
