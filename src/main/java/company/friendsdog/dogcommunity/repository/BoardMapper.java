@@ -28,7 +28,7 @@ public interface BoardMapper {
     void upHitsCount(Long boardNo);
 
     // 총 게시물 수
-    Long count(Search search);
+    int count(Search search);
 
     boolean petFindInfo(Board board);
 }
