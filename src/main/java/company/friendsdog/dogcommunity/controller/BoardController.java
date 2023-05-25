@@ -83,20 +83,20 @@ public class BoardController {
 
 
 
-//    // 게시판 글쓰기 화면 조회 요청
-//    @GetMapping("/write")
-//    public String save(HttpSession session, Model model) {
-//        Long userNoInfo = LoginUtil.getCurrentLoginUser(session).getUserNo();
-//        Pet p = petMapper.userFindPet(userNoInfo);
-//        if(p == null)
-//        {
-//            return "redirect:/pet/profile";
-//        }
-//        Pet pet = boardService.petFindInfo(session);
-//        model.addAttribute("p", pet);
-//
-//        return "board/write";
-//    }
+    // 게시판 글쓰기 화면 조회 요청
+    @GetMapping("/write")
+    public String save(HttpSession session, Model model) {
+        Long userNoInfo = LoginUtil.getCurrentLoginUser(session).getUserNo();
+        Pet p = petMapper.userFindPet(userNoInfo);
+        if(p == null)
+        {
+            return "redirect:/pet/profile";
+        }
+        Pet pet = boardService.petFindInfo(session);
+        model.addAttribute("p", pet);
+
+        return "board/write";
+    }
 
     // 게시판 글쓰기 요청 처리
     @PostMapping("/write")

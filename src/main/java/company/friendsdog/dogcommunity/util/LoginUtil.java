@@ -14,12 +14,11 @@ public class LoginUtil {
     // 자동로그인 쿠키
     public static final String AUTO_LOGIN_COOKIE="auto";
 
-    // 세션에서 유저 객체 가져오기
+    // 세션에서 유저 객체 가져오기 이놈이 문제 도와줘 ..!
     public static User getCurrentLoginUser(
             HttpSession session) {
-        User loginUser = (User) session.getAttribute(LOGIN_KEY);
 
-        return loginUser;
+        return (User) session.getAttribute(LOGIN_KEY);
     }
 
     //로그인 여부 확인

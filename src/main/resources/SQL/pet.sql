@@ -12,10 +12,24 @@ CREATE TABLE tbl_pet
     profile_date_time TIMESTAMP            NOT NULL DEFAULT CURRENT_TIMESTAMP,
     hashtag       VARCHAR(1000),
     addr VARCHAR(10),
-    add_detail VARCHAR(10)
 --   FOREIGN KEY (user_no)
 --   REFERENCES tbl_user(user_no)
 );
+
+
+#최종 사용자 8개 펫 8개
+
+insert into tbl_pet(user_no,pet_no,pet_name,pet_age,pet_kind,pet_gender,pet_photo,profile_date_time,hashTag,addr)
+values(1,1,'뭉치',2,'불독','MALE','http://thumbnail.10x10.co.kr/webimage/image/basic600/290/B002903467.jpg?cmd=thumb&w=500&h=500&fit=true&ws=false','2023-05-11','#귀요미,#댕스타그램','강남구'),
+	(2,2,'떙구',8,'시츄','FEMALE','https://dimg.donga.com/wps/NEWS/IMAGE/2013/12/30/59864097.2.jpg','2023-05-12','#맞팔#산책할사람#댕댕스타그램','강남구'),
+	(3,3,'용식',3,'진돗개','FEMALE','https://images.mypetlife.co.kr/content/uploads/2022/08/17141309/korean-jindo-gca19cfb7f_1280-768x512.jpg','2023-05-15','#선팔#좋아요일상그램','강남구'),
+	(4,4,'구름',1,'포메라니안','NO_GENDER','http://adog.kr/web/upload/NNEditor/20200515/515_22.jpg','2023-05-20','#좋반','강남구'),
+	(5,5,'치치',4,'웰시코기','SECRET','https://img1.daumcdn.net/thumb/R1280x0/?scode=mtistory2&fname=https%3A%2F%2Ft1.daumcdn.net%2Fcfile%2Ftistory%2F9922A33A5BC4214A0F','2023-05-20','#산책스타그램#소통해요#나는솔로','강남구'),
+	(6, 6, '뽀삐', 1, '닥스훈트', 'NO_GENDER', 'https://dalkompet.com/wp-content/uploads/2020/01/%EB%8B%A5%EC%8A%A4%ED%9B%88%ED%8A%B8.jpg', '2023-05-25','#좋반#핵인싸#한강스타그램#르세라핌','강남구'),
+	(7,7,'또치',5,'푸들','MALE','http://image.dongascience.com/Photo/2017/07/14994185580021.jpg','2023-05-20','#푸들스타그램#나는솔로#흔녀#daily','강남구'),
+	(8,8,'탱구',6,'비숑프리제','SECRET','https://dalkompet.com/wp-content/uploads/2020/01/%EB%B9%84%EC%88%91%ED%94%84%EB%A6%AC%EC%A0%9C.jpg','2023-05-21','#셀스타그램#ootd#순구만세','강남구'	);
+
+
 # 테스트 사진
 http://thumbnail.10x10.co.kr/webimage/image/basic600/290/B002903467.jpg?cmd=thumb&w=500&h=500&fit=true&ws=false
 

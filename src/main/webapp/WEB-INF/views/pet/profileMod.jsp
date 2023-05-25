@@ -55,7 +55,7 @@
             <input type="checkbox" id="profileSuggest" name="profileSuggest">
         </p>
 
-        <input type="submit" value="수정" id="submitBtn">
+ <button type="submit" onclick="" >수정</button>
     </form>
 </div>
 <script>

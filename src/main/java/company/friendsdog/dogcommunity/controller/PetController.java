@@ -96,37 +96,42 @@ public class PetController {
     @GetMapping("/modify") // 수정 폼 을 열어주는애
     // 페이지 이동
     // db에서 업데이트를 할려면 뭐가 필요한지
+
     public String modifyData(HttpSession session, Model model) {
 
-//        // true / false 여부
+        // true / false 여부
 //        boolean flag = petService.modify(dto);
 
-//        Long userNo = getCurrentLoginUser(session).getUserNo();
-////        currUser.getPwd();
-//    Long petNo = petService.findOne(userNo).getPetNo();
-//
-//        // 하나 하나 로그 찍어보기
-//        log.info("mod petNo{}",petNo);
-//
-//
-//       String hashTag = petService.getDetail((long) petNo).getHashtag();
-//
-//        model.addAttribute("petNo", petNo);
-//        model.addAttribute("hashTag", hashTag);
-//        model.addAttribute("session", session);
+        Long userNo = getCurrentLoginUser(session).getUserNo();
+//        currUser.getPwd();
+    Long petNo = petService.findOne(userNo).getPetNo();
+
+        // 하나 하나 로그 찍어보기
+        log.info("mod petNo{}",petNo);
 
 
-//        log.info("petNo : {} ", petNo);
+       String hashTag = petService.getDetail((long) petNo).getHashtag();
+
+        model.addAttribute("petNo", petNo);
+        model.addAttribute("hashTag", hashTag);
+        model.addAttribute("session", session);
+
+
+        log.info("petNo : {} ", petNo);
 
         return "pet/profileMod";
     }
-
+    // 요청 과 응답 model 유무 꺼내필요없으면 model , 결과값 return
+    // ppo
     @PostMapping("/modify") //수정 폼안에 있는 데이터를 보내주는애, 수정하기 버튼 눌렀을 때
     public String modifyData(HttpSession session, PetProfileModifyRequestDTO dto, Model model) {
 
-        log.info("mod POST");
+        // jsp에서 제출버튼을 누르면 넘어 오게해라
+
+        log.info("mod POST {}",dto);
 
 
+        log.info("유저 넘버 :{}",getCurrentLoginUser(session));
         // 로그인한 유저 넘버
         Long userNo = getCurrentLoginUser(session).getUserNo();
         log.info("유저 넘버 : {}", userNo);
@@ -145,11 +150,12 @@ public class PetController {
         // true / false 여부
 
         // 서비스에 dto(클라이언트에서 수정된값) + 세션에서 받아온 유저넘버 같이 넘겨주기 <=해결
-
+        System.out.println("rootPath : "+rootPath);
         boolean flag = petService.modify(dto, petNo, rootPath);
 
         //어디로 이동할지 정하기
-        return "redirect:/pet/modify";
+//        return "redirect:/pet/modify";
+        return "redirect:/main";
     }
 }
 

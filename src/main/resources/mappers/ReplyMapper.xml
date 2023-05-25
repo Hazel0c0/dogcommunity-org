@@ -22,13 +22,19 @@
 
     <select id="findAll" resultType="reply">
         SELECT
-        a.board_no,a.pet_no,
-        a.reply_no, a.comment,
-        a.
-        a.reply_date_time,
-
-        FROM tbl_reply
-        WHERE reply_no = #{rn}
+        A.comment,
+        A.reply_no,
+        A.reply_date_time,
+        A.board_no,
+        A.pet_no,
+        A.pet_name,
+        A.pet_photo,
+        B.board_no
+        FROM tbl_reply A
+        JOIN tbl_board B
+        on A.board_no = B.board_no
+        WHERE A.board_no = #{bn}
+<!--        댓글번호가 아니라 게시글 번호-->
         ORDER BY reply_no
 <!--        LIMIT #{p.pageStart}, #{p.amount}-->
 
