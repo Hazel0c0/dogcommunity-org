@@ -41,11 +41,11 @@
     <!-- 왼쪽 버튼 -->
     <c:if test="${maker.page.pageNo != 1}">
       <button class="btn-l">
-        <i class="bi bi-arrow-left">
-          <a class="pageBtn-img"
-             href="/pet/neighbor?pageNo=${mark.pageNo-1}">
-          </a>
-        </i>
+        <a class="pageBtn-img"
+           href="/pet/neighbor?pageNo=${p.pageNo-1}">
+          <i class="bi bi-arrow-left">
+          </i>
+        </a>
       </button>
     </c:if>
 
@@ -76,10 +76,9 @@
     <c:if test="${maker.page.pageNo != maker.finalPage}">
       <button class="btn-r">
         <a class="pageBtn-img"
-           href="/pet/neighbor?pageNo=${mark.pageNo+1}">
+           href="/pet/neighbor?pageNo=${p.pageNo+1}">
           <i class="bi bi-arrow-right">
           </i>
-
         </a>
       </button>
     </c:if>
