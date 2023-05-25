@@ -67,7 +67,6 @@ public class BoardService {
     public boolean delete(Long boardNo, HttpSession session) {
         Long userNoInfo = LoginUtil.getCurrentLoginUser(session).getUserNo();
         Pet pet = petMapper.userFindPet(userNoInfo);
-        Long petNoInfo = pet.getPetNo();
 
         return petBoardMapper.delete(boardNo);
     }
