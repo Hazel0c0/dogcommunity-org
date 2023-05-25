@@ -11,7 +11,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Insert title here</title>
 
-    <%@ include file="../include/static-head.jsp" %>
+    <%@ include file="../include/header.jsp" %>
 
 
     <!-- <script src="side-menu.js" defer></script> -->
@@ -204,49 +204,6 @@
             </div>
         </div>
     </section>
-
-
-    <!-- header -->
-    <header>
-        <div class="inner-header">
-            <h1 class="logo">
-                <a href="main.html">
-                    <img src="/src/main/resources/static/assets/img/logo-instagram.png" alt="로고이미지">
-                </a>
-            </h1>
-            <h2 class="intro-text"><a href="main.html">Petstagram</a></h2>
-            <a href="#" class="menu-open">
-                <span class="menu-txt">MENU</span>
-                <span class="lnr lnr-menu"></span>
-            </a>
-        </div>
-
-        <nav class="gnb">
-            <a href="#" class="close">
-                <span class="lnr lnr-cross"></span>
-            </a>
-            <ul>
-                <li><a href="#"><span class="lnr lnr-home"> 홈</span></a></li>
-                <li><a href="#"><span class="lnr lnr-magnifier"> 검색</span></a></li>
-                <li><a href="#"><span class="lnr lnr-map"> 내 주변 친구</span></a></li>
-                <li><a href="#"><span class="lnr lnr-heart"> 자랑하기</span></a></li>
-                <li><a href="#"><span class="lnr lnr-bubble"> 메시지</span></a></li>
-                <li><a href="#"><span class="lnr lnr-alarm"> 알림</span></a></li>
-                <li><a href="/pet/profile"><span class="lnr lnr-user"> 프로필</span></a></li>
-            </ul>
-        </nav>
-    </header>
-
-
-
-    <!--main sidebar-->
-    <aside class="sidebar">
-        <div class="profile-box">
-            <div class="profile-img"><a href=""></a></div>
-            <h3><a href="">멍뭉이</a></h3>
-            <p id="profileIntro"> #왈왈으르릉 #가까이오지마</p>
-        </div>
-    </aside>
 
 
     <!-- body -->
