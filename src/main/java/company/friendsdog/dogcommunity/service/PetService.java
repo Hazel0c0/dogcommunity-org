@@ -113,5 +113,23 @@ public class PetService {
     log.info(" petNo {}", petNo);
     return foundPet;
   }
+
+  public Pet userFindPet(HttpSession session) {
+    Pet pet = new Pet();
+
+    Long userNoInfo = LoginUtil.getCurrentLoginUser(session).getUserNo();
+    log.info("userNoInfo - {}",userNoInfo);
+    Long petNoInfo = petMapper.userFindPet(userNoInfo).getPetNo();
+//    log.info("petNoInfo - {}", petNoInfo);
+    String petNameInfo = petMapper.userFindPet(userNoInfo).getPetName();
+//    log.info("petNameInfo - {}", petNameInfo);
+    String petPhotoInfo = petMapper.userFindPet(userNoInfo).getPetPhoto();
+//    log.info("petPhotoInfo - {}", petPhotoInfo);
+    pet.setPetNo(petNoInfo);
+    pet.setPetName(petNameInfo);
+    pet.setPetPhoto(petPhotoInfo);
+    pet.setUserNo(userNoInfo);
+    return petMapper.userFindPet(pet);
+  }
 }
 

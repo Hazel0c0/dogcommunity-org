@@ -5,6 +5,8 @@ import company.friendsdog.dogcommunity.dto.request.PetProfileRequestDTO;
 import company.friendsdog.dogcommunity.entity.Pet;
 import company.friendsdog.dogcommunity.dto.page.Page;
 import company.friendsdog.dogcommunity.dto.page.PageMaker;
+import company.friendsdog.dogcommunity.repository.PetMapper;
+import company.friendsdog.dogcommunity.service.BoardService;
 import company.friendsdog.dogcommunity.service.PetService;
 import company.friendsdog.dogcommunity.util.LoginUtil;
 import company.friendsdog.dogcommunity.util.upload.FileUtil;
@@ -27,13 +29,14 @@ import static company.friendsdog.dogcommunity.util.LoginUtil.getCurrentLoginUser
 @Slf4j
 public class PetController {
   private final PetService petService;
-
+  private final PetMapper petMapper;
+  private final BoardService boardService;
 
   // 펫 프로필 카드 만들기 페이지 요청
   @GetMapping("/profile")
   public String petCardMake() {
     log.info("펫 카드 만들기 GET");
-    return "pet/profile";
+    return "pet/profileMod";
     //  return "neighbor/profileMod";
   }
 
@@ -41,6 +44,7 @@ public class PetController {
   private String rootPath;
 
   @PostMapping("/upload-file")
+
   public String uploadForm(@RequestParam("thumbnail") MultipartFile file) {
     log.info("file-name: {}", file.getOriginalFilename());
     log.info("file-size: {}KB", (double) file.getSize() / 1024);
@@ -70,7 +74,6 @@ public class PetController {
     // 추후 수정페이지로 보내줄거임
     return "/main/profile";
   }
-
 
 
   // 우리 동네 강아지 보기
@@ -123,6 +126,12 @@ public class PetController {
   // 페이지 이동
   // db에서 업데이트를 할려면 뭐가 필요한지
   public String modifyData(HttpSession session, Model model) {
+
+      Pet pet = petService.userFindPet(session);
+      model.addAttribute("p", pet);
+
+
+
 
         return "pet/profileMod";
     }
