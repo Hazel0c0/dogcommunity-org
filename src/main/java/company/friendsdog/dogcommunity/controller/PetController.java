@@ -90,8 +90,9 @@ public class PetController {
     model.addAttribute("addr", addr);
     model.addAttribute("petList", foundPet);
 
-    System.out.println(page);
     PageMaker maker = new PageMaker(page, petService.petCount(addr));
+    System.out.println(petService.petCount(addr));
+
     model.addAttribute("p", page);
     model.addAttribute("maker", maker);
 

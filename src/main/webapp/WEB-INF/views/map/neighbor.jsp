@@ -60,7 +60,7 @@
 <%--    <c:if test="${maker.prev}">--%>
       <div class="pageBtn-l">
         <a class="pageBtn-img"
-           href="/pet/neighbor?addr=${addr}&pageNo=${maker.begin - 1}">&lt;
+           href="/pet/neighbor?pageNo=${maker.begin - 1}">&lt;
         </a>
       </div>
 <%--    </c:if>--%>
@@ -69,7 +69,7 @@
 <%--    <c:if test="${maker.next}">--%>
       <div class="pageBtn-r">
         <a class="pageBtn-img"
-           href="/pet/neighbor?addr=${addr}&pageNo=${maker.end + 1}">&gt;</a>
+           href="/pet/neighbor?pageNo=${maker.end + 1}">&gt;</a>
       </div>
 <%--    </c:if>--%>
 
@@ -78,7 +78,7 @@
       <c:forEach var="i" begin="${maker.begin}" end="${maker.end}">
         <li data-page-num="${i}" class="page-item">
           <a class="page-link"
-             href="/pet/neighbor?addr=${addr}&pageNo=${i}">${i}</a>
+             href="/pet/neighbor?pageNo=${i}">${i}</a>
         </li>
       </c:forEach>
     </div>
