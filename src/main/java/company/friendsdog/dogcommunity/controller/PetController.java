@@ -143,38 +143,38 @@ public class PetController {
 
 //        log.info("petNo : {} ", petNo);
 
-    return "pet/profileMod";
-  }
+        return "pet/profileMod";
+    }
 
-  @PostMapping("/modify") //수정 폼안에 있는 데이터를 보내주는애, 수정하기 버튼 눌렀을 때
-  public String modifyData(HttpSession session, PetProfileModifyRequestDTO dto, Model model) {
+    @PostMapping("/modify") //수정 폼안에 있는 데이터를 보내주는애, 수정하기 버튼 눌렀을 때
+    public String modifyData(HttpSession session, PetProfileModifyRequestDTO dto, Model model) {
 
-    log.info("mod POST");
+        log.info("mod POST");
 
 
-    // 로그인한 유저 넘버
-    Long userNo = getCurrentLoginUser(session).getUserNo();
-    log.info("유저 넘버 : {}", userNo);
+        // 로그인한 유저 넘버
+        Long userNo = getCurrentLoginUser(session).getUserNo();
+        log.info("유저 넘버 : {}", userNo);
 //        currUser.getPwd();
 
-    // 유저넘버로 찾은 펫 넘머
-    Long petNo = petService.findOne(userNo).getPetNo();
-    log.info("펫 넘버 : {}", petNo);
+        // 유저넘버로 찾은 펫 넘머
+        Long petNo = petService.findOne(userNo).getPetNo();
+        log.info("펫 넘버 : {}", petNo);
 
-    log.info(dto.getHashtag());
+        log.info(dto.getHashtag());
 
 //        String hashTag = petService.getDetail((long) petNo).getHashtag();
-    // 세션에서 유저 정보 가져오기
+        // 세션에서 유저 정보 가져오기
 
-    //Long userNo = currUser.getUserNo();
-    // true / false 여부
+        //Long userNo = currUser.getUserNo();
+        // true / false 여부
 
-    // 서비스에 dto(클라이언트에서 수정된값) + 세션에서 받아온 유저넘버 같이 넘겨주기 <=해결
+        // 서비스에 dto(클라이언트에서 수정된값) + 세션에서 받아온 유저넘버 같이 넘겨주기 <=해결
 
-    boolean flag = petService.modify(dto, petNo, rootPath);
+        boolean flag = petService.modify(dto, petNo, rootPath);
 
-    //어디로 이동할지 정하기
-    return "redirect:/pet/modify";
-  }
+        //어디로 이동할지 정하기
+        return "redirect:/pet/modify";
+    }
 }
 

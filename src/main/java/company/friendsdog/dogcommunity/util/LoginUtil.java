@@ -1,12 +1,13 @@
 package company.friendsdog.dogcommunity.util;
 
 import company.friendsdog.dogcommunity.entity.User;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.web.util.WebUtils;
 
 import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
-
+@Slf4j
 public class LoginUtil {
 
     // 로그인 한 유저의 펫 - 세션키
@@ -18,7 +19,7 @@ public class LoginUtil {
     public static User getCurrentLoginUser(
             HttpSession session) {
         User loginUser = (User) session.getAttribute(LOGIN_KEY);
-
+        log.info("loginUser- {}", loginUser);
         return loginUser;
     }
 

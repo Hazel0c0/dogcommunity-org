@@ -5,9 +5,10 @@
 <!-- namespace에는 인터페이스 풀 네임(패키지+인터페이스이름) -->
 <mapper namespace="company.friendsdog.dogcommunity.repository.BoardMapper">
 
-    <select id="petFindAll" resultType="petBoard">
+    <select id="boardFindAll" resultType="petBoard">
         SELECT  a.board_no, a.content, b.pet_no,
         a.board_date_time, a.attached_img, a.likes, a.hits, b.pet_name, b.pet_photo
+        ,a.board_no
         FROM tbl_board a
         INNER JOIN tbl_pet b
         ON a.pet_no = b.pet_no
@@ -20,7 +21,7 @@
         ORDER BY board_date_time DESC
     </select>
 
-    <select id="petFindOne" resultType="petBoard">
+    <select id="boardFindOne" resultType="petBoard">
         SELECT  a.board_no, a.content, b.pet_no,
         a.board_date_time, a.attached_img, a.likes, a.hits, b.pet_name, b.pet_photo
         FROM tbl_board a
@@ -62,7 +63,9 @@
         <if test="type == 'content'">
             WHERE content LIKE CONCAT('%', #{keyword}, '%')
         </if>
-
+        <if test="type == 'petName'">
+            WHERE b.pet_name LIKE CONCAT('%', #{keyword}, '%')
+        </if>
     </select>
 
     <update id="upHitsCount">

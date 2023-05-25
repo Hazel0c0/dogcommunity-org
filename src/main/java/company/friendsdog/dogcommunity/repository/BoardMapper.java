@@ -10,10 +10,10 @@ import java.util.List;
 public interface BoardMapper {
 
     // 게시물 전체 조회
-    List<Board> petFindAll(Search page);
+    List<Board> boardFindAll(Search page);
 
     // 게시물 상세 조회
-    Board petFindOne(Long boardNo);
+    Board boardFindOne(Long boardNo);
 
     // 게시물 업로드
     boolean save(Board board);
@@ -28,7 +28,7 @@ public interface BoardMapper {
     void upHitsCount(Long boardNo);
 
     // 총 게시물 수
-    int count(Search search);
+    Long count(Search search);
 
     boolean petFindInfo(Board board);
 }

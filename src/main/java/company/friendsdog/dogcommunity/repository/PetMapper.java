@@ -30,15 +30,14 @@ public interface PetMapper {
 
   //insert가 필요한 경우  새로운 정보 투입 ! !(회원가입)
   //int를 안쓰고 boolean을 쓴 이유
-  boolean insert(User user);
+   boolean  insert(User user);
 
   //펫 프로필 수정 클래스담아서
 
   boolean modify(Pet pet);
 
   PetCardResponseDTO randomPet(String addDetail);
-
-  Pet petFindInfo(Pet pet);
+  Pet userFindPet(Pet pet);
 
   int petCount(String addr);
 

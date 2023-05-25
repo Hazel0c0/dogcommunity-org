@@ -27,9 +27,9 @@ public class BoardService {
     private final PetMapper petMapper;
 
     // 게시판 목록 중간처리
-    public List<BoardListResponseDTO> petFindAll(Search page) {
+    public List<BoardListResponseDTO> boardFindAll(Search page) {
 
-        return petBoardMapper.petFindAll(page)
+        return petBoardMapper.boardFindAll(page)
                 .stream()
                 .map(board -> new BoardListResponseDTO(board))
                 .collect(toList());
@@ -72,8 +72,8 @@ public class BoardService {
 
 
     // 게시판 확인
-    public BoardDetailResponseDTO petFindOne(Long boardNo) {
-        Board board = petBoardMapper.petFindOne(boardNo);
+    public BoardDetailResponseDTO boardFindOne(Long boardNo) {
+        Board board = petBoardMapper.boardFindOne(boardNo);
         petBoardMapper.upHitsCount(boardNo);
         return new BoardDetailResponseDTO(board);
     }
@@ -87,12 +87,12 @@ public class BoardService {
     }
 
     // 게시물 수
-    public int count(Search search) {
+    public Long count(Search search) {
         return petBoardMapper.count(search);
     }
 
 
-    public Pet petFindInfo(HttpSession session) {
+    public Pet userFindPet(HttpSession session) {
         Pet pet = new Pet();
 
         Long userNoInfo = LoginUtil.getCurrentLoginUser(session).getUserNo();
@@ -107,6 +107,6 @@ public class BoardService {
         pet.setPetName(petNameInfo);
         pet.setPetPhoto(petPhotoInfo);
         pet.setUserNo(userNoInfo);
-        return petMapper.petFindInfo(pet);
+        return petMapper.userFindPet(pet);
     }
 }

@@ -1,5 +1,6 @@
 package company.friendsdog.dogcommunity.controller;
 
+import company.friendsdog.dogcommunity.dto.page.PageMaker;
 import company.friendsdog.dogcommunity.dto.page.Search;
 import company.friendsdog.dogcommunity.dto.request.BoardRequestDTO;
 import company.friendsdog.dogcommunity.dto.response.BoardDetailResponseDTO;
@@ -10,7 +11,6 @@ import company.friendsdog.dogcommunity.repository.PetMapper;
 import company.friendsdog.dogcommunity.repository.UserMapper;
 import company.friendsdog.dogcommunity.service.BoardService;
 import company.friendsdog.dogcommunity.util.LoginUtil;
-import company.friendsdog.dogcommunity.util.upload.FileUtil;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Value;
@@ -27,6 +27,7 @@ import java.io.IOException;
 import java.util.List;
 
 import static company.friendsdog.dogcommunity.util.LoginUtil.LOGIN_KEY;
+import static company.friendsdog.dogcommunity.util.upload.FileUtil.uploadFile;
 
 @Controller
 @RequiredArgsConstructor
@@ -45,58 +46,45 @@ public class BoardController {
     public String petFindAll(Search page, Model model) {
         log.info("/board/list : GET");
         log.info("page : {}", page);
-        List<BoardListResponseDTO> dto = boardService.petFindAll(page);
+        List<BoardListResponseDTO> dto = boardService.boardFindAll(page);
+        log.info("listdto[0] : {}", dto.get(0));
+        PageMaker maker = new PageMaker(page, boardService.count(page));
 
         model.addAttribute("bList", dto);
         model.addAttribute("p", page);
+        model.addAttribute("maker", maker);
+
 
         return "/board/list2";
     }
 
-    // 게시판 상세 조회 요청
-    @GetMapping("/detail")
-    public String petFindOne(Long boardNo, Search search, Model model) {
-//        log.info("/board/detail : GET");
+//    // 게시판 상세 조회 요청
+//    @GetMapping("/detail")
+//    public String boardFindOne(Long boardNo, Search search, Model model) {
+////        log.info("/board/detail : GET");
 //        log.info("boardNo - {}", boardNo);
-        BoardDetailResponseDTO dto = boardService.petFindOne(boardNo);
-        model.addAttribute("b", dto);
-        model.addAttribute("p", search);
+//        BoardDetailResponseDTO dto = boardService.boardFindOne(boardNo);
+//        model.addAttribute("b", dto);
+//        model.addAttribute("p", search);
 //        log.info("dto- {}", dto);
-        return "board/detail";
-
-    }
-
-
-    // 작동이 안되서 이거 넣으니깐 됨
-    @GetMapping("/write")
-    public String save(HttpSession session) {
-
-//        if(!LoginUtil.isLogin(session)) {
-//            return "redirect:/members/sign-in"; // 인가 처리
-//        } // 이제 문지기인 인터셉터를 세운다
-
-        System.out.println("/board/write : GET");
-        return "board/write";
-
-    }
-
-
-
-
-//    // 게시판 글쓰기 화면 조회 요청
-//    @GetMapping("/write")
-//    public String save(HttpSession session, Model model) {
-//        Long userNoInfo = LoginUtil.getCurrentLoginUser(session).getUserNo();
-//        Pet p = petMapper.userFindPet(userNoInfo);
-//        if(p == null)
-//        {
-//            return "redirect:/pet/profile";
-//        }
-//        Pet pet = boardService.petFindInfo(session);
-//        model.addAttribute("p", pet);
+//        return "board/detail";
 //
-//        return "board/write";
 //    }
+
+    // 게시판 글쓰기 화면 조회 요청
+    @GetMapping("/write")
+    public String save(HttpSession session, Model model) {
+        Long userNoInfo = LoginUtil.getCurrentLoginUser(session).getUserNo();
+        Pet p = petMapper.userFindPet(userNoInfo);
+        if(p == null)
+        {
+            return "redirect:/pet/profile";
+        }
+        Pet pet = boardService.userFindPet(session);
+        model.addAttribute("p", pet);
+
+        return "board/write";
+    }
 
     // 게시판 글쓰기 요청 처리
     @PostMapping("/write")
@@ -105,7 +93,7 @@ public class BoardController {
 //        log.info("첨부파일 사진 이름: {}", dto.getAttachedImg().getOriginalFilename());
 //        log.info("경로 - {}",rootPath);
 
-        String imgPath = FileUtil.uploadFile(dto.getAttachedImg(), rootPath);
+        String imgPath = uploadFile(dto.getAttachedImg(), rootPath);
         boardService.save(dto, session, imgPath);
         log.info("dto @@@@@@@@@@@@@@ - {}", dto);
         return "redirect:/board/list2";

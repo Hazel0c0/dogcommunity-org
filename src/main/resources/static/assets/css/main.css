@@ -1,211 +1,199 @@
-* {
-    box-sizing: border-box;
-}
 
-body {
-    background-color: #f0f0f0;
-    display: flex;
+/** {*/
+/*    box-sizing: border-box;*/
+/*}*/
 
+/*body {*/
+/*    background-color: #f0f0f0;*/
+/*    display: flex;*/
 
-    /* 사이드바 고정후 게시글 깨지는거 교정 */
-    justify-content: flex-end;
-}
+/*}*/
 
-button {
-    outline: none;
-    border: none;
-}
+/*button {*/
+/*    outline: none;*/
+/*    border: none;*/
+/*}*/
 
-#wrap {
-    width: 60%;
-    margin: 100px auto;
-}
+/*#wrap {*/
+/*    width: 60%;*/
+/*    margin: 100px auto;*/
+/*}*/
 
 
-/* reset */
-a {
-    color: inherit;
-    text-decoration: none;
-}
+/*!* reset *!*/
+/*a {*/
+/*    color: inherit;*/
+/*    text-decoration: none;*/
+/*}*/
 
-/* common style */
-.hide {
-    display: none !important;
-}
+/*!* common style *!*/
+/*.hide {*/
+/*    display: none !important;*/
+/*}*/
 
-/* header style */
-header {
-    background: black;
-    position: fixed;
-    width: 100%;
-    top: 0;
-    z-index: 1000;
-    font-size: 33px;
-    font-family: Linearicons-Free;
-}
+/*!* header style *!*/
+/*header {*/
+/*    background: black;*/
+/*    position: fixed;*/
+/*    width: 100%;*/
+/*    top: 0;*/
+/*    z-index: 1000;*/
+/*    font-size: 33px;*/
+/*    font-family: Linearicons-Free;*/
+/*}*/
 
-header.on {
-    background: #222;
-    border-bottom: 1px solid #2c2c2c;
-    transition: .4s;
-}
+/*header.on {*/
+/*    background: #222;*/
+/*    border-bottom: 1px solid #2c2c2c;*/
+/*    transition: .4s;*/
+/*}*/
 
-header .inner-header {
-    /* background: orange; */
-    width: 94%;
-    margin: 0 auto;
-    height: 150px;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    font-weight: 500;
-    color: #fff;
-}
+/*header .inner-header {*/
+/*    !* background: orange; *!*/
+/*    width: 94%;*/
+/*    margin: 0 auto;*/
+/*    height: 150px;*/
+/*    display: flex;*/
+/*    justify-content: space-between;*/
+/*    align-items: center;*/
+/*    font-weight: 500;*/
+/*    color: #fff;*/
+/*}*/
 
-header .inner-header .logo {
-    /* background: tomato; */
-    margin-right: 20px;
-}
+/*header .inner-header .logo {*/
+/*    !* background: tomato; *!*/
+/*    margin-right: 20px;*/
+/*}*/
 
-header .inner-header .logo a {
-    display: block;
-}
+/*header .inner-header .logo a {*/
+/*    display: block;*/
+/*}*/
 
-header .inner-header .logo a img {
-    height: 70px;
-}
+/*header .inner-header .logo a img {*/
+/*    height: 70px;*/
+/*}*/
 
-header .inner-header .intro-text {
-    /* background: greenyellow; */
-    flex: 7;
-    letter-spacing: 3px;
-    text-transform: uppercase;
-    /* margin: 20px; */
-}
+/*header .inner-header .intro-text {*/
+/*    !* background: greenyellow; *!*/
+/*    flex: 7;*/
+/*    letter-spacing: 3px;*/
+/*    text-transform: uppercase;*/
+/*    !* margin: 20px; *!*/
+/*}*/
 
-header .inner-header .menu-open {
-    /* background: skyblue; */
-    flex: 1.5;
-    display: flex;
-    justify-content: flex-end;
-    align-items: center;
-}
+/*header .inner-header .menu-open {*/
+/*    !* background: skyblue; *!*/
+/*    flex: 1.5;*/
+/*    display: flex;*/
+/*    justify-content: flex-end;*/
+/*    align-items: center;*/
+/*}*/
 
-header .inner-header .menu-open .lnr-menu {
-    font-size: 33px;
-    margin-left: 15px;
-}
+/*header .inner-header .menu-open .lnr-menu {*/
+/*    font-size: 33px;*/
+/*    margin-left: 15px;*/
+/*}*/
 
-/* header gnb style */
-header .gnb {
-    background: #000;
-    color: white;
-    height: 100vh;
+/*!* header gnb style *!*/
+/*header .gnb {*/
+/*    background: #000;*/
+/*    color: white;*/
+/*    height: 100vh;*/
 
-    padding: 70px 30px;
-    box-sizing: border-box;
-    /* border: red; */
+/*    padding: 70px 30px;*/
+/*    box-sizing: border-box;*/
+/*    !* border: red; *!*/
 
-    position: fixed;
-    z-index: 2000;
-    right: -100%;
-    top: 60px;
-    transition: .5s;
+/*    position: fixed;*/
+/*    z-index: 2000;*/
+/*    right: -100%;*/
+/*    top: 60px;*/
+/*    transition: .5s;*/
 
-    display: flex;
-    flex-direction: row-reverse;
-}
+/*    display: flex;*/
+/*    flex-direction: row-reverse;*/
+/*}*/
 
-header .gnb.on {
-    right: 0;
-}
+/*header .gnb.on {*/
+/*    right: 0;*/
+/*}*/
 
-header .gnb .close {
-    display: block;
-    color: #fff;
-}
+/*header .gnb .close {*/
+/*    display: block;*/
+/*    color: #fff;*/
+/*}*/
 
-header .gnb ul {
-    margin-right: 20px;
-}
+/*header .gnb ul {*/
+/*    margin-right: 20px;*/
+/*}*/
 
-header .gnb ul li {
-    font-size: 30px;
-    font-weight: 700;
-    line-height: 2;
-}
+/*header .gnb ul li {*/
+/*    font-size: 30px;*/
+/*    font-weight: 700;*/
+/*    line-height: 2;*/
+/*}*/
 
-header .gnb ul li:hover,
-header .gnb ul li.active {
-    color: rgb(233, 101, 123);
-}
+/*header .gnb ul li:hover,*/
+/*header .gnb ul li.active {*/
+/*    color: rgb(233, 101, 123);*/
+/*}*/
 
-/*======left side bar=========== */
-aside.sidebar {
-    background-color: green;
-    width: 20%;
-    display: flex;
-    flex-direction: column;
-    flex-wrap: wrap;
-    padding: 30px;
-    height: 100vh;
-    color: white;
-    /* flex: 2 */
+/*!*======left side bar=========== *!*/
+/*aside.sidebar {*/
+/*    background-color: green;*/
+/*    width: 20%;*/
+/*    display: flex;*/
+/*    flex-direction: column;*/
+/*    flex-wrap: wrap;*/
+/*    padding: 30px;*/
+/*    height: 300vh;*/
+/*    color: white;*/
+/*    !* flex: 2 *!*/
+/*}*/
 
+/*aside.sidebar .profile-box {*/
+/*    border: 2px antiquewhite;*/
+/*    margin-top: 150px;*/
+/*    padding: 30px;*/
+/*    text-align: center;*/
+/*}*/
 
-    /* 사이드바 고정 설정 추가 */
-    position: fixed;
-    top: 0;
-    left: 0;
-}
+/*aside.sidebar .profile-box .profile-img {*/
+/*    border: 2px solid yellow;*/
+/*    background: url('/assets/img/dog.png') no-repeat center;*/
+/*    background-size: contain;*/
+/*    border-radius: 50%;*/
+/*    height: 300px;*/
+/*}*/
 
-aside.sidebar .profile-box {
-    border: 2px solid red;
-    margin-top: 150px;
-    padding: 30px;
-    text-align: center;
-}
+/*aside.sidebar .profile-box h3 {*/
+/*    border: 1px solid orange;*/
+/*    margin: 20px;*/
+/*}*/
 
-aside.sidebar .profile-box .profile-img {
-    border: 2px solid yellow;
-    background: url('/assets/img/dog.png') no-repeat center;
-    background-size: contain;
-    border-radius: 50%;
-    height: 300px;
-}
-
-aside.sidebar .profile-box h3 {
-    border: 1px solid orange;
-    margin: 20px;
-}
-
+/* 메인 페이지 바디 부분 CSS */
 /* =====Begin main page body===== */
 
 #boxRow1 {
     display: flex;
-    border: 3px solid red;
+    /*border: 3px solid red;*/
     flex-direction: row;
     justify-content: space-around;
     width: 80%;
-    flex-wrap: wrap;
 }
 
 #boxRow1>* {
     width: 100%;
 }
 
-/* 메인 박스 */ 
-#card-container {
+/* 메인 박스 */ #card-container {
 
                 flex-direction: row;
                 flex-wrap: wrap;
                 margin-left: 30px;
                 margin-top: 50px;
-
-                height: 500px;
-                
+                /* height: 500px; */
                 /* text-align: center; */
-                flex-basis: calc(25% - 20px);
             }
 
 /* 메인박스 안 작은 박스 */
@@ -298,14 +286,12 @@ aside.sidebar .profile-box h3 {
     /* 이미지 가운데 정렬 */
     /* top: 50%;
 left: 50%; */
-
     /* transform: translate(-50%, -50%); */
-    /* width: 25rem;
-    height: 20rem; */
+    width: 25rem;
+    height: 20rem;
     /* 사진 박스안에 꽉 채우기 사진 픽셀 깨짐 */
-
-    width: 100%;
-    height: 100%;
+    /* width: 100%; */
+    /* height: 100%; */
 }
 
 /* 사진 바로 밑 게시글 내용 시작 박스 */
@@ -377,9 +363,9 @@ flex-grow: 1;
 
 
 
-/* body {
- margin: 100px auto;
- background: rgba(98, 95, 95, 05);
+   /* body {
+    margin: 100px auto;
+    background: rgba(98, 95, 95, 05);
 
 
 } */
@@ -387,10 +373,10 @@ flex-grow: 1;
 .backgr {
     width: 100%;
     height: 100vh;
-    position: fixed;
+    position: absolute;
     left: 0;
     top: 0;
-    margin: 90px auto;
+    margin: 100px auto;
     background: rgba(98, 95, 95, 0.8);
     z-index: 100;
 }
@@ -427,7 +413,7 @@ flex-grow: 1;
     /* margin-bottom: 50px;
     margin-right: 300px;
     margin-top: 50px; */
-    /* background: rgba(98, 95, 95, 0.8); */
+   /* background: rgba(98, 95, 95, 0.8); */
 }
 
 .xbutton button {
@@ -473,8 +459,7 @@ flex-grow: 1;
 }
 
 .modal-content {
-    border: none;
-    height: 72%;
+    height: 75%;
     /* background: #fff; */
 }
 .topmini {
@@ -483,7 +468,7 @@ flex-grow: 1;
 }
 
 .card-title {
-    padding: 5px;
+   padding: 5px;
     display: flex;
     border-bottom: 1px solid gray;
 }
@@ -532,20 +517,17 @@ flex-grow: 1;
 /*  댓글 내용 박스 */
 .usersReply {
     /* border: 1px solid #000; */
-    /* background: orangered; */
+    background: orangered;
     height: 100%;
     font-size: 16px;
 
-    /* overflow: auto;  무한 스크롤 */
+    /* overflow: auto;  무한 스크롤 */ 
 }
 
 .replytitle {
     display: flex;
 }
-#replyData {
-    overflow-y: scroll; /* 수직 스크롤 설정 */
-    height: 320px; /* 스크롤 박스의 높이 설정 */
-}
+
 
 /* 버튼들 담겨 있는 박스 */
 .eventbuttons {
@@ -590,7 +572,7 @@ flex-grow: 1;
     display: flex;
     justify-content: space-between;
 
-    height: 30px;
+   height: 49px;
 }
 
 /* 사용자 댓글 입력창  */
@@ -611,11 +593,10 @@ flex-grow: 1;
 .row .modal-card .inputbutton {
     /* margin-top: 10px; */
     margin-right: 10px;
-    /* width: 10%; */
-    /* font-size: 18px; */
+    width: 10%;
+    font-size: 18px;
     font-weight: 700;
 
-    background: #fff;
     color: rgb(147, 203, 225);
     text-align: center;
 }
@@ -633,7 +614,7 @@ flex-grow: 1;
     width: 400px;
     height: 400px;
     /* margin-top: 50px; */
-    margin: 70px auto;
+    margin: auto;
     border-radius: 15px;
 }
 /*  맨위 상위 박스 좋아요 */
@@ -650,8 +631,8 @@ flex-grow: 1;
     border-bottom: 1px solid #000;
 }
 .likesbutton {
-    margin-right: 10px;
-    margin-top: 50px;
+  margin-right: 10px;
+  margin-top: 50px;
     /* width: 15px;
     height: 20px; */
     float: right;
