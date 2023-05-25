@@ -42,7 +42,7 @@ public class BoardController {
     private final PetMapper petMapper;
 
     // 게시판 목록 조회 요청
-    @GetMapping("/list2")
+    @GetMapping("/main")
     public String petFindAll(Search page, Model model) {
         log.info("/board/list : GET");
         log.info("page : {}", page);
