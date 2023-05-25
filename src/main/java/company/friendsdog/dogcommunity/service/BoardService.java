@@ -5,6 +5,7 @@ import company.friendsdog.dogcommunity.dto.request.BoardRequestDTO;
 import company.friendsdog.dogcommunity.dto.response.BoardDetailResponseDTO;
 import company.friendsdog.dogcommunity.dto.response.BoardListResponseDTO;
 import company.friendsdog.dogcommunity.entity.Board;
+import company.friendsdog.dogcommunity.entity.Gender;
 import company.friendsdog.dogcommunity.entity.Pet;
 import company.friendsdog.dogcommunity.repository.BoardMapper;
 import company.friendsdog.dogcommunity.repository.PetMapper;
@@ -97,17 +98,24 @@ public class BoardService {
         Pet pet = new Pet();
 
         Long userNoInfo = LoginUtil.getCurrentLoginUser(session).getUserNo();
-        log.info("userNoInfo - {}",userNoInfo);
         Long petNoInfo = petMapper.userFindPet(userNoInfo).getPetNo();
-        log.info("petNoInfo - {}", petNoInfo);
         String petNameInfo = petMapper.userFindPet(userNoInfo).getPetName();
-        log.info("petNameInfo - {}", petNameInfo);
         String petPhotoInfo = petMapper.userFindPet(userNoInfo).getPetPhoto();
-        log.info("petPhotoInfo - {}", petPhotoInfo);
+        long petAge = petMapper.userFindPet(userNoInfo).getPetAge();
+        String hashtag = petMapper.userFindPet(userNoInfo).getHashtag();
+        Gender petGender = petMapper.userFindPet(userNoInfo).getPetGender();
+        String petKind = petMapper.userFindPet(userNoInfo).getPetKind();
+
+
         pet.setPetNo(petNoInfo);
         pet.setPetName(petNameInfo);
         pet.setPetPhoto(petPhotoInfo);
         pet.setUserNo(userNoInfo);
+        pet.setPetKind(petKind);
+        pet.setPetAge(petAge);
+        pet.setHashtag(hashtag);
+        pet.setPetGender(petGender);
+
         return petMapper.userFindPet(pet);
     }
 }

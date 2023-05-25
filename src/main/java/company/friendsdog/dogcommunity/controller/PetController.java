@@ -5,6 +5,8 @@ import company.friendsdog.dogcommunity.dto.request.PetProfileRequestDTO;
 import company.friendsdog.dogcommunity.entity.Pet;
 import company.friendsdog.dogcommunity.dto.page.Page;
 import company.friendsdog.dogcommunity.dto.page.PageMaker;
+import company.friendsdog.dogcommunity.repository.PetMapper;
+import company.friendsdog.dogcommunity.service.BoardService;
 import company.friendsdog.dogcommunity.service.PetService;
 import company.friendsdog.dogcommunity.util.LoginUtil;
 import company.friendsdog.dogcommunity.util.upload.FileUtil;
@@ -27,7 +29,8 @@ import static company.friendsdog.dogcommunity.util.LoginUtil.getCurrentLoginUser
 @Slf4j
 public class PetController {
   private final PetService petService;
-
+  private final PetMapper petMapper;
+  private final BoardService boardService;
 
   // 펫 프로필 카드 만들기 페이지 요청
   @GetMapping("/profile")
@@ -124,27 +127,13 @@ public class PetController {
   // db에서 업데이트를 할려면 뭐가 필요한지
   public String modifyData(HttpSession session, Model model) {
 
-//        // true / false 여부
-//        boolean flag = petService.modify(dto);
-
-//        Long userNo = getCurrentLoginUser(session).getUserNo();
-////        currUser.getPwd();
-//    Long petNo = petService.findOne(userNo).getPetNo();
-//
-//        // 하나 하나 로그 찍어보기
-//        log.info("mod petNo{}",petNo);
-//
-//
-//       String hashTag = petService.getDetail((long) petNo).getHashtag();
-//
-//        model.addAttribute("petNo", petNo);
-//        model.addAttribute("hashTag", hashTag);
-//        model.addAttribute("session", session);
+      Pet pet = petService.userFindPet(session);
+      model.addAttribute("p", pet);
 
 
-//        log.info("petNo : {} ", petNo);
 
-        return "pet/profileMod";
+
+        return "neighbor/profileMod";
     }
 
     @PostMapping("/modify") //수정 폼안에 있는 데이터를 보내주는애, 수정하기 버튼 눌렀을 때
