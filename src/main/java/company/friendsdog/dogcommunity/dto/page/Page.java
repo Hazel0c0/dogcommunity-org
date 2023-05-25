@@ -1,4 +1,4 @@
-package company.friendsdog.dogcommunity.page;
+package company.friendsdog.dogcommunity.dto.page;
 
 import lombok.AllArgsConstructor;
 import lombok.Getter;

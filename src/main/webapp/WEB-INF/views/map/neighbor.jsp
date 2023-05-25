@@ -12,7 +12,6 @@
   <%@ include file="../include/header.jsp" %>
 
 
-
   <!-- <script src="side-menu.js" defer></script> -->
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet">
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.6.0/font/bootstrap-icons.css"/>
@@ -25,17 +24,13 @@
   <link rel="stylesheet" href="/assets/css/main-static.css">
   <link rel="stylesheet" href="/assets/css/body.css">
 
-<%--  <link rel="stylesheet" href="/assets/css/profile.css">--%>
+  <%--  <link rel="stylesheet" href="/assets/css/profile.css">--%>
   <link rel="stylesheet" href="/assets/css/petCard.css">
 
 
 </head>
 <body>
 <div class="mapper">
-  <div class="pageBtn-l">
-    <a class="pageBtn-img"
-       href="/map/neighbor?addr=${addr}pageNo=${maker.begin - 1}">&lt;</a>
-  </div>
   <%--주변 친구 펫 카드들--%>
   <div class="pet-card-list">
     <%--    펫 카드 forEach 불러오기--%>
@@ -59,26 +54,35 @@
         </div>
       </div>
     </c:forEach>
+  </div>
+  <%--  좌 --%>
+  <div class="btn">
+<%--    <c:if test="${maker.prev}">--%>
+      <div class="pageBtn-l">
+        <a class="pageBtn-img"
+           href="/pet/neighbor?addr=${addr}&pageNo=${maker.begin - 1}">&lt;
+        </a>
+      </div>
+<%--    </c:if>--%>
 
-    <div class="pageBtn-r">
-      <a class="pageBtn-img"
-         href="/map/neighbor?pageNo=${maker.finalPage}">&gt;</a>
+    <%--    우 --%>
+<%--    <c:if test="${maker.next}">--%>
+      <div class="pageBtn-r">
+        <a class="pageBtn-img"
+           href="/pet/neighbor?addr=${addr}&pageNo=${maker.end + 1}">&gt;</a>
+      </div>
+<%--    </c:if>--%>
+
+    <%--    숫자 버튼 --%>
+    <div class="page-btn">
+      <c:forEach var="i" begin="${maker.begin}" end="${maker.end}">
+        <li data-page-num="${i}" class="page-item">
+          <a class="page-link"
+             href="/pet/neighbor?addr=${addr}&pageNo=${i}">${i}</a>
+        </li>
+      </c:forEach>
     </div>
 
-    <c:forEach var="i" begin="${maker.begin}" end="${maker.end}">
-      <li data-page-num="${i}" class="page-item">
-        <a class="page-link" href="/board/list?pageNo=${i}&type=${s.type}&keyword=${s.keyword}">${i}</a>
-      </li>
-    </c:forEach>
-
-  </div>
-  <div class="page-btn">
-    <c:forEach var="i" begin="${maker.begin}" end="${maker.end}">
-      <li data-page-num="${i}" class="page-item">
-        <a class="page-link"
-           href="/map/neighbor?pageNo=${i}">${i}</a>
-      </li>
-    </c:forEach>
   </div>
 
 </body>

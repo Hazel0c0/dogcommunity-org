@@ -1,26 +1,19 @@
 package company.friendsdog.dogcommunity.controller;
 
 import company.friendsdog.dogcommunity.dto.request.MapRequestDTO;
-import company.friendsdog.dogcommunity.entity.Pet;
 import company.friendsdog.dogcommunity.entity.Place;
-import company.friendsdog.dogcommunity.page.Page;
-import company.friendsdog.dogcommunity.page.PageMaker;
 import company.friendsdog.dogcommunity.service.BoardService;
 import company.friendsdog.dogcommunity.service.PlaceService;
 import company.friendsdog.dogcommunity.service.PetService;
-import company.friendsdog.dogcommunity.util.LoginUtil;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
-import org.apache.catalina.Session;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
 import javax.servlet.http.HttpSession;
-import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
 
 import static org.springframework.http.ResponseEntity.ok;
 
@@ -84,27 +77,5 @@ public class MapController {
     List<Place> placeList = placeService.findPlace(addr);
 //    System.out.println("placeList = " + placeList);
     return ok().body(placeList);
-  }
-
-
-  // 우리 동네 강아지 보기
-  @GetMapping("/neighbor")
-  public String findNeighbor(
-      HttpSession session,
-      Model model,
-      Page page
-  ) {
-    model.addAttribute("noneSidebar", true);
-
-    String addr = LoginUtil.getCurrentLoginUser(session).getAddr();
-    List<Pet> foundPet = petService.findNeighbor(addr);
-
-    model.addAttribute("addr", addr);
-    model.addAttribute("petList", foundPet);
-
-    PageMaker maker = new PageMaker(page, petService.petCount(addr));
-    model.addAttribute("maker", maker);
-
-    return "map/neighbor";
   }
 }

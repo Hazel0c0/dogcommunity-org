@@ -2,8 +2,8 @@
 package company.friendsdog.dogcommunity.service;
 
 import company.friendsdog.dogcommunity.dto.PetProfileModifyRequestDTO;
+import company.friendsdog.dogcommunity.dto.page.Page;
 import company.friendsdog.dogcommunity.dto.request.PetProfileRequestDTO;
-import company.friendsdog.dogcommunity.dto.response.PetCardResponseDTO;
 import company.friendsdog.dogcommunity.entity.Pet;
 import company.friendsdog.dogcommunity.entity.User;
 import company.friendsdog.dogcommunity.repository.PetMapper;
@@ -12,7 +12,6 @@ import company.friendsdog.dogcommunity.util.upload.FileUtil;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
-import org.springframework.web.multipart.MultipartFile;
 
 import javax.servlet.http.HttpSession;
 import java.util.List;
@@ -45,9 +44,11 @@ public class PetService {
   }
 
   // ㅇㅇ동에 있는 모든 강아지 찾기
-  public List<Pet> findNeighbor(String addr){
+  public List<Pet> findNeighbor(String addr, Page page){
     log.info("선택한 동네 : {}",addr);
-    List<Pet> petByAddr = petMapper.findPetByAddr(addr);
+    System.out.println("page : "+page);
+    List<Pet> petByAddr = petMapper.findPetByAddr(addr,page);
+    System.out.println("petByAddr = " + petByAddr);
     return petByAddr;
   }
   // ㅇㅇ동 강아지 수

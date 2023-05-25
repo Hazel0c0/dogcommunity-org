@@ -1,5 +1,6 @@
 package company.friendsdog.dogcommunity.repository;
 
+import company.friendsdog.dogcommunity.dto.page.Page;
 import company.friendsdog.dogcommunity.dto.response.PetCardResponseDTO;
 import company.friendsdog.dogcommunity.entity.Pet;
 import company.friendsdog.dogcommunity.entity.User;
@@ -15,7 +16,9 @@ public interface PetMapper {
   boolean save(Pet pet);
 
   // '동'으로 펫 찾기
-  List<Pet> findPetByAddr(String addr);
+  List<Pet> findPetByAddr(
+      @Param("addr") String addr,
+      @Param("page") Page page);
 
   // userNo로 펫 찾기
   Pet userFindPet(Long uNo);
@@ -27,13 +30,14 @@ public interface PetMapper {
 
   //insert가 필요한 경우  새로운 정보 투입 ! !(회원가입)
   //int를 안쓰고 boolean을 쓴 이유
-   boolean  insert(User user);
+  boolean insert(User user);
 
   //펫 프로필 수정 클래스담아서
 
   boolean modify(Pet pet);
 
   PetCardResponseDTO randomPet(String addDetail);
+
   Pet petFindInfo(Pet pet);
 
   int petCount(String addr);

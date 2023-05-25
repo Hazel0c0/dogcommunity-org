@@ -43,7 +43,7 @@
         <ul>
             <li><a href="/main"><span class="lnr lnr-home"> 홈</span></a></li>
             <li><a href="#"><span class="lnr lnr-magnifier"> 검색</span></a></li>
-            <li><a href="/map/neighbor"><span class="lnr lnr-map"> 내 주변 친구</span></a></li>
+            <li><a href="/pet/neighbor"><span class="lnr lnr-map"> 내 주변 친구</span></a></li>
             <li><a href="/map/map"><span class="lnr lnr-map"> 산책가까? </span></a></li>
             <li><a href="/board/list2"><span class="lnr lnr-bubble"> 자유게시판</span></a></li>
             <li><a href="/board/write"><span class="lnr lnr-heart"> 글 쓰기</span></a></li>

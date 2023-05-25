@@ -110,3 +110,10 @@ ORDER BY COUNT(*) DESC;
 select *
 from tbl_place
 where addr = '마포구' and keyword='식당';
+
+SELECT user_no, pet_No, pet_name, pet_age
+     , pet_kind, pet_gender,pet_photo
+     ,profile_date_time, hashtag, addr, add_detail
+FROM tbl_pet
+WHERE addr = '강남구'
+        LIMIT 0, 4;
