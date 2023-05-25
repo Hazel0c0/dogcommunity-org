@@ -34,11 +34,15 @@ public class PetController {
 
   // 펫 프로필 카드 만들기 페이지 요청
   @GetMapping("/profile")
-  public String petCardMake() {
+  public String petCardMake(
+  ) {
     log.info("펫 카드 만들기 GET");
-    return "pet/profileMod";
+
+    return "pet/profile";
     //  return "neighbor/profileMod";
   }
+
+
 
   @Value("${file-upload.root-path}")
   private String rootPath;
@@ -55,7 +59,7 @@ public class PetController {
     return "redirect:/upload-form";
   }
 
-  // 펫 프로필 정보 요청
+  // 펫 카드 정보 저장
   @PostMapping("/profile")
   public String petCardMake(PetProfileRequestDTO dto, HttpSession session) {
     log.info("펫 입력 정보 : {}", dto);
@@ -71,9 +75,55 @@ public class PetController {
     boolean petSave = petService.petCardMake(dto, session, savePath);
 //    log.info("펫 저장 : {}", petSave);
 
-    // 추후 수정페이지로 보내줄거임
-    return "/main/profile";
+    return "redirect:/pet/modify";
   }
+
+  // 펫 카드 수정창 요청
+  @GetMapping("/modify")
+    public String modifyData(HttpSession session, Model model) {
+
+      log.info("펫 수정창 들어옴 - 세션 : {}", session);
+
+      Pet foundPet = petService.userFindPet(session);
+
+      log.info("펫 수정 - 기존 펫 정보 : {}",foundPet);
+    model.addAttribute("p", foundPet);
+
+    return "pet/profileMod";
+  }
+
+  @PostMapping("/modify") //수정 폼안에 있는 데이터를 보내주는애, 수정하기 버튼 눌렀을 때
+  public String modifyData(HttpSession session, PetProfileModifyRequestDTO dto, Model model) {
+
+    log.info("mod POST");
+
+
+    // 로그인한 유저 넘버
+    Long userNo = getCurrentLoginUser(session).getUserNo();
+    log.info("유저 넘버 : {}", userNo);
+//        currUser.getPwd();
+
+    // 유저넘버로 찾은 펫 넘머
+    Long petNo = petService.findOne(userNo).getPetNo();
+    log.info("펫 넘버 : {}", petNo);
+
+    log.info(dto.getHashtag());
+
+//        String hashTag = petService.getDetail((long) petNo).getHashtag();
+    // 세션에서 유저 정보 가져오기
+
+    //Long userNo = currUser.getUserNo();
+    // true / false 여부
+
+    // 서비스에 dto(클라이언트에서 수정된값) + 세션에서 받아온 유저넘버 같이 넘겨주기 <=해결
+
+    boolean flag = petService.modify(dto, petNo, rootPath);
+
+    //어디로 이동할지 정하기
+    return "redirect:/pet/modify";
+  }
+
+
 
 
   // 우리 동네 강아지 보기
@@ -122,49 +172,6 @@ public class PetController {
   }
 
 
-  @GetMapping("/modify") // 수정 폼 을 열어주는애
-  // 페이지 이동
-  // db에서 업데이트를 할려면 뭐가 필요한지
-  public String modifyData(HttpSession session, Model model) {
 
-      Pet pet = petService.userFindPet(session);
-      model.addAttribute("p", pet);
-
-
-
-
-        return "pet/profileMod";
-    }
-
-    @PostMapping("/modify") //수정 폼안에 있는 데이터를 보내주는애, 수정하기 버튼 눌렀을 때
-    public String modifyData(HttpSession session, PetProfileModifyRequestDTO dto, Model model) {
-
-        log.info("mod POST");
-
-
-        // 로그인한 유저 넘버
-        Long userNo = getCurrentLoginUser(session).getUserNo();
-        log.info("유저 넘버 : {}", userNo);
-//        currUser.getPwd();
-
-        // 유저넘버로 찾은 펫 넘머
-        Long petNo = petService.findOne(userNo).getPetNo();
-        log.info("펫 넘버 : {}", petNo);
-
-        log.info(dto.getHashtag());
-
-//        String hashTag = petService.getDetail((long) petNo).getHashtag();
-        // 세션에서 유저 정보 가져오기
-
-        //Long userNo = currUser.getUserNo();
-        // true / false 여부
-
-        // 서비스에 dto(클라이언트에서 수정된값) + 세션에서 받아온 유저넘버 같이 넘겨주기 <=해결
-
-        boolean flag = petService.modify(dto, petNo, rootPath);
-
-        //어디로 이동할지 정하기
-        return "redirect:/pet/modify";
-    }
 }
 

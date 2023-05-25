@@ -102,21 +102,21 @@
 <!--   
   <%--  좌 --%>
   <div class="btn">
-<%--    <c:if test="${maker.prev}">--%>
+    <c:if test="${maker.page.pageNo != 1}">
       <div class="pageBtn-l">
         <a class="pageBtn-img"
-           href="/pet/neighbor?pageNo=${maker.begin - 1}">&lt;
+           href="/pet/neighbor?pageNo=${p.pageNo-1}">&lt;
         </a>
       </div>
-<%--    </c:if>--%>
+    </c:if>
 
     <%--    우 --%>
-<%--    <c:if test="${maker.next}">--%>
+      <c:if test="${maker.page.pageNo != maker.finalPage}">
       <div class="pageBtn-r">
         <a class="pageBtn-img"
-           href="/pet/neighbor?pageNo=${maker.end + 1}">&gt;</a>
+           href="/pet/neighbor?pageNo=${p.pageNo+1}">&gt;</a>
       </div>
-<%--    </c:if>--%>
+    </c:if>
 
     <%--    숫자 버튼 --%>
     <div class="page-btn">

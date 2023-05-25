@@ -38,12 +38,5 @@ public class LoginUtil {
         return WebUtils.getCookie(request, LoginUtil.AUTO_LOGIN_COOKIE);
     }
 
-    // 로그인한 사람의 계정명을 반환하는 메서드
-//    public static String getCurrentLoginMemberAccount(HttpSession session) {
-//        LoginUserResponseDTO loginUserInfo = (LoginUserResponseDTO) session.getAttribute(LOGIN_KEY);
-//        // 다운 캐스팅 object에서 dto로 변환
-//        return loginUserInfo.getAccount();
-//
-//    }
 
 }

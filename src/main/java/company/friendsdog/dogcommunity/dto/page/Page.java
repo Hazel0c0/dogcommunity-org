@@ -28,7 +28,11 @@ public class Page {
   }
 
   public void setAmount(int amount) {
-    this.amount = 4;
+    if (amount < 4 || amount > 8) {
+      this.amount = 4;
+      return;
+    }
+    this.amount = amount;
   }
 
   public int getPageStart() {
