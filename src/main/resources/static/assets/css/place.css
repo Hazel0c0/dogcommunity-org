@@ -49,11 +49,37 @@
     font-size: 2em;
     text-align: center;
     font-weight: 700;
+    color: white;
+
     width: 100%;
-    background: #d95050;
-    
-    position: absolute;
+    background: #000000;
+    padding: 10px;
+    margin: 0 auto;
+
+    position: fixed;
     top: 150px;
     
-    z-index: 99999;
+    z-index: 100;
+}
+
+.theme {
+    display: flex;
+    flex-direction: column;
+
+    position: absolute;
+    top: 226px;
+    left: 3%;
+}
+
+
+.theme-btn {
+    width: 150px;
+    height: 50px;
+    font-size: 1.8em;
+    font-weight: 600;
+    margin: 10px 5px;
+    border-radius: 5px;
+}
+.all {
+    background-color: #d95050;
 }
