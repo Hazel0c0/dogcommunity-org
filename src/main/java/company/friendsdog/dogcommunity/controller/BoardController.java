@@ -128,10 +128,10 @@ public class BoardController {
         return "redirect:/board/list2";
     }
 
-    // 게시판 수정 화면 조회 요청 : 빛나 message.jsp 테스트 용
-    @GetMapping("/message")
-    public String save() {
-        log.info("/api/v1/board/message : GET");
-        return "board/message";
-    }
+//    // 게시판 수정 화면 조회 요청 : 빛나 message.jsp 테스트 용
+//    @GetMapping("/message")
+//    public String save() {
+//        log.info("/api/v1/board/message : GET");
+//        return "board/message";
+//    }
 }

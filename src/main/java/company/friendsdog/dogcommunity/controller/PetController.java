@@ -33,7 +33,7 @@ public class PetController {
   @GetMapping("/profile")
   public String petCardMake() {
     log.info("펫 카드 만들기 GET");
-    return "pet/profileMod";
+    return "pet/profile";
     //  return "neighbor/profileMod";
   }
 
@@ -41,7 +41,6 @@ public class PetController {
   private String rootPath;
 
   @PostMapping("/upload-file")
-
   public String uploadForm(@RequestParam("thumbnail") MultipartFile file) {
     log.info("file-name: {}", file.getOriginalFilename());
     log.info("file-size: {}KB", (double) file.getSize() / 1024);
@@ -71,6 +70,7 @@ public class PetController {
     // 추후 수정페이지로 보내줄거임
     return "/main/profile";
   }
+
 
 
   // 우리 동네 강아지 보기
@@ -123,26 +123,6 @@ public class PetController {
   // 페이지 이동
   // db에서 업데이트를 할려면 뭐가 필요한지
   public String modifyData(HttpSession session, Model model) {
-
-//        // true / false 여부
-//        boolean flag = petService.modify(dto);
-
-//        Long userNo = getCurrentLoginUser(session).getUserNo();
-////        currUser.getPwd();
-//    Long petNo = petService.findOne(userNo).getPetNo();
-//
-//        // 하나 하나 로그 찍어보기
-//        log.info("mod petNo{}",petNo);
-//
-//
-//       String hashTag = petService.getDetail((long) petNo).getHashtag();
-//
-//        model.addAttribute("petNo", petNo);
-//        model.addAttribute("hashTag", hashTag);
-//        model.addAttribute("session", session);
-
-
-//        log.info("petNo : {} ", petNo);
 
         return "pet/profileMod";
     }
