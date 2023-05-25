@@ -134,7 +134,7 @@ public class PetController {
 
         Long userNo = getCurrentLoginUser(session).getUserNo();
 //        currUser.getPwd();
-    Long petNo = petService.findOne(userNo).getPetNo();
+        Long petNo = petService.findOne(userNo).getPetNo();
 
         // 하나 하나 로그 찍어보기
         log.info("mod petNo{}",petNo);
