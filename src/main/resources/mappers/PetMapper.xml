@@ -95,7 +95,7 @@
         SELECT
         user_no, pet_name, pet_age, pet_kind
         , pet_gender,pet_photo, hashtag, addr
-        , add_detail
+        , add_detail, pet_no
         FROM tbl_pet
         WHERE user_No = #{userNo}
     </select>
