@@ -39,7 +39,7 @@ public class PetController {
         //  return "neighbor/profileMod";
     }
 
-    @Value("${file-upload.root-path}")
+    @Value("${file.upload.root-path}")
     private String rootPath;
 
     @PostMapping("/upload-file")
