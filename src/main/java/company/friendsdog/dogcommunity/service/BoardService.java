@@ -36,6 +36,7 @@ public class BoardService {
 
     }
 
+
     //     게시판 업로드 중간처리
     public boolean save(BoardRequestDTO dto, HttpSession session, String imgPath) {
 
