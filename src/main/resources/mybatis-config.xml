@@ -15,6 +15,7 @@
         <typeAlias alias="petBoard" type="company.friendsdog.dogcommunity.entity.Board"/>
         <typeAlias alias="reply" type="company.friendsdog.dogcommunity.entity.Reply" />
         <typeAlias alias="chat" type="company.friendsdog.dogcommunity.entity.Chat" />
+        <typeAlias alias="place" type="company.friendsdog.dogcommunity.entity.Place" />
 
     </typeAliases>
 
@@ -25,6 +26,7 @@
         <mapper resource="mappers/BoardMapper.xml"/>
         <mapper resource="mappers/ReplyMapper.xml" />
         <mapper resource="mappers/ChatMapper.xml" />
+        <mapper resource="mappers/PlaceMapper.xml" />
 
     </mappers>
 
