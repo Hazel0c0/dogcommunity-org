@@ -50,7 +50,7 @@ class PetBoardServiceTest {
     @Test
     @DisplayName("하나의 게시물")
     void petFindOne() {
-        Board board = mapper.petFindOne(2L);
+        Board board = mapper.boardFindOne(2L);
         System.out.println("build = " + board);
 
     }

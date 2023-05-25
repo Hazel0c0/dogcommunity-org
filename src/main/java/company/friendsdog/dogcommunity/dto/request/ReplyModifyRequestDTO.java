@@ -3,6 +3,8 @@ package company.friendsdog.dogcommunity.dto.request;
 import company.friendsdog.dogcommunity.entity.Reply;
 import lombok.*;
 
+import javax.validation.constraints.NotNull;
+
 @Setter@Getter
 @NoArgsConstructor
 @ToString@EqualsAndHashCode
@@ -10,24 +12,24 @@ import lombok.*;
 
 public class ReplyModifyRequestDTO {
 
-    private  Long bno;
-
-    private Long replyNo;
-
     private String comment;
 
+    private Long petNo;
+
+    private Long boardNo;
+
     private String petName;
-
     private String petPhoto;
-
+    private Long replyNo;
 
     public Reply toEntity(){
         return Reply.builder()
-                .boardNo(this.bno)
-                .replyNo(this.replyNo)
+                .comment(this.comment)
+                .boardNo(this.boardNo)
                 .petPhoto(this.petPhoto)
                 .petName(this.petName)
-                .comment(this.comment)
+                .petNo(this.petNo)
+                .replyNo(this.replyNo)
                 .build();
     }
 }

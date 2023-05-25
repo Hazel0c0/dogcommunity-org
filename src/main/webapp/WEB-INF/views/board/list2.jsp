@@ -11,34 +11,48 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Insert title here</title>
 
-    <!--메인 화면 공통 부분 JSP-->
-    <!--메인 화면 공통 부분 JSP-->
-    <%@ include file="../include/header.jsp" %>
+    <%@ include file="../include/static-head.jsp" %>
 
-    <!--메인 화면 CSS : main-static은 공통 + 추가 개별 CSS 넣기 -->
-    <link rel="stylesheet" href="/assets/css/main-static.css">
-    <link rel="stylesheet" href="/assets/css/body.css">
 
     <!-- <script src="side-menu.js" defer></script> -->
+
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.6.0/font/bootstrap-icons.css" />
-
-  
-<style>
-.bi-heart-fill {
-  display: none;
-  color: pink;
-}
-
-.bi-heart.active {
-  display: none;
-}
+    <!-- css -->
+    <link rel="stylesheet" href="/assets/css/body.css">
 
 
-.bi-heart.active + .bi-heart-fill {
-  display: inline-block;
-}
-</style>
+    <style>
+        .bi-heart-fill {
+            display: none;
+            color: pink;
+        }
+
+        .bi-heart.active {
+            display: none;
+        }
+
+        .bi-heart.active+.bi-heart-fill {
+            display: inline-block;
+        }
+
+        /* 모달창 좋아요 끝 */
+
+
+        /* 리스트창 좋아요 시작 */
+        .abl2.bi-heart-fill {
+            display: none;
+            color: pink;
+        }
+
+        .abl2.bi-heart.active {
+            display: none;
+        }
+
+        .abl2.bi-heart.active+.bi-heart-fill {
+            display: inline-block;
+        }
+    </style>
 </head>
 
 <body>
@@ -50,14 +64,14 @@
     <section class="backgr" style="display: none;">
 
 
-      
+
 
         <div class="my-modal" id="modal">
 
-              <!-- 닫기 버튼 -->
-        <div class="xbutton" id="xbutton"><button><i class="bi bi-x-lg"></i></button></div>
-        <!-- 상세보기 모달 창 -->
-        <!-- <form action="/board/list2" method="get"> -->
+            <!-- 닫기 버튼 -->
+            <div class="xbutton" id="xbutton"><button><i class="bi bi-x-lg"></i></button></div>
+            <!-- 상세보기 모달 창 -->
+            <!-- <form action="/board/list2" method="get"> -->
 
             <!-- 이미지 박스  -->
             <div class="modal-imgbox bdrr">
@@ -102,28 +116,14 @@
                         <!-- 댓글 내용 박스 -->
                         <div id="replyCollpase" class="replycard">
                             <div id="replyData">
-                                <div class="float-left">댓 (<span id="replyCnt">0</span>)</div>
-                                <div class="reply">
+                                <div class="float-left"><span id="replyCnt"></span></div>
+                                <!-- <div class="reply">
                                     <div class="reply-profile">
                                         <img src="#" alt="#">
                                     </div>
                                     <div class="reply-writer">정동관1</div>
                                     <div class="reply-content">캬캬캬캬캬캬캬캬</div>
-                                </div>
-                                <!-- <div class="reply">
-                                    <div class="reply-profile">
-                                        <img src="#" alt="프사">
-                                    </div>
-                                    <div class="reply-writer">정동관2</div>
-                                    <div class="reply-content">캬캬캬캬캬캬캬캬</div>
-                                </div>
-                                <div class="reply">
-                                    <div class="reply-profile">
-                                        <img src="#" alt="프사">
-                                    </div>
-                                    <div class="reply-writer">정동관3</div>
-                                    <div class="reply-content">캬캬캬캬캬캬캬캬</div> -->
-                                <!-- </div> -->
+                                </div> -->
                                 <!-- Js로 댓글 정보 DIV  -->
                                 <!-- 닉네임 및 댓글내용 (15자 이상 자세히보기) -->
                                 <!-- 기본으로 15개 보여주고 넘어갈시 페이징으로 불러오기 해야함 -->
@@ -145,10 +145,10 @@
                 <section class="eventbuttons">
                     <!-- 버튼 담는 박스 -->
                     <div class="th">
-                        <span class="aamw"><button class="abl">
-                            <i class="bi bi-heart"></i>
-                            <i class="bi bi-heart-fill"></i>
-                        </button></span>
+                        <span class="aamw"><button class="abl a2">
+                                <i class="bi bi-heart"></i>
+                                <i class="bi bi-heart-fill"></i>
+                            </button></span>
                         <!-- 좋아요 버튼-->
                         <span class="aamx"><button class="abl"><i class="bi bi-chat"></i></button></span>
                         <!-- 댓글 버튼-->
@@ -166,7 +166,7 @@
                 </section>
                 <div class="userlikes">좋아요 누른사람 보기</div>
                 <!-- 댓글 입력 박스 -->
-                <div class="row" id="replies">
+                <div class="row" id="replies1">
                     <!-- 댓글 작성 카드 -->
                     <div class="modal-card">
                         <div class="xh xx">
@@ -174,7 +174,8 @@
                             <textarea name="replyText" id="newReplyText" cols="1" rows="1" placeholder="댓글달기.."
                                 style="overflow: hidden;"></textarea>
                         </div>
-                        <div class="inputbutton xh" role="button">게시</div>
+                        <button class="inputbutton xh" id="output">게시</button>
+                        <!-- <div class="inputbutton xh" role="button" id="output">게시</div> -->
                     </div>
                 </div>
 
@@ -203,6 +204,49 @@
             </div>
         </div>
     </section>
+
+
+    <!-- header -->
+    <header>
+        <div class="inner-header">
+            <h1 class="logo">
+                <a href="main.html">
+                    <img src="/src/main/resources/static/assets/img/logo-instagram.png" alt="로고이미지">
+                </a>
+            </h1>
+            <h2 class="intro-text"><a href="main.html">Petstagram</a></h2>
+            <a href="#" class="menu-open">
+                <span class="menu-txt">MENU</span>
+                <span class="lnr lnr-menu"></span>
+            </a>
+        </div>
+
+        <nav class="gnb">
+            <a href="#" class="close">
+                <span class="lnr lnr-cross"></span>
+            </a>
+            <ul>
+                <li><a href="#"><span class="lnr lnr-home"> 홈</span></a></li>
+                <li><a href="#"><span class="lnr lnr-magnifier"> 검색</span></a></li>
+                <li><a href="#"><span class="lnr lnr-map"> 내 주변 친구</span></a></li>
+                <li><a href="#"><span class="lnr lnr-heart"> 자랑하기</span></a></li>
+                <li><a href="#"><span class="lnr lnr-bubble"> 메시지</span></a></li>
+                <li><a href="#"><span class="lnr lnr-alarm"> 알림</span></a></li>
+                <li><a href="/pet/profile"><span class="lnr lnr-user"> 프로필</span></a></li>
+            </ul>
+        </nav>
+    </header>
+
+
+
+    <!--main sidebar-->
+    <aside class="sidebar">
+        <div class="profile-box">
+            <div class="profile-img"><a href=""></a></div>
+            <h3><a href="">멍뭉이</a></h3>
+            <p id="profileIntro"> #왈왈으르릉 #가까이오지마</p>
+        </div>
+    </aside>
 
 
     <!-- body -->
@@ -234,7 +278,7 @@
                                 <!-- 버튼 담는 박스 -->
                                 <div class="th">
                                     <span class="aamw">
-                                        <button class="abl">
+                                        <button class="abl abl2">
                                             <i class="bi bi-heart"></i>
                                             <i class="bi bi-heart-fill"></i>
                                         </button>
@@ -247,9 +291,8 @@
                                     <!-- 메세지 버튼-->
                                 </div>
                                 <div class="tj">
-                                    <span class="aamz"><button class="abl">
-                                        <i class="bi bi-eyeglasses"></i>${b.hits}
-                                    </button></span>
+                                    <span class="aamz"><button class="abl"><i
+                                                class="bi bi-lightning"></i></button></span>
                                     <!-- 저장 버튼 (보류) viewcount 로 대체예정-->
                                 </div>
                             </section>
@@ -267,6 +310,9 @@
 
 
     <script>
+        const URL = '/replies';
+        const boardNo = '${b.boardNo}';
+
         const $boxRow1 = document.getElementById('boxRow1');
         const $cardContainer = document.getElementById('card-container');
 
@@ -284,10 +330,13 @@
             const $petName = e.target.closest('#card').querySelector('.nickname').textContent;
 
             const $shortContent = e.target.closest('#card').querySelector('.card-text').textContent;
-            console.log($shortContent);
+            // console.log($shortContent);
 
             // 모달창에 정보 전달
-            // 여기서는 간단히 console.log로 출력하도록 했습니다.
+
+            // 모달에 글번호붙이기
+            modal.dataset.bno = $boardNo;
+
             // console.log(
             // `boardNo: \${boardNo}, petPhoto: \${petPhoto}, attachedImg: \${attachedImg}, petName: \${petName},shortContent : \${shortContent}`);
             // 게시글 이미지 전달 
@@ -301,7 +350,7 @@
             $boardprofile2.setAttribute('src', $petPhoto);
             // 상단 닉네임 1
             const $boarduserNickName1 = document.querySelector('.NN1');
-            console.log($boarduserNickName1);
+            // console.log($boarduserNickName1);
             $boarduserNickName1.textContent = $petName;
             // 상단 닉네임 2 
             const $boarduserNickName2 = document.querySelector('.NN2');
@@ -309,6 +358,9 @@
             // 게시판 글 내용
             const $boardtext = document.querySelector('.shorttext');
             $boardtext.textContent = $shortContent;
+
+            // 댓글 부르기
+            getReplyList($boardNo);
 
 
             if (e.target.matches('.card-img img')) {
@@ -321,6 +373,7 @@
                 if (e.target.matches('.xbutton button i')) {
                     // console.log('button 클릭!')
                     $backgr.style.display = 'none';
+                    tag = '';
                 }
             })
 
@@ -353,78 +406,163 @@
 
         });
 
-        
-                // 댓글 목록 렌더링 함수
+       
+        // 댓글 목록 렌더링 함수
         function renderReplyList({
             count,
             replies
         }) {
 
-        // 총 댓글 수 렌더링
-        document.getElementById('replyCnt').textContent = count;
-        if (replies === null || replies.length === 0) {
-            tag += ""
+            // 총 댓글 수 렌더링
+            // document.getElementById('replyCnt').textContent = count;
 
-        }else {
+            let tag = "";
 
-            // 댓글 내용 렌더링
-            // 각 댓글 하나의 태그
-            for (let rep of replies) {
-            const {
-                petNo,
-                replyNo,
-                comment
-            } = rep;
+            if (replies === null || replies.length === 0) {
+                tag += "댓글이 없습니다"
 
-             tag += " <div class='reply' id='replybox'>" +
-                                    "<div class='reply-profile'>" +
-                                        "<img src='#' alt='프사'>" +
-                                        "</div>" +
-                                    "<div class='reply-writer'>"+petNo+"</div>" +
-                                    "<div class='reply-content'>"+comment+"</div>" +
-                                "</div>";
+            } else {
 
-                            }
+                // 댓글 내용 렌더링
+                // 각 댓글 하나의 태그
+                for (let rep of replies) {
+                    const {
+                        petNo,
+                        replyNo,
+                        comment,
+                        petPhoto,
+                        petName
+                    } = rep;
 
-        // 생성된 댓글 tag 렌더링
-        document.getElementById('replyData').innerHTML = tag;
+                    tag += " <div class='reply' id='replybox' data-replyId='" + replyNo + "'>" +
+                        "<div class='reply-profile'>" +
+                        "<img src='" + petPhoto + "' alt='프사'>" +
+                        "</div>" +
+                        "<div class='reply-writer'>" + petName + "</div>" +
+                        "<div class='reply-content'>" + comment + "</div>" +
+                        "</div>";
+
+                }
+
+                // 생성된 댓글 tag 렌더링
+                document.getElementById('replyData').innerHTML = tag;
 
 
-    }
-    // 댓글 목록 불러오기 함수
-    function getReplyList(boardNo = 1) {
+            }
 
-        fetch(`\${URL}/\${boardNo}`)
-        .then(res => res.josn())
-        .then(responseResult => {
-            console.log(responseResult);
-            // renderReplyList(responseResult);
+        }
+        // 댓글 목록 불러오기 함수
+        function getReplyList(boardNo = 1) {
+
+            fetch(`\${URL}/\${boardNo}`)
+                .then(res => res.json())
+                .then(responseResult => {
+                    console.log(responseResult);
+                    renderReplyList(responseResult);
+                });
+
+        }
+
+
+//===============================좋아요 버튼=======================================
+
+        const likeButton = document.querySelector('.aamw .abl');
+
+        likeButton.addEventListener('click', function () {
+            const heartIcon = likeButton.querySelector('.bi-heart');
+            const fillHeartIcon = likeButton.querySelector('.bi-heart-fill');
+            heartIcon.classList.toggle('active');
+            fillHeartIcon.classList.toggle('active');
         });
 
-    }
-
-}
-
-// 좋아요 하트 누르면 색 변하게 하기
-const likeButton = document.querySelector('.aamw .abl');
-
-likeButton.addEventListener('click', function() {
-  const heartIcon = likeButton.querySelector('.bi-heart');
-  const fillHeartIcon = likeButton.querySelector('.bi-heart-fill');
-  heartIcon.classList.toggle('active');
-  fillHeartIcon.classList.toggle('active');
-});
-
-// --------- 좋아요 하트 -------- -
 
 
-    // 메인 실행 부 
+        const likeButton2 = document.querySelector('.aamw .abl2');
 
-    (function(){
-        // 댓글 불러오기
-        renderReplyList();
+        likeButton.addEventListener('click', function () {
+            event.stopPropagation();
+            const heartIcon2 = likeButton2.querySelector('.bi-heart-main');
+            const fillHeartIcon2 = likeButton2.querySelector('.bi-heart-fill-main');
+            heartIcon2.classList.toggle('active');
+            fillHeartIcon2.classList.toggle('active');
+        });
 
-    })
+//======================================================================
+
+        // 댓글 등록 처리 이벤트 함수
+        function makeReplyRegisterClickEvent() {
+
+            //  댓글 게시 버튼
+            // const $regBtn = document.getElementById('inputbutton');
+            const $regBtn = document.getElementById('output');
+            // console.log('btn:',$regBtn);
+            $regBtn.addEventListener('click', e => {
+
+                // console.log("댓글쓰기버튼 누름!");
+                //  댓글 입력창
+                const $rt = document.getElementById('newReplyText');
+             
+               
+                // console.log($rt.value);
+
+                // 입력 값 검증 == 시작 == 
+
+                // 입력 값 검증 === 끝 ===
+            
+                        // 서버로 보낼 데이터
+                        const payload = {
+                            comment: $rt.value,
+                            boardNo: modal.dataset.bno
+                        };
+              
+                      const requestInfo = {
+                    method : 'POST',
+                    Headers : {
+                        'content-Type': 'application/json'
+                    },
+                    body: JSON.stringify(payload)
+                }
+                // console.log(payload);
+                // console.log(requestInfo);
+
+
+                        // 댓글 등록 요청 보내기
+                        fetch('/replies', {
+                                method: 'POST',
+                                headers: {
+                                    'content-Type': 'application/json',
+                                },
+                                body: JSON.stringify(payload)
+                            })
+                            .then(response => response.json())
+                            .then(responseData => {
+                                if (responseData === 200) {
+                                    // alert(`댓글이 정상 등록되었습니다`)
+                                    $rt.value = '';
+                                    // 등록 후 댓글 목록을 다시 불러옴
+                                  getReplyList(payload.boardNo);
+                                }
+                            });
+
+                    });
+
+            };
+       
+            
+    
+
+
+
+
+        // 메인 실행 부 
+
+        (function () {
+            //댓글 등록 
+            makeReplyRegisterClickEvent();
+            
+            // const initialBoardNo = modal.dataset.bno; // 초기 게시글 번호를 여기에 설정해주세요
+            //  getReplyList(initialBoardNo);
+        })();
 
 
 

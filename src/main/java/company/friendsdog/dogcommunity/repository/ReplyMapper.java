@@ -20,25 +20,21 @@ public interface ReplyMapper {
 
     // 사용자 가 ?
     //댓글 개별 조회
-    Reply findOne(long replyNo);
+    Reply findOne(Long replyNo);
 
     //댓글 전체 조회
-    List<Reply>findAll(
-            @Param("bn")long boardNo,
-            @Param("pn")long petNo
-
-    );
+    List<Reply>findAll(Long boardNo);
 
 
     //댓글 삭제
-    boolean remove(long replyNo);
+    boolean remove(Long replyNo);
 
     //댓글 수정
     boolean modify(Reply reply);
 
     //댓글 수 조회
 
-    int count (long replyNo);
+    int count (Long boardNo);
 
 
 }

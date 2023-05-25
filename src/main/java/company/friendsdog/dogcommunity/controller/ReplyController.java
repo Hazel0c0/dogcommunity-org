@@ -23,15 +23,16 @@ public class ReplyController {
 
     private final ReplyService replyService;
 
-    @GetMapping("/{boardNo}/page/{petNo}")
+    @GetMapping("/{boardNo}")
     public ResponseEntity<?> getList(
-            @PathVariable long boardNo,
-            @PathVariable int petNo
+            @PathVariable long boardNo
     ) {
-        log.info("/replies/{}/petNo/{} : GET!!", boardNo, petNo);
+        log.info("/replies/{} : GET!!", boardNo);
 
-        ReplyListResponseDTO replyList = replyService.getList(boardNo, petNo);
+        ReplyListResponseDTO replyList = replyService.getList(boardNo);
 
+
+//        log.info("lklk {}", replyList.getReplies().size());
 
         return ok().body(replyList);
     }
@@ -50,7 +51,7 @@ public class ReplyController {
         }
 
         log.info("/replies : POST! ");
-        log.info("param: {} ", dto);
+        log.info("param: {} !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!", dto);
 
         try {
             ReplyListResponseDTO responseDTO = replyService.register(dto);

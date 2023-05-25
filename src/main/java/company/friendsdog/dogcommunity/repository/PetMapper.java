@@ -34,7 +34,7 @@ public interface PetMapper {
   boolean modify(Pet pet);
 
   PetCardResponseDTO randomPet(String addDetail);
-  Pet petFindInfo(Pet pet);
+  Pet userFindPet(Pet pet);
 
   int petCount(String addr);
 
