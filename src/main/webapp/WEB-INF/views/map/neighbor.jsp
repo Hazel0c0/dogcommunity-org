@@ -9,20 +9,17 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-  <%@ include file="../include/header.jsp" %>
+
 
 
   <!-- <script src="side-menu.js" defer></script> -->
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet">
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.6.0/font/bootstrap-icons.css"/>
 
-  <!--메인 화면 공통 부분 JSP-->
-  <%@ include file="../include/static-head.jsp" %>
-  <%@ include file="../include/header.jsp" %>
 
-  <!--메인 화면 CSS : main-static은 공통 + 추가 개별 CSS 넣기 -->
-  <link rel="stylesheet" href="/assets/css/main-static.css">
-  <!-- <link rel="stylesheet" href="/assets/css/body.css"> -->
+  
+    <!--메인 화면 공통 부분 JSP-->
+    <%@ include file="../include/header.jsp" %>
 
   <!-- <%--  <link rel="stylesheet" href="/assets/css/profile.css">--%> -->
   <link rel="stylesheet" href="/assets/css/petCard.css">
@@ -102,21 +99,21 @@
 <!--   
   <%--  좌 --%>
   <div class="btn">
-    <c:if test="${maker.page.pageNo != 1}">
+<%--    <c:if test="${maker.prev}">--%>
       <div class="pageBtn-l">
         <a class="pageBtn-img"
-           href="/pet/neighbor?pageNo=${p.pageNo-1}">&lt;
+           href="/pet/neighbor?pageNo=${maker.begin - 1}">&lt;
         </a>
       </div>
-    </c:if>
+<%--    </c:if>--%>
 
     <%--    우 --%>
-      <c:if test="${maker.page.pageNo != maker.finalPage}">
+<%--    <c:if test="${maker.next}">--%>
       <div class="pageBtn-r">
         <a class="pageBtn-img"
-           href="/pet/neighbor?pageNo=${p.pageNo+1}">&gt;</a>
+           href="/pet/neighbor?pageNo=${maker.end + 1}">&gt;</a>
       </div>
-    </c:if>
+<%--    </c:if>--%>
 
     <%--    숫자 버튼 --%>
     <div class="page-btn">

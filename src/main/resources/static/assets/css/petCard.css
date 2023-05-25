@@ -179,3 +179,59 @@
     height: 50px;
    font-size: 45px;
 }
+
+
+
+aside.sidebar {
+    background-color: green;
+    width: 20%;
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+    padding: 30px;
+    height: 300vh;
+    color: white;
+    display: none;
+    /* flex: 2 */
+}
+
+aside.sidebar .profile-box {
+    border: 2px antiquewhite;
+    margin-top: 150px;
+    padding: 30px;
+    text-align: center;
+    display: none;
+
+}
+
+aside.sidebar .profile-box {
+    position: relative;
+    display: none;
+
+}
+
+aside.sidebar .profile-box .profile-img {
+    border: 5px solid;
+    border-color: #d24560 mediumpurple yellow orange;
+    border-radius: 50%;
+    background: url('/assets/img/MainBullDog.png') no-repeat center;
+    background-size: 110%;
+    height: 300px;
+    overflow: hidden;
+    display: none;
+
+}
+
+aside.sidebar .profile-box h3 {
+    /*border: 1px solid orange;*/
+    margin: 20px;
+    display: none;
+
+}
+
+aside.sidebar .profile-box #profileHashTag {
+    border: 2px solid #e7e2e2;;
+    padding: 10px;
+    display: none;
+
+}

@@ -11,10 +11,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Insert title here</title>
 
+
+
     <%@ include file="../include/header.jsp" %>
-
-
-    <!-- <script src="side-menu.js" defer></script> -->
 
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.6.0/font/bootstrap-icons.css" />
@@ -160,9 +159,6 @@
                         <!-- 저장 버튼 (보류) viewcount 로 대체예정-->
                     </div>
                     <!-- </form> -->
-
-
-
                 </section>
                 <div class="userlikes">좋아요 누른사람 보기</div>
                 <!-- 댓글 입력 박스 -->
@@ -187,6 +183,9 @@
 
     <!-- 서브 모달도 앱솔루트 z index 줘서 위치 조정해야함 모달은 무조건 body 밑에 깔아야함-->
 
+
+
+
     <section class="like" style="display: none;">
         <div class="bodymodal">
             <div class="likesbutton"><button><i class="bi bi-x-lg"></i></button></div>
@@ -204,6 +203,9 @@
             </div>
         </div>
     </section>
+
+
+
 
 
     <!-- body -->

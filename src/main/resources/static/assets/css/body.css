@@ -35,77 +35,77 @@ a {
 
 /* header style */
 header {
-    background: black;
+    /* background: black;
     position: fixed;
     width: 100%;
     top: 0;
     z-index: 1000;
     font-size: 33px;
-    font-family: Linearicons-Free;
+    font-family: Linearicons-Free; */
 }
 
 header.on {
-    background: #222;
+    /* background: #222;
     border-bottom: 1px solid #2c2c2c;
-    transition: .4s;
+    transition: .4s; */
 }
 
 header .inner-header {
     /* background: orange; */
-    width: 94%;
+    /* width: 94%;
     margin: 0 auto;
     height: 150px;
     display: flex;
     justify-content: space-between;
     align-items: center;
     font-weight: 500;
-    color: #fff;
+    color: #fff; */
 }
 
 header .inner-header .logo {
     /* background: tomato; */
-    margin-right: 20px;
+    /* margin-right: 20px; */
 }
 
 header .inner-header .logo a {
-    display: block;
+    /* display: block; */
 }
 
 header .inner-header .logo a img {
-    height: 70px;
+    /* height: 70px; */
 }
 
 header .inner-header .intro-text {
     /* background: greenyellow; */
-    flex: 7;
+    /* flex: 7;
     letter-spacing: 3px;
-    text-transform: uppercase;
+    text-transform: uppercase; */
     /* margin: 20px; */
 }
 
 header .inner-header .menu-open {
     /* background: skyblue; */
-    flex: 1.5;
+    /* flex: 1.5;
     display: flex;
     justify-content: flex-end;
-    align-items: center;
+    align-items: center; */
 }
 
 header .inner-header .menu-open .lnr-menu {
-    font-size: 33px;
-    margin-left: 15px;
+    /* font-size: 33px;
+    margin-left: 15px; */
 }
 
 /* header gnb style */
 header .gnb {
-    background: #000;
+    /* background: #000;
     color: white;
     height: 100vh;
 
     padding: 70px 30px;
-    box-sizing: border-box;
+    box-sizing: border-box; */
     /* border: red; */
-
+/* 
     position: fixed;
     z-index: 2000;
     right: -100%;
@@ -113,77 +113,77 @@ header .gnb {
     transition: .5s;
 
     display: flex;
-    flex-direction: row-reverse;
+    flex-direction: row-reverse; */
 }
 
 header .gnb.on {
-    right: 0;
+    /* right: 0; */
 }
 
 header .gnb .close {
-    display: block;
-    color: #fff;
+    /* display: block;
+    color: #fff; */
 }
 
 header .gnb ul {
-    margin-right: 20px;
+    /* margin-right: 20px; */
 }
 
 header .gnb ul li {
-    font-size: 30px;
+    /* font-size: 30px;
     font-weight: 700;
-    line-height: 2;
+    line-height: 2; */
 }
 
 header .gnb ul li:hover,
 header .gnb ul li.active {
-    color: rgb(233, 101, 123);
+    /* color: rgb(233, 101, 123); */
 }
 
 /*======left side bar=========== */
+
 aside.sidebar {
-    background-color: green;
+    /* background-color: green;
     width: 20%;
     display: flex;
     flex-direction: column;
     flex-wrap: wrap;
     padding: 30px;
     height: 100vh;
-    color: white;
+    color: white; */
     /* flex: 2 */
 
 
     /* 사이드바 고정 설정 추가 */
-    position: fixed;
+    /* position: fixed;
     top: 0;
-    left: 0;
-}
+    left: 0; */
+} 
 
 aside.sidebar .profile-box {
-    border: 2px solid red;
+    /* border: 2px solid red;
     margin-top: 150px;
     padding: 30px;
-    text-align: center;
+    text-align: center; */
 }
 
 aside.sidebar .profile-box .profile-img {
-    border: 2px solid yellow;
+    /* border: 2px solid yellow;
     background: url('/assets/img/dog.png') no-repeat center;
     background-size: contain;
     border-radius: 50%;
-    height: 300px;
+    height: 300px; */
 }
 
 aside.sidebar .profile-box h3 {
-    border: 1px solid orange;
-    margin: 20px;
-}
-
+    /* border: 1px solid orange;
+    margin: 20px; */
+} 
 /* =====Begin main page body===== */
 
 #boxRow1 {
     display: flex;
-    border: 3px solid red;
+    /* border: 3px solid red; */
     flex-direction: row;
     justify-content: space-around;
     width: 80%;
@@ -191,22 +191,22 @@ aside.sidebar .profile-box h3 {
 }
 
 #boxRow1>* {
-    width: 100%;
+    /* width: 100%; */
 }
 
-/* 메인 박스 */ 
+/* 메인 박스 */
 #card-container {
 
-                flex-direction: row;
-                flex-wrap: wrap;
-                margin-left: 30px;
-                margin-top: 50px;
+    flex-direction: row;
+    flex-wrap: wrap;
+    margin-left: 30px;
+    margin-top: 50px;
 
-                height: 500px;
-                
-                /* text-align: center; */
-                flex-basis: calc(25% - 20px);
-            }
+    height: 500px;
+
+    /* text-align: center; */
+    flex-basis: calc(25% - 20px);
+}
 
 /* 메인박스 안 작은 박스 */
 #card-container #card-wrapper {
@@ -419,7 +419,7 @@ flex-grow: 1;
     position: absolute;
     right: -40px;
     top: -12%;
-    width:  100px;
+    width: 100px;
     height: 100px;
     /* border: 1px solid #000; */
     /* float: right; */
@@ -462,10 +462,12 @@ flex-grow: 1;
     height: 100%;
 
 }
+
 /* 왼쪽 이미지 박스 , 오른쪽 본문 내용 박스 */
 .bdrr {
     border-radius: 10px;
 }
+
 .modal-mainbox {
     width: 50%;
     background: #fff;
@@ -477,6 +479,7 @@ flex-grow: 1;
     height: 72%;
     /* background: #fff; */
 }
+
 .topmini {
     border-bottom: 1px solid gray;
 
@@ -487,12 +490,14 @@ flex-grow: 1;
     display: flex;
     border-bottom: 1px solid gray;
 }
+
 /* 사용자 mini 프로필 */
 .card-title .modal-miniprofile {
     /* border: 1px solid #000; */
     /* width: 40px; */
     /* margin-left: 5px; */
 }
+
 .modal-miniprofile img {
     object-fit: cover;
     border-radius: 50%;
@@ -501,6 +506,7 @@ flex-grow: 1;
     display: block;
 
 }
+
 /* mini profile img */
 /* .profile {
     object-fit: cover;
@@ -542,9 +548,12 @@ flex-grow: 1;
 .replytitle {
     display: flex;
 }
+
 #replyData {
-    overflow-y: scroll; /* 수직 스크롤 설정 */
-    height: 320px; /* 스크롤 박스의 높이 설정 */
+    overflow-y: scroll;
+    /* 수직 스크롤 설정 */
+    height: 320px;
+    /* 스크롤 박스의 높이 설정 */
 }
 
 /* 버튼들 담겨 있는 박스 */
@@ -619,13 +628,16 @@ flex-grow: 1;
     color: rgb(147, 203, 225);
     text-align: center;
 }
+
 .row .modal-card .inputbutton:hover {
 
     color: blue;
 }
+
 .like {
     border: 1px solid #000;
 }
+
 /* 전체 박스와 같은 크기의 메인박스 */
 .bodymodal {
     border: 1px solid #000;
@@ -636,6 +648,7 @@ flex-grow: 1;
     margin: 70px auto;
     border-radius: 15px;
 }
+
 /*  맨위 상위 박스 좋아요 */
 .titlelike {
     text-align: center;
@@ -649,6 +662,7 @@ flex-grow: 1;
     /* justify-content: center; */
     border-bottom: 1px solid #000;
 }
+
 .likesbutton {
     margin-right: 10px;
     margin-top: 50px;
@@ -656,6 +670,7 @@ flex-grow: 1;
     height: 20px; */
     float: right;
 }
+
 .xbutton i {
     width: 100%;
     height: 100%;
@@ -675,15 +690,18 @@ flex-grow: 1;
     z-index: 200;
 
 }
+
 .text {
     text-align: center;
     font-weight: 700;
 
 }
+
 .likebody {
     height: 300px;
     background: green;
 }
+
 /* 이 게시글에 좋아요를 누른 사람들 */
 .users {
     display: flex;
@@ -715,6 +733,7 @@ flex-grow: 1;
     /* margin-right: 5px; */
     background: greenyellow;
 }
+
 .reply-profile img {
     object-fit: cover;
     border-radius: 50%;
@@ -722,10 +741,12 @@ flex-grow: 1;
     height: 2.5rem;
     display: block;
 }
+
 .reply-writer {
     margin-left: 5px;
     font-weight: 700;
 }
+
 .reply-content {
     font-size: 14px;
 
