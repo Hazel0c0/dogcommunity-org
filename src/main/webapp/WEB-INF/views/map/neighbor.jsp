@@ -22,17 +22,35 @@
 
   <!--메인 화면 CSS : main-static은 공통 + 추가 개별 CSS 넣기 -->
   <link rel="stylesheet" href="/assets/css/main-static.css">
-  <link rel="stylesheet" href="/assets/css/body.css">
+  <!-- <link rel="stylesheet" href="/assets/css/body.css"> -->
 
-  <%--  <link rel="stylesheet" href="/assets/css/profile.css">--%>
+  <!-- <%--  <link rel="stylesheet" href="/assets/css/profile.css">--%> -->
   <link rel="stylesheet" href="/assets/css/petCard.css">
 
 
 </head>
+
+
+
 <body>
 <div class="mapper">
+
   <%--주변 친구 펫 카드들--%>
   <div class="pet-card-list">
+
+
+      <!-- 왼쪽 버튼 -->
+  <button class="btn-l">
+    
+    <i class="bi bi-arrow-left">
+    <a class="pageBtn-img"
+      href="/pet/neighbor?pageNo=${maker.begin - 1}">
+    </a>
+    </i>
+  
+  </button>
+
+
     <%--    펫 카드 forEach 불러오기--%>
     <c:forEach var="plist" items="${petList}">
       <div id="card-container">
@@ -54,7 +72,34 @@
         </div>
       </div>
     </c:forEach>
+
+     <!-- 오른쪽 버튼 -->
+     <button class="btn-r">
+    
+      <i class="bi bi-arrow-right">
+      <a class="pageBtn-img"
+      href="/pet/neighbor?pageNo=${maker.end + 1}">
+      </a>
+     </i>
+    
+    </button>
+
+
   </div>
+
+  <!-- 숫자 버튼 -->
+  <div class="page-btn">
+    <c:forEach var="i" begin="${maker.begin}" end="${maker.end}">
+      <li data-page-num="${i}" class="page-item">
+        <a class="page-link"
+           href="/pet/neighbor?pageNo=${i}">${i}</a>
+      </li>
+    </c:forEach>
+  </div>
+</div>
+
+
+<!--   
   <%--  좌 --%>
   <div class="btn">
     <c:if test="${maker.page.pageNo != 1}">
@@ -83,7 +128,7 @@
       </c:forEach>
     </div>
 
-  </div>
+  </div> -->
 
 </body>
 </html>
