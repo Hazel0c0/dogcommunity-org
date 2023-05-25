@@ -8,8 +8,8 @@
     <!--  댓글 등록-->
     <insert id="save">
         INSERT INTO tbl_reply
-        (board_no, pet_no, pet_name, reply_no, comment, reply_date_time, pet_photo)
-        VALUES (#{boardNo},#{petNo},#{petName},#{replyNo},#{comment},#{replyDateTime}, #{petPhoto})
+        (board_no, pet_no, pet_name, comment, reply_date_time, pet_photo)
+        VALUES (#{boardNo},#{petNo},#{petName},#{comment},#{replyDateTime}, #{petPhoto})
     </insert>
 
 

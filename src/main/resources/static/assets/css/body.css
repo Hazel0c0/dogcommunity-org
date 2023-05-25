@@ -390,7 +390,7 @@ flex-grow: 1;
     position: fixed;
     left: 0;
     top: 0;
-    margin: 100px auto;
+    margin: 90px auto;
     background: rgba(98, 95, 95, 0.8);
     z-index: 100;
 }
@@ -473,6 +473,7 @@ flex-grow: 1;
 }
 
 .modal-content {
+    border: none;
     height: 72%;
     /* background: #fff; */
 }
@@ -531,7 +532,7 @@ flex-grow: 1;
 /*  댓글 내용 박스 */
 .usersReply {
     /* border: 1px solid #000; */
-    background: orangered;
+    /* background: orangered; */
     height: 100%;
     font-size: 16px;
 
@@ -541,7 +542,10 @@ flex-grow: 1;
 .replytitle {
     display: flex;
 }
-
+#replyData {
+    overflow-y: scroll; /* 수직 스크롤 설정 */
+    height: 320px; /* 스크롤 박스의 높이 설정 */
+}
 
 /* 버튼들 담겨 있는 박스 */
 .eventbuttons {
@@ -586,7 +590,7 @@ flex-grow: 1;
     display: flex;
     justify-content: space-between;
 
-    height: 49px;
+    height: 30px;
 }
 
 /* 사용자 댓글 입력창  */
@@ -607,10 +611,11 @@ flex-grow: 1;
 .row .modal-card .inputbutton {
     /* margin-top: 10px; */
     margin-right: 10px;
-    width: 10%;
-    font-size: 18px;
+    /* width: 10%; */
+    /* font-size: 18px; */
     font-weight: 700;
 
+    background: #fff;
     color: rgb(147, 203, 225);
     text-align: center;
 }
@@ -628,7 +633,7 @@ flex-grow: 1;
     width: 400px;
     height: 400px;
     /* margin-top: 50px; */
-    margin: auto;
+    margin: 70px auto;
     border-radius: 15px;
 }
 /*  맨위 상위 박스 좋아요 */

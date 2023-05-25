@@ -116,28 +116,14 @@
                         <!-- 댓글 내용 박스 -->
                         <div id="replyCollpase" class="replycard">
                             <div id="replyData">
-                                <div class="float-left">댓 (<span id="replyCnt">0</span>)</div>
-                                <div class="reply">
+                                <div class="float-left"><span id="replyCnt"></span></div>
+                                <!-- <div class="reply">
                                     <div class="reply-profile">
                                         <img src="#" alt="#">
                                     </div>
                                     <div class="reply-writer">정동관1</div>
                                     <div class="reply-content">캬캬캬캬캬캬캬캬</div>
-                                </div>
-                                <!-- <div class="reply">
-                                    <div class="reply-profile">
-                                        <img src="#" alt="프사">
-                                    </div>
-                                    <div class="reply-writer">정동관2</div>
-                                    <div class="reply-content">캬캬캬캬캬캬캬캬</div>
-                                </div>
-                                <div class="reply">
-                                    <div class="reply-profile">
-                                        <img src="#" alt="프사">
-                                    </div>
-                                    <div class="reply-writer">정동관3</div>
-                                    <div class="reply-content">캬캬캬캬캬캬캬캬</div> -->
-                                <!-- </div> -->
+                                </div> -->
                                 <!-- Js로 댓글 정보 DIV  -->
                                 <!-- 닉네임 및 댓글내용 (15자 이상 자세히보기) -->
                                 <!-- 기본으로 15개 보여주고 넘어갈시 페이징으로 불러오기 해야함 -->
@@ -348,6 +334,9 @@
 
             // 모달창에 정보 전달
 
+            // 모달에 글번호붙이기
+            modal.dataset.bno = $boardNo;
+
             // console.log(
             // `boardNo: \${boardNo}, petPhoto: \${petPhoto}, attachedImg: \${attachedImg}, petName: \${petName},shortContent : \${shortContent}`);
             // 게시글 이미지 전달 
@@ -384,6 +373,7 @@
                 if (e.target.matches('.xbutton button i')) {
                     // console.log('button 클릭!')
                     $backgr.style.display = 'none';
+                    tag = '';
                 }
             })
 
@@ -416,7 +406,7 @@
 
         });
 
-        let tag = "";
+       
         // 댓글 목록 렌더링 함수
         function renderReplyList({
             count,
@@ -424,7 +414,10 @@
         }) {
 
             // 총 댓글 수 렌더링
-            document.getElementById('replyCnt').textContent = count;
+            // document.getElementById('replyCnt').textContent = count;
+
+            let tag = "";
+
             if (replies === null || replies.length === 0) {
                 tag += "댓글이 없습니다"
 
@@ -470,6 +463,9 @@
 
         }
 
+
+//===============================좋아요 버튼=======================================
+
         const likeButton = document.querySelector('.aamw .abl');
 
         likeButton.addEventListener('click', function () {
@@ -491,6 +487,8 @@
             fillHeartIcon2.classList.toggle('active');
         });
 
+//======================================================================
+
         // 댓글 등록 처리 이벤트 함수
         function makeReplyRegisterClickEvent() {
 
@@ -498,7 +496,6 @@
             // const $regBtn = document.getElementById('inputbutton');
             const $regBtn = document.getElementById('output');
             // console.log('btn:',$regBtn);
-            // $regBtn.onclick 
             $regBtn.addEventListener('click', e => {
 
                 // console.log("댓글쓰기버튼 누름!");
@@ -511,55 +508,48 @@
                 // 입력 값 검증 == 시작 == 
 
                 // 입력 값 검증 === 끝 ===
+            
+                        // 서버로 보낼 데이터
+                        const payload = {
+                            comment: $rt.value,
+                            boardNo: modal.dataset.bno
+                        };
+              
+                      const requestInfo = {
+                    method : 'POST',
+                    Headers : {
+                        'content-Type': 'application/json'
+                    },
+                    body: JSON.stringify(payload)
+                }
+                // console.log(payload);
+                // console.log(requestInfo);
 
-                //  user 값 가져오기
-                // fetch('/user/login')
-                //     .then(response => response.json())
-                //     .then(userInfo => {
 
-                //         // 서버로 보낼 데이터
-                //         const payload = {
-                //             comment: $rt.value,
-                //             petNo: userInfo.petNo,
-                //             boardNo: boardNo,
-                //             petName: userInfo.petName,
-                //             petPhoto: userInfo.petPhoto
-                //             // replyNo :  ,
-                //         };
+                        // 댓글 등록 요청 보내기
+                        fetch('/replies', {
+                                method: 'POST',
+                                headers: {
+                                    'content-Type': 'application/json',
+                                },
+                                body: JSON.stringify(payload)
+                            })
+                            .then(response => response.json())
+                            .then(responseData => {
+                                if (responseData === 200) {
+                                    // alert(`댓글이 정상 등록되었습니다`)
+                                    $rt.value = '';
+                                    // 등록 후 댓글 목록을 다시 불러옴
+                                  getReplyList(payload.boardNo);
+                                }
+                            });
 
-                //         // 댓글 등록 요청 보내기
-                //         fetch('/replies', {
-                //                 method: 'POST',
-                //                 headers: {
-                //                     'content-Type': 'application/json',
-                //                 },
-                //                 body: JSON.stringify(payload)
-                //             })
-                //             .then(response => response.json())
-                //             .then(responseData => {
-                //                 if (responseData === 200) {
-                //                     alert(`댓글이 정상 등록되었습니다`)
-                //                     $rt.value = '';
-                //                 }
-                //             });
+                    });
 
-                //     });
-
-            });
-            // 원하는 값 가져오기
-            // fetch('/replies', {
-            //     method : 'POST' ,
-            //     headers: {
-            //         'content-Type': 'application/json',
-            //     },
-            //     body: JSON.stringify(payload),
-            // })
-            // .then(response => response.json())
-            // .then(data => {
-            //     //응답처리
-            //     console.log(data);
-            // })
-        }
+            };
+       
+            
+    
 
 
 
@@ -570,6 +560,8 @@
             //댓글 등록 
             makeReplyRegisterClickEvent();
             
+            // const initialBoardNo = modal.dataset.bno; // 초기 게시글 번호를 여기에 설정해주세요
+            //  getReplyList(initialBoardNo);
         })();
 
 

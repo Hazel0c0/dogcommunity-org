@@ -63,9 +63,11 @@ public class ReplyService {
             log.info("Service - Reply - {}" ,reply);
             Long userNo = LoginUtil.getCurrentLoginUser(session).getUserNo();
             log.info("userNo - {}", userNo);
+        System.out.println("SESSION : "+session);
             Long userNoInfo = LoginUtil.getCurrentLoginUser(session).getUserNo();
             log.info("Service - userNoInfo - {}", userNoInfo);
             String petName = petMapper.userFindPet(userNoInfo).getPetName();
+            log.info("petName - {}", petName);
             reply.setPetName(petName);
             Long petNo = petMapper.userFindPet(userNoInfo).getPetNo();
             reply.setPetNo(petNo);
