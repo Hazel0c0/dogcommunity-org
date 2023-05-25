@@ -54,7 +54,7 @@ public class ReplyController {
         log.info("param: {} !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!", dto);
 
         try {
-            ReplyListResponseDTO responseDTO = replyService.register(dto);
+            ReplyListResponseDTO responseDTO = replyService.register(dto, session);
             return ResponseEntity.ok().body(responseDTO);
         } catch (Exception e) {
             log.warn("500 Status code response!! caused by: {}", e.getMessage());

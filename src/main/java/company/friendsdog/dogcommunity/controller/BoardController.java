@@ -26,8 +26,10 @@ import javax.servlet.http.HttpSession;
 import java.io.IOException;
 import java.util.List;
 
-import static com.spring.mvc.util.upload.FileUtil.uploadFile;
+
+
 import static company.friendsdog.dogcommunity.util.LoginUtil.LOGIN_KEY;
+import static company.friendsdog.dogcommunity.util.upload.FileUtil.uploadFile;
 
 @Controller
 @RequiredArgsConstructor

@@ -195,7 +195,7 @@
             <div class="likebody">
                 <!-- jsp로 좋아요 누른 사람들 나오게 만들어야함 -->
                 <div class="users">
-                    <div class="modal-miniprofile"><img src="${b.petPhoto}" alt="#" class="profile"></div>
+                    <div class="modal-miniprofile"><img src="/local/${b.petPhoto}" alt="#" class="profile"></div>
                     <div class="modal-profile">
                         <h1 class="modal-nickname">뭉치</h1>
                     </div>
