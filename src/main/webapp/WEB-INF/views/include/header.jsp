@@ -48,7 +48,8 @@
             <li><a href="/board/list2"><span class="lnr lnr-heart"> Feed 보기</span></a></li>
             <li><a href="/board/write"><span class="lnr lnr-file-add"> 글 작성</span></a></li>
             <li><a href="/board/message"><span class="lnr lnr-bubble"> 메시지</span></a></li>
-            <li><a href="/pet/modify"><span class="lnr lnr-paw"> 프로필</span></a></li>
+            <li><a href="/pet/profile"><span class="lnr lnr-paw"> 프로필</span></a></li>
+            <li><a href="/pet/modify"><span class="lnr lnr-paw"> 프로필 수정</span></a></li>
             <li><a href="/user/logout"><span class="lnr lnr-exit"> 로그아웃</span></a></li>
         </ul>
     </nav>

@@ -30,12 +30,13 @@ import static org.springframework.http.ResponseEntity.*;
 public class PetController {
     private final PetService petService;
 
-
     // 펫 프로필 카드 만들기 페이지 요청
     @GetMapping("/profile")
     public String petCardMake() {
         log.info("펫 카드 만들기 GET");
-        return "pet/profileMod";
+
+
+         return "main/profile";
         //  return "neighbor/profileMod";
     }
 
@@ -43,7 +44,6 @@ public class PetController {
     private String rootPath;
 
     @PostMapping("/upload-file")
-
     public String uploadForm(@RequestParam("thumbnail") MultipartFile file) {
         log.info("file-name: {}", file.getOriginalFilename());
         log.info("file-size: {}KB", (double) file.getSize() / 1024);
@@ -71,7 +71,7 @@ public class PetController {
 //    log.info("펫 저장 : {}", petSave);
 
         // 추후 수정페이지로 보내줄거임
-        return "/main/profile";
+        return "/main";
     }
 
 
@@ -132,22 +132,22 @@ public class PetController {
 //        // true / false 여부
 //        boolean flag = petService.modify(dto);
 
-//        Long userNo = getCurrentLoginUser(session).getUserNo();
-////        currUser.getPwd();
-//    Long petNo = petService.findOne(userNo).getPetNo();
-//
-//        // 하나 하나 로그 찍어보기
-//        log.info("mod petNo{}",petNo);
-//
-//
-//       String hashTag = petService.getDetail((long) petNo).getHashtag();
-//
-//        model.addAttribute("petNo", petNo);
-//        model.addAttribute("hashTag", hashTag);
-//        model.addAttribute("session", session);
+        Long userNo = getCurrentLoginUser(session).getUserNo();
+//        currUser.getPwd();
+    Long petNo = petService.findOne(userNo).getPetNo();
+
+        // 하나 하나 로그 찍어보기
+        log.info("mod petNo{}",petNo);
 
 
-//        log.info("petNo : {} ", petNo);
+       String hashTag = petService.getDetail((long) petNo).getHashtag();
+
+        model.addAttribute("petNo", petNo);
+        model.addAttribute("hashTag", hashTag);
+        model.addAttribute("session", session);
+
+
+        log.info("petNo : {} ", petNo);
 
         return "pet/profileMod";
     }
