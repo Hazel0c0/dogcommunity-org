@@ -47,7 +47,7 @@ public class BoardController {
         log.info("/board/list : GET");
         log.info("page : {}", page);
         List<BoardListResponseDTO> dto = boardService.boardFindAll(page);
-        log.info("listdto[0] : {}", dto.get(0));
+//        log.info("listdto[0] : {}", dto.get(0));
         PageMaker maker = new PageMaker(page, boardService.count(page));
 
         model.addAttribute("bList", dto);

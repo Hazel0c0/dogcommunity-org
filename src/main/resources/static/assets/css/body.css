@@ -220,7 +220,7 @@ aside.sidebar .profile-box h3 {
     cursor: pointer;
     transition: 0.5s;
 
-    border: 1px solid #000;
+    /* border: 1px solid #000; */
 }
 
 /* 실제 내용을 담는 박스 */
@@ -235,11 +235,11 @@ aside.sidebar .profile-box h3 {
 
 /*  사용자 이름 박스 */
 #card-container #card-wrapper #card .card-title {
-    background: orange;
+    /* background: orange; */
     padding: 1px;
     margin: 3px auto;
     /* position: relative; */
-    border-bottom: 1px solid #000;
+    /* border-bottom: 1px solid #000; */
     display: flex;
 
 }
@@ -282,9 +282,9 @@ aside.sidebar .profile-box h3 {
 
 /* 사진 박스 */
 #card-container #card-wrapper #card .card-img {
-    background: violet;
+    /* background: violet; */
     width: 100%;
-    height: 60%;
+    height: 77%;
     position: relative;
 
     /* 사진 넘치는 부분 가리기 */
@@ -310,8 +310,8 @@ left: 50%; */
 
 /* 사진 바로 밑 게시글 내용 시작 박스 */
 #card-container #card-wrapper #card .card-content {
-    border: 1px solid blue;
-
+    /* border: 1px solid blue; */
+    border-top: 1px solid gray;
     /* padding: 5px; */
 }
 
@@ -322,6 +322,8 @@ left: 50%; */
     margin-right: 10px; */
     display: flex;
     justify-content: space-between;
+
+    display: none;
 }
 
 /* 첫번째 버튼 */
@@ -363,7 +365,7 @@ flex-grow: 1;
 #card-container #card-wrapper #card .card-content .card-text {
     margin: 5px 5px 3px 5px;
     font-size: 14px;
-    height: 50px;
+    height: 60px;
 }
 
 #card-container #card-wrapper #card .card-content .regdate {
@@ -371,6 +373,8 @@ flex-grow: 1;
     margin-right: 4px;
     font-size: 7px;
     float: right;
+
+    display: none;
 }
 
 /*==End main body== */
