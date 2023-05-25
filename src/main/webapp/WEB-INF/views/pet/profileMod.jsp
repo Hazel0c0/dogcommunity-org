@@ -19,13 +19,13 @@
 
 
   <style>
-    .myInfo {
-        font-size: 1.3em;
-        font-weight: 600;
-    }
-    .info {
-        font-size: 0.8em;
-    }
+      .myInfo {
+          font-size: 1.3em;
+          font-weight: 600;
+      }
+      .info {
+          font-size: 0.8em;
+      }
   </style>
 </head>
 

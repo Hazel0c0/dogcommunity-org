@@ -35,11 +35,16 @@ public class PetController {
   // 펫 프로필 카드 만들기 페이지 요청
   @GetMapping("/profile")
   public String petCardMake(
+      HttpSession session
   ) {
     log.info("펫 카드 만들기 GET");
 
+    Long userNo = getCurrentLoginUser(session).getUserNo();
+    Pet pet = petMapper.userFindPet(userNo);
+
+    if (pet!=null) return "pet/profileMod";
+
     return "pet/profile";
-    //  return "neighbor/profileMod";
   }
 
 
@@ -68,6 +73,7 @@ public class PetController {
     // 파일 업로드
     String savePath = null;
     MultipartFile petPhoto = dto.getPetPhoto();
+
     if (!petPhoto.isEmpty()) {
       savePath = FileUtil.uploadFile(petPhoto, rootPath);
     }
@@ -139,13 +145,10 @@ public class PetController {
 
     String addr = LoginUtil.getCurrentLoginUser(session).getAddr();
     List<Pet> foundPet = petService.findNeighbor(addr,page);
+    PageMaker maker = new PageMaker(page, petService.petCount(addr));
 
     model.addAttribute("addr", addr);
     model.addAttribute("petList", foundPet);
-
-    PageMaker maker = new PageMaker(page, petService.petCount(addr));
-    System.out.println(petService.petCount(addr));
-
     model.addAttribute("p", page);
     model.addAttribute("maker", maker);
 
