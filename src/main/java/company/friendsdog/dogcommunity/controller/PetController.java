@@ -85,6 +85,8 @@ public class PetController {
 
     boolean petSave = petService.petCardMake(dto, session, savePath);
 //    log.info("펫 저장 : {}", petSave);
+    Pet loginPet = petMapper.userFindPet(LoginUtil.getCurrentLoginUser(session).getUserNo());
+    session.setAttribute("loginPet",loginPet);
 
     return "redirect:/pet/modify";
   }
