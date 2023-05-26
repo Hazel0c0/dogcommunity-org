@@ -28,7 +28,9 @@ public class LoginUtil {
         return session.getAttribute(LOGIN_KEY) != null;
     }
     public static boolean isPet(HttpSession session) {
-        return session.getAttribute("loginPet") != null;
+        Object loginPet = session.getAttribute("loginPet");
+        System.out.println("로그인하면 펫 : "+loginPet);
+        return  loginPet!= null;
     }
 
     // 자동 로그인 여부 확인

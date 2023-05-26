@@ -94,6 +94,13 @@ public class UserController {
       userService.maintainLoginState(
           request.getSession(), dto.getId());
 
+          Pet pet = petMapper.userFindPet(LoginUtil.getCurrentLoginUser(session).getUserNo());
+    System.out.println("프로필 작성 전 펫 : "+pet);
+    if (pet==null) {
+        System.out.println("펫 프로필 없음 작성해라");
+        return "redirect:/pet/profile";
+      }
+
       return "redirect:/main";
     }
 

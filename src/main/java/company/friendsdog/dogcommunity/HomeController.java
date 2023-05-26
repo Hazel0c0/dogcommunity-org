@@ -1,21 +1,22 @@
 package company.friendsdog.dogcommunity;
 
+import company.friendsdog.dogcommunity.entity.Pet;
+import company.friendsdog.dogcommunity.repository.PetMapper;
 import company.friendsdog.dogcommunity.util.LoginUtil;
+import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
-
 @Controller
+@RequiredArgsConstructor
 public class HomeController {
+
+  private final PetMapper petMapper;
   @GetMapping("/")
   public String home(HttpSession session) {
-    if (LoginUtil.isLogin(session)){
-      return "redirect:/board/main";
-    } else if (LoginUtil.isPet(session)){
-      return "redirect:/pet/profile";
-    }
+
     return "login/login";
   }
 
