@@ -168,11 +168,9 @@ aside.sidebar .profile-box .profile-img {
     border-color: #d24560 mediumpurple yellow orange;
     border-radius: 50%;
     background: no-repeat;
-    /*background: url('/assets/img/MainBullDog.png') no-repeat center;*/
     background-size: 110%;
     height: 300px;
     overflow: hidden;
-    /*<img src="/local${LOGIN.profile}" alt="프사">*/
 }
 
 aside.sidebar .profile-box h3 {

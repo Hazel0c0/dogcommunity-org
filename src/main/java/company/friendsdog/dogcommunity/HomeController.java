@@ -13,6 +13,8 @@ public class HomeController {
   public String home(HttpSession session) {
     if (LoginUtil.isLogin(session)){
       return "redirect:/board/main";
+    } else if (LoginUtil.isPet(session)){
+      return "redirect:/pet/profile";
     }
     return "login/login";
   }

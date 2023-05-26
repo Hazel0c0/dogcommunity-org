@@ -27,6 +27,9 @@ public class LoginUtil {
     public static boolean isLogin(HttpSession session) {
         return session.getAttribute(LOGIN_KEY) != null;
     }
+    public static boolean isPet(HttpSession session) {
+        return session.getAttribute("loginPet") != null;
+    }
 
     // 자동 로그인 여부 확인
     public static boolean isAutoLogin(HttpServletRequest request) {

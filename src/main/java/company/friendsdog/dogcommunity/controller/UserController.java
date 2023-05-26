@@ -80,10 +80,8 @@ public class UserController {
       , HttpServletRequest request
       , HttpServletResponse response
       , RedirectAttributes ra
-                      , Model model,
-
-
-                      HttpSession session
+      , Model model
+      , HttpSession session
   ) {
     log.info("POST login info : {}", dto);
     LoginResult loginResult = userService.loginAuthenticate(

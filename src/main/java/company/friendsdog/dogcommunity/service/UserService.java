@@ -114,7 +114,10 @@ public class UserService {
     session.setMaxInactiveInterval(60 * 60 * 24); // 세션 - 1시간
 
     Object sessionInfo = session.getAttribute(LoginUtil.LOGIN_KEY);
-//    log.info("세션 {}", sessionInfo);
+    Object loginPetInfo = session.getAttribute("loginPet");
+    log.info("세션 {}", session);
+    log.info("세션 유저 {}", sessionInfo);
+    log.info("세션 펫 {}", loginPetInfo);
   }
 
   // id로 유저 찾기
