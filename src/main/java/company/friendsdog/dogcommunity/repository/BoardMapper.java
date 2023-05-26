@@ -1,6 +1,6 @@
 package company.friendsdog.dogcommunity.repository;
 
-import company.friendsdog.dogcommunity.dto.page.Search;
+import company.friendsdog.dogcommunity.dto.page.BoardSearch;
 import company.friendsdog.dogcommunity.entity.Board;
 import org.apache.ibatis.annotations.Mapper;
 
@@ -10,7 +10,10 @@ import java.util.List;
 public interface BoardMapper {
 
     // 게시물 전체 조회
-    List<Board> boardFindAll(Search page);
+    List<Board> boardFindAll(BoardSearch page);
+
+    // 나의 게시물 전체 조회
+    List<Board> myFindAll(Long petNo);
 
     // 게시물 상세 조회
     Board boardFindOne(Long boardNo);
@@ -28,7 +31,9 @@ public interface BoardMapper {
     void upHitsCount(Long boardNo);
 
     // 총 게시물 수
-    int count(Search search);
+    int count(BoardSearch search);
 
     boolean petFindInfo(Board board);
+
+
 }

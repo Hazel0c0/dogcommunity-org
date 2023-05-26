@@ -46,7 +46,7 @@
             <li><a href="#"><span class="lnr lnr-alarm"> 알림</span></a></li>
             <li><a href="/pet/neighbor"><span class="lnr lnr-map"> 내 주변 친구</span></a></li>
             <li><a href="/map/map"><span class="lnr lnr-map"> 산책가기</span></a></li>
-            <li><a href="#"><span class="lnr lnr-heart"> Feed 보기</span></a></li>
+            <li><a href="/board/mine"><span class="lnr lnr-heart"> Feed 보기</span></a></li>
             <li><a href="/board/write"><span class="lnr lnr-file-add"> 글 작성</span></a></li>
             <li><a href="/board/message"><span class="lnr lnr-bubble"> 메시지</span></a></li>
             <li><a href="/pet/profile"><span class="lnr lnr-paw"> 프로필</span></a></li>

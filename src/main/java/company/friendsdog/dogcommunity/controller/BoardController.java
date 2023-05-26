@@ -1,5 +1,7 @@
 package company.friendsdog.dogcommunity.controller;
 
+import company.friendsdog.dogcommunity.dto.page.BoardPageMaker;
+import company.friendsdog.dogcommunity.dto.page.BoardSearch;
 import company.friendsdog.dogcommunity.dto.page.PageMaker;
 import company.friendsdog.dogcommunity.dto.page.Search;
 import company.friendsdog.dogcommunity.dto.request.BoardRequestDTO;
@@ -43,12 +45,12 @@ public class BoardController {
 
     // 게시판 목록 조회 요청
     @GetMapping("/main")
-    public String petFindAll(Search page, Model model) {
-        log.info("/board/list : GET");
-        log.info("page : {}", page);
+    public String petFindAll(BoardSearch page, Model model) {
+//        log.info("/board/list : GET");
+//        log.info("page : {}", page);
         List<BoardListResponseDTO> dto = boardService.boardFindAll(page);
 //        log.info("listdto[0] : {}", dto.get(0));
-        PageMaker maker = new PageMaker(page, boardService.count(page));
+        BoardPageMaker maker = new BoardPageMaker(page, boardService.count(page));
 
         model.addAttribute("bList", dto);
         model.addAttribute("p", page);
@@ -56,6 +58,21 @@ public class BoardController {
 
 
         return "/board/list2";
+    }
+
+    @GetMapping("/mine")
+    public String myFindAll(BoardSearch page, Model model, HttpSession session) {
+        log.info("/board/list : GET");
+        log.info("page : {}", page);
+        List<BoardListResponseDTO> dto = boardService.myFindAll(session);
+        log.info("mind dto- {}", dto);
+        BoardPageMaker maker = new BoardPageMaker(page, boardService.count(page));
+
+        model.addAttribute("mList", dto);
+        model.addAttribute("p", page);
+        model.addAttribute("maker", maker);
+
+        return "/board/mine";
     }
 
 //    // 게시판 상세 조회 요청
@@ -68,6 +85,7 @@ public class BoardController {
 //        model.addAttribute("p", search);
 //        log.info("dto- {}", dto);
 //        return "board/detail";
+//
 //    }
 
     // 게시판 글쓰기 화면 조회 요청
@@ -75,8 +93,7 @@ public class BoardController {
     public String save(HttpSession session, Model model) {
         Long userNoInfo = LoginUtil.getCurrentLoginUser(session).getUserNo();
         Pet p = petMapper.userFindPet(userNoInfo);
-        if(p == null)
-        {
+        if (p == null) {
             return "redirect:/pet/profile";
         }
         Pet pet = boardService.userFindPet(session);
@@ -117,7 +134,7 @@ public class BoardController {
 
     // 게시판 수정 요청 처리
     @PostMapping("/upload")
-    public String modify(BoardRequestDTO dto,  HttpSession session) {
+    public String modify(BoardRequestDTO dto, HttpSession session) {
         log.info("/api/v1/board/upload : POST");
         log.info("content -  {}", dto.getContent());
         log.info("attachedImg - {}", dto.getAttachedImg());
@@ -126,11 +143,4 @@ public class BoardController {
         boardService.modify(dto);
         return "redirect:/board/main";
     }
-
-//    // 게시판 수정 화면 조회 요청 : 빛나 message.jsp 테스트 용
-//    @GetMapping("/message")
-//    public String save() {
-//        log.info("/api/v1/board/message : GET");
-//        return "board/message";
-//    }
 }
