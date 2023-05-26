@@ -25,6 +25,7 @@ import java.net.http.HttpResponse;
 import java.time.LocalDateTime;
 
 import static company.friendsdog.dogcommunity.service.LoginResult.*;
+import static company.friendsdog.dogcommunity.util.LoginUtil.getCurrentLoginUser;
 
 @Service
 @RequiredArgsConstructor
@@ -105,6 +106,10 @@ public class UserService {
       HttpSession session, String id) {
     // 현재 로그인한 사람의 정보
     User foundUser = findUser(id);
+
+    Pet loginPet = petMapper.userFindPet(foundUser.getUserNo());
+    session.setAttribute("loginPet",loginPet);
+
     session.setAttribute(LoginUtil.LOGIN_KEY, foundUser);
     session.setMaxInactiveInterval(60 * 60 * 24); // 세션 - 1시간
 

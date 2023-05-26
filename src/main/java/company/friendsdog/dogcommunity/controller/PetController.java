@@ -42,11 +42,13 @@ public class PetController {
     Long userNo = getCurrentLoginUser(session).getUserNo();
     Pet pet = petMapper.userFindPet(userNo);
 
-    if (pet!=null) return "pet/profileMod";
+    if (pet != null) {
+      session.setAttribute("p",pet);
+      return "pet/profileMod";
+    }
 
     return "pet/profile";
   }
-
 
 
   @Value("${file-upload.root-path}")
@@ -86,13 +88,13 @@ public class PetController {
 
   // 펫 카드 수정창 요청
   @GetMapping("/modify")
-    public String modifyData(HttpSession session, Model model) {
+  public String modifyData(HttpSession session, Model model) {
 
-      log.info("펫 수정창 들어옴 - 세션 : {}", session);
+    log.info("펫 수정창 들어옴 - 세션 : {}", session);
 
-      Pet foundPet = petService.userFindPet(session);
+    Pet foundPet = petService.userFindPet(session);
 
-      log.info("펫 수정 - 기존 펫 정보 : {}",foundPet);
+    log.info("펫 수정 - 기존 펫 정보 : {}", foundPet);
     model.addAttribute("p", foundPet);
 
     return "pet/profileMod";
@@ -130,8 +132,6 @@ public class PetController {
   }
 
 
-
-
   // 우리 동네 강아지 보기
   @GetMapping("/neighbor")
   public String findNeighbor(
@@ -144,7 +144,7 @@ public class PetController {
     model.addAttribute("noneSidebar", true);
 
     String addr = LoginUtil.getCurrentLoginUser(session).getAddr();
-    List<Pet> foundPet = petService.findNeighbor(addr,page);
+    List<Pet> foundPet = petService.findNeighbor(addr, page);
     PageMaker maker = new PageMaker(page, petService.petCount(addr));
 
     model.addAttribute("addr", addr);
@@ -173,7 +173,6 @@ public class PetController {
     //pet
     return pet;
   }
-
 
 
 }

@@ -60,16 +60,8 @@
     <div class="profile-box">
         <a href="/pet/profile">
             <div class="profile-img"></div>
-            <h3 id="profilePetName">멍뭉이</h3>
-            <p id="profileHashTag"># 자유로운 산책과<br>  만남을 추구하는<br> 행복한 멍뭉이</p>
+            <h3 id="profilePetName">${loginPet.petName}</h3>
+            <p id="profileHashTag">${loginPet.hashtag}</p>
         </a>
-
-<%--        <c:if test="${login != null}">--%>
-<%--            <a href="/pet/profile">--%>
-<%--                <div class="profile-img">${login.petPhoto}</div>--%>
-<%--                <h3 id="profilePetName">${login.petName}</h3>--%>
-<%--                <p id="profileHashTag">ㅎㅎ</p>--%>
-<%--            </a>--%>
-<%--        </c:if>--%>
     </div>
 </aside>

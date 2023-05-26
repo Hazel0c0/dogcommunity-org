@@ -22,6 +22,9 @@
       .myInfo {
           font-size: 1.3em;
           font-weight: 600;
+          width: fit-content;
+          height: 50px;
+
       }
       .info {
           font-size: 0.8em;

@@ -68,7 +68,6 @@ public class BoardController {
 //        model.addAttribute("p", search);
 //        log.info("dto- {}", dto);
 //        return "board/detail";
-//
 //    }
 
     // 게시판 글쓰기 화면 조회 요청

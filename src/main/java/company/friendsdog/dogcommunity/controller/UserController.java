@@ -2,7 +2,9 @@ package company.friendsdog.dogcommunity.controller;
 
 import company.friendsdog.dogcommunity.dto.request.JoinRequestDTO;
 import company.friendsdog.dogcommunity.dto.request.LoginRequestDTO;
+import company.friendsdog.dogcommunity.entity.Pet;
 import company.friendsdog.dogcommunity.entity.User;
+import company.friendsdog.dogcommunity.repository.PetMapper;
 import company.friendsdog.dogcommunity.service.LoginResult;
 import company.friendsdog.dogcommunity.service.UserService;
 import company.friendsdog.dogcommunity.util.LoginUtil;
@@ -10,6 +12,7 @@ import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -30,6 +33,7 @@ import static company.friendsdog.dogcommunity.util.LoginUtil.*;
 public class UserController {
 
   private final UserService userService;
+  private final PetMapper petMapper;
 
   // 회원가입
   // 회원가입창
@@ -76,6 +80,10 @@ public class UserController {
       , HttpServletRequest request
       , HttpServletResponse response
       , RedirectAttributes ra
+                      , Model model,
+
+
+                      HttpSession session
   ) {
     log.info("POST login info : {}", dto);
     LoginResult loginResult = userService.loginAuthenticate(
