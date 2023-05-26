@@ -267,7 +267,6 @@
     <!--// body-->
 
 
-
     <script>
         const URL = '/replies';
         const boardNo = '${b.boardNo}';
@@ -473,16 +472,16 @@
                             comment: $rt.value,
                             boardNo: modal.dataset.bno
                         };
-              
-                      const requestInfo = {
-                    method : 'POST',
-                    Headers : {
-                        'content-Type': 'application/json'
-                    },
-                    body: JSON.stringify(payload)
-                }
-                // console.log(payload);
-                // console.log(requestInfo);
+                    
+                            const requestInfo = {
+                            method : 'POST',
+                            Headers : {
+                                'Content-Type': 'application/json'
+                            },
+                            body: JSON.stringify(payload)
+                        }
+                console.log(payload);
+                console.log(requestInfo);
 
 
                         // 댓글 등록 요청 보내기
@@ -493,14 +492,20 @@
                                 },
                                 body: JSON.stringify(payload)
                             })
-                            .then(response => response.json())
+                            .then(response => {
+                                if (response.status === 200) {
+
+                                    alert(`댓글이 정상 등록되었습니다`);
+                                }
+                               return response.json();
+                            }
+                                )
                             .then(responseData => {
-                                if (responseData === 200) {
-                                    // alert(`댓글이 정상 등록되었습니다`)
+                               
                                     $rt.value = '';
                                     // 등록 후 댓글 목록을 다시 불러옴
                                   getReplyList(payload.boardNo);
-                                }
+                                
                             });
 
                     });
