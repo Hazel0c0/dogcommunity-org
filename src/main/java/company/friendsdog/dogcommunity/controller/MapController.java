@@ -21,6 +21,7 @@ import static org.springframework.http.ResponseEntity.ok;
 @RequiredArgsConstructor
 @RequestMapping("/map")
 @Slf4j
+@CrossOrigin
 public class MapController {
   private final PetService petService;
   private final BoardService boardService;
@@ -57,7 +58,7 @@ public class MapController {
 
   @ResponseBody
   @GetMapping("/api/point/{addr}/{keyword}")
-  @CrossOrigin(origins = {"http://127.0.0.1:5500"})
+
   public ResponseEntity<?> themeSearch(
       @PathVariable String addr,
       @PathVariable String keyword) {
@@ -70,7 +71,7 @@ public class MapController {
 
   @ResponseBody
   @GetMapping("/api/point/{addr}")
-  @CrossOrigin(origins = {"http://127.0.0.1:5500"})
+
   public ResponseEntity<?> point(
       @PathVariable String addr
   ) {
