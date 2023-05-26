@@ -59,7 +59,7 @@
 <aside class="sidebar">
     <div class="profile-box">
         <a href="/pet/profile">
-            <div class="profile-img"></div>
+            <img class="profile-img" src="${loginPet.petPhoto}" alt="프사">
             <h3 id="profilePetName">${loginPet.petName}</h3>
             <p id="profileHashTag">${loginPet.hashtag}</p>
         </a>

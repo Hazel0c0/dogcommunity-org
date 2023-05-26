@@ -35,7 +35,7 @@ import static company.friendsdog.dogcommunity.util.upload.FileUtil.uploadFile;
 @Slf4j
 public class BoardController {
 
-    @Value("${file.upload.root-path}")
+    @Value("${file-upload.root-path}")
     private String rootPath;
 
     private final BoardService boardService;

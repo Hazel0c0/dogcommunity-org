@@ -16,6 +16,11 @@ public class FileUtil {
             String rootPath
     ) {
 
+//        File root = new File(rootPath);
+//        if(!root.exists()) root.mkdirs();
+//
+//        FileUtil.uploadFile(file, rootPath);
+
         String newFileName
                 = UUID.randomUUID() + "_" + file.getOriginalFilename();
 

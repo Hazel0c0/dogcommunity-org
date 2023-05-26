@@ -38,16 +38,15 @@
 
   <form action="/pet/modify" method="post" name="petProfile" class="profile" id="pet-profile-form"
         enctype="multipart/form-data">
-    <%-- placeholder="${}"--%>
-    <div class="info">이름, 나이, 품종을 잘 못 기입하였거나 수정을 원할 경우 고객센터로 문의바랍니다.</div>
+
     <label>반려동물 이름</label>
-    <div class="myInfo">${p.petName}</div>
+    <input type="text" placeholder="${p.petName}" readonly>
 
     <label>나이</label>
-    <div class="myInfo">${p.petAge}</div>
+    <input type="text" placeholder="${p.petAge}" readonly>
 
     <label>품종</label>
-    <div class="myInfo">${p.petKind}</div>
+    <input type="text" placeholder="${p.petKind}" readonly>
 
     <label for="petPhoto">프로필 사진 변경</label>
     <input type="file" id="petPhoto" name="petPhoto" accept="image/*">
@@ -66,12 +65,10 @@
 
     <label for="profileSuggest">프로필에 계정 추천 표시</label>
     <p id="choice">강아지의 프로필이 다른 프로필에서 추천될 수 있는지를 선택하세요.
-      &nbsp;&nbsp;&nbsp;
       <input type="checkbox" id="profileSuggest" name="profileSuggest">
     </p>
-
+    <div class="info">❗️이름, 나이, 품종을 수정을 원할 경우 고객센터로 문의바랍니다.</div>
     <input type="submit" value="수정" id="submitBtn">
-    <%--            <button type="submit" onclick="" id="submitBtn" >수정</button>--%>
   </form>
 </div>
 <script>

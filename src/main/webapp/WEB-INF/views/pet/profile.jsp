@@ -34,7 +34,7 @@
         <input type="text" id="petKind" name="petKind" required>
 
         <label for="petPhoto">프로필 사진 변경</label>
-        <input type="file" id="petPhoto" name="petPhoto" accept="image">
+        <input type="file" id="petPhoto" name="petPhoto" accept="image/*">
 
 
         <label for="petGender">성별</label>

@@ -51,20 +51,21 @@ public class PetController {
   }
 
 
+//  @PostMapping("/upload-file")
+//
+//  public String uploadForm(@RequestParam("thumbnail") MultipartFile file) {
+//    log.info("file-name: {}", file.getOriginalFilename());
+//    log.info("file-size: {}KB", (double) file.getSize() / 1024);
+//    log.info("file-type: {}", file.getContentType());
+//
+////    String filePath = FileUtil.uploadFile(file, rootPath);
+//
+//    return "redirect:/upload-form";
+//  }
+
+
   @Value("${file-upload.root-path}")
   private String rootPath;
-
-  @PostMapping("/upload-file")
-
-  public String uploadForm(@RequestParam("thumbnail") MultipartFile file) {
-    log.info("file-name: {}", file.getOriginalFilename());
-    log.info("file-size: {}KB", (double) file.getSize() / 1024);
-    log.info("file-type: {}", file.getContentType());
-
-    String filePath = FileUtil.uploadFile(file, rootPath);
-
-    return "redirect:/upload-form";
-  }
 
   // 펫 카드 정보 저장
   @PostMapping("/profile")
@@ -75,8 +76,10 @@ public class PetController {
     // 파일 업로드
     String savePath = null;
     MultipartFile petPhoto = dto.getPetPhoto();
+    log.info("프로필사진 이름: {}", petPhoto.getOriginalFilename());
 
     if (!petPhoto.isEmpty()) {
+      // 실제 로컬 스토리지에 파일을 업로드하는 로직
       savePath = FileUtil.uploadFile(petPhoto, rootPath);
     }
 
