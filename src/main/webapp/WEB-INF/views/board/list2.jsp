@@ -255,7 +255,7 @@
                                     <!-- 저장 버튼 (보류) viewcount 로 대체예정-->
                                 </div>
                             </section>
-                            <div class="card-text">${b.petName} , ${b.shortContent}</div> <!-- 작성내용   -->
+                            <div class="card-text"> ${b.shortContent}</div> <!-- 작성내용   -->
                             <div class="regdate"> ${b.boardDateTime} 작성일자시간</div>
                         </div> <!-- 게시글 내용 끝-->
                     </section>
